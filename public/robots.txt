@@ -1,0 +1,9 @@
+# USA Spending Robots.txt
+User-agent: *
+Allow: /
+
+Disallow: /admin
+Disallow: /api/
+Disallow: /*?*
+
+Sitemap: https://usa-spending.com/sitemap.xml
