@@ -21,6 +21,10 @@ export const metadata: Metadata = {
   authors: [{ name: 'USA Spending Data Project' }],
   verification: {
     google: 'BjEe0IX0Cm89CYnoYPpnL1BzBcjm_Ylp1WGNL5SWLxQ',
+    yandex: 'c10c080b970b1180',
+    other: {
+      'msvalidate.01': '2A730A2FAF8DA672C0BDBCC548BEB4FA',
+    },
   },
   openGraph: {
     title: "USA Spending — See Where America's Money Goes",
@@ -40,6 +44,8 @@ export default function RootLayout({
     <html lang="en" className="dark">
       <head>
         <meta name="google-site-verification" content="BjEe0IX0Cm89CYnoYPpnL1BzBcjm_Ylp1WGNL5SWLxQ" />
+        <meta name="msvalidate.01" content="2A730A2FAF8DA672C0BDBCC548BEB4FA" />
+        <meta name="yandex-verification" content="c10c080b970b1180" />
       </head>
       <body className="bg-radial-gradient min-h-screen flex flex-col antialiased selection:bg-blue-500 selection:text-white">
         <Script
