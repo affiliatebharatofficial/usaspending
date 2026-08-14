@@ -19,6 +19,14 @@ export const metadata: Metadata = {
     'state federal funding',
   ],
   authors: [{ name: 'USA Spending Data Project' }],
+  icons: {
+    icon: [
+      { url: '/favicon.svg', type: 'image/svg+xml' },
+      { url: '/icon.svg', type: 'image/svg+xml' },
+    ],
+    shortcut: '/favicon.svg',
+    apple: '/favicon.svg',
+  },
   verification: {
     google: 'BjEe0IX0Cm89CYnoYPpnL1BzBcjm_Ylp1WGNL5SWLxQ',
     yandex: 'c10c080b970b1180',
@@ -46,6 +54,7 @@ export default function RootLayout({
         <meta name="google-site-verification" content="BjEe0IX0Cm89CYnoYPpnL1BzBcjm_Ylp1WGNL5SWLxQ" />
         <meta name="msvalidate.01" content="2A730A2FAF8DA672C0BDBCC548BEB4FA" />
         <meta name="yandex-verification" content="c10c080b970b1180" />
+        <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
       </head>
       <body className="bg-radial-gradient min-h-screen flex flex-col antialiased selection:bg-blue-500 selection:text-white">
         <Script
