@@ -31,7 +31,7 @@ export const metadata: Metadata = {
     description:
       'Explore U.S. Federal Government spending in real-time. Live counters, interactive charts, state maps, and government contract explorers.',
     type: 'website',
-    url: 'https://usa-spending.com',
+    url: 'https://www.usaspending.us',
   },
 };
 

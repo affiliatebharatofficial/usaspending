@@ -6,4 +6,4 @@ Disallow: /admin
 Disallow: /api/
 Disallow: /*?*
 
-Sitemap: https://usa-spending.com/sitemap.xml
+Sitemap: https://www.usaspending.us/sitemap.xml

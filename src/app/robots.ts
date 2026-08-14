@@ -7,6 +7,6 @@ export default function robots(): MetadataRoute.Robots {
       allow: '/',
       disallow: ['/admin', '/api/', '/*?*'], // Prevent thin duplicate parameter URLs
     },
-    sitemap: 'https://usa-spending.com/sitemap.xml',
+    sitemap: 'https://www.usaspending.us/sitemap.xml',
   };
 }

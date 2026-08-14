@@ -13,10 +13,10 @@ export default function JsonLd({ type, data }: JsonLdProps) {
       '@context': 'https://schema.org',
       '@type': 'WebSite',
       name: 'USA Spending',
-      url: 'https://usa-spending.com',
+      url: 'https://www.usaspending.us',
       potentialAction: {
         '@type': 'SearchAction',
-        target: 'https://usa-spending.com/search?q={search_term_string}',
+        target: 'https://www.usaspending.us/search?q={search_term_string}',
         'query-input': 'required name=search_term_string',
       },
     };
@@ -28,7 +28,7 @@ export default function JsonLd({ type, data }: JsonLdProps) {
         '@type': 'ListItem',
         position: index + 1,
         name: item.name,
-        item: `https://usa-spending.com${item.url}`,
+        item: `https://www.usaspending.us${item.url}`,
       })),
     };
   } else if (type === 'Dataset') {
@@ -37,7 +37,7 @@ export default function JsonLd({ type, data }: JsonLdProps) {
       '@type': 'Dataset',
       name: data.name || 'U.S. Federal Government Spending Data',
       description: data.description || 'Verified public spending dataset sourced from USAspending.gov API.',
-      url: data.url || 'https://usa-spending.com',
+      url: data.url || 'https://www.usaspending.us',
       isAccessibleForFree: true,
       creator: {
         '@type': 'Organization',
@@ -51,7 +51,7 @@ export default function JsonLd({ type, data }: JsonLdProps) {
       '@type': type,
       name: data.name,
       description: data.description,
-      url: `https://usa-spending.com${data.url}`,
+      url: `https://www.usaspending.us${data.url}`,
     };
   }
 
