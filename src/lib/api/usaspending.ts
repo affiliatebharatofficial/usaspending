@@ -1,11 +1,20 @@
-import { TOTAL_FEDERAL_SPENDING_FY2026, SPENDING_CATEGORIES, AGENCIES_DATA, STATES_DATA, RECIPIENTS_DATA, MOCK_SYNC_LOGS } from '../data/spendingData';
+import {
+  SPENDING_CATEGORIES,
+  AGENCIES_DATA,
+  STATES_DATA,
+  RECIPIENTS_DATA,
+  TOTAL_FEDERAL_SPENDING_FY2026,
+  getCategoryDataForFY,
+  getAgencyDataForFY,
+  getRecipientDataForFY,
+} from '../data/spendingData';
+import { resolveCategoryEntity, resolveAgencyEntity, resolveRecipientEntity } from '../config/entities';
 import { calculateSpendingRates } from '../utils/formatters';
 
 const USASPENDING_BASE_URL = 'https://api.usaspending.gov/api/v2';
 
 export async function fetchLiveSpendingTotals() {
   try {
-    // Attempting live endpoint check
     const controller = new AbortController();
     const timeoutId = setTimeout(() => controller.abort(), 3000);
 
@@ -16,7 +25,6 @@ export async function fetchLiveSpendingTotals() {
     clearTimeout(timeoutId);
 
     if (res.ok) {
-      // Live API responsive
       return {
         status: 'CONNECTED',
         rates: calculateSpendingRates(TOTAL_FEDERAL_SPENDING_FY2026),
@@ -34,20 +42,26 @@ export async function fetchLiveSpendingTotals() {
   };
 }
 
-export function getCategoryBySlug(slug: string) {
-  return SPENDING_CATEGORIES.find((c) => c.slug === slug || c.id === slug);
+export function getCategoryBySlug(slug: string, fy: number = 2026) {
+  const entity = resolveCategoryEntity(slug);
+  if (!entity) return undefined;
+  return getCategoryDataForFY(entity.slug, fy);
 }
 
-export function getAgencyBySlug(slug: string) {
-  return AGENCIES_DATA.find((a) => a.slug === slug || a.id === slug);
+export function getAgencyBySlug(slug: string, fy: number = 2026) {
+  const entity = resolveAgencyEntity(slug);
+  if (!entity) return undefined;
+  return getAgencyDataForFY(entity.slug, fy);
 }
 
 export function getStateBySlug(slug: string) {
   return STATES_DATA.find((s) => s.slug === slug || s.code.toLowerCase() === slug.toLowerCase());
 }
 
-export function getRecipientBySlug(slug: string) {
-  return RECIPIENTS_DATA.find((r) => r.slug === slug || r.id === slug);
+export function getRecipientBySlug(slug: string, fy: number = 2026) {
+  const entity = resolveRecipientEntity(slug);
+  if (!entity) return undefined;
+  return getRecipientDataForFY(entity.slug, fy);
 }
 
 export function searchRecipients(query: string) {
@@ -56,7 +70,7 @@ export function searchRecipients(query: string) {
   return RECIPIENTS_DATA.filter(
     (r) =>
       r.name.toLowerCase().includes(q) ||
-      r.category.toLowerCase().includes(q) ||
+      r.description.toLowerCase().includes(q) ||
       r.headquarters.toLowerCase().includes(q)
   );
 }
