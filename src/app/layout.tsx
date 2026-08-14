@@ -18,6 +18,9 @@ export const metadata: Metadata = {
     'state federal funding',
   ],
   authors: [{ name: 'USA Spending Data Project' }],
+  verification: {
+    google: 'BjEe0IX0Cm89CYnoYPpnL1BzBcjm_Ylp1WGNL5SWLxQ',
+  },
   openGraph: {
     title: "USA Spending — See Where America's Money Goes",
     description:
@@ -34,6 +37,9 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" className="dark">
+      <head>
+        <meta name="google-site-verification" content="BjEe0IX0Cm89CYnoYPpnL1BzBcjm_Ylp1WGNL5SWLxQ" />
+      </head>
       <body className="bg-radial-gradient min-h-screen flex flex-col antialiased selection:bg-blue-500 selection:text-white">
         <Header />
         <main className="flex-1">{children}</main>
