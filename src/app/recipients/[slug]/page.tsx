@@ -31,7 +31,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 
   return {
     title: pageTitle,
-    description: `Detailed analysis of ${entity.name} federal awards in FY2026 (${formattedAwards} in active federal prime awards). View contract breakdown, awarding executive agencies, historical timeline, top performance states, and award details.`,
+    description: `Explore federal prime awards to ${entity.name} in FY2026 (${formattedAwards}). View awarding executive agencies, contract breakdowns, and performance states.`,
     alternates: {
       canonical: entity.canonicalUrl,
     },

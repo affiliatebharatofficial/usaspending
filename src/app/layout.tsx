@@ -7,7 +7,7 @@ import Footer from '@/components/layout/Footer';
 export const metadata: Metadata = {
   title: "USA Spending — See Where America's Money Goes",
   description:
-    'Explore U.S. Federal Government spending in real-time. Fast, clear visualizations of federal budgets, defense, healthcare, agencies, states, and top government contractors.',
+    'Explore U.S. federal government spending with interactive charts, live counters, state maps, agency outlays, and top contractor analytics.',
   keywords: [
     'USA spending',
     'us government spending',
@@ -37,7 +37,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "USA Spending — See Where America's Money Goes",
     description:
-      'Explore U.S. Federal Government spending in real-time. Live counters, interactive charts, state maps, and government contract explorers.',
+      'Explore U.S. federal government spending with interactive charts, live counters, state maps, agency outlays, and top contractor analytics.',
     type: 'website',
     url: 'https://www.usaspending.us',
   },

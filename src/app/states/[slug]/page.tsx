@@ -31,7 +31,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 
   return {
     title: `Federal Spending in ${state.name} — FY2026 | USA Spending`,
-    description: `Explore federal spending associated with ${state.name} by fiscal year, agency outlays, top prime recipients, and award type using public government data.`,
+    description: `Explore federal spending associated with ${state.name} in FY2026. View agency outlays, prime contract awards, and historical spending trends.`,
   };
 }
 

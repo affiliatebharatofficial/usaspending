@@ -35,7 +35,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 
   return {
     title: pageTitle,
-    description: `Explore ${entity.h1Title} in FY2026 (${formattedAmount} outlays). Full breakdown by subcategory, historical trend, associated agencies, and primary recipients.`,
+    description: `Explore ${entity.name} in FY2026 (${formattedAmount}). View subcategory breakdowns, 8-year historical trends, top agencies, and primary recipients.`,
     alternates: {
       canonical: entity.canonicalUrl,
     },

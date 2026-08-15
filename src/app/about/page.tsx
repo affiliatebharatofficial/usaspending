@@ -8,7 +8,7 @@ import type { Metadata } from 'next';
 
 export const metadata: Metadata = {
   title: `About USA Spending | U.S. Government Spending Data`,
-  description: `Learn about USA Spending, an independent data visualization and research platform designed to make public U.S. federal government spending accessible and understandable.`,
+  description: `Learn about USA Spending, an independent data visualization platform for exploring public U.S. federal government spending data and fiscal tools.`,
 };
 
 export default function AboutPage() {
