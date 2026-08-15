@@ -5,6 +5,7 @@ import Header from '@/components/layout/Header';
 import Footer from '@/components/layout/Footer';
 
 export const metadata: Metadata = {
+  metadataBase: new URL('https://www.usaspending.us'),
   title: "USA Spending — See Where America's Money Goes",
   description:
     'Explore U.S. federal government spending with interactive charts, live counters, state maps, agency outlays, and top contractor analytics.',
@@ -19,6 +20,21 @@ export const metadata: Metadata = {
     'state federal funding',
   ],
   authors: [{ name: 'USA Spending Data Project' }],
+  alternates: {
+    canonical: 'https://www.usaspending.us',
+  },
+  robots: {
+    index: true,
+    follow: true,
+    nocache: false,
+    googleBot: {
+      index: true,
+      follow: true,
+      'max-video-preview': -1,
+      'max-image-preview': 'large',
+      'max-snippet': -1,
+    },
+  },
   icons: {
     icon: [
       { url: '/favicon.svg', type: 'image/svg+xml' },
@@ -54,6 +70,9 @@ export default function RootLayout({
         <meta name="google-site-verification" content="BjEe0IX0Cm89CYnoYPpnL1BzBcjm_Ylp1WGNL5SWLxQ" />
         <meta name="msvalidate.01" content="2A730A2FAF8DA672C0BDBCC548BEB4FA" />
         <meta name="yandex-verification" content="c10c080b970b1180" />
+        <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
+        <meta name="bingbot" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1" />
+        <link rel="canonical" href="https://www.usaspending.us" />
         <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
       </head>
       <body className="bg-radial-gradient min-h-screen flex flex-col antialiased selection:bg-blue-500 selection:text-white">

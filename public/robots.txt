@@ -1,9 +1,13 @@
 # USA Spending Robots.txt
 User-agent: *
 Allow: /
-
 Disallow: /admin
 Disallow: /api/
-Disallow: /*?*
+
+User-agent: Bingbot
+Allow: /
+
+User-agent: Googlebot
+Allow: /
 
 Sitemap: https://www.usaspending.us/sitemap.xml
