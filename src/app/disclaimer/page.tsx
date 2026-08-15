@@ -7,7 +7,10 @@ import type { Metadata } from 'next';
 
 export const metadata: Metadata = {
   title: `USA Spending Disclaimer | Independent Data Notice`,
-  description: `Official legal disclaimer for USA Spending regarding independent status, data accuracy, mathematical rate models, and non-affiliation with government agencies.`,
+  description: `Read the official legal disclaimer for USA Spending regarding independent status, data accuracy, rate models, and non-affiliation.`,
+  alternates: {
+    canonical: 'https://www.usaspending.us/disclaimer',
+  },
 };
 
 export default function DisclaimerPage() {

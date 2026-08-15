@@ -7,6 +7,9 @@ import type { Metadata } from 'next';
 export const metadata: Metadata = {
   title: `USA Spending Methodology | How Government Spending Data Is Calculated`,
   description: `Read the official methodology and formulas for federal spending outlays, rate calculations, pie chart reconciliation, and data baselines.`,
+  alternates: {
+    canonical: 'https://www.usaspending.us/methodology',
+  },
 };
 
 export default function MethodologyPage() {

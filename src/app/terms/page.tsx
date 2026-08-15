@@ -6,7 +6,10 @@ import type { Metadata } from 'next';
 
 export const metadata: Metadata = {
   title: `Terms of Service | USA Spending`,
-  description: `Terms of Service governing access and use of the independent USA Spending data visualization application.`,
+  description: `Read the Terms of Service governing access and acceptable use of the independent USA Spending visual data explorer platform.`,
+  alternates: {
+    canonical: 'https://www.usaspending.us/terms',
+  },
 };
 
 export default function TermsPage() {

@@ -6,7 +6,10 @@ import type { Metadata } from 'next';
 
 export const metadata: Metadata = {
   title: `Privacy Policy | USA Spending`,
-  description: `Privacy Policy for USA Spending detailing information processing, cookies, technical security measures, and privacy inquiry contacts.`,
+  description: `Read the privacy policy for USA Spending detailing data handling, local storage preferences, HTTPS security, and user rights.`,
+  alternates: {
+    canonical: 'https://www.usaspending.us/privacy',
+  },
 };
 
 export default function PrivacyPage() {

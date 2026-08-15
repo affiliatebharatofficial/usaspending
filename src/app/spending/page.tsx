@@ -14,7 +14,10 @@ import type { Metadata } from 'next';
 
 export const metadata: Metadata = {
   title: 'U.S. Federal Government Spending Overview — FY2026 Outlays Profile',
-  description: 'Comprehensive public data visual analysis of U.S. Federal Government spending. $6.75 Trillion total outlays, live rate ticker, pie chart, and breakdown by agency and category.',
+  description: 'Explore U.S. federal government spending in FY2026 ($6.75 Trillion outlays). Live spending clock, pie charts, agency outlays, and category breakdowns.',
+  alternates: {
+    canonical: 'https://www.usaspending.us/spending',
+  },
 };
 
 export default function SpendingOverviewPage() {
@@ -27,7 +30,7 @@ export default function SpendingOverviewPage() {
         data={{
           name: 'U.S. Federal Government Spending Dataset',
           description: 'Official U.S. Federal spending data sourced from USAspending.gov API.',
-          url: 'https://usa-spending.com/spending',
+          url: 'https://www.usaspending.us/spending',
         }}
       />
 
