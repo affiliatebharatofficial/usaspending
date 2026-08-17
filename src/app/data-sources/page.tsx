@@ -8,6 +8,9 @@ import type { Metadata } from 'next';
 export const metadata: Metadata = {
   title: `USA Spending Data Sources | Official Government Data`,
   description: `Explore official U.S. government data sources, API endpoints, and Treasury datasets powering USA Spending data visualizations.`,
+  alternates: {
+    canonical: 'https://www.usaspending.us/data-sources',
+  },
 };
 
 export default function DataSourcesPage() {
