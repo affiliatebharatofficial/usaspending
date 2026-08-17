@@ -4,6 +4,56 @@ const nextConfig = {
   async redirects() {
     return [
       {
+        source: '/science-medical-research',
+        destination: '/categories/science-medical-research',
+        permanent: true,
+      },
+      {
+        source: '/nasa-space-exploration',
+        destination: '/categories/nasa-space-exploration',
+        permanent: true,
+      },
+      {
+        source: '/agriculture-food-assistance',
+        destination: '/categories/agriculture-food-assistance',
+        permanent: true,
+      },
+      {
+        source: '/education-training',
+        destination: '/categories/education-training',
+        permanent: true,
+      },
+      {
+        source: '/defense-military',
+        destination: '/categories/defense-military',
+        permanent: true,
+      },
+      {
+        source: '/infrastructure-transport',
+        destination: '/categories/infrastructure-transport',
+        permanent: true,
+      },
+      {
+        source: '/medicaid-spending',
+        destination: '/categories/medicaid-spending',
+        permanent: true,
+      },
+      {
+        source: '/social-security-spending',
+        destination: '/categories/social-security-spending',
+        permanent: true,
+      },
+      {
+        source: '/medicare-spending',
+        destination: '/categories/medicare-spending',
+        permanent: true,
+      },
+      {
+        source: '/veterans-affairs-spending',
+        destination: '/categories/veterans-affairs-spending',
+        permanent: true,
+      },
+      {
         source: '/categories/nasa-spending',
         destination: '/categories/nasa-space-exploration',
         permanent: true,
