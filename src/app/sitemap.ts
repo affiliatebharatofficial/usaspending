@@ -10,7 +10,6 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { url: `${BASE_URL}/spending-breakdown`, lastModified: new Date(), changeFrequency: 'daily', priority: 0.9 },
     { url: `${BASE_URL}/spending-by-year`, lastModified: new Date(), changeFrequency: 'weekly', priority: 0.9 },
     { url: `${BASE_URL}/explorer`, lastModified: new Date(), changeFrequency: 'weekly', priority: 0.9 },
-    { url: `${BASE_URL}/calculator`, lastModified: new Date(), changeFrequency: 'weekly', priority: 0.9 },
     { url: `${BASE_URL}/calculators`, lastModified: new Date(), changeFrequency: 'weekly', priority: 0.9 },
     { url: `${BASE_URL}/calculators/spending-rate`, lastModified: new Date(), changeFrequency: 'weekly', priority: 0.8 },
     { url: `${BASE_URL}/calculators/spending-percentage`, lastModified: new Date(), changeFrequency: 'weekly', priority: 0.8 },
@@ -35,7 +34,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
   ];
 
   const categoryRoutes: MetadataRoute.Sitemap = SPENDING_CATEGORIES.map((c) => ({
-    url: `${BASE_URL}/${c.slug}`,
+    url: `${BASE_URL}/categories/${c.slug}`,
     lastModified: new Date(),
     changeFrequency: 'weekly',
     priority: 0.8,

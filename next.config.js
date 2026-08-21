@@ -4,6 +4,11 @@ const nextConfig = {
   async redirects() {
     return [
       {
+        source: '/calculator',
+        destination: '/calculators',
+        permanent: true,
+      },
+      {
         source: '/science-medical-research',
         destination: '/categories/science-medical-research',
         permanent: true,
