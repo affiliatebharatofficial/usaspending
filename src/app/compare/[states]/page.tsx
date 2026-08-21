@@ -1,5 +1,6 @@
 import React from 'react';
 import Link from 'next/link';
+import { redirect } from 'next/navigation';
 import Breadcrumbs from '@/components/navigation/Breadcrumbs';
 import MetricCard from '@/components/visualizations/MetricCard';
 import SpendingTrendChart from '@/components/charts/SpendingTrendChart';
@@ -16,8 +17,18 @@ interface Props {
   };
 }
 
+function getCanonicalPairSlug(pairSlug: string): string {
+  const parts = pairSlug.split('-vs-');
+  if (parts.length === 2) {
+    const sorted = [parts[0], parts[1]].sort();
+    return `${sorted[0]}-vs-${sorted[1]}`;
+  }
+  return pairSlug;
+}
+
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const pairSlug = params.states;
+  const canonicalSlug = getCanonicalPairSlug(pairSlug);
   const parts = pairSlug.split('-vs-');
   const nameA = parts[0]?.replace(/-/g, ' ').toUpperCase() || 'ENTITY A';
   const nameB = parts[1]?.replace(/-/g, ' ').toUpperCase() || 'ENTITY B';
@@ -26,15 +37,21 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     title: `Compare ${nameA} vs ${nameB} — U.S. Federal Spending`,
     description: `Side-by-side comparison of federal outlays, daily rates, and financial metrics between ${nameA} and ${nameB}.`,
     alternates: {
-      canonical: `https://www.usaspending.us/compare/${pairSlug}`,
+      canonical: `https://www.usaspending.us/compare/${canonicalSlug}`,
     },
   };
 }
 
 export default function DynamicComparisonPage({ params }: Props) {
-  const pairSlug = params.states; // e.g. "california-vs-texas" or "defense-vs-education"
-  const parts = pairSlug.split('-vs-');
+  const pairSlug = params.states; // e.g. "california-vs-texas" or "missouri-vs-florida"
+  const canonicalSlug = getCanonicalPairSlug(pairSlug);
 
+  // If request slug is not alphabetically canonical, perform a 301 redirect to the canonical slug
+  if (pairSlug !== canonicalSlug) {
+    redirect(`/compare/${canonicalSlug}`);
+  }
+
+  const parts = pairSlug.split('-vs-');
   const slugA = parts[0] || 'california';
   const slugB = parts[1] || 'texas';
 
@@ -112,7 +129,7 @@ export default function DynamicComparisonPage({ params }: Props) {
       <Breadcrumbs
         items={[
           { name: 'Comparison Engine', url: '/compare' },
-          { name: `${entityA.name} vs. ${entityB.name}`, url: `/compare/${pairSlug}` },
+          { name: `${entityA.name} vs. ${entityB.name}`, url: `/compare/${canonicalSlug}` },
         ]}
       />
 

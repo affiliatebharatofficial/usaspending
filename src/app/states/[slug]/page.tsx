@@ -264,15 +264,18 @@ export default function StateDetailPage({ params }: Props) {
           Compare {state.name} With Other States
         </h3>
         <div className="grid grid-cols-2 sm:grid-cols-4 gap-4">
-          {comparedStates.map((other) => (
-            <Link
-              key={other.id}
-              href={`/compare/${state.slug}-vs-${other.slug}`}
-              className="p-3 rounded-lg bg-slate-50 border border-slate-200 hover:border-blue-400 hover:bg-blue-50 text-xs font-bold text-blue-900 transition-colors text-center block"
-            >
-              {state.name} vs. {other.name}
-            </Link>
-          ))}
+          {comparedStates.map((other) => {
+            const sortedSlug = [state.slug, other.slug].sort().join('-vs-');
+            return (
+              <Link
+                key={other.id}
+                href={`/compare/${sortedSlug}`}
+                className="p-3 rounded-lg bg-slate-50 border border-slate-200 hover:border-blue-400 hover:bg-blue-50 text-xs font-bold text-blue-900 transition-colors text-center block"
+              >
+                {state.name} vs. {other.name}
+              </Link>
+            );
+          })}
         </div>
       </div>
 

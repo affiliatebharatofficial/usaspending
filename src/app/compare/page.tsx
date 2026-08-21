@@ -17,8 +17,8 @@ export default function CompareOverviewPage() {
   const popularComparisons = [
     { title: 'California vs. Texas', type: 'State Comparison', url: '/compare/california-vs-texas', icon: MapPin },
     { title: 'Defense vs. Education', type: 'Category Comparison', url: '/compare/defense-vs-education', icon: Shield },
-    { title: 'Social Security vs. Medicare', type: 'Category Comparison', url: '/compare/social-security-vs-medicare', icon: HeartPulse },
-    { title: 'Lockheed Martin vs. Boeing', type: 'Recipient Comparison', url: '/compare/lockheed-martin-vs-boeing', icon: Award },
+    { title: 'Social Security vs. Medicare', type: 'Category Comparison', url: '/compare/medicare-vs-social-security', icon: HeartPulse },
+    { title: 'Boeing vs. Lockheed Martin', type: 'Recipient Comparison', url: '/compare/boeing-vs-lockheed-martin', icon: Award },
     { title: 'Dept of Defense vs. HHS', type: 'Agency Comparison', url: '/compare/dod-vs-hhs', icon: Building2 },
     { title: 'NASA vs. Dept of Energy', type: 'Agency Comparison', url: '/compare/nasa-vs-doe', icon: Building2 },
   ];

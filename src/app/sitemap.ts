@@ -62,10 +62,13 @@ export default function sitemap(): MetadataRoute.Sitemap {
   }));
 
   const comparisonRoutes: MetadataRoute.Sitemap = [
+    { url: `${BASE_URL}/compare/california-vs-florida`, lastModified: new Date(), changeFrequency: 'monthly', priority: 0.7 },
     { url: `${BASE_URL}/compare/california-vs-texas`, lastModified: new Date(), changeFrequency: 'monthly', priority: 0.7 },
     { url: `${BASE_URL}/compare/defense-vs-education`, lastModified: new Date(), changeFrequency: 'monthly', priority: 0.7 },
-    { url: `${BASE_URL}/compare/social-security-vs-medicare`, lastModified: new Date(), changeFrequency: 'monthly', priority: 0.7 },
-    { url: `${BASE_URL}/compare/lockheed-martin-vs-boeing`, lastModified: new Date(), changeFrequency: 'monthly', priority: 0.7 },
+    { url: `${BASE_URL}/compare/florida-vs-missouri`, lastModified: new Date(), changeFrequency: 'monthly', priority: 0.7 },
+    { url: `${BASE_URL}/compare/georgia-vs-new-york`, lastModified: new Date(), changeFrequency: 'monthly', priority: 0.7 },
+    { url: `${BASE_URL}/compare/medicare-vs-social-security`, lastModified: new Date(), changeFrequency: 'monthly', priority: 0.7 },
+    { url: `${BASE_URL}/compare/boeing-vs-lockheed-martin`, lastModified: new Date(), changeFrequency: 'monthly', priority: 0.7 },
   ];
 
   return [

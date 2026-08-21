@@ -228,6 +228,50 @@
     <priority>0.8</priority>
   </url>
 
+  <!-- Canonical Comparisons -->
+  <url>
+    <loc>https://www.usaspending.us/compare/california-vs-florida</loc>
+    <lastmod>2026-08-21</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://www.usaspending.us/compare/california-vs-texas</loc>
+    <lastmod>2026-08-21</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://www.usaspending.us/compare/defense-vs-education</loc>
+    <lastmod>2026-08-21</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://www.usaspending.us/compare/florida-vs-missouri</loc>
+    <lastmod>2026-08-21</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://www.usaspending.us/compare/georgia-vs-new-york</loc>
+    <lastmod>2026-08-21</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://www.usaspending.us/compare/medicare-vs-social-security</loc>
+    <lastmod>2026-08-21</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://www.usaspending.us/compare/boeing-vs-lockheed-martin</loc>
+    <lastmod>2026-08-21</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+
   <!-- Legal & Documentation Pages -->
   <url>
     <loc>https://www.usaspending.us/about</loc>
