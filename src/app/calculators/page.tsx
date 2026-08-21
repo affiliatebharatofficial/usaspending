@@ -2,12 +2,16 @@ import React from 'react';
 import Link from 'next/link';
 import Breadcrumbs from '@/components/navigation/Breadcrumbs';
 import JsonLd from '@/components/seo/JsonLd';
-import { Calculator, Clock, Percent, GitCompare, Calendar, MapPin, PieChart, ArrowRight } from 'lucide-react';
+import FAQSection, { FAQItem } from '@/components/common/FAQSection';
+import { Calculator, Clock, Percent, GitCompare, Calendar, MapPin, PieChart, ArrowRight, BookOpen } from 'lucide-react';
 import type { Metadata } from 'next';
 
 export const metadata: Metadata = {
   title: 'U.S. Government Spending Calculators — Interactive Budget Suite',
   description: 'Use interactive calculators to understand U.S. government spending, compare amounts, explore historical changes, and see where money goes.',
+  alternates: {
+    canonical: 'https://www.usaspending.us/calculators',
+  },
 };
 
 export default function CalculatorHubPage() {
@@ -70,6 +74,37 @@ export default function CalculatorHubPage() {
     },
   ];
 
+  const hubFAQs: FAQItem[] = [
+    {
+      question: 'What are the U.S. Government Spending Calculators?',
+      answer: 'The U.S. Government Spending Calculators are interactive financial tools designed to convert multi-trillion dollar federal budgets into understandable metrics such as per-hour rates, budget percentages, time equivalents, and per-resident ratios.',
+    },
+    {
+      question: 'How does the Main Government Spending Calculator work?',
+      answer: 'By entering any custom dollar amount, the calculator divides the figure by total U.S. federal outlays ($6.75 Trillion in FY2026) to compute the exact percentage share and equivalent rate velocity.',
+    },
+    {
+      question: 'What is the formula used for per-capita spending calculations?',
+      answer: 'Per-capita spending is calculated as (Total Federal Outlays in State ÷ State Population Baseline). It represents an average geographic allocation quotient, not personal citizen tax payments.',
+    },
+    {
+      question: 'Are rate conversions (per-second, per-hour) live wire transfers?',
+      answer: 'No. Time-based rates are mathematical averages computed over 365 days (or 366 days in leap years) of the federal fiscal year (October 1 through September 30).',
+    },
+    {
+      question: 'How is Year-over-Year (YoY) spending growth calculated?',
+      answer: 'YoY growth is calculated as ((Selected FY Outlays - Base FY Outlays) ÷ Base FY Outlays) × 100, providing net growth percentages and dollar differences across historical budget years.',
+    },
+    {
+      question: 'Are all figures on the calculators based on official government data?',
+      answer: 'Yes. All baseline totals, agency outlays, category proportions, and historical data points are ingested directly from official public USAspending.gov API feeds.',
+    },
+    {
+      question: 'Can I export or share my calculator results?',
+      answer: 'Yes. Every calculator includes built-in CSV export functionality and instant social share links to export calculated figures for research and commentary.',
+    },
+  ];
+
   return (
     <div className="space-y-10 py-8 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
       <Breadcrumbs items={[{ name: 'Calculators Hub', url: '/calculators' }]} />
@@ -127,6 +162,38 @@ export default function CalculatorHubPage() {
           );
         })}
       </div>
+
+      {/* 300+ Words Educational Guide Section */}
+      <div className="data-card p-6 sm:p-8 rounded-xl border border-slate-200 bg-white space-y-6">
+        <div className="border-b border-slate-100 pb-4 flex items-center space-x-2">
+          <BookOpen className="w-5 h-5 text-blue-700" />
+          <h2 className="text-xl font-bold text-slate-900">
+            Guide to Federal Budget Modeling & Financial Calculators
+          </h2>
+        </div>
+
+        <div className="space-y-4 text-xs text-slate-700 leading-relaxed max-w-4xl">
+          <p>
+            Understanding federal government spending requires converting multi-trillion dollar outlays into scales that human minds can easily contextualize. In Fiscal Year 2026, total U.S. federal government spending reaches approximately <strong>$6.75 Trillion ($6,750,000,000,000)</strong>. Because numbers of this magnitude can be difficult to interpret, our <strong>Interactive Budget Calculator Suite</strong> provides mathematical models that break down annual federal outlays into time, percentage, and per-resident metrics.
+          </p>
+          <p>
+            The suite includes eight specialized tools designed for citizens, policy researchers, journalists, and financial analysts. For instance, the <strong>Spending Rate Calculator</strong> converts annual outlays into exact time rates: at $6.75 Trillion per year, the federal government spends roughly <strong>$18.49 Billion per day</strong>, <strong>$770.5 million per hour</strong>, <strong>$12.84 million per minute</strong>, and <strong>$214,044 every single second</strong>.
+          </p>
+          <p>
+            Similarly, the <strong>Per Capita Calculator</strong> combines state population baselines from the U.S. Census Bureau with official federal prime contract and assistance awards from USAspending.gov to compute geographic per-resident ratios. The <strong>Amount-to-Time Calculator</strong> enables users to enter any custom dollar figure—such as a $1 Billion infrastructure project—and discover that it represents approximately 1 hour and 17 minutes of total U.S. federal spending velocity.
+          </p>
+          <p>
+            All mathematical calculations strictly adhere to official Treasury fiscal year boundaries (October 1 to September 30). These tools are provided strictly for research, civic education, and budget transparency, using non-partisan public government data.
+          </p>
+        </div>
+      </div>
+
+      {/* 7 FAQs + Schema */}
+      <FAQSection
+        title="Frequently Asked Questions: Budget Calculators"
+        subtitle="Verified explanations of mathematical models, time conversions, and budget baseline formulas."
+        faqs={hubFAQs}
+      />
     </div>
   );
 }

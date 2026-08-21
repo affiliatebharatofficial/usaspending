@@ -7,10 +7,10 @@ import DonutChart from '@/components/visualizations/DonutChart';
 import MetricCard from '@/components/visualizations/MetricCard';
 import ShareResultButton from '@/components/calculators/ShareResultButton';
 import ExportCsvButton from '@/components/calculators/ExportCsvButton';
-import CalculatorFAQ from '@/components/calculators/CalculatorFAQ';
+import FAQSection, { FAQItem } from '@/components/common/FAQSection';
 import { SPENDING_CATEGORIES, TOTAL_FEDERAL_SPENDING_FY2026 } from '@/lib/data/spendingData';
 import { formatCurrency } from '@/lib/utils/formatters';
-import { PieChart, ArrowLeft, Info } from 'lucide-react';
+import { PieChart, ArrowLeft, Info, BookOpen } from 'lucide-react';
 
 export default function SpendingBreakdownCalculatorPage() {
   const [amount, setAmount] = useState<number>(1_000_000_000);
@@ -39,10 +39,34 @@ export default function SpendingBreakdownCalculatorPage() {
     slug: item.slug,
   }));
 
-  const faqs = [
+  const faqs: FAQItem[] = [
     {
-      question: 'Does the government actually allocate my entered amount this way?',
-      answer: 'No. This is an illustrative mathematical allocation based on historical reported federal spending proportions.',
+      question: 'Does the federal government actually allocate my entered amount this way?',
+      answer: 'No. This is an illustrative mathematical allocation demonstrating how any dollar amount would be divided if split proportionally according to official FY2026 category outlay percentages.',
+    },
+    {
+      question: 'What are the category proportions based on?',
+      answer: 'Proportions are calculated directly from official Treasury outlays reported on USAspending.gov across major functional categories including Defense, Social Security, Medicare, Medicaid, and Education.',
+    },
+    {
+      question: 'Why perform an illustrative spending breakdown?',
+      answer: 'Illustrative breakdowns help citizens and analysts understand how tax dollars or custom funding amounts scale across competing government priorities.',
+    },
+    {
+      question: 'Which spending category receives the largest percentage allocation?',
+      answer: 'Mandatory benefit programs like Social Security (~21.5%), Medicare (~13.3%), and Defense & Military (~13.3%) represent the largest individual category shares.',
+    },
+    {
+      question: 'Are state tax allocations included in this breakdown?',
+      answer: 'No. All category proportions reflect federal budget outlays authorized under congressional appropriations and Treasury disbursements.',
+    },
+    {
+      question: 'Can I export the calculated category allocations?',
+      answer: 'Yes. You can use the Export CSV button to download a spreadsheet containing every category name, percentage share, and calculated dollar amount.',
+    },
+    {
+      question: 'How often are category budget proportions updated?',
+      answer: 'Proportions are updated dynamically as official fiscal year outlays and Treasury execution statements are refreshed.',
     },
   ];
 
@@ -139,7 +163,34 @@ export default function SpendingBreakdownCalculatorPage() {
         </div>
       </div>
 
-      <CalculatorFAQ faqs={faqs} />
+      {/* 300+ Words Educational Guide Section */}
+      <div className="data-card p-6 sm:p-8 rounded-xl border border-slate-200 bg-white space-y-6">
+        <div className="border-b border-slate-100 pb-4 flex items-center space-x-2">
+          <BookOpen className="w-5 h-5 text-blue-700" />
+          <h2 className="text-xl font-bold text-slate-900">
+            Proportional Allocation & Category Mechanics
+          </h2>
+        </div>
+
+        <div className="space-y-4 text-xs text-slate-700 leading-relaxed max-w-4xl">
+          <p>
+            The <strong>Spending Breakdown Calculator</strong> allows users to input any sum—such as individual tax payments, a state grant, or a proposed legislative bill—and observe how that capital would be divided across the major functional areas of the federal budget if split in exact proportion to official outlays.
+          </p>
+          <p>
+            For instance, if a user enters <strong>$10,000</strong>, the calculator applies official FY2026 percentage baselines: approximately <strong>$2,150</strong> is allocated to Social Security, <strong>$1,330</strong> to Medicare, <strong>$1,330</strong> to Defense & Military, <strong>$1,010</strong> to Medicaid & Health Services, and remaining balances distributed across education, infrastructure, agriculture, veterans affairs, and scientific research.
+          </p>
+          <p>
+            This tool provides essential context for civic understanding. By viewing how single dollars or large funding blocks map onto federal budget functions, users gain clear insight into how competing legislative priorities shape the overall allocation of public resources.
+          </p>
+        </div>
+      </div>
+
+      {/* 7 FAQs + Schema */}
+      <FAQSection
+        title="Frequently Asked Questions: Spending Breakdown Calculator"
+        subtitle="Verified explanations of proportional splitting, category weights, and calculation models."
+        faqs={faqs}
+      />
     </div>
   );
 }

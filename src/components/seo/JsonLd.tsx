@@ -1,7 +1,7 @@
 import React from 'react';
 
 interface JsonLdProps {
-  type: 'WebSite' | 'BreadcrumbList' | 'Dataset' | 'CollectionPage' | 'AboutPage' | 'TechArticle';
+  type: 'WebSite' | 'BreadcrumbList' | 'Dataset' | 'CollectionPage' | 'AboutPage' | 'TechArticle' | 'FAQPage';
   data: any;
 }
 
@@ -28,7 +28,7 @@ export default function JsonLd({ type, data }: JsonLdProps) {
         '@type': 'ListItem',
         position: index + 1,
         name: item.name,
-        item: `https://www.usaspending.us${item.url}`,
+        item: `https://www.usaspending.us${item.url.startsWith('http') ? item.url : 'https://www.usaspending.us' + item.url}`,
       })),
     };
   } else if (type === 'Dataset') {
@@ -37,7 +37,7 @@ export default function JsonLd({ type, data }: JsonLdProps) {
       '@type': 'Dataset',
       name: data.name || 'U.S. Federal Government Spending Data',
       description: data.description || 'Verified public spending dataset sourced from USAspending.gov API.',
-      url: data.url || 'https://www.usaspending.us',
+      url: data.url ? (data.url.startsWith('http') ? data.url : `https://www.usaspending.us${data.url}`) : 'https://www.usaspending.us',
       isAccessibleForFree: true,
       creator: {
         '@type': 'Organization',
@@ -45,13 +45,26 @@ export default function JsonLd({ type, data }: JsonLdProps) {
       },
       temporalCoverage: '2018-01-01/2026-09-30',
     };
+  } else if (type === 'FAQPage') {
+    schema = {
+      '@context': 'https://schema.org',
+      '@type': 'FAQPage',
+      mainEntity: (data || []).map((faq: { question: string; answer: string }) => ({
+        '@type': 'Question',
+        name: faq.question,
+        acceptedAnswer: {
+          '@type': 'Answer',
+          text: faq.answer,
+        },
+      })),
+    };
   } else if (type === 'CollectionPage' || type === 'AboutPage' || type === 'TechArticle') {
     schema = {
       '@context': 'https://schema.org',
       '@type': type,
       name: data.name,
       description: data.description,
-      url: `https://www.usaspending.us${data.url}`,
+      url: data.url.startsWith('http') ? data.url : `https://www.usaspending.us${data.url}`,
     };
   }
 

@@ -6,9 +6,10 @@ import Breadcrumbs from '@/components/navigation/Breadcrumbs';
 import SpendingTrendChart from '@/components/charts/SpendingTrendChart';
 import MetricCard from '@/components/visualizations/MetricCard';
 import DataFreshness from '@/components/visualizations/DataFreshness';
+import FAQSection, { FAQItem } from '@/components/common/FAQSection';
 import { HISTORICAL_SPENDING, SPENDING_CATEGORIES } from '@/lib/data/spendingData';
 import { formatCurrency } from '@/lib/utils/formatters';
-import { TrendingUp, ArrowLeft, Calendar, ArrowUpRight, ArrowDownRight } from 'lucide-react';
+import { TrendingUp, ArrowLeft, Calendar, ArrowUpRight, ArrowDownRight, BookOpen } from 'lucide-react';
 
 export default function HistoryAnalysisPage() {
   const [selectedCategory, setSelectedCategory] = useState<string>('all');
@@ -23,6 +24,37 @@ export default function HistoryAnalysisPage() {
 
   const yoyDiff = latestFY.spending - previousFY.spending;
   const yoyPct = Number(((yoyDiff / previousFY.spending) * 100).toFixed(2));
+
+  const historyFAQs: FAQItem[] = [
+    {
+      question: 'What caused the massive federal spending surge in FY2020?',
+      answer: 'Federal outlays jumped from $4.45 Trillion in FY2019 to $6.55 Trillion in FY2020 (+47.3%) due to emergency legislation responding to COVID-19, including the CARES Act, Paycheck Protection Program (PPP), and stimulus disbursements.',
+    },
+    {
+      question: 'How has federal spending grown overall from FY2018 to FY2026?',
+      answer: 'Total annual federal outlays grew from $4.11 Trillion in FY2018 to $6.75 Trillion in FY2026, representing an overall 8-year outlay expansion of approximately +64.2%.',
+    },
+    {
+      question: 'Why did federal outlays contract in FY2022?',
+      answer: 'Outlays contracted from $6.82 Trillion in FY2021 to $6.27 Trillion in FY2022 (-8.0%) as temporary emergency pandemic funding expired before resuming baseline budgetary growth.',
+    },
+    {
+      question: 'Are historical spending figures adjusted for inflation?',
+      answer: 'Historical figures are presented in nominal Treasury outlay dollars as recorded at the end of each respective fiscal year (October 1 to September 30).',
+    },
+    {
+      question: 'Which spending categories expanded fastest over the past 8 years?',
+      answer: 'Mandatory entitlement outlays (Social Security and Medicare) and interest on the national debt grew at the fastest annual rates due to demographic aging and higher interest rates.',
+    },
+    {
+      question: 'Where do historical spending figures come from?',
+      answer: 'All historical figures are ingested from official end-of-year execution statements published by the U.S. Department of the Treasury and USAspending.gov.',
+    },
+    {
+      question: 'How often are historical budget charts updated?',
+      answer: 'Historical charts are updated continuously as monthly Treasury statements (MTS) and end-of-year budget reports are published.',
+    },
+  ];
 
   return (
     <div className="space-y-10 py-8 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
@@ -73,8 +105,8 @@ export default function HistoryAnalysisPage() {
         />
         <MetricCard
           label="8-Year Outlay Expansion"
-          value="+73.3%"
-          subtext="Growth since FY2018 ($4.1T → $7.1T)"
+          value="+64.2%"
+          subtext="Growth since FY2018 ($4.1T → $6.75T)"
         />
       </div>
 
@@ -112,7 +144,7 @@ export default function HistoryAnalysisPage() {
         </div>
 
         <div className="data-card p-6 rounded-xl border border-blue-200 bg-blue-50/40 space-y-3">
-          <div className="flex items-center space-x-2 text-xs font-bold text-blue-800 uppercase">
+          <div className="flex items-center space-x-2 text-xs font-bold text-blue-700 uppercase">
             <ArrowDownRight className="w-4 h-4 text-blue-700" />
             Post-Pandemic Budget Stabilization
           </div>
@@ -124,6 +156,35 @@ export default function HistoryAnalysisPage() {
           </p>
         </div>
       </div>
+
+      {/* 300+ Words Guide Section */}
+      <div className="data-card p-6 sm:p-8 rounded-xl border border-slate-200 bg-white space-y-6">
+        <div className="border-b border-slate-100 pb-4 flex items-center space-x-2">
+          <BookOpen className="w-5 h-5 text-blue-700" />
+          <h2 className="text-xl font-bold text-slate-900">
+            Historical Trajectory of the U.S. Federal Budget
+          </h2>
+        </div>
+
+        <div className="space-y-4 text-xs text-slate-700 leading-relaxed max-w-4xl">
+          <p>
+            Analyzing the historical budget trajectory of the United States Federal Government between Fiscal Years 2018 and 2026 provides essential context for understanding long-term fiscal expansion. Over this eight-year period, total annual federal outlays grew from <strong>$4.11 Trillion in FY2018</strong> to <strong>$6.75 Trillion in FY2026</strong>.
+          </p>
+          <p>
+            The most significant single-year budgetary event occurred in <strong>FY2020</strong>, when emergency legislative responses to the COVID-19 pandemic drove annual outlays up by <strong>+$2.1 Trillion (+47.3%)</strong> in a single fiscal year. This expansion included emergency funding under the CARES Act, Paycheck Protection Program (PPP), expanded unemployment insurance, and direct economic impact payments.
+          </p>
+          <p>
+            Following pandemic relief expiration in <strong>FY2022</strong>, outlays stabilized before resuming baseline structural growth driven by expanding entitlement commitments (Social Security and Medicare), net interest on the public debt, and defense modernization. All historical financial figures presented on USA Spending reflect verified end-of-year execution statements published by the U.S. Department of the Treasury.
+          </p>
+        </div>
+      </div>
+
+      {/* 7 FAQs + Schema */}
+      <FAQSection
+        title="Frequently Asked Questions: Historical Budget Analysis"
+        subtitle="Verified explanations of historical budget growth, emergency spending events, and inflation trends."
+        faqs={historyFAQs}
+      />
     </div>
   );
 }

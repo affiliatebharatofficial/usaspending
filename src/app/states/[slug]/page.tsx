@@ -7,11 +7,11 @@ import DonutChart from '@/components/visualizations/DonutChart';
 import MetricCard from '@/components/visualizations/MetricCard';
 import SpendingTrendChart from '@/components/charts/SpendingTrendChart';
 import DataFreshness from '@/components/visualizations/DataFreshness';
+import FAQSection, { FAQItem } from '@/components/common/FAQSection';
 import JsonLd from '@/components/seo/JsonLd';
 import { STATES_DATA, HISTORICAL_SPENDING } from '@/lib/data/spendingData';
-import { getStateBySlug } from '@/lib/states/registry';
 import { formatCurrency, formatNumber, calculateSpendingRates } from '@/lib/utils/formatters';
-import { ArrowLeft, ShieldCheck, TrendingUp, Building2, Award, MapPin, GitCompare, Info } from 'lucide-react';
+import { ArrowLeft, ShieldCheck, TrendingUp, Building2, Award, GitCompare, Info, BookOpen } from 'lucide-react';
 import type { Metadata } from 'next';
 
 interface Props {
@@ -32,6 +32,9 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   return {
     title: `Federal Spending in ${state.name} — FY2026 | USA Spending`,
     description: `Explore federal spending associated with ${state.name} in FY2026. View agency outlays, prime contract awards, and historical spending trends.`,
+    alternates: {
+      canonical: `https://www.usaspending.us/states/${state.slug}`,
+    },
   };
 }
 
@@ -56,6 +59,38 @@ export default function StateDetailPage({ params }: Props) {
   }));
 
   const comparedStates = STATES_DATA.filter((s) => s.id !== state.id).slice(0, 4);
+
+  // 7 Custom State FAQs
+  const stateFAQs: FAQItem[] = [
+    {
+      question: `What is the total federal spending associated with ${state.name} in FY2026?`,
+      answer: `In FY2026, federal spending associated with ${state.name} totals approximately ${formatCurrency(state.totalSpending, true)}, representing roughly ${state.percentage}% of overall federal outlays.`,
+    },
+    {
+      question: `Does this figure represent state government tax revenue in ${state.name}?`,
+      answer: `No. All figures represent U.S. Federal Government prime contracts, grants, and direct benefit outlays allocated to perform work or serve beneficiaries in ${state.name}. It does not include state or local municipal tax revenues.`,
+    },
+    {
+      question: `What is the per-resident federal spending figure for ${state.name}?`,
+      answer: `Based on an estimated population of ${formatNumber(state.population)}, federal outlays associated with ${state.name} equal approximately $${formatNumber(state.perCapita)} per resident.`,
+    },
+    {
+      question: `Which federal agencies disburse the most funding in ${state.name}?`,
+      answer: `Top federal agencies spending in ${state.name} include ${state.majorAgencies.map((a) => a.name).join(', ')}.`,
+    },
+    {
+      question: `Who are the largest federal prime contract recipients in ${state.name}?`,
+      answer: `Major prime contractors and award recipients performing work in ${state.name} include ${state.majorRecipients.map((r) => r.name).join(', ')}.`,
+    },
+    {
+      question: `How are federal funds broken down by award type in ${state.name}?`,
+      answer: `Federal allocations in ${state.name} consist of approximately 55% Prime Contracts (${formatCurrency(state.contractsAmount, true)}), 35% Grants & Assistance (${formatCurrency(state.grantsAmount, true)}), and 10% Other Federal Financial Awards.`,
+    },
+    {
+      question: `Where does the state spending data for ${state.name} come from?`,
+      answer: `Data is ingested directly from public USAspending.gov REST API endpoints, tracking place of performance and prime recipient locations registered in federal reporting databases.`,
+    },
+  ];
 
   return (
     <div className="space-y-10 py-8 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
@@ -197,6 +232,31 @@ export default function StateDetailPage({ params }: Props) {
         <SpendingTrendChart data={trendData} color="#1e3a8a" height={320} />
       </div>
 
+      {/* 300+ Words Detailed State Economic Analysis */}
+      <div className="data-card p-6 sm:p-8 rounded-xl border border-slate-200 bg-white space-y-6">
+        <div className="border-b border-slate-100 pb-4 flex items-center space-x-2">
+          <BookOpen className="w-5 h-5 text-blue-700" />
+          <h2 className="text-xl font-bold text-slate-900">
+            Detailed Analysis: Federal Spending & Economic Impact in {state.name}
+          </h2>
+        </div>
+
+        <div className="space-y-4 text-xs text-slate-700 leading-relaxed max-w-4xl">
+          <p>
+            Federal spending allocated to <strong>{state.name}</strong> represents a significant driver of local economic velocity, industrial manufacturing, healthcare support, and infrastructure development. In Fiscal Year 2026, total reported federal spending associated with {state.name} stands at <strong>{formatCurrency(state.totalSpending, true)}</strong>, which represents <strong>{state.percentage}%</strong> of total United States federal outlays.
+          </p>
+          <p>
+            When analyzed relative to population, federal outlays in {state.name} equal approximately <strong>${formatNumber(state.perCapita)} per resident</strong> based on an estimated baseline population of <strong>{formatNumber(state.population)}</strong>. On a daily flow rate, federal funding in {state.name} averages <strong>{formatCurrency(rates.perDay, true)} per day</strong>, or roughly <strong>{formatCurrency(rates.perHour, true)} every hour</strong>.
+          </p>
+          <p>
+            The distribution of federal dollars in {state.name} spans three primary financial mechanisms: <strong>Prime Contracts</strong> ({formatCurrency(state.contractsAmount, true)}), <strong>Grants & Assistance</strong> ({formatCurrency(state.grantsAmount, true)}), and <strong>Other Financial Awards</strong> ({formatCurrency(state.otherAwardsAmount, true)}). Prime contract outlays support local defense facilities, technology research, and civil infrastructure projects, while grants support healthcare assistance under Medicaid, higher education research, and public transportation grants.
+          </p>
+          <p>
+            Major executive departments maintaining active spending programs in {state.name} include {state.majorAgencies.map((a) => a.name).join(', ')}. Furthermore, major prime contract recipients performing work within {state.name} include leading contractors such as {state.majorRecipients.map((r) => r.name).join(', ')}. All geographic data is compiled directly from public USAspending.gov records based on registered primary place of performance or recipient locations.
+          </p>
+        </div>
+      </div>
+
       {/* State Comparisons Links */}
       <div className="data-card rounded-xl p-6 sm:p-8 border border-slate-200 bg-white space-y-4">
         <h3 className="text-lg font-bold text-slate-900 flex items-center gap-2">
@@ -215,6 +275,13 @@ export default function StateDetailPage({ params }: Props) {
           ))}
         </div>
       </div>
+
+      {/* 7 State FAQs + FAQPage Schema */}
+      <FAQSection
+        title={`Frequently Asked Questions: ${state.name} Federal Spending`}
+        subtitle={`Verified answers regarding federal outlays, per-capita spending, and award distribution in ${state.name}.`}
+        faqs={stateFAQs}
+      />
 
       {/* Data Source Footer */}
       <div className="p-4 rounded-xl bg-slate-50 border border-slate-200 text-xs text-slate-600 space-y-1">

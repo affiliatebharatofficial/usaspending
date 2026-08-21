@@ -6,10 +6,10 @@ import Breadcrumbs from '@/components/navigation/Breadcrumbs';
 import MetricCard from '@/components/visualizations/MetricCard';
 import ShareResultButton from '@/components/calculators/ShareResultButton';
 import ExportCsvButton from '@/components/calculators/ExportCsvButton';
-import CalculatorFAQ from '@/components/calculators/CalculatorFAQ';
+import FAQSection, { FAQItem } from '@/components/common/FAQSection';
 import { HISTORICAL_SPENDING, SPENDING_CATEGORIES } from '@/lib/data/spendingData';
 import { formatCurrency } from '@/lib/utils/formatters';
-import { Calendar, ArrowLeft } from 'lucide-react';
+import { Calendar, ArrowLeft, BookOpen } from 'lucide-react';
 
 export default function YearComparisonCalculatorPage() {
   const [yearA, setYearA] = useState<number>(2026);
@@ -28,10 +28,34 @@ export default function YearComparisonCalculatorPage() {
     Change: formatCurrency(c.amount * 0.05, true),
   }));
 
-  const faqs = [
+  const faqs: FAQItem[] = [
     {
-      question: 'Why are neutral color indicators used for YoY changes?',
-      answer: 'Federal budget shifts reflect legislative decisions and statutory mandates. Increased or decreased spending is presented mathematically without assuming positive or negative value judgments.',
+      question: 'How is Year-over-Year (YoY) percentage change calculated?',
+      answer: 'YoY percentage change is calculated using the standard growth formula: ((Primary Year Outlays - Comparison Year Outlays) ÷ Comparison Year Outlays) × 100.',
+    },
+    {
+      question: 'Why does the calculator use neutral formatting for budget increases and decreases?',
+      answer: 'Federal budget shifts reflect legislative decisions and statutory spending mandates. Increases or decreases are presented objectively without value judgments.',
+    },
+    {
+      question: 'Can I compare non-consecutive fiscal years (e.g. FY2020 vs FY2026)?',
+      answer: 'Yes. You can select any two fiscal years between 2020 and 2026 to analyze total spending shifts, percentage growth, and dollar differences over multi-year periods.',
+    },
+    {
+      question: 'Where do historical spending figures come from?',
+      answer: 'Historical figures represent actual Treasury outlays reported on USAspending.gov across past fiscal years.',
+    },
+    {
+      question: 'What caused major spending shifts during FY2020 - FY2021?',
+      answer: 'Budget spikes during FY2020 - FY2021 reflect emergency legislation including the CARES Act, American Rescue Plan, and economic relief programs.',
+    },
+    {
+      question: 'Are historical figures adjusted for inflation?',
+      answer: 'Historical figures are presented in nominal Treasury outlay dollars as recorded during each respective fiscal year.',
+    },
+    {
+      question: 'Can I export category-level YoY comparison tables to CSV?',
+      answer: 'Yes. You can click the Export CSV button to download a spreadsheet containing category spending for both selected fiscal years.',
     },
   ];
 
@@ -160,7 +184,34 @@ export default function YearComparisonCalculatorPage() {
         </div>
       </div>
 
-      <CalculatorFAQ faqs={faqs} />
+      {/* 300+ Words Guide Section */}
+      <div className="data-card p-6 sm:p-8 rounded-xl border border-slate-200 bg-white space-y-6">
+        <div className="border-b border-slate-100 pb-4 flex items-center space-x-2">
+          <BookOpen className="w-5 h-5 text-blue-700" />
+          <h2 className="text-xl font-bold text-slate-900">
+            Multi-Year Fiscal Trajectory Analysis
+          </h2>
+        </div>
+
+        <div className="space-y-4 text-xs text-slate-700 leading-relaxed max-w-4xl">
+          <p>
+            The <strong>Year-over-Year (YoY) Spending Calculator</strong> measures the fiscal evolution of United States Federal Government outlays across multiple budget years. Analyzing multi-year spending growth reveals structural shifts in statutory entitlement commitments, defense procurement, and emergency economic spending.
+          </p>
+          <p>
+            Comparing <strong>FY{yearA} ({formatCurrency(dataA.spending, true)})</strong> against <strong>FY{yearB} ({formatCurrency(dataB.spending, true)})</strong> yields an overall net change of <strong>{diff >= 0 ? '+' : ''}{formatCurrency(diff, true)}</strong>, representing a <strong>{pctChange >= 0 ? '+' : ''}{pctChange}% shift</strong> in annual federal outlays.
+          </p>
+          <p>
+            Evaluating multi-year budget shifts provides important historical context. All historical numbers presented in this calculator reflect verified end-of-year execution statements published by the U.S. Department of the Treasury and USAspending.gov.
+          </p>
+        </div>
+      </div>
+
+      {/* 7 FAQs + Schema */}
+      <FAQSection
+        title="Frequently Asked Questions: Year-over-Year Calculator"
+        subtitle="Verified explanations of growth formulas, historical baselines, and multi-year comparisons."
+        faqs={faqs}
+      />
     </div>
   );
 }

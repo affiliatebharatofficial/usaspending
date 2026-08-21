@@ -1,6 +1,7 @@
 import React from 'react';
 import InfoPageLayout from '@/components/layout/InfoPageLayout';
 import JsonLd from '@/components/seo/JsonLd';
+import FAQSection, { FAQItem } from '@/components/common/FAQSection';
 import { SITE_CONFIG } from '@/lib/config/site';
 import type { Metadata } from 'next';
 
@@ -24,6 +25,38 @@ export default function TermsPage() {
     { id: 'limitation-of-liability', title: '8. Limitation of Liability' },
     { id: 'governing-law', title: '9. Governing Law' },
     { id: 'contact-info', title: '10. Contact Information' },
+    { id: 'faq-section', title: '11. Frequently Asked Questions' },
+  ];
+
+  const termsFAQs: FAQItem[] = [
+    {
+      question: 'Is USA Spending an official government website?',
+      answer: 'No. USA Spending (usaspending.us) is an independent public research and visual data platform. Official government data is published by the U.S. Department of the Treasury at USAspending.gov.',
+    },
+    {
+      question: 'Are the spending figures and calculator outputs legally binding?',
+      answer: 'No. All calculations, charts, and rate conversions are provided for educational and research purposes only. They do not constitute official accounting, tax, or legal advice.',
+    },
+    {
+      question: 'Can I use the data on this website for journalism or academic research?',
+      answer: 'Yes. Public government spending datasets remain in the public domain and may be cited for academic, journalistic, or civic research with appropriate credit.',
+    },
+    {
+      question: 'What is the acceptable use policy for accessing website APIs and tools?',
+      answer: 'Users must not launch automated denial-of-service attacks, scrape content at excessive rates that cause server instability, or alter website data to mislead the public.',
+    },
+    {
+      question: 'How are intellectual property rights managed on this platform?',
+      answer: 'Original web designs, software code, custom charting logic, and written text are protected by copyright. Official government datasets remain public domain.',
+    },
+    {
+      question: 'Which governing law applies to these Terms of Service?',
+      answer: `These Terms are governed by and construed in accordance with the laws of the ${SITE_CONFIG.governingLaw}.`,
+    },
+    {
+      question: 'How can users report errors or submit legal inquiries?',
+      answer: `Legal inquiries and data correction requests may be sent to our official contact address at ${SITE_CONFIG.contactEmail}.`,
+    },
   ];
 
   return (
@@ -114,6 +147,14 @@ export default function TermsPage() {
         <div className="p-3 rounded-lg bg-slate-50 border border-slate-200 font-mono text-xs text-blue-900 font-bold">
           {SITE_CONFIG.contactEmail}
         </div>
+      </section>
+
+      <section id="faq-section">
+        <FAQSection
+          title="Frequently Asked Questions: Terms of Service"
+          subtitle="Verified answers regarding platform legal terms, data licensing, and user guidelines."
+          faqs={termsFAQs}
+        />
       </section>
     </InfoPageLayout>
   );

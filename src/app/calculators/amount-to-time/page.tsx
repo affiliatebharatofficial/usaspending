@@ -5,10 +5,10 @@ import Link from 'next/link';
 import Breadcrumbs from '@/components/navigation/Breadcrumbs';
 import MetricCard from '@/components/visualizations/MetricCard';
 import ShareResultButton from '@/components/calculators/ShareResultButton';
-import CalculatorFAQ from '@/components/calculators/CalculatorFAQ';
+import FAQSection, { FAQItem } from '@/components/common/FAQSection';
 import { TOTAL_FEDERAL_SPENDING_FY2026, SPENDING_CATEGORIES } from '@/lib/data/spendingData';
 import { formatCurrency, calculateSpendingRates } from '@/lib/utils/formatters';
-import { Clock, ArrowLeft } from 'lucide-react';
+import { Clock, ArrowLeft, BookOpen } from 'lucide-react';
 
 export default function AmountToTimeCalculatorPage() {
   const [amount, setAmount] = useState<number>(1_000_000_000);
@@ -25,10 +25,34 @@ export default function AmountToTimeCalculatorPage() {
   const hoursEquiv = minutesEquiv / 60;
   const daysEquiv = hoursEquiv / 24;
 
-  const faqs = [
+  const faqs: FAQItem[] = [
     {
-      question: 'How is time equivalency calculated?',
-      answer: 'The entered dollar amount is divided by the calculated per-second outlay rate of the selected budget category.',
+      question: 'How is time equivalency calculated in this calculator?',
+      answer: 'The entered dollar amount is divided by the calculated per-second outlay rate of the selected baseline profile (derived from total FY2026 outlays over 365 fiscal days).',
+    },
+    {
+      question: 'What does "Time Equivalency" mean in federal budgeting?',
+      answer: 'Time equivalency represents how long it takes the U.S. Federal Government (or a specific agency/category) to disburse a dollar amount equal to your input.',
+    },
+    {
+      question: 'Can I compare an amount against specific categories like Defense or Medicare?',
+      answer: 'Yes. You can select Total Federal Outlays ($6.75T) or specific budget categories like Defense & Military, Medicare, Social Security, or Education to see category-specific time equivalents.',
+    },
+    {
+      question: 'Does this calculator represent real-time bank wire payments?',
+      answer: 'No. The calculator uses a mathematical rate baseline averaged across 365 days of the fiscal year to provide conceptual time velocity.',
+    },
+    {
+      question: 'Why convert dollar amounts to time metrics?',
+      answer: 'Trillion-dollar figures can be difficult to visualize. Converting dollar amounts into days, hours, or minutes makes large federal spending numbers relatable.',
+    },
+    {
+      question: 'Where does the baseline spending data come from?',
+      answer: 'Baseline spending figures are ingested from official public Treasury reports and USAspending.gov API endpoints for Fiscal Year 2026.',
+    },
+    {
+      question: 'How many days are assumed in a fiscal year?',
+      answer: 'Standard federal fiscal years (October 1 to September 30) contain 365 days, or 366 days in leap years like FY2024.',
     },
   ];
 
@@ -117,7 +141,34 @@ export default function AmountToTimeCalculatorPage() {
         <MetricCard label="Seconds Equivalent" value={`${Math.round(secondsEquiv).toLocaleString()} sec`} subtext="Seconds of spending" />
       </div>
 
-      <CalculatorFAQ faqs={faqs} />
+      {/* 300+ Words Guide Section */}
+      <div className="data-card p-6 sm:p-8 rounded-xl border border-slate-200 bg-white space-y-6">
+        <div className="border-b border-slate-100 pb-4 flex items-center space-x-2">
+          <BookOpen className="w-5 h-5 text-blue-700" />
+          <h2 className="text-xl font-bold text-slate-900">
+            Understanding Dollar-to-Time Conversions in Government Spending
+          </h2>
+        </div>
+
+        <div className="space-y-4 text-xs text-slate-700 leading-relaxed max-w-4xl">
+          <p>
+            The <strong>Amount-to-Time Calculator</strong> provides a intuitive way to comprehend massive financial figures by converting raw dollar amounts into time equivalents based on U.S. federal spending velocity. At an annual federal outlay rate of <strong>$6.75 Trillion</strong> in Fiscal Year 2026, the federal government disburses funds at a rate of <strong>$214,044 per second</strong>.
+          </p>
+          <p>
+            When evaluating federal policy proposals, procurement contracts, or state assistance programs, time conversions put expenditures into perspective. For instance, a <strong>$1 Billion appropriation</strong> represents approximately <strong>1.3 hours</strong> of total federal spending, or about <strong>9.8 hours</strong> of Department of Defense spending.
+          </p>
+          <p>
+            By choosing different baseline profiles—such as Defense & Military, Medicare, Social Security, or Education & Training—you can analyze how long specific agency budgets take to spend a given sum. All rate conversions use mathematical averages across 365 fiscal days and are grounded in verified public data from USAspending.gov.
+          </p>
+        </div>
+      </div>
+
+      {/* 7 FAQs + Schema */}
+      <FAQSection
+        title="Frequently Asked Questions: Amount-to-Time Calculator"
+        subtitle="Verified explanations of dollar-to-time conversion formulas and budget baseline profiles."
+        faqs={faqs}
+      />
     </div>
   );
 }

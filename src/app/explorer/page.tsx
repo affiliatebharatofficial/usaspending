@@ -9,9 +9,10 @@ import MetricCard from '@/components/visualizations/MetricCard';
 import FiscalYearSelector from '@/components/visualizations/FiscalYearSelector';
 import MetricTypeSelector, { MetricType } from '@/components/visualizations/MetricTypeSelector';
 import Breadcrumbs from '@/components/navigation/Breadcrumbs';
+import FAQSection, { FAQItem } from '@/components/common/FAQSection';
 import { SPENDING_CATEGORIES, AGENCIES_DATA, STATES_DATA, RECIPIENTS_DATA, TOTAL_FEDERAL_SPENDING_FY2026, HISTORICAL_SPENDING } from '@/lib/data/spendingData';
 import { formatCurrency, calculateSpendingRates } from '@/lib/utils/formatters';
-import { Filter, ArrowLeft, Layers, Building2, MapPin, Award, CheckCircle2 } from 'lucide-react';
+import { Filter, ArrowLeft, Layers, Building2, MapPin, Award, CheckCircle2, BookOpen } from 'lucide-react';
 
 export default function ExplorerPage() {
   const [selectedFY, setSelectedFY] = useState<number>(2026);
@@ -19,7 +20,6 @@ export default function ExplorerPage() {
   const [selectedCategory, setSelectedCategory] = useState<string>('all');
   const [selectedAgency, setSelectedAgency] = useState<string>('all');
 
-  // Filter categories
   const filteredCategories = SPENDING_CATEGORIES.filter((c) =>
     selectedCategory === 'all' ? true : c.slug === selectedCategory
   );
@@ -39,6 +39,37 @@ export default function ExplorerPage() {
     year: h.year,
     amount: h.spending,
   }));
+
+  const explorerFAQs: FAQItem[] = [
+    {
+      question: 'What is the Advanced U.S. Spending Explorer?',
+      answer: 'The Advanced U.S. Spending Explorer is an interactive data tree tool that allows users to drill down from total federal outlays into individual spending categories, executive agencies, state geographic distributions, and prime contractor awards.',
+    },
+    {
+      question: 'What is the difference between Federal Outlays and Budgetary Obligations?',
+      answer: 'Outlays represent actual cash payments disbursed by the U.S. Department of the Treasury during the fiscal year. Obligations represent legally binding contractual commitments made by agencies that liquidate as outlays over time.',
+    },
+    {
+      question: 'Can I filter spending by specific Fiscal Years?',
+      answer: 'Yes. You can select any fiscal year between 2020 and 2026 to view historical spending trends, category compositions, and rate conversions.',
+    },
+    {
+      question: 'How are daily, hourly, and per-second rates computed in the Explorer?',
+      answer: 'Time-based rates are calculated by dividing the selected category outlays by exact fiscal year durations (365 days for standard years, 366 days for leap years).',
+    },
+    {
+      question: 'Where does the data in the Explorer come from?',
+      answer: 'Data is ingested directly from public REST API endpoints provided by USAspending.gov and official Department of the Treasury execution reports.',
+    },
+    {
+      question: 'Can I filter by specific Executive Agencies?',
+      answer: 'Yes. You can filter by executive agencies such as the Department of Defense, Department of Transportation, or Department of Health and Human Services.',
+    },
+    {
+      question: 'Is the Explorer tool free to use for public research?',
+      answer: 'Yes. USA Spending is an open-access public resource designed for civic education, policy research, journalism, and academic study.',
+    },
+  ];
 
   return (
     <div className="space-y-10 py-8 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
@@ -217,6 +248,35 @@ export default function ExplorerPage() {
           </table>
         </div>
       </div>
+
+      {/* 300+ Words Guide Section */}
+      <div className="data-card p-6 sm:p-8 rounded-xl border border-slate-200 bg-white space-y-6">
+        <div className="border-b border-slate-100 pb-4 flex items-center space-x-2">
+          <BookOpen className="w-5 h-5 text-blue-700" />
+          <h2 className="text-xl font-bold text-slate-900">
+            Guide to Federal Data Exploration & Filtering
+          </h2>
+        </div>
+
+        <div className="space-y-4 text-xs text-slate-700 leading-relaxed max-w-4xl">
+          <p>
+            The <strong>Advanced U.S. Spending Explorer</strong> provides an interactive data tree designed for deep research into the United States Federal Budget. In Fiscal Year 2026, total reported federal outlays reach <strong>$6.75 Trillion ($6,750,000,000,000)</strong>, spanning tens of thousands of federal programs, grants, and prime procurement contracts.
+          </p>
+          <p>
+            Using the Explorer, users can apply filter criteria by <strong>Fiscal Year (FY2020 - FY2026)</strong>, <strong>Financial Metric Type (Outlays vs Obligations)</strong>, <strong>Functional Category</strong>, and <strong>Executive Agency</strong>. For instance, filtering by Defense & Military isolates $895.0 Billion in outlays, revealing sub-allocations for military operations, procurement, research, and personnel.
+          </p>
+          <p>
+            All data presented in the Explorer is synchronized with official REST API feeds from USAspending.gov and verified Treasury monthly statements. This tool enables citizens, researchers, and journalists to track public funds with complete transparency.
+          </p>
+        </div>
+      </div>
+
+      {/* 7 FAQs + Schema */}
+      <FAQSection
+        title="Frequently Asked Questions: Data Explorer"
+        subtitle="Verified explanations of spending filters, metrics, and data tree navigation."
+        faqs={explorerFAQs}
+      />
     </div>
   );
 }

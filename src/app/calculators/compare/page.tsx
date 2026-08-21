@@ -6,10 +6,10 @@ import Breadcrumbs from '@/components/navigation/Breadcrumbs';
 import DonutChart from '@/components/visualizations/DonutChart';
 import ShareResultButton from '@/components/calculators/ShareResultButton';
 import ExportCsvButton from '@/components/calculators/ExportCsvButton';
-import CalculatorFAQ from '@/components/calculators/CalculatorFAQ';
+import FAQSection, { FAQItem } from '@/components/common/FAQSection';
 import { SPENDING_CATEGORIES, STATES_DATA, AGENCIES_DATA, RECIPIENTS_DATA } from '@/lib/data/spendingData';
 import { formatCurrency } from '@/lib/utils/formatters';
-import { GitCompare, ArrowLeft } from 'lucide-react';
+import { GitCompare, ArrowLeft, BookOpen } from 'lucide-react';
 
 export default function CompareCalculatorPage() {
   const [optionA, setOptionA] = useState<string>('defense-spending');
@@ -32,10 +32,34 @@ export default function CompareCalculatorPage() {
     { name: itemB.name, amount: itemB.amount, percentage: Number(((itemB.amount / (itemA.amount + itemB.amount)) * 100).toFixed(1)), color: '#2563eb' },
   ];
 
-  const faqs = [
+  const faqs: FAQItem[] = [
     {
-      question: 'How is the ratio calculated?',
-      answer: 'The ratio is calculated by dividing Option A amount by Option B amount (e.g. $895B / $240B = 3.73x).',
+      question: 'How is the relative ratio calculated in this calculator?',
+      answer: 'The ratio is calculated by dividing Option A amount by Option B amount (e.g. $895B / $240B = 3.73x), demonstrating how many times larger Option A is relative to Option B.',
+    },
+    {
+      question: 'Can I compare budgets between different categories?',
+      answer: 'Yes. You can select any two spending categories—such as Defense & Military vs Education & Training, or Social Security vs Medicare—to evaluate their relative proportions.',
+    },
+    {
+      question: 'What does the Net Difference metric indicate?',
+      answer: 'The Net Difference metric shows the absolute dollar gap (Option A minus Option B) between the two selected budget outlays.',
+    },
+    {
+      question: 'Are baseline figures sourced from official Treasury reports?',
+      answer: 'Yes. All baseline category spending figures are ingested directly from official public USAspending.gov records for Fiscal Year 2026.',
+    },
+    {
+      question: 'How does Defense spending compare to Education spending?',
+      answer: 'In FY2026, Defense & Military outlays ($895.0 Billion) are approximately 3.73 times larger than Education & Training outlays ($240.0 Billion).',
+    },
+    {
+      question: 'Can I export the side-by-side comparison data?',
+      answer: 'Yes. Use the Export CSV button to download a spreadsheet containing both amounts, the net difference, and calculated ratios.',
+    },
+    {
+      question: 'Is this comparison tool non-partisan?',
+      answer: 'Yes. USA Spending is a non-partisan research platform. All comparison calculations provide objective mathematical analysis without policy advocacy.',
     },
   ];
 
@@ -146,7 +170,34 @@ export default function CompareCalculatorPage() {
         <DonutChart data={donutItems} centerLabel="Combined Total" centerValue={formatCurrency(itemA.amount + itemB.amount, true)} height={260} />
       </div>
 
-      <CalculatorFAQ faqs={faqs} />
+      {/* 300+ Words Educational Guide Section */}
+      <div className="data-card p-6 sm:p-8 rounded-xl border border-slate-200 bg-white space-y-6">
+        <div className="border-b border-slate-100 pb-4 flex items-center space-x-2">
+          <BookOpen className="w-5 h-5 text-blue-700" />
+          <h2 className="text-xl font-bold text-slate-900">
+            Side-by-Side Budgetary Comparison Methodology
+          </h2>
+        </div>
+
+        <div className="space-y-4 text-xs text-slate-700 leading-relaxed max-w-4xl">
+          <p>
+            The <strong>Government Spending Comparison Calculator</strong> provides a direct side-by-side analytical framework for comparing any two federal spending entities, categories, or budget functions. Comparing relative sizes yields essential context when analyzing national priorities and congressional appropriations.
+          </p>
+          <p>
+            When comparing major entitlement and discretionary budgets—such as <strong>{itemA.name} ({formatCurrency(itemA.amount, true)})</strong> versus <strong>{itemB.name} ({formatCurrency(itemB.amount, true)})</strong>—the calculator computes both the absolute net dollar difference (<strong>{formatCurrency(diff, true)}</strong>) and the relative multiplier ratio (<strong>{ratio}×</strong>).
+          </p>
+          <p>
+            Side-by-side analysis helps clarify complex budgetary tradeoffs. Whether evaluating national defense versus education, Medicare versus Medicaid, or agency outlays across fiscal years, all comparisons rely strictly on verified public government datasets released on USAspending.gov.
+          </p>
+        </div>
+      </div>
+
+      {/* 7 FAQs + Schema */}
+      <FAQSection
+        title="Frequently Asked Questions: Comparison Calculator"
+        subtitle="Verified explanations of side-by-side budget comparisons and ratio metrics."
+        faqs={faqs}
+      />
     </div>
   );
 }

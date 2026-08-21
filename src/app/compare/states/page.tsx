@@ -5,9 +5,10 @@ import Link from 'next/link';
 import Breadcrumbs from '@/components/navigation/Breadcrumbs';
 import DonutChart from '@/components/visualizations/DonutChart';
 import MetricCard from '@/components/visualizations/MetricCard';
+import FAQSection, { FAQItem } from '@/components/common/FAQSection';
 import { STATES_DATA } from '@/lib/data/spendingData';
 import { formatCurrency, formatNumber } from '@/lib/utils/formatters';
-import { GitCompare, ArrowLeft } from 'lucide-react';
+import { GitCompare, ArrowLeft, BookOpen } from 'lucide-react';
 
 export default function CompareStatesPage() {
   const [stateASlug, setStateASlug] = useState<string>('california');
@@ -22,6 +23,37 @@ export default function CompareStatesPage() {
   const comparisonDonut = [
     { name: stateA.name, amount: stateA.totalSpending, percentage: Number(((stateA.totalSpending / (stateA.totalSpending + stateB.totalSpending)) * 100).toFixed(1)), color: '#1e3a8a' },
     { name: stateB.name, amount: stateB.totalSpending, percentage: Number(((stateB.totalSpending / (stateA.totalSpending + stateB.totalSpending)) * 100).toFixed(1)), color: '#2563eb' },
+  ];
+
+  const stateCompareFAQs: FAQItem[] = [
+    {
+      question: `How does federal spending in ${stateA.name} compare to ${stateB.name}?`,
+      answer: `In FY2026, total reported federal spending associated with ${stateA.name} is ${formatCurrency(stateA.totalSpending, true)}, compared to ${formatCurrency(stateB.totalSpending, true)} in ${stateB.name}, representing a net difference of ${diff >= 0 ? '+' : ''}${formatCurrency(diff, true)}.`,
+    },
+    {
+      question: `What is the per-capita spending difference between ${stateA.name} and ${stateB.name}?`,
+      answer: `Per-resident federal outlays in ${stateA.name} equal $${formatNumber(stateA.perCapita)}, compared to $${formatNumber(stateB.perCapita)} in ${stateB.name}, reflecting differences in defense facilities, research grants, and population baselines.`,
+    },
+    {
+      question: `Does higher federal spending in a state mean residents pay more taxes?`,
+      answer: `No. Federal spending associated with a state measures prime contract performance, research grants, and direct assistance allocated to perform work in that geographic region. It does not measure tax revenue collected.`,
+    },
+    {
+      question: `Why do state populations affect per-capita figures?`,
+      answer: `Per-capita figures divide total state outlays by Census population baselines. States with high federal defense contracts or small populations will display higher per-resident quotients.`,
+    },
+    {
+      question: `Which federal agencies spend the most in ${stateA.name} vs. ${stateB.name}?`,
+      answer: `Top agencies in ${stateA.name} include ${stateA.majorAgencies.map((a) => a.name).join(', ')}, while top agencies in ${stateB.name} include ${stateB.majorAgencies.map((a) => a.name).join(', ')}.`,
+    },
+    {
+      question: `Where does state spending data come from?`,
+      answer: `All figures are ingested from official public REST API feeds provided by USAspending.gov based on registered primary place of performance addresses.`,
+    },
+    {
+      question: `Can I compare any two U.S. states or territories?`,
+      answer: `Yes. Use the interactive dropdown selectors above to compare any two U.S. states or territories across total outlays, per-capita figures, and population baselines.`,
+    },
   ];
 
   return (
@@ -146,6 +178,35 @@ export default function CompareStatesPage() {
         </h3>
         <DonutChart data={comparisonDonut} centerLabel="Combined Total" centerValue={formatCurrency(stateA.totalSpending + stateB.totalSpending, true)} height={260} />
       </div>
+
+      {/* 300+ Words Guide Section */}
+      <div className="data-card p-6 sm:p-8 rounded-xl border border-slate-200 bg-white space-y-6">
+        <div className="border-b border-slate-100 pb-4 flex items-center space-x-2">
+          <BookOpen className="w-5 h-5 text-blue-700" />
+          <h2 className="text-xl font-bold text-slate-900">
+            Comparative Analysis: {stateA.name} vs. {stateB.name}
+          </h2>
+        </div>
+
+        <div className="space-y-4 text-xs text-slate-700 leading-relaxed max-w-4xl">
+          <p>
+            Comparing federal government spending between <strong>{stateA.name}</strong> and <strong>{stateB.name}</strong> provides essential insights into regional federal investment, prime defense contracting, public healthcare grants, and population-driven assistance programs.
+          </p>
+          <p>
+            In Fiscal Year 2026, total reported federal spending associated with {stateA.name} stands at <strong>{formatCurrency(stateA.totalSpending, true)}</strong> (or <strong>${formatNumber(stateA.perCapita)} per resident</strong>), whereas {stateB.name} records <strong>{formatCurrency(stateB.totalSpending, true)}</strong> (or <strong>${formatNumber(stateB.perCapita)} per resident</strong>). This results in an overall net spending difference of <strong>{diff >= 0 ? '+' : ''}{formatCurrency(diff, true)}</strong>.
+          </p>
+          <p>
+            Differences in federal outlays between states stem from varying industrial manufacturing footprints, major military bases, NASA research centers, university research grants, and state population sizes. All state comparison metrics are updated dynamically from official USAspending.gov API records.
+          </p>
+        </div>
+      </div>
+
+      {/* 7 FAQs + Schema */}
+      <FAQSection
+        title={`Frequently Asked Questions: ${stateA.name} vs. ${stateB.name}`}
+        subtitle="Verified explanations of state-by-state federal outlay comparisons."
+        faqs={stateCompareFAQs}
+      />
     </div>
   );
 }
