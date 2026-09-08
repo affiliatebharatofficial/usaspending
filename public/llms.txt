@@ -1,0 +1,64 @@
+# USA Spending (usaspending.us)
+
+> Independent visual U.S. federal spending data explorer rendering public financial datasets transparent, accurate, and accessible.
+
+## Overview
+USA Spending (usaspending.us) is an independent public research and visual data exploration platform. It provides real-time estimated counters, breakdown charts, category analyses, agency profiles, state geographic allocations, recipient contractor profiles, and fiscal rate calculators based on public U.S. Government spending datasets (USAspending.gov API and U.S. Department of the Treasury Fiscal Data).
+
+Disclaimer: USA Spending is an independent project and is NOT affiliated with, operated by, sponsored by, or endorsed by the U.S. Government, USAspending.gov, or the U.S. Department of the Treasury.
+
+## Key Sections & Core URLs
+
+### Main Explorers & Dashboards
+- [Homepage & Real-Time Clock](https://www.usaspending.us/): Main dashboard featuring the live per-second federal spending ticker, top metrics, pie charts, and category summaries.
+- [Federal Spending Overview](https://www.usaspending.us/spending): Full breakdown of overall federal outlays, daily rate velocity, and fiscal year metrics.
+- [Spending Breakdown](https://www.usaspending.us/spending-breakdown): Interactive category distribution charts and percentage shares.
+- [Spending by Year](https://www.usaspending.us/spending-by-year): Historical multi-year outlay trends spanning FY2018 through FY2026.
+- [Data Explorer](https://www.usaspending.us/explorer): Multi-dimensional explorer filtering outlays by category, agency, state, and recipient.
+
+### Category Profiles
+- [All Categories Index](https://www.usaspending.us/categories): Index of major federal budget categories.
+- [Defense & Military](https://www.usaspending.us/categories/defense-military): Outlays, top prime contractors, and regional defense spending.
+- [Social Security](https://www.usaspending.us/categories/social-security-spending): Mandatory benefit outlays and historical trajectory.
+- [Medicare](https://www.usaspending.us/categories/medicare-spending): Healthcare program outlays and benefit breakdowns.
+- [Medicaid](https://www.usaspending.us/categories/medicaid-spending): Federal-state healthcare assistance allocations.
+- [Education & Training](https://www.usaspending.us/categories/education-training): Student aid, vocational grants, and educational outlays.
+- [Agriculture & Food Assistance](https://www.usaspending.us/categories/agriculture-food-assistance): Farm subsidies, SNAP, and nutritional assistance outlays.
+- [Infrastructure & Transport](https://www.usaspending.us/categories/infrastructure-transport): Highway, transit, aviation, and infrastructure funding.
+- [Science & Medical Research](https://www.usaspending.us/categories/science-medical-research): NIH, NSF, and scientific research grant outlays.
+- [NASA & Space Exploration](https://www.usaspending.us/categories/nasa-space-exploration): Aeronautics and space exploration contract outlays.
+
+### Executive Agencies
+- [Agencies Index](https://www.usaspending.us/agencies): Cabinet departments and independent executive agencies.
+- [Department of Defense](https://www.usaspending.us/agencies/department-of-defense): DOD budgetary resources, obligations, and prime contract awards.
+- [Department of Health and Human Services](https://www.usaspending.us/agencies/department-of-health-and-human-services): HHS health research and entitlement program spending.
+- [Department of Transportation](https://www.usaspending.us/agencies/department-of-transportation): DOT transportation infrastructure grants and contract outlays.
+
+### Geographic State Outlays
+- [States Index](https://www.usaspending.us/states): State-by-state geographic spending explorer covering all 50 states, DC, and territories.
+- [California](https://www.usaspending.us/states/california): Federal spending, per-capita rate, and top prime contractors performing work in California.
+- [Texas](https://www.usaspending.us/states/texas): Federal contract outlays, military installations, and recipient breakdown in Texas.
+- [Florida](https://www.usaspending.us/states/florida): Direct payments, grants, and federal procurement in Florida.
+- [New York](https://www.usaspending.us/states/new-york): Research grants, transportation funding, and federal awards in New York.
+
+### Recipient Contractors
+- [Recipients Index](https://www.usaspending.us/recipients): Top prime contractors, defense suppliers, and research recipient organizations.
+- [Lockheed Martin](https://www.usaspending.us/recipients/lockheed-martin): Prime defense awards, contracting agencies, and historical award totals.
+- [Boeing](https://www.usaspending.us/recipients/boeing): Aerospace contracts, awarding agencies, and award distribution.
+
+### Financial Calculators & Comparison Engine
+- [Calculators Hub](https://www.usaspending.us/calculators): Interactive suite of fiscal math tools.
+- [Personal Tax Contribution Calculator](https://www.usaspending.us/calculator): Calculate how individual federal income tax dollars are allocated across budget categories.
+- [Spending Rate Calculator](https://www.usaspending.us/calculators/spending-rate): Convert annual outlays into per-second, per-minute, and per-day velocities.
+- [Per-Capita Calculator](https://www.usaspending.us/calculators/per-capita): Compute per-resident federal spending metrics across states.
+- [Comparison Engine](https://www.usaspending.us/compare): Side-by-side comparison of states, budget categories, agencies, and contractors.
+- [State Comparison (California vs. Texas)](https://www.usaspending.us/compare/california-vs-texas): Direct side-by-side state outlay analysis.
+
+### Legal & Platform Documentation
+- [About Us](https://www.usaspending.us/about): Mission, team, non-partisan data philosophy, and platform background.
+- [Contact Us](https://www.usaspending.us/contact): Inquiry form and direct email contacts.
+- [Privacy Policy](https://www.usaspending.us/privacy-policy): Privacy practices, cookies, and Google AdSense advertising disclosures.
+- [Terms of Service](https://www.usaspending.us/terms): Terms of use, intellectual property, and legal disclaimers.
+- [Data Methodology](https://www.usaspending.us/methodology): Calculation methodology, formulas, and fiscal year baseline definitions.
+- [Government Data Sources](https://www.usaspending.us/data-sources): Primary source public API documentation (USAspending.gov and Treasury Fiscal Data).
+- [Disclaimer](https://www.usaspending.us/disclaimer): Detailed non-affiliation statement.
