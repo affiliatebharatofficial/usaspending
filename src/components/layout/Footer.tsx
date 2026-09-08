@@ -87,6 +87,9 @@ export default function Footer() {
         <p className="font-medium text-slate-600">
           USA Spending (usaspending.us) is an independent public data visualization website rendering public U.S. Federal Government datasets. Not affiliated with, authorized by, or endorsed by the U.S. Government or USAspending.gov.
         </p>
+        <p className="text-[11px] text-slate-500">
+          Built and maintained by <a href="https://www.linkedin.com/in/firoz-khan-1153358a/" target="_blank" rel="noopener noreferrer" className="font-bold text-slate-700 hover:text-blue-700 underline">Firoz Khan</a>. Connect on <a href="https://www.linkedin.com/in/firoz-khan-1153358a/" target="_blank" rel="noopener noreferrer" className="font-bold text-slate-700 hover:text-blue-700 underline">LinkedIn</a> or check out projects on <a href="https://github.com/fkdigitalmedia" target="_blank" rel="noopener noreferrer" className="font-bold text-slate-700 hover:text-blue-700 underline">GitHub</a>.
+        </p>
         <p className="text-[11px] text-slate-400">
           © {new Date().getFullYear()} USA Spending. All rights reserved.
         </p>

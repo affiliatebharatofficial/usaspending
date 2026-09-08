@@ -3,12 +3,12 @@ import Link from 'next/link';
 import InfoPageLayout from '@/components/layout/InfoPageLayout';
 import JsonLd from '@/components/seo/JsonLd';
 import { SITE_CONFIG } from '@/lib/config/site';
-import { ShieldCheck, BarChart3, Building2, MapPin, Award, Calculator, Calendar, ArrowRight } from 'lucide-react';
+import { ShieldCheck, BarChart3, Building2, MapPin, Award, Calculator, Calendar, ArrowRight, UserCheck, ExternalLink, Code2 } from 'lucide-react';
 import type { Metadata } from 'next';
 
 export const metadata: Metadata = {
   title: `About USA Spending | U.S. Government Spending Data`,
-  description: `Learn about USA Spending, an independent data visualization platform for exploring public U.S. federal government spending data and fiscal tools.`,
+  description: `Learn about USA Spending, an independent data visualization platform built and maintained by Firoz Khan for exploring public U.S. federal government spending data and fiscal tools.`,
   alternates: {
     canonical: 'https://www.usaspending.us/about',
   },
@@ -21,7 +21,8 @@ export default function AboutPage() {
     { id: 'what-can-you-explore', title: '3. What Can Users Explore?' },
     { id: 'our-goal', title: '4. Our Goal' },
     { id: 'data-philosophy', title: '5. Data First Philosophy' },
-    { id: 'independent-notice', title: '6. Independent Project Notice' },
+    { id: 'creator-notice', title: '6. Developer & Project Maintainer' },
+    { id: 'independent-notice', title: '7. Independent Project Notice' },
   ];
 
   return (
@@ -36,7 +37,7 @@ export default function AboutPage() {
         type="AboutPage"
         data={{
           name: 'About USA Spending',
-          description: 'Independent visual U.S. government spending explorer.',
+          description: 'Independent visual U.S. government spending explorer built and maintained by Firoz Khan.',
           url: '/about',
         }}
       />
@@ -57,7 +58,7 @@ export default function AboutPage() {
           USA Spending is built to make public government spending information easier for citizens, researchers, journalists, and analysts to navigate. Official federal datasets contain trillions of dollars in obligations and outlays, but raw spreadsheets can be difficult to interpret.
         </p>
         <p className="text-slate-600 text-sm leading-relaxed">
-          We process official public API feeds—primarily from USAspending.gov—normalizing financial figures and presenting them with transparent fiscal-year context and mathematical rate models.
+          We process public API feeds—primarily from USAspending.gov—normalizing financial figures and presenting them with transparent fiscal-year context and mathematical rate models.
         </p>
       </section>
 
@@ -124,15 +125,48 @@ export default function AboutPage() {
       <section id="data-philosophy" className="data-card p-6 sm:p-8 rounded-xl border border-slate-200 bg-white space-y-4">
         <h2 className="text-2xl font-black text-slate-900">5. Data First Philosophy</h2>
         <ul className="text-xs text-slate-600 space-y-2 list-disc pl-5">
-          <li><strong>Official Sources:</strong> Primary reliance on official government API streams.</li>
+          <li><strong>Public Data Sources:</strong> Primary reliance on public government API streams (USAspending.gov & Treasury Fiscal Data).</li>
           <li><strong>Transparent Methodology:</strong> Explicit formulas for rates, percentages, and fiscal year baselines.</li>
           <li><strong>Strict Terminology:</strong> Careful distinction between outlays, obligations, and state geographic allocations.</li>
           <li><strong>No Fake Data:</strong> Production UI displays only verified data or clear unavailable notices.</li>
         </ul>
       </section>
 
+      <section id="creator-notice" className="data-card p-6 sm:p-8 rounded-xl border border-slate-200 bg-white space-y-4">
+        <h2 className="text-2xl font-black text-slate-900 flex items-center gap-2">
+          <UserCheck className="w-6 h-6 text-blue-700" />
+          6. Developer & Project Maintainer
+        </h2>
+        <p className="text-slate-700 text-sm leading-relaxed font-medium">
+          This project is built and maintained by <strong>Firoz Khan</strong>, an independent web developer and data enthusiast. Connect on <a href="https://www.linkedin.com/in/firoz-khan-1153358a/" target="_blank" rel="noopener noreferrer" className="text-blue-700 font-bold underline hover:text-blue-900">LinkedIn</a> or check out other projects on <a href="https://github.com/fkdigitalmedia" target="_blank" rel="noopener noreferrer" className="text-blue-700 font-bold underline hover:text-blue-900">GitHub</a>.
+        </p>
+
+        <div className="flex flex-wrap gap-3 pt-2 not-prose">
+          <a
+            href="https://github.com/fkdigitalmedia"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center gap-2 px-4 py-2.5 rounded-lg bg-slate-900 hover:bg-slate-800 text-white font-bold text-xs transition-colors shadow-sm"
+          >
+            <Code2 className="w-4 h-4 text-blue-400" />
+            <span>GitHub Profile (fkdigitalmedia)</span>
+            <ExternalLink className="w-3.5 h-3.5 text-slate-400" />
+          </a>
+          <a
+            href="https://www.linkedin.com/in/firoz-khan-1153358a/"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center gap-2 px-4 py-2.5 rounded-lg bg-blue-700 hover:bg-blue-600 text-white font-bold text-xs transition-colors shadow-sm"
+          >
+            <UserCheck className="w-4 h-4 text-blue-200" />
+            <span>LinkedIn Profile (Firoz Khan)</span>
+            <ExternalLink className="w-3.5 h-3.5 text-blue-200" />
+          </a>
+        </div>
+      </section>
+
       <section id="independent-notice" className="data-card p-6 sm:p-8 rounded-xl border border-blue-200 bg-blue-50/50 space-y-3">
-        <h2 className="text-xl font-bold text-blue-900">6. Independent Project Notice</h2>
+        <h2 className="text-xl font-bold text-blue-900">7. Independent Project Notice</h2>
         <p className="text-xs text-slate-700 leading-relaxed">
           {SITE_CONFIG.disclaimerNotice}
         </p>
