@@ -67,6 +67,13 @@ export default function RootLayout({
   return (
     <html lang="en" className="dark">
       <head>
+        {/* Google AdSense Header Script & Account Verification */}
+        <script
+          async
+          src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1947021380591070"
+          crossOrigin="anonymous"
+        ></script>
+        <meta name="google-adsense-account" content="ca-pub-1947021380591070" />
         <meta name="google-site-verification" content="BjEe0IX0Cm89CYnoYPpnL1BzBcjm_Ylp1WGNL5SWLxQ" />
         <meta name="msvalidate.01" content="2A730A2FAF8DA672C0BDBCC548BEB4FA" />
         <meta name="yandex-verification" content="c10c080b970b1180" />
