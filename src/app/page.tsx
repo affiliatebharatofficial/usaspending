@@ -30,6 +30,7 @@ import {
   Calculator,
   ShieldCheck,
   Zap,
+  Info,
 } from 'lucide-react';
 
 export default function HomePage() {
@@ -40,11 +41,12 @@ export default function HomePage() {
       {/* 1. Hero Section */}
       <section className="navy-hero text-white py-16 px-4 sm:px-6 lg:px-8">
         <div className="max-w-5xl mx-auto text-center space-y-6">
-          <div className="inline-flex items-center space-x-2 px-3.5 py-1 rounded-full text-xs font-semibold bg-blue-900/80 text-blue-200 border border-blue-700/60">
+          {/* Neutral Badge replacing misleading 'Official' badge */}
+          <div className="inline-flex items-center space-x-2 px-4 py-1.5 rounded-full text-xs font-semibold bg-blue-900/80 text-blue-200 border border-blue-700/60 shadow-sm">
             <Zap className="w-3.5 h-3.5 text-blue-400" />
-            <span>Official U.S. Federal Spending Portal</span>
+            <span>Independent Federal Spending Data Explorer</span>
             <span className="text-blue-400">•</span>
-            <span>FY{CURRENT_FISCAL_YEAR} Budget Explorer</span>
+            <span>FY{CURRENT_FISCAL_YEAR} Budget Visualizer</span>
           </div>
 
           <h1 className="text-4xl sm:text-6xl font-black tracking-tight leading-tight">
@@ -54,6 +56,14 @@ export default function HomePage() {
           <p className="text-base sm:text-xl text-slate-300 max-w-3xl mx-auto leading-relaxed">
             Transparent, interactive visual exploration of United States Federal outlays, budget categories, executive agencies, and contractor awards.
           </p>
+
+          {/* Prominent Non-Affiliation Note under Hero text */}
+          <div className="inline-flex items-center space-x-2 text-xs text-blue-300 bg-slate-900/80 px-4 py-2 rounded-lg border border-blue-800/60 max-w-2xl mx-auto">
+            <Info className="w-4 h-4 text-blue-400 flex-shrink-0" />
+            <span>
+              <strong>Independent Project Notice:</strong> USA Spending is an independent public data project. Not affiliated with or endorsed by the U.S. Government or USAspending.gov.
+            </span>
+          </div>
 
           {/* Quick Nav Pills */}
           <div className="flex flex-wrap justify-center gap-3 pt-2 text-xs font-semibold">

@@ -39,7 +39,7 @@ export default function InfoPageLayout({
         <div className="flex flex-wrap items-center justify-between gap-3 border-b border-slate-100 pb-4">
           <div className="inline-flex items-center gap-1.5 text-xs font-semibold uppercase tracking-widest text-blue-700 px-3 py-1 rounded bg-blue-50 border border-blue-200">
             <FileText className="w-3.5 h-3.5" />
-            Official Documentation & Transparency
+            Documentation & Transparency
           </div>
           <div className="text-xs font-mono font-semibold text-slate-500">
             Last Updated: <span className="text-slate-900 font-bold">{SITE_CONFIG.lastUpdated}</span>
@@ -134,7 +134,7 @@ export default function InfoPageLayout({
                 <ArrowRight className="w-3.5 h-3.5 text-blue-600" />
               </Link>
               <Link href="/data-sources" className="p-3 rounded-lg bg-white border border-slate-200 text-blue-900 hover:border-blue-400 flex items-center justify-between">
-                <span>Official Data Sources</span>
+                <span>Government Data Sources</span>
                 <ArrowRight className="w-3.5 h-3.5 text-blue-600" />
               </Link>
               <Link href="/disclaimer" className="p-3 rounded-lg bg-white border border-slate-200 text-blue-900 hover:border-blue-400 flex items-center justify-between">

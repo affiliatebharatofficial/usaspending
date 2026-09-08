@@ -291,10 +291,10 @@ export default function AgencyDetailView({ entity }: Props) {
           <span>Fiscal Year: FY{selectedFY}</span>
           <span>Data Type: Federal Budget Outlays</span>
           <span>Last Updated: August 2026</span>
-          <span>Classification: Official Toptier Agency</span>
+          <span>Classification: Toptier Executive Agency</span>
         </div>
         <p className="text-[11px] leading-relaxed text-slate-500">
-          Financial data reflects official U.S. Department of Transportation budget authority, obligations, outlays, and prime contract awards published in the USAspending.gov database.
+          Financial data reflects U.S. Department of Transportation budget authority, obligations, outlays, and prime contract awards published in the USAspending.gov public database.
         </p>
       </div>
     </div>

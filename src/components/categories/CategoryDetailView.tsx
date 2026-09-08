@@ -223,7 +223,7 @@ export default function CategoryDetailView({ entity }: Props) {
           />
         ) : (
           <div className="p-6 rounded-lg bg-slate-50 text-center text-xs text-slate-500">
-            Detailed data for this classification is not available from the selected official dataset.
+            Detailed data for this classification is not available from the selected public dataset.
           </div>
         )}
       </div>
@@ -282,13 +282,13 @@ export default function CategoryDetailView({ entity }: Props) {
             The <strong>{entity.name}</strong> category forms a critical pillar of the United States Federal Budget in Fiscal Year {selectedFY}, with total reported outlays reaching <strong>{formatCurrency(categoryData.amount, true)}</strong>. This allocation accounts for approximately <strong>{categoryData.percentage}%</strong> of the complete $${(totalFYBudget / 1e12).toFixed(2)} Trillion federal outlay portfolio authorized by the U.S. Congress and disbursed under the direction of the Department of the Treasury.
           </p>
           <p>
-            Federal outlays in this category encompass both mandatory entitlement programs and discretionary appropriations. Mandatory spending provides direct benefit payments and statutory assistance guaranteed under permanent law, whereas discretionary spending is reviewed and enacted annually through congressional appropriations bills. Understanding the distinction between cash outlays (actual Treasury checks issued or electronic wires executed) and budgetary obligations (contractual commitments that liquidate over multiple years) is vital when interpreting these official metrics.
+            Federal outlays in this category encompass both mandatory entitlement programs and discretionary appropriations. Mandatory spending provides direct benefit payments and statutory assistance guaranteed under permanent law, whereas discretionary spending is reviewed and enacted annually through congressional appropriations bills. Understanding the distinction between cash outlays (actual Treasury checks issued or electronic wires executed) and budgetary obligations (contractual commitments that liquidate over multiple years) is vital when interpreting these public metrics.
           </p>
           <p>
             On a time-rate equivalent basis, the federal velocity of funding within {entity.name} averages <strong>{formatCurrency(rates.perDay, true)} per day</strong>, which translates to <strong>{formatCurrency(rates.perHour, true)} every single hour</strong> and <strong>{formatCurrency(rates.perSecond, true)} per second</strong>. These mathematical rates demonstrate the vast economic footprint of federal funding across national research centers, prime industrial contractors, local state assistance programs, and educational institutions.
           </p>
           <p>
-            Historical trajectory analysis from 2018 through 2026 highlights evolving national budget priorities. Outlays in {entity.name} reflect congressional policy shifts, economic adjustments, emergency relief legislation, and inflation adjustments over the past eight fiscal years. Data presented on this platform is updated dynamically from official government API endpoints provided by USAspending.gov to ensure transparent access to verified public financial information.
+            Historical trajectory analysis from 2018 through 2026 highlights evolving national budget priorities. Outlays in {entity.name} reflect congressional policy shifts, economic adjustments, emergency relief legislation, and inflation adjustments over the past eight fiscal years. Data presented on this platform is updated dynamically from public government API endpoints provided by USAspending.gov to ensure transparent access to verified public financial information.
           </p>
         </div>
       </div>
@@ -346,7 +346,7 @@ export default function CategoryDetailView({ entity }: Props) {
       {/* 7 FAQs + FAQPage Schema */}
       <FAQSection
         title={`Frequently Asked Questions: ${entity.name} Spending`}
-        subtitle={`Verified answers regarding ${entity.name} budget outlays, calculations, and official sources.`}
+        subtitle={`Verified answers regarding ${entity.name} budget outlays, calculations, and public data sources.`}
         faqs={categoryFAQs}
       />
 

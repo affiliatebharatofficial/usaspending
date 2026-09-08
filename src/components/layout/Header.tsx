@@ -3,7 +3,7 @@
 import React, { useState } from 'react';
 import Link from 'next/link';
 import GlobalSearch from '@/components/search/GlobalSearch';
-import { Menu, X, Landmark, Calculator } from 'lucide-react';
+import { Menu, X, Landmark, Calculator, Info } from 'lucide-react';
 
 const NAV_LINKS = [
   { name: 'Spending', href: '/spending' },
@@ -20,6 +20,14 @@ export default function Header() {
 
   return (
     <header className="sticky top-0 z-50 bg-slate-900 border-b border-slate-800 text-white shadow-md">
+      {/* Prominent Top Disclaimer Bar */}
+      <div className="bg-slate-950 text-slate-300 text-[11px] py-1.5 px-4 text-center border-b border-slate-800/80 font-medium flex items-center justify-center gap-1.5">
+        <Info className="w-3.5 h-3.5 text-blue-400 flex-shrink-0" />
+        <span>
+          Independent data visualization project — not affiliated with or endorsed by the U.S. Government or USAspending.gov.
+        </span>
+      </div>
+
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16 gap-4">
           {/* Logo */}
@@ -32,7 +40,7 @@ export default function Header() {
                 USA SPENDING
               </span>
               <span className="text-[10px] text-slate-400 font-medium tracking-wide">
-                usa-spending.com
+                Independent Data Explorer
               </span>
             </div>
           </Link>
