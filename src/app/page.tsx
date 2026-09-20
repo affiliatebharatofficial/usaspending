@@ -9,6 +9,7 @@ import CategoryCard from '@/components/visualizations/CategoryCard';
 import MetricCard from '@/components/visualizations/MetricCard';
 import DataMethodologyNotice from '@/components/visualizations/DataMethodologyNotice';
 import DataFreshness from '@/components/visualizations/DataFreshness';
+import AdUnit from '@/components/ads/AdUnit';
 
 import {
   SPENDING_CATEGORIES,
@@ -93,6 +94,9 @@ export default function HomePage() {
       </section>
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-16">
+        {/* Top Responsive 728x90 Banner Ad */}
+        <AdUnit type="728x90" />
+
         {/* 2. Top At-A-Glance Banner */}
         <SpendingAtAGlance
           title="U.S. Federal Outlays at a Glance"
@@ -151,6 +155,9 @@ export default function HomePage() {
         <section id="breakdown-section">
           <SpendingBreakdown data={SPENDING_CATEGORIES} />
         </section>
+
+        {/* Mid-Page 300x250 Medium Rectangle Ad */}
+        <AdUnit type="300x250" />
 
         {/* 7. U.S. Government Spending by Year */}
         <section id="by-year-section">
@@ -311,6 +318,9 @@ export default function HomePage() {
             ))}
           </div>
         </section>
+
+        {/* Bottom Responsive 728x90 Banner Ad */}
+        <AdUnit type="728x90" />
 
         {/* 12. Data Methodology Notice */}
         <DataMethodologyNotice />

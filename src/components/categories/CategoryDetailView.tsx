@@ -12,6 +12,7 @@ import DataFreshness from '@/components/visualizations/DataFreshness';
 import StateDistributionSection from '@/components/visualizations/StateDistributionSection';
 import FAQSection, { FAQItem } from '@/components/common/FAQSection';
 import JsonLd from '@/components/seo/JsonLd';
+import AdUnit from '@/components/ads/AdUnit';
 import { getCategoryDataForFY, ANNUAL_TOTAL_BUDGET } from '@/lib/data/spendingData';
 import { formatCurrency, calculateSpendingRates } from '@/lib/utils/formatters';
 import { EntityConfig } from '@/lib/config/entities';
@@ -228,6 +229,9 @@ export default function CategoryDetailView({ entity }: Props) {
         )}
       </div>
 
+      {/* Responsive 728x90 Banner Ad */}
+      <AdUnit type="728x90" />
+
       {/* Detailed Subcategory Table & Horizontal Bars */}
       <div className="data-card rounded-xl p-6 sm:p-8 border border-slate-200 bg-white space-y-6">
         <h3 className="text-lg font-bold text-slate-900">
@@ -342,6 +346,9 @@ export default function CategoryDetailView({ entity }: Props) {
           fiscalYear={selectedFY}
         />
       )}
+
+      {/* Responsive 300x250 Ad */}
+      <AdUnit type="300x250" />
 
       {/* 7 FAQs + FAQPage Schema */}
       <FAQSection
