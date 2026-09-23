@@ -7,6 +7,7 @@ import DonutChart from '@/components/visualizations/DonutChart';
 import MetricCard from '@/components/visualizations/MetricCard';
 import ShareResultButton from '@/components/calculators/ShareResultButton';
 import FAQSection, { FAQItem } from '@/components/common/FAQSection';
+import CalculatorMethodologyBox from '@/components/calculators/CalculatorMethodologyBox';
 import { SPENDING_CATEGORIES, TOTAL_FEDERAL_SPENDING_FY2026 } from '@/lib/data/spendingData';
 import { formatCurrency } from '@/lib/utils/formatters';
 import { Percent, ArrowLeft, BookOpen } from 'lucide-react';
@@ -165,6 +166,15 @@ export default function SpendingPercentageCalculatorPage() {
           </p>
         </div>
       </div>
+
+      {/* Transparency & Methodology Box */}
+      <CalculatorMethodologyBox
+        calculatorName="Spending Percentage Calculator"
+        metric="Percentage Share of Federal or Category Outlays (%)"
+        formula={`Percentage Share (%) = (Entered Dollar Amount ÷ Target Budget Outlays) × 100`}
+        example={`Entering $1,000,000,000 against Total Federal Outlays ($6,750,000,000,000): (1,000,000,000 ÷ 6,750,000,000,000) × 100 = 0.0148%. Against Defense ($895B): (1B ÷ 895B) × 100 = 0.1117%.`}
+        limitations="Comparison baselines are established from official FY2026 reported outlays on USAspending.gov. Spending execution across agencies varies monthly based on congressional appropriations and statutory obligations."
+      />
 
       {/* 7 FAQs + Schema */}
       <FAQSection

@@ -7,6 +7,7 @@ import DonutChart from '@/components/visualizations/DonutChart';
 import ShareResultButton from '@/components/calculators/ShareResultButton';
 import ExportCsvButton from '@/components/calculators/ExportCsvButton';
 import FAQSection, { FAQItem } from '@/components/common/FAQSection';
+import CalculatorMethodologyBox from '@/components/calculators/CalculatorMethodologyBox';
 import { SPENDING_CATEGORIES, STATES_DATA, AGENCIES_DATA, RECIPIENTS_DATA } from '@/lib/data/spendingData';
 import { formatCurrency } from '@/lib/utils/formatters';
 import { GitCompare, ArrowLeft, BookOpen } from 'lucide-react';
@@ -191,6 +192,17 @@ export default function CompareCalculatorPage() {
           </p>
         </div>
       </div>
+
+      {/* Transparency & Methodology Box */}
+      <CalculatorMethodologyBox
+        calculatorName="Government Spending Comparison Calculator"
+        sourceName="USAspending.gov & U.S. Treasury Fiscal Data"
+        sourceUrl="https://www.usaspending.gov"
+        metric="Comparative Multiplier Ratio (x) & Net Dollar Variance ($)"
+        formula={`Multiplier Ratio = Outlays of Option A ÷ Outlays of Option B\nNet Variance ($)  = Outlays of Option A − Outlays of Option B`}
+        example={`Comparing ${itemA.name} (${formatCurrency(itemA.amount, true)}) vs ${itemB.name} (${formatCurrency(itemB.amount, true)}): Multiplier Ratio = ${ratio}x; Net Dollar Difference = ${formatCurrency(diff, true)}.`}
+        limitations="Direct comparison of separate budget functions reflects statutory authorizations and executive disbursements. It does not imply funding fungibility between distinct agencies."
+      />
 
       {/* 7 FAQs + Schema */}
       <FAQSection

@@ -6,6 +6,7 @@ import Breadcrumbs from '@/components/navigation/Breadcrumbs';
 import MetricCard from '@/components/visualizations/MetricCard';
 import ShareResultButton from '@/components/calculators/ShareResultButton';
 import FAQSection, { FAQItem } from '@/components/common/FAQSection';
+import CalculatorMethodologyBox from '@/components/calculators/CalculatorMethodologyBox';
 import { TOTAL_FEDERAL_SPENDING_FY2026, SPENDING_CATEGORIES } from '@/lib/data/spendingData';
 import { formatCurrency, calculateSpendingRates } from '@/lib/utils/formatters';
 import { Clock, ArrowLeft, BookOpen } from 'lucide-react';
@@ -162,6 +163,17 @@ export default function AmountToTimeCalculatorPage() {
           </p>
         </div>
       </div>
+
+      {/* Transparency & Methodology Box */}
+      <CalculatorMethodologyBox
+        calculatorName="Amount-to-Time Calculator"
+        sourceName="USAspending.gov & U.S. Treasury Fiscal Data"
+        sourceUrl="https://fiscaldata.treasury.gov"
+        metric="Time Equivalency (Days, Hours, Minutes, Seconds)"
+        formula={`Seconds Equivalent = Entered Dollar Amount ÷ Profile Spending Rate Per Second\nProfile Rate Per Second = Annual Outlays ÷ (365 × 86,400)`}
+        example={`Entering $1,000,000,000 against Total Federal Outlays ($214,041/sec in FY2026): 1,000,000,000 ÷ 214,041 = 4,672 seconds = 1.30 hours = 0.054 days.`}
+        limitations="Time equivalencies assume linear continuous spending 24 hours a day, 365 days a year across the entire fiscal year. Real disbursements follow agency billing and procurement cycles."
+      />
 
       {/* 7 FAQs + Schema */}
       <FAQSection

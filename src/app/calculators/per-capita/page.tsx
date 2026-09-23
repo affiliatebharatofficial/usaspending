@@ -7,6 +7,7 @@ import MetricCard from '@/components/visualizations/MetricCard';
 import ShareResultButton from '@/components/calculators/ShareResultButton';
 import ExportCsvButton from '@/components/calculators/ExportCsvButton';
 import FAQSection, { FAQItem } from '@/components/common/FAQSection';
+import CalculatorMethodologyBox from '@/components/calculators/CalculatorMethodologyBox';
 import { STATES_DATA, CURRENT_FISCAL_YEAR } from '@/lib/data/spendingData';
 import { formatCurrency } from '@/lib/utils/formatters';
 import { MapPin, ArrowLeft, AlertCircle, BookOpen } from 'lucide-react';
@@ -141,6 +142,18 @@ export default function PerCapitaCalculatorPage() {
           </p>
         </div>
       </div>
+
+      {/* Transparency & Methodology Box */}
+      <CalculatorMethodologyBox
+        calculatorName="Per Capita Federal Spending Calculator"
+        sourceName="USAspending.gov & U.S. Census Bureau"
+        sourceUrl="https://www.census.gov"
+        metric="Per-Resident Associated Federal Spending Ratio ($)"
+        formula={`Per-Capita Federal Outlays = Total Federal Outlays Associated With State ÷ State Resident Population`}
+        example={`For ${selectedState.name}: ${formatCurrency(selectedState.totalSpending, true)} ÷ ${selectedState.population.toLocaleString()} residents = $${selectedState.perCapita.toLocaleString()} per resident.`}
+        limitations="State federal spending represents prime contract awards and assistance by place of performance or recipient address. It does not represent state government revenues, municipal budgets, or resident tax burdens."
+        isPerCapita={true}
+      />
 
       {/* 7 FAQs + Schema */}
       <FAQSection

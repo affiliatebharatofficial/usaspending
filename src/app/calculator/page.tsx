@@ -7,6 +7,7 @@ import AmountMeaning from '@/components/calculators/AmountMeaning';
 import ShareResultButton from '@/components/calculators/ShareResultButton';
 import ExportCsvButton from '@/components/calculators/ExportCsvButton';
 import CalculatorFAQ from '@/components/calculators/CalculatorFAQ';
+import CalculatorMethodologyBox from '@/components/calculators/CalculatorMethodologyBox';
 import MetricCard from '@/components/visualizations/MetricCard';
 import FiscalYearSelector from '@/components/visualizations/FiscalYearSelector';
 import { TOTAL_FEDERAL_SPENDING_FY2026, SPENDING_CATEGORIES } from '@/lib/data/spendingData';
@@ -147,6 +148,14 @@ export default function MainCalculatorPage() {
       </div>
 
       <AmountMeaning amount={amount} fiscalYear={fiscalYear} />
+
+      <CalculatorMethodologyBox
+        calculatorName="Main Government Spending Calculator"
+        metric="Share of Federal Outlays (%) & Spending Velocity Equivalents"
+        formula={`Percentage Share (%) = (Entered Dollar Amount ÷ Total Federal Outlays FY2026 [$6.75T]) × 100\nDaily Rate Equivalent = Entered Dollar Amount ÷ 365 Days`}
+        example={`Entering $1,000,000,000 ($1B): (1,000,000,000 ÷ 6,750,000,000,000) × 100 = 0.0148% of total annual federal outlays. Daily equivalent = $2,739,726/day.`}
+        limitations="Total federal outlays baseline is $6.75 Trillion for FY2026 as reported by the U.S. Treasury. Rate calculations represent continuous mathematical averages across 365 calendar days and do not represent live electronic bank wire disbursements."
+      />
 
       <CalculatorFAQ faqs={faqs} />
     </div>

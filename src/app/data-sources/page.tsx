@@ -1,4 +1,5 @@
 import React from 'react';
+import Link from 'next/link';
 import InfoPageLayout from '@/components/layout/InfoPageLayout';
 import JsonLd from '@/components/seo/JsonLd';
 import { SITE_CONFIG } from '@/lib/config/site';
@@ -143,6 +144,20 @@ export default function DataSourcesPage() {
         <p className="text-slate-600 text-sm leading-relaxed">
           Federal reporting feeds are updated periodically. In the event of upstream API rate limits or maintenance, cached validated datasets ensure site availability without sacrificing accuracy.
         </p>
+
+        <div className="pt-4 border-t border-slate-100 flex flex-wrap gap-4 text-xs font-semibold text-blue-700">
+          <Link href="/methodology" className="hover:underline">
+            ← Read Full Calculation Methodology & Formulas
+          </Link>
+          <span className="text-slate-300">|</span>
+          <Link href="/disclaimer" className="hover:underline">
+            Read Legal Disclaimer
+          </Link>
+          <span className="text-slate-300">|</span>
+          <Link href="/calculators" className="hover:underline">
+            Interactive Calculator Suite →
+          </Link>
+        </div>
       </section>
     </InfoPageLayout>
   );

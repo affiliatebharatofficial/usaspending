@@ -7,6 +7,7 @@ import MetricCard from '@/components/visualizations/MetricCard';
 import ShareResultButton from '@/components/calculators/ShareResultButton';
 import ExportCsvButton from '@/components/calculators/ExportCsvButton';
 import FAQSection, { FAQItem } from '@/components/common/FAQSection';
+import CalculatorMethodologyBox from '@/components/calculators/CalculatorMethodologyBox';
 import { HISTORICAL_SPENDING, SPENDING_CATEGORIES } from '@/lib/data/spendingData';
 import { formatCurrency } from '@/lib/utils/formatters';
 import { Calendar, ArrowLeft, BookOpen } from 'lucide-react';
@@ -205,6 +206,17 @@ export default function YearComparisonCalculatorPage() {
           </p>
         </div>
       </div>
+
+      {/* Transparency & Methodology Box */}
+      <CalculatorMethodologyBox
+        calculatorName="Year-over-Year Spending Calculator"
+        sourceName="U.S. Treasury Monthly Treasury Statements & USAspending.gov"
+        sourceUrl="https://fiscaldata.treasury.gov"
+        metric="Year-over-Year Growth Rate (%) & Net Outlay Variance ($)"
+        formula={`YoY % Change = ((FY_A Outlays − FY_B Outlays) ÷ FY_B Outlays) × 100\nNet Variance   = FY_A Outlays − FY_B Outlays`}
+        example={`Comparing FY${yearA} (${formatCurrency(dataA.spending, true)}) vs FY${yearB} (${formatCurrency(dataB.spending, true)}): Net Variance = ${diff >= 0 ? '+' : ''}${formatCurrency(diff, true)}; YoY Shift = ${pctChange >= 0 ? '+' : ''}${pctChange}%.`}
+        limitations="Historical spending figures reflect nominal Treasury outlays recorded during each fiscal year without retrospective inflation adjustments. Emergency legislative packages (e.g. CARES Act) create discrete non-recurring outlay spikes."
+      />
 
       {/* 7 FAQs + Schema */}
       <FAQSection

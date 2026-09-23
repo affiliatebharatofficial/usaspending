@@ -173,7 +173,7 @@ export default function FirozKhanProfilePage() {
               <span>Methodology & Documentation</span>
             </div>
             <p className="text-xs text-slate-600 leading-relaxed">
-              Writing transparent explanations of financial data definitions, calculations, outlays, obligations, and data limitations.
+              Writing transparent explanations of financial data definitions, calculations, outlays, obligations, and data limitations. Read the <Link href="/methodology" className="text-blue-700 font-bold underline hover:text-blue-900">Calculation Methodology & Transparency Guide</Link>.
             </p>
           </div>
 

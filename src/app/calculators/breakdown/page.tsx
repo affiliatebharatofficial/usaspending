@@ -8,6 +8,7 @@ import MetricCard from '@/components/visualizations/MetricCard';
 import ShareResultButton from '@/components/calculators/ShareResultButton';
 import ExportCsvButton from '@/components/calculators/ExportCsvButton';
 import FAQSection, { FAQItem } from '@/components/common/FAQSection';
+import CalculatorMethodologyBox from '@/components/calculators/CalculatorMethodologyBox';
 import { SPENDING_CATEGORIES, TOTAL_FEDERAL_SPENDING_FY2026 } from '@/lib/data/spendingData';
 import { formatCurrency } from '@/lib/utils/formatters';
 import { PieChart, ArrowLeft, Info, BookOpen } from 'lucide-react';
@@ -184,6 +185,17 @@ export default function SpendingBreakdownCalculatorPage() {
           </p>
         </div>
       </div>
+
+      {/* Transparency & Methodology Box */}
+      <CalculatorMethodologyBox
+        calculatorName="Spending Breakdown Calculator"
+        sourceName="USAspending.gov & OMB Budget Function Outlays"
+        sourceUrl="https://www.usaspending.gov"
+        metric="Illustrative Proportional Category Share ($)"
+        formula={`Category Allocation = (Category FY Outlays ÷ Total Federal Outlays) × Entered Dollar Amount`}
+        example={`Entering $10,000 against FY2026 outlays: Social Security (21.48%) = $2,148; Defense (13.26%) = $1,326; Medicare (13.63%) = $1,363.`}
+        limitations="This calculation provides an illustrative mathematical partition. The federal government does not dedicate individual tax receipts to specific categories in this direct mechanical manner."
+      />
 
       {/* 7 FAQs + Schema */}
       <FAQSection

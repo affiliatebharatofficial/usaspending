@@ -8,6 +8,7 @@ import AmountMeaning from '@/components/calculators/AmountMeaning';
 import ShareResultButton from '@/components/calculators/ShareResultButton';
 import ExportCsvButton from '@/components/calculators/ExportCsvButton';
 import FAQSection, { FAQItem } from '@/components/common/FAQSection';
+import CalculatorMethodologyBox from '@/components/calculators/CalculatorMethodologyBox';
 import FiscalYearSelector from '@/components/visualizations/FiscalYearSelector';
 import { calculateSpendingRates, formatCurrency } from '@/lib/utils/formatters';
 import { Clock, ArrowLeft, RefreshCw, BookOpen } from 'lucide-react';
@@ -161,6 +162,15 @@ export default function SpendingRateCalculatorPage() {
           </p>
         </div>
       </div>
+
+      {/* Transparency & Methodology Box */}
+      <CalculatorMethodologyBox
+        calculatorName="Spending Rate Calculator"
+        metric="Spending Velocity (Per Day, Per Hour, Per Minute, Per Second)"
+        formula={`Daily Rate  = Annual Outlays ÷ Days In Fiscal Year (365 or 366)\nHourly Rate = Daily Rate ÷ 24\nMinute Rate = Hourly Rate ÷ 60\nSecond Rate = Minute Rate ÷ 60`}
+        example={`For an annual amount of $1,000,000,000 in FY${fiscalYear} (${fiscalYear === 2024 ? 366 : 365} days): Daily = ${formatCurrency(rates.perDay)}, Hourly = ${formatCurrency(rates.perHour)}, Per Second = ${formatCurrency(rates.perSecond)}/sec.`}
+        limitations="Rate conversions model continuous mathematical velocity over 365 or 366 fiscal days. They do not represent live electronic bank wire transactions occurring continuously around the clock."
+      />
 
       {/* 7 FAQs + Schema */}
       <FAQSection

@@ -1,4 +1,5 @@
 import React from 'react';
+import Link from 'next/link';
 import InfoPageLayout from '@/components/layout/InfoPageLayout';
 import JsonLd from '@/components/seo/JsonLd';
 import { SITE_CONFIG } from '@/lib/config/site';
@@ -82,7 +83,7 @@ export default function DisclaimerPage() {
       <section id="per-capita-disclaimer" className="data-card p-6 sm:p-8 rounded-xl border border-slate-200 bg-white space-y-4">
         <h2 className="text-2xl font-black text-slate-900">6. Per-Capita Figures</h2>
         <p className="text-slate-600 text-sm leading-relaxed">
-          Per-resident spending metrics are mathematical quotients (spending ÷ population baseline). They do not imply direct personal payments received by residents or individual tax burdens.
+          Per-resident spending metrics are mathematical quotients (spending ÷ population baseline). This is a mathematical ratio. It does not mean that each resident received this amount, paid this amount in taxes, or personally benefited from this amount.
         </p>
       </section>
 
@@ -91,6 +92,20 @@ export default function DisclaimerPage() {
         <p className="text-slate-600 text-sm leading-relaxed">
           Links to third-party or government websites (such as USAspending.gov) are provided for reference convenience. USA Spending does not control external websites or assume liability for their content.
         </p>
+
+        <div className="pt-4 border-t border-slate-100 flex flex-wrap gap-4 text-xs font-semibold text-blue-700">
+          <Link href="/methodology" className="hover:underline">
+            ← Read Full Calculation Methodology & Formulas
+          </Link>
+          <span className="text-slate-300">|</span>
+          <Link href="/data-sources" className="hover:underline">
+            Explore Official Data Sources
+          </Link>
+          <span className="text-slate-300">|</span>
+          <Link href="/calculators" className="hover:underline">
+            Interactive Calculator Suite →
+          </Link>
+        </div>
       </section>
     </InfoPageLayout>
   );
