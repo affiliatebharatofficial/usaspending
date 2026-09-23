@@ -128,7 +128,7 @@ export default function AboutPage() {
         <ul className="text-xs text-slate-600 space-y-2 list-disc pl-5">
           <li><strong>Public Data Sources:</strong> Primary reliance on public government API streams (USAspending.gov & Treasury Fiscal Data).</li>
           <li><strong>Transparent Methodology:</strong> Explicit formulas for rates, percentages, and fiscal year baselines. Read our comprehensive <Link href="/methodology" className="text-blue-700 font-bold underline hover:text-blue-900">Calculation Methodology & Transparency Report</Link>.</li>
-          <li><strong>Strict Terminology:</strong> Careful distinction between outlays, obligations, and state geographic allocations.</li>
+          <li><strong>Strict Terminology & Limitations:</strong> Careful distinction between outlays, obligations, state geographic allocations, and reporting constraints. Read our <Link href="/data-limitations" className="text-blue-700 font-bold underline hover:text-blue-900">Data Limitations & Interpretation Guide</Link>.</li>
           <li><strong>No Fake Data:</strong> Production UI displays only verified data or clear unavailable notices.</li>
         </ul>
       </section>

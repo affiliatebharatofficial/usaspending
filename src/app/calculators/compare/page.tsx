@@ -202,6 +202,10 @@ export default function CompareCalculatorPage() {
         formula={`Multiplier Ratio = Outlays of Option A ÷ Outlays of Option B\nNet Variance ($)  = Outlays of Option A − Outlays of Option B`}
         example={`Comparing ${itemA.name} (${formatCurrency(itemA.amount, true)}) vs ${itemB.name} (${formatCurrency(itemB.amount, true)}): Multiplier Ratio = ${ratio}x; Net Dollar Difference = ${formatCurrency(diff, true)}.`}
         limitations="Direct comparison of separate budget functions reflects statutory authorizations and executive disbursements. It does not imply funding fungibility between distinct agencies."
+        represents={`The relative mathematical multiplier ratio (${ratio}x) and net dollar variance between ${itemA.name} and ${itemB.name}.`}
+        doesNotRepresent="An implication that funds can be unilaterally reallocated between programs, or that programmatic outcomes scale proportionally to dollar ratios."
+        pageUrl="/calculators/compare"
+        dataPoint="Side-by-Side Spending Comparison"
       />
 
       {/* 7 FAQs + Schema */}

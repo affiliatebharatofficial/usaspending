@@ -195,6 +195,10 @@ export default function SpendingBreakdownCalculatorPage() {
         formula={`Category Allocation = (Category FY Outlays ÷ Total Federal Outlays) × Entered Dollar Amount`}
         example={`Entering $10,000 against FY2026 outlays: Social Security (21.48%) = $2,148; Defense (13.26%) = $1,326; Medicare (13.63%) = $1,363.`}
         limitations="This calculation provides an illustrative mathematical partition. The federal government does not dedicate individual tax receipts to specific categories in this direct mechanical manner."
+        represents="An illustrative mathematical division showing how any input amount would partition if split in direct ratio to official federal budget function outlays."
+        doesNotRepresent="Actual dedicated escrow accounts, citizen tax returns, or ring-fenced municipal tax allocations."
+        pageUrl="/calculators/breakdown"
+        dataPoint="Category Budget Proportions"
       />
 
       {/* 7 FAQs + Schema */}

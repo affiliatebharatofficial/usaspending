@@ -170,6 +170,10 @@ export default function SpendingRateCalculatorPage() {
         formula={`Daily Rate  = Annual Outlays ÷ Days In Fiscal Year (365 or 366)\nHourly Rate = Daily Rate ÷ 24\nMinute Rate = Hourly Rate ÷ 60\nSecond Rate = Minute Rate ÷ 60`}
         example={`For an annual amount of $1,000,000,000 in FY${fiscalYear} (${fiscalYear === 2024 ? 366 : 365} days): Daily = ${formatCurrency(rates.perDay)}, Hourly = ${formatCurrency(rates.perHour)}, Per Second = ${formatCurrency(rates.perSecond)}/sec.`}
         limitations="Rate conversions model continuous mathematical velocity over 365 or 366 fiscal days. They do not represent live electronic bank wire transactions occurring continuously around the clock."
+        represents="A continuous mathematical velocity average of an annual budget figure divided evenly across the calendar days, hours, minutes, and seconds of the selected fiscal year."
+        doesNotRepresent="A live payment stream or real-time transaction feed. Federal disbursements occur in periodic batches according to agency payroll and contracting settlement schedules."
+        pageUrl="/calculators/spending-rate"
+        dataPoint="Spending Rate Velocity"
       />
 
       {/* 7 FAQs + Schema */}

@@ -173,6 +173,10 @@ export default function AmountToTimeCalculatorPage() {
         formula={`Seconds Equivalent = Entered Dollar Amount ÷ Profile Spending Rate Per Second\nProfile Rate Per Second = Annual Outlays ÷ (365 × 86,400)`}
         example={`Entering $1,000,000,000 against Total Federal Outlays ($214,041/sec in FY2026): 1,000,000,000 ÷ 214,041 = 4,672 seconds = 1.30 hours = 0.054 days.`}
         limitations="Time equivalencies assume linear continuous spending 24 hours a day, 365 days a year across the entire fiscal year. Real disbursements follow agency billing and procurement cycles."
+        represents="The theoretical duration required for the federal government or selected department to disburse an amount equal to your input, based on linear annual rate modeling."
+        doesNotRepresent="A schedule of real-time payment disbursements or real banking processing times."
+        pageUrl="/calculators/amount-to-time"
+        dataPoint="Time Equivalency"
       />
 
       {/* 7 FAQs + Schema */}

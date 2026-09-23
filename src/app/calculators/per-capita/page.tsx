@@ -153,6 +153,10 @@ export default function PerCapitaCalculatorPage() {
         example={`For ${selectedState.name}: ${formatCurrency(selectedState.totalSpending, true)} ÷ ${selectedState.population.toLocaleString()} residents = $${selectedState.perCapita.toLocaleString()} per resident.`}
         limitations="State federal spending represents prime contract awards and assistance by place of performance or recipient address. It does not represent state government revenues, municipal budgets, or resident tax burdens."
         isPerCapita={true}
+        represents={`A mathematical quotient dividing total federal prime contract awards, grants, and direct benefit outlays attributed to ${selectedState.name} by its resident population denominator.`}
+        doesNotRepresent="Money received by every individual resident, individual tax burden, or state municipal budget revenues."
+        pageUrl="/calculators/per-capita"
+        dataPoint={`Per-Capita Federal Outlays (${selectedState.name})`}
       />
 
       {/* 7 FAQs + Schema */}

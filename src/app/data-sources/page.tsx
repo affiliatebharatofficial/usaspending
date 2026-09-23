@@ -150,6 +150,10 @@ export default function DataSourcesPage() {
             ← Read Full Calculation Methodology & Formulas
           </Link>
           <span className="text-slate-300">|</span>
+          <Link href="/data-limitations" className="hover:underline">
+            Data Limitations & Interpretation
+          </Link>
+          <span className="text-slate-300">|</span>
           <Link href="/disclaimer" className="hover:underline">
             Read Legal Disclaimer
           </Link>

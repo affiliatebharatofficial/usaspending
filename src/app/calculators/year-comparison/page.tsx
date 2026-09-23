@@ -216,6 +216,10 @@ export default function YearComparisonCalculatorPage() {
         formula={`YoY % Change = ((FY_A Outlays − FY_B Outlays) ÷ FY_B Outlays) × 100\nNet Variance   = FY_A Outlays − FY_B Outlays`}
         example={`Comparing FY${yearA} (${formatCurrency(dataA.spending, true)}) vs FY${yearB} (${formatCurrency(dataB.spending, true)}): Net Variance = ${diff >= 0 ? '+' : ''}${formatCurrency(diff, true)}; YoY Shift = ${pctChange >= 0 ? '+' : ''}${pctChange}%.`}
         limitations="Historical spending figures reflect nominal Treasury outlays recorded during each fiscal year without retrospective inflation adjustments. Emergency legislative packages (e.g. CARES Act) create discrete non-recurring outlay spikes."
+        represents="The nominal growth rate and net dollar difference between two selected federal fiscal years based on official Treasury outlay reports."
+        doesNotRepresent="Real inflation-adjusted purchasing power changes unless explicitly noted, nor discretionary policy shifts alone (since statutory entitlement growth operates automatically)."
+        pageUrl="/calculators/year-comparison"
+        dataPoint="Year-over-Year Budget Shift"
       />
 
       {/* 7 FAQs + Schema */}

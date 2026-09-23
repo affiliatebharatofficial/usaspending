@@ -8,7 +8,7 @@ import FiscalYearSelector from '@/components/visualizations/FiscalYearSelector';
 import DataFreshness from '@/components/visualizations/DataFreshness';
 import { STATES_DATA } from '@/lib/data/spendingData';
 import { formatCurrency, formatNumber, calculateSpendingRates } from '@/lib/utils/formatters';
-import { MapPin, Search, ArrowUpDown, ArrowRight, ShieldCheck } from 'lucide-react';
+import { MapPin, Search, ArrowUpDown, ArrowRight, ShieldCheck, Info } from 'lucide-react';
 
 export default function StatesExplorerPage() {
   const [selectedFY, setSelectedFY] = useState<number>(2026);
@@ -51,6 +51,17 @@ export default function StatesExplorerPage() {
         </div>
 
         <FiscalYearSelector selectedYear={selectedFY} onChange={setSelectedFY} />
+      </div>
+
+      {/* Mandatory Geographic Callout */}
+      <div className="p-4 rounded-xl bg-amber-50 border border-amber-200 text-amber-950 text-xs flex items-start space-x-3">
+        <Info className="w-5 h-5 text-amber-600 flex-shrink-0 mt-0.5" />
+        <div className="space-y-1">
+          <span className="font-bold text-amber-900 block">Important Geographic Spending Disclosure:</span>
+          <p className="leading-relaxed font-medium">
+            Important: Federal spending associated with this geographic area is not the same as the state government&apos;s budget or the amount of federal taxes paid by residents. Figures represent federal prime contract awards, grants, and direct benefits mapped to recipient locations or performance sites.
+          </p>
+        </div>
       </div>
 
       {/* Control Bar: Search + Sort */}

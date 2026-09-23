@@ -8,6 +8,8 @@ import MetricCard from '@/components/visualizations/MetricCard';
 import SpendingTrendChart from '@/components/charts/SpendingTrendChart';
 import DataFreshness from '@/components/visualizations/DataFreshness';
 import FAQSection, { FAQItem } from '@/components/common/FAQSection';
+import DataInterpretationCallout from '@/components/common/DataInterpretationCallout';
+import ReportDataIssueButton from '@/components/common/ReportDataIssueButton';
 import JsonLd from '@/components/seo/JsonLd';
 import { STATES_DATA, HISTORICAL_SPENDING } from '@/lib/data/spendingData';
 import { formatCurrency, formatNumber, calculateSpendingRates } from '@/lib/utils/formatters';
@@ -163,13 +165,13 @@ export default function StateDetailPage({ params }: Props) {
         <MetricCard label="Per Resident Figure" value={`$${formatNumber(state.perCapita)}`} subtext={`Population: ${formatNumber(state.population)}`} />
       </div>
 
-      {/* Mandatory Terminology Disclaimer */}
-      <div className="p-4 rounded-xl bg-amber-50 border border-amber-200 text-amber-900 text-xs flex items-start space-x-3 max-w-3xl mx-auto">
+      {/* Mandatory Geographic Callout */}
+      <div className="p-4 rounded-xl bg-amber-50 border border-amber-200 text-amber-950 text-xs flex items-start space-x-3 max-w-4xl mx-auto">
         <Info className="w-5 h-5 text-amber-600 flex-shrink-0 mt-0.5" />
         <div className="space-y-1">
-          <span className="font-bold block">Important Terminology Disclaimer:</span>
-          <p className="leading-relaxed">
-            This page presents <strong>federal spending associated with {state.name}</strong>. It does not represent state government budget spending, local taxation, or individual personal tax burden.
+          <span className="font-bold text-amber-900 block">Important Geographic Spending Disclosure:</span>
+          <p className="leading-relaxed font-medium">
+            Important: Federal spending associated with this {state.isTerritory ? 'territory' : 'geographic area'} is not the same as the {state.isTerritory ? 'territory' : 'state'} government&apos;s budget or the amount of federal taxes paid by residents.
           </p>
         </div>
       </div>
@@ -278,6 +280,25 @@ export default function StateDetailPage({ params }: Props) {
           })}
         </div>
       </div>
+
+      {/* Reusable Data Interpretation Callout */}
+      <DataInterpretationCallout
+        title={`What Federal Spending Data for ${state.name} Does Not Mean`}
+        subtitle={`Critical analytical distinctions for understanding federal outlays and awards associated with ${state.name}:`}
+        items={[
+          `Federal spending associated with ${state.name} does NOT represent money paid directly to the ${state.isTerritory ? 'territory' : 'state'} government.`,
+          `It does NOT represent state government tax revenue or general municipal operating funds.`,
+          `It does NOT represent the amount of federal income, payroll, or business taxes paid by residents of ${state.name}.`,
+          `The per-resident figure ($${formatNumber(state.perCapita)}) is a mathematical ratio and does NOT mean each resident received this amount, benefited equally, or incurred this tax burden.`,
+          `Figures represent federal prime awards attributed by registered place of performance or recipient legal address in USAspending.gov databases.`,
+        ]}
+        pageUrl={`/states/${state.slug}`}
+        dataPoint={`Federal spending associated with ${state.name}: ${formatCurrency(state.totalSpending, true)}`}
+        sources={[
+          { name: 'USAspending.gov', role: 'Prime awards & agency outlays', url: 'https://www.usaspending.gov' },
+          { name: 'U.S. Census Bureau', role: 'Population denominator', url: 'https://www.census.gov' },
+        ]}
+      />
 
       {/* 7 State FAQs + FAQPage Schema */}
       <FAQSection

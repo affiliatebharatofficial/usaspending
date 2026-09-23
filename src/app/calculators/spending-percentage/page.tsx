@@ -174,6 +174,10 @@ export default function SpendingPercentageCalculatorPage() {
         formula={`Percentage Share (%) = (Entered Dollar Amount ÷ Target Budget Outlays) × 100`}
         example={`Entering $1,000,000,000 against Total Federal Outlays ($6,750,000,000,000): (1,000,000,000 ÷ 6,750,000,000,000) × 100 = 0.0148%. Against Defense ($895B): (1B ÷ 895B) × 100 = 0.1117%.`}
         limitations="Comparison baselines are established from official FY2026 reported outlays on USAspending.gov. Spending execution across agencies varies monthly based on congressional appropriations and statutory obligations."
+        represents="The proportional mathematical ratio of an entered dollar sum compared against total federal outlays ($6.75T) or specific agency budget functions."
+        doesNotRepresent="An assertion that funds are interchangeable or fungible between different statutory programs, or an individual taxpayer's contribution."
+        pageUrl="/calculators/spending-percentage"
+        dataPoint="Percentage Share of Budget"
       />
 
       {/* 7 FAQs + Schema */}

@@ -17,9 +17,9 @@ export default function DataFreshness({
   const displayDate = timestamp || lastUpdated;
 
   return (
-    <div className="inline-flex items-center space-x-1.5 px-3 py-1 rounded-full bg-emerald-50 border border-emerald-200 text-emerald-900 text-xs font-semibold">
-      <ShieldCheck className="w-3.5 h-3.5 text-emerald-600 flex-shrink-0" />
-      <span>Verified Data • Sourced from {sourceName} ({displayDate})</span>
+    <div className="inline-flex items-center space-x-1.5 px-3 py-1 rounded-full bg-slate-100 border border-slate-200 text-slate-800 text-xs font-semibold">
+      <ShieldCheck className="w-3.5 h-3.5 text-blue-600 flex-shrink-0" />
+      <span>Public Government Data • Sourced from {sourceName} ({displayDate})</span>
     </div>
   );
 }

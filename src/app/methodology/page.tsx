@@ -710,8 +710,12 @@ export default function MethodologyPage() {
             ← Explore Official Data Sources
           </Link>
           <span className="text-slate-300">|</span>
+          <Link href="/data-limitations" className="hover:underline">
+            Data Limitations & Interpretation
+          </Link>
+          <span className="text-slate-300">|</span>
           <Link href="/disclaimer" className="hover:underline">
-            Read Legal Disclaimer
+            Legal Disclaimer
           </Link>
           <span className="text-slate-300">|</span>
           <Link href="/calculators" className="hover:underline">

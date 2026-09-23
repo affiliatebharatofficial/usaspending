@@ -1,6 +1,7 @@
 import React from 'react';
 import Link from 'next/link';
-import { Calculator, ArrowRight, Info, AlertTriangle, ShieldCheck } from 'lucide-react';
+import { Calculator, ArrowRight, Info, AlertTriangle, ShieldCheck, HelpCircle, Flag } from 'lucide-react';
+import ReportDataIssueButton from '@/components/common/ReportDataIssueButton';
 
 interface CalculatorMethodologyBoxProps {
   calculatorName: string;
@@ -11,6 +12,10 @@ interface CalculatorMethodologyBoxProps {
   example: string | React.ReactNode;
   limitations: string | React.ReactNode;
   isPerCapita?: boolean;
+  represents?: string | React.ReactNode;
+  doesNotRepresent?: string | React.ReactNode;
+  pageUrl?: string;
+  dataPoint?: string;
 }
 
 export default function CalculatorMethodologyBox({
@@ -22,6 +27,10 @@ export default function CalculatorMethodologyBox({
   example,
   limitations,
   isPerCapita = false,
+  represents,
+  doesNotRepresent,
+  pageUrl,
+  dataPoint,
 }: CalculatorMethodologyBoxProps) {
   return (
     <div className="data-card p-6 sm:p-8 rounded-xl border border-slate-200 bg-white space-y-6">
@@ -40,10 +49,13 @@ export default function CalculatorMethodologyBox({
           </div>
         </div>
 
-        <span className="self-start sm:self-auto inline-flex items-center gap-1 px-2.5 py-1 rounded bg-slate-100 text-slate-700 text-xs font-semibold">
-          <ShieldCheck className="w-3.5 h-3.5 text-emerald-600" />
-          Methodology v1.0
-        </span>
+        <div className="flex items-center gap-3">
+          <ReportDataIssueButton pageUrl={pageUrl} dataPoint={dataPoint} />
+          <span className="self-start sm:self-auto inline-flex items-center gap-1 px-2.5 py-1 rounded bg-slate-100 text-slate-700 text-xs font-semibold">
+            <ShieldCheck className="w-3.5 h-3.5 text-emerald-600" />
+            Methodology v1.0
+          </span>
+        </div>
       </div>
 
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6 text-xs text-slate-700">
@@ -117,18 +129,55 @@ export default function CalculatorMethodologyBox({
         </div>
       )}
 
-      {/* Cross-Link to Full Methodology */}
+      {/* Specific Interpretation Callout (Requirement 17) */}
+      {(represents || doesNotRepresent) && (
+        <div className="p-4 rounded-xl bg-slate-50 border border-slate-200 text-xs space-y-3">
+          <h3 className="text-xs font-bold text-slate-900 uppercase tracking-wider flex items-center gap-1.5">
+            <HelpCircle className="w-3.5 h-3.5 text-blue-700" />
+            Important Interpretation: What This Result Means
+          </h3>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4 text-slate-700">
+            {represents && (
+              <div className="space-y-1">
+                <span className="font-semibold text-slate-900 block text-[11px]">
+                  What the Result Represents:
+                </span>
+                <p className="text-slate-600 leading-relaxed">{represents}</p>
+              </div>
+            )}
+            {doesNotRepresent && (
+              <div className="space-y-1">
+                <span className="font-semibold text-slate-900 block text-[11px]">
+                  What the Result Does NOT Represent:
+                </span>
+                <p className="text-slate-600 leading-relaxed">{doesNotRepresent}</p>
+              </div>
+            )}
+          </div>
+        </div>
+      )}
+
+      {/* Cross-Link to Full Methodology & Data Limitations */}
       <div className="pt-3 border-t border-slate-100 flex flex-col sm:flex-row sm:items-center justify-between gap-3 text-xs">
         <p className="text-slate-500">
           USAspending.us is an independent project and is not affiliated with or endorsed by the U.S. Government or USAspending.gov.
         </p>
-        <Link
-          href="/methodology"
-          className="inline-flex items-center gap-1 font-bold text-blue-700 hover:text-blue-900 whitespace-nowrap"
-        >
-          <span>Read Full Calculation Methodology</span>
-          <ArrowRight className="w-3.5 h-3.5" />
-        </Link>
+        <div className="flex items-center gap-3">
+          <Link
+            href="/data-limitations"
+            className="font-semibold text-slate-600 hover:text-slate-900 underline"
+          >
+            Data Limitations
+          </Link>
+          <span className="text-slate-300">•</span>
+          <Link
+            href="/methodology"
+            className="inline-flex items-center gap-1 font-bold text-blue-700 hover:text-blue-900 whitespace-nowrap"
+          >
+            <span>Full Methodology</span>
+            <ArrowRight className="w-3.5 h-3.5" />
+          </Link>
+        </div>
       </div>
     </div>
   );

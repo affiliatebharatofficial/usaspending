@@ -1,19 +1,39 @@
 'use client';
 
-import React, { useState } from 'react';
+import React, { useState, useEffect, Suspense } from 'react';
+import { useSearchParams } from 'next/navigation';
 import InfoPageLayout from '@/components/layout/InfoPageLayout';
 import JsonLd from '@/components/seo/JsonLd';
 import { SITE_CONFIG } from '@/lib/config/site';
-import { Mail, Send, CheckCircle2, ShieldCheck, HelpCircle } from 'lucide-react';
+import { Mail, Send, CheckCircle2, ShieldCheck, Flag, AlertCircle } from 'lucide-react';
 
-export default function ContactPage() {
+function ContactFormInner() {
+  const searchParams = useSearchParams();
+  const initialSubject = searchParams.get('subject') || 'General Inquiry';
+  const initialUrl = searchParams.get('url') || '';
+  const initialDataPoint = searchParams.get('dataPoint') || '';
+
   const [formData, setFormData] = useState({
     name: '',
     email: '',
-    subject: 'General Inquiry',
+    subject: initialSubject,
+    pageUrl: initialUrl,
+    dataPoint: initialDataPoint,
+    sourceReference: '',
     message: '',
   });
   const [submitted, setSubmitted] = useState(false);
+
+  useEffect(() => {
+    if (initialSubject) {
+      setFormData((prev) => ({
+        ...prev,
+        subject: initialSubject,
+        pageUrl: initialUrl || prev.pageUrl,
+        dataPoint: initialDataPoint || prev.dataPoint,
+      }));
+    }
+  }, [initialSubject, initialUrl, initialDataPoint]);
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
@@ -22,6 +42,188 @@ export default function ContactPage() {
     }
   };
 
+  const isDataCorrection = formData.subject === 'Data Correction' || formData.subject === 'Data Correction / Feedback';
+
+  return (
+    <section id="contact-form" className="data-card p-6 sm:p-8 rounded-xl border border-slate-200 bg-white space-y-6">
+      <div className="border-b border-slate-100 pb-4">
+        <h2 className="text-2xl font-black text-slate-900 flex items-center gap-2">
+          {isDataCorrection ? (
+            <>
+              <Flag className="w-6 h-6 text-blue-700" />
+              Report a Data Issue / Data Correction
+            </>
+          ) : (
+            <>
+              <Mail className="w-6 h-6 text-blue-700" />
+              Send Us a Message
+            </>
+          )}
+        </h2>
+        <p className="text-xs text-slate-500 mt-1">
+          {isDataCorrection
+            ? 'Submit a data discrepancy report or request a methodology review with our technical maintainer.'
+            : 'Fill out the form below to reach the independent USA Spending data exploration team.'}
+        </p>
+      </div>
+
+      {submitted ? (
+        <div className="p-6 rounded-xl bg-emerald-50 border border-emerald-200 text-emerald-900 space-y-2 text-center">
+          <CheckCircle2 className="w-10 h-10 text-emerald-600 mx-auto" />
+          <h3 className="text-lg font-bold">Message Sent Successfully!</h3>
+          <p className="text-xs text-emerald-700">
+            Thank you for contacting us. We have received your inquiry and will respond to {formData.email} as soon as possible.
+          </p>
+          <button
+            onClick={() => {
+              setSubmitted(false);
+              setFormData({
+                name: '',
+                email: '',
+                subject: 'General Inquiry',
+                pageUrl: '',
+                dataPoint: '',
+                sourceReference: '',
+                message: '',
+              });
+            }}
+            className="mt-4 px-4 py-2 bg-emerald-700 hover:bg-emerald-600 text-white font-bold text-xs rounded-lg transition-colors"
+          >
+            Send Another Message
+          </button>
+        </div>
+      ) : (
+        <form onSubmit={handleSubmit} className="space-y-4">
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+            <div>
+              <label className="text-xs font-bold text-slate-700 uppercase block mb-1">
+                Your Name *
+              </label>
+              <input
+                type="text"
+                required
+                value={formData.name}
+                onChange={(e) => setFormData({ ...formData, name: e.target.value })}
+                placeholder="John Doe"
+                className="w-full bg-slate-50 border border-slate-300 rounded-lg p-2.5 text-xs text-slate-900 font-semibold focus:outline-none focus:border-blue-600"
+              />
+            </div>
+
+            <div>
+              <label className="text-xs font-bold text-slate-700 uppercase block mb-1">
+                Email Address *
+              </label>
+              <input
+                type="email"
+                required
+                value={formData.email}
+                onChange={(e) => setFormData({ ...formData, email: e.target.value })}
+                placeholder="john@example.com"
+                className="w-full bg-slate-50 border border-slate-300 rounded-lg p-2.5 text-xs text-slate-900 font-semibold focus:outline-none focus:border-blue-600"
+              />
+            </div>
+          </div>
+
+          <div>
+            <label className="text-xs font-bold text-slate-700 uppercase block mb-1">
+              Subject
+            </label>
+            <select
+              value={formData.subject}
+              onChange={(e) => setFormData({ ...formData, subject: e.target.value })}
+              className="w-full bg-slate-50 border border-slate-300 rounded-lg p-2.5 text-xs text-slate-900 font-semibold focus:outline-none"
+            >
+              <option value="General Inquiry">General Inquiry</option>
+              <option value="Data Correction">Data Correction / Discrepancy Report</option>
+              <option value="Technical Issue">Technical / Bug Report</option>
+              <option value="Media & Research">Media & Academic Research</option>
+              <option value="Privacy Inquiries">Privacy Inquiry</option>
+            </select>
+          </div>
+
+          {/* Dedicated Data Correction helper fields */}
+          {isDataCorrection && (
+            <div className="p-4 rounded-xl bg-blue-50/50 border border-blue-200 space-y-3">
+              <div className="flex items-center gap-1.5 text-xs font-bold text-blue-900">
+                <AlertCircle className="w-4 h-4 text-blue-600" />
+                <span>Data Discrepancy Details</span>
+              </div>
+
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                <div>
+                  <label className="text-[11px] font-bold text-slate-700 uppercase block mb-1">
+                    Page URL
+                  </label>
+                  <input
+                    type="text"
+                    value={formData.pageUrl}
+                    onChange={(e) => setFormData({ ...formData, pageUrl: e.target.value })}
+                    placeholder="https://www.usaspending.us/states/california"
+                    className="w-full bg-white border border-slate-300 rounded-lg p-2 text-xs text-slate-900 font-mono focus:outline-none focus:border-blue-600"
+                  />
+                </div>
+
+                <div>
+                  <label className="text-[11px] font-bold text-slate-700 uppercase block mb-1">
+                    Specific Data Point
+                  </label>
+                  <input
+                    type="text"
+                    value={formData.dataPoint}
+                    onChange={(e) => setFormData({ ...formData, dataPoint: e.target.value })}
+                    placeholder="e.g. FY2026 Defense Outlays ($895B)"
+                    className="w-full bg-white border border-slate-300 rounded-lg p-2 text-xs text-slate-900 focus:outline-none focus:border-blue-600"
+                  />
+                </div>
+              </div>
+
+              <div>
+                <label className="text-[11px] font-bold text-slate-700 uppercase block mb-1">
+                  Official Source / Reference Link
+                </label>
+                <input
+                  type="text"
+                  value={formData.sourceReference}
+                  onChange={(e) => setFormData({ ...formData, sourceReference: e.target.value })}
+                  placeholder="e.g. USAspending.gov API award ID or Treasury MTS Table 5"
+                  className="w-full bg-white border border-slate-300 rounded-lg p-2 text-xs text-slate-900 font-mono focus:outline-none focus:border-blue-600"
+                />
+              </div>
+            </div>
+          )}
+
+          <div>
+            <label className="text-xs font-bold text-slate-700 uppercase block mb-1">
+              {isDataCorrection ? 'Description of Discrepancy *' : 'Your Message *'}
+            </label>
+            <textarea
+              required
+              rows={5}
+              value={formData.message}
+              onChange={(e) => setFormData({ ...formData, message: e.target.value })}
+              placeholder={
+                isDataCorrection
+                  ? 'Please describe the discrepancy, the expected value, and any methodology questions...'
+                  : 'Write your message or inquiry here...'
+              }
+              className="w-full bg-slate-50 border border-slate-300 rounded-lg p-3 text-xs text-slate-900 font-medium focus:outline-none focus:border-blue-600"
+            />
+          </div>
+
+          <button
+            type="submit"
+            className="inline-flex items-center space-x-2 px-6 py-3 rounded-lg bg-blue-700 hover:bg-blue-600 text-white font-bold text-xs transition-colors shadow-sm"
+          >
+            <Send className="w-4 h-4" />
+            <span>{isDataCorrection ? 'Submit Data Correction Report' : 'Submit Message'}</span>
+          </button>
+        </form>
+      )}
+    </section>
+  );
+}
+
+export default function ContactPage() {
   const toc = [
     { id: 'contact-form', title: '1. Contact Form' },
     { id: 'direct-email', title: '2. Direct Email Inquiries' },
@@ -45,116 +247,18 @@ export default function ContactPage() {
         }}
       />
 
-      <section id="contact-form" className="data-card p-6 sm:p-8 rounded-xl border border-slate-200 bg-white space-y-6">
-        <div className="border-b border-slate-100 pb-4">
-          <h2 className="text-2xl font-black text-slate-900 flex items-center gap-2">
-            <Mail className="w-6 h-6 text-blue-700" />
-            Send Us a Message
-          </h2>
-          <p className="text-xs text-slate-500 mt-1">
-            Fill out the form below to reach the independent USA Spending data exploration team.
-          </p>
-        </div>
-
-        {submitted ? (
-          <div className="p-6 rounded-xl bg-emerald-50 border border-emerald-200 text-emerald-900 space-y-2 text-center">
-            <CheckCircle2 className="w-10 h-10 text-emerald-600 mx-auto" />
-            <h3 className="text-lg font-bold">Message Sent Successfully!</h3>
-            <p className="text-xs text-emerald-700">
-              Thank you for contacting us. We have received your inquiry and will respond to {formData.email} as soon as possible.
-            </p>
-            <button
-              onClick={() => {
-                setSubmitted(false);
-                setFormData({ name: '', email: '', subject: 'General Inquiry', message: '' });
-              }}
-              className="mt-4 px-4 py-2 bg-emerald-700 hover:bg-emerald-600 text-white font-bold text-xs rounded-lg transition-colors"
-            >
-              Send Another Message
-            </button>
-          </div>
-        ) : (
-          <form onSubmit={handleSubmit} className="space-y-4">
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-              <div>
-                <label className="text-xs font-bold text-slate-700 uppercase block mb-1">
-                  Your Name *
-                </label>
-                <input
-                  type="text"
-                  required
-                  value={formData.name}
-                  onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-                  placeholder="John Doe"
-                  className="w-full bg-slate-50 border border-slate-300 rounded-lg p-2.5 text-xs text-slate-900 font-semibold focus:outline-none focus:border-blue-600"
-                />
-              </div>
-
-              <div>
-                <label className="text-xs font-bold text-slate-700 uppercase block mb-1">
-                  Email Address *
-                </label>
-                <input
-                  type="email"
-                  required
-                  value={formData.email}
-                  onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                  placeholder="john@example.com"
-                  className="w-full bg-slate-50 border border-slate-300 rounded-lg p-2.5 text-xs text-slate-900 font-semibold focus:outline-none focus:border-blue-600"
-                />
-              </div>
-            </div>
-
-            <div>
-              <label className="text-xs font-bold text-slate-700 uppercase block mb-1">
-                Subject
-              </label>
-              <select
-                value={formData.subject}
-                onChange={(e) => setFormData({ ...formData, subject: e.target.value })}
-                className="w-full bg-slate-50 border border-slate-300 rounded-lg p-2.5 text-xs text-slate-900 font-semibold focus:outline-none"
-              >
-                <option value="General Inquiry">General Inquiry</option>
-                <option value="Data Correction">Data Correction / Feedback</option>
-                <option value="Technical Issue">Technical / Bug Report</option>
-                <option value="Media & Research">Media & Academic Research</option>
-                <option value="Privacy Inquiries">Privacy Inquiry</option>
-              </select>
-            </div>
-
-            <div>
-              <label className="text-xs font-bold text-slate-700 uppercase block mb-1">
-                Your Message *
-              </label>
-              <textarea
-                required
-                rows={5}
-                value={formData.message}
-                onChange={(e) => setFormData({ ...formData, message: e.target.value })}
-                placeholder="Write your message or inquiry here..."
-                className="w-full bg-slate-50 border border-slate-300 rounded-lg p-3 text-xs text-slate-900 font-medium focus:outline-none focus:border-blue-600"
-              />
-            </div>
-
-            <button
-              type="submit"
-              className="inline-flex items-center space-x-2 px-6 py-3 rounded-lg bg-blue-700 hover:bg-blue-600 text-white font-bold text-xs transition-colors shadow-sm"
-            >
-              <Send className="w-4 h-4" />
-              <span>Submit Message</span>
-            </button>
-          </form>
-        )}
-      </section>
+      <Suspense fallback={<div className="p-8 text-center text-xs text-slate-500">Loading form...</div>}>
+        <ContactFormInner />
+      </Suspense>
 
       <section id="direct-email" className="data-card p-6 sm:p-8 rounded-xl border border-slate-200 bg-white space-y-4">
         <h2 className="text-2xl font-black text-slate-900">2. Direct Email Inquiries</h2>
         <p className="text-slate-600 text-sm leading-relaxed">
-          You can also reach out to our team directly via email for technical questions, feedback, or legal inquiries:
+          You can also reach out to our team directly via email for technical questions, feedback, or data verification inquiries:
         </p>
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
           <div className="p-4 rounded-lg bg-slate-50 border border-slate-200 space-y-1">
-            <span className="text-xs font-bold text-slate-500 uppercase">General Contact</span>
+            <span className="text-xs font-bold text-slate-500 uppercase">General & Technical Contact</span>
             <div className="text-sm font-mono font-bold text-blue-900">{SITE_CONFIG.contactEmail}</div>
           </div>
           <div className="p-4 rounded-lg bg-slate-50 border border-slate-200 space-y-1">

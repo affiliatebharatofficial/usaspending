@@ -47,7 +47,8 @@ export default function Footer() {
             <li><Link href="/states" className="hover:text-blue-700 transition-colors">State Geographic Explorer</Link></li>
             <li><Link href="/recipients" className="hover:text-blue-700 transition-colors">Recipient Contractors</Link></li>
             <li><Link href="/spending-by-year" className="hover:text-blue-700 transition-colors">Spending by Year</Link></li>
-            <li><Link href="/calculator" className="hover:text-blue-700 transition-colors">Tax Calculator</Link></li>
+            <li><Link href="/calculator" className="hover:text-blue-700 transition-colors">Spending Calculator</Link></li>
+            <li><Link href="/where-does-my-money-go" className="hover:text-blue-700 transition-colors">Taxpayer Allocation</Link></li>
             <li><Link href="/calculators" className="hover:text-blue-700 transition-colors">Calculators Hub</Link></li>
             <li><Link href="/compare" className="hover:text-blue-700 transition-colors">Comparison Engine</Link></li>
           </ul>
@@ -66,6 +67,7 @@ export default function Footer() {
             <li><Link href="/privacy-policy" className="hover:text-blue-700 transition-colors font-bold text-slate-800">Privacy Policy</Link></li>
             <li><Link href="/terms" className="hover:text-blue-700 transition-colors font-bold text-slate-800">Terms of Service</Link></li>
             <li><Link href="/disclaimer" className="hover:text-blue-700 transition-colors">Disclaimer</Link></li>
+            <li><Link href="/data-limitations" className="hover:text-blue-700 transition-colors font-bold text-slate-800">Data Limitations</Link></li>
             <li><Link href="/methodology" className="hover:text-blue-700 transition-colors">Data Methodology</Link></li>
             <li><Link href="/data-sources" className="hover:text-blue-700 transition-colors">Government Data Sources</Link></li>
           </ul>
