@@ -138,10 +138,18 @@ export default function AboutPage() {
           6. Developer & Project Maintainer
         </h2>
         <p className="text-slate-700 text-sm leading-relaxed font-medium">
-          This project is built and maintained by <strong>Firoz Khan</strong>, an independent web developer and data enthusiast. Connect on <a href="https://www.linkedin.com/in/firoz-khan-1153358a/" target="_blank" rel="noopener noreferrer" className="text-blue-700 font-bold underline hover:text-blue-900">LinkedIn</a> or check out other projects on <a href="https://github.com/fkdigitalmedia" target="_blank" rel="noopener noreferrer" className="text-blue-700 font-bold underline hover:text-blue-900">GitHub</a>.
+          This project is built and maintained by <Link href="/about/firoz-khan" className="text-blue-700 font-bold underline hover:text-blue-900">Firoz Khan</Link>, an independent web developer and data visualization developer. Read the complete <Link href="/about/firoz-khan" className="text-blue-700 font-bold underline hover:text-blue-900">Maintainer Profile (/about/firoz-khan)</Link> for details regarding project scope, technical responsibilities, and data philosophy. Connect on <a href="https://www.linkedin.com/in/firoz-khan-1153358a/" target="_blank" rel="noopener noreferrer" className="text-blue-700 font-bold underline hover:text-blue-900">LinkedIn</a> or check out projects on <a href="https://github.com/fkdigitalmedia" target="_blank" rel="noopener noreferrer" className="text-blue-700 font-bold underline hover:text-blue-900">GitHub</a>.
         </p>
 
         <div className="flex flex-wrap gap-3 pt-2 not-prose">
+          <Link
+            href="/about/firoz-khan"
+            className="inline-flex items-center gap-2 px-4 py-2.5 rounded-lg bg-blue-700 hover:bg-blue-600 text-white font-bold text-xs transition-colors shadow-sm"
+          >
+            <UserCheck className="w-4 h-4 text-blue-200" />
+            <span>View Maintainer Profile (/about/firoz-khan)</span>
+            <ArrowRight className="w-3.5 h-3.5 text-blue-200" />
+          </Link>
           <a
             href="https://github.com/fkdigitalmedia"
             target="_blank"
@@ -149,18 +157,8 @@ export default function AboutPage() {
             className="inline-flex items-center gap-2 px-4 py-2.5 rounded-lg bg-slate-900 hover:bg-slate-800 text-white font-bold text-xs transition-colors shadow-sm"
           >
             <Code2 className="w-4 h-4 text-blue-400" />
-            <span>GitHub Profile (fkdigitalmedia)</span>
+            <span>GitHub Profile</span>
             <ExternalLink className="w-3.5 h-3.5 text-slate-400" />
-          </a>
-          <a
-            href="https://www.linkedin.com/in/firoz-khan-1153358a/"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="inline-flex items-center gap-2 px-4 py-2.5 rounded-lg bg-blue-700 hover:bg-blue-600 text-white font-bold text-xs transition-colors shadow-sm"
-          >
-            <UserCheck className="w-4 h-4 text-blue-200" />
-            <span>LinkedIn Profile (Firoz Khan)</span>
-            <ExternalLink className="w-3.5 h-3.5 text-blue-200" />
           </a>
         </div>
       </section>

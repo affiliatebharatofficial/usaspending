@@ -129,6 +129,10 @@ export default function InfoPageLayout({
                 <span>About USA Spending</span>
                 <ArrowRight className="w-3.5 h-3.5 text-blue-600" />
               </Link>
+              <Link href="/about/firoz-khan" className="p-3 rounded-lg bg-white border border-slate-200 text-blue-900 hover:border-blue-400 flex items-center justify-between">
+                <span>Maintainer Profile</span>
+                <ArrowRight className="w-3.5 h-3.5 text-blue-600" />
+              </Link>
               <Link href="/methodology" className="p-3 rounded-lg bg-white border border-slate-200 text-blue-900 hover:border-blue-400 flex items-center justify-between">
                 <span>Data Methodology</span>
                 <ArrowRight className="w-3.5 h-3.5 text-blue-600" />
@@ -141,7 +145,7 @@ export default function InfoPageLayout({
                 <span>Legal Disclaimer</span>
                 <ArrowRight className="w-3.5 h-3.5 text-blue-600" />
               </Link>
-              <Link href="/privacy" className="p-3 rounded-lg bg-white border border-slate-200 text-blue-900 hover:border-blue-400 flex items-center justify-between">
+              <Link href="/privacy-policy" className="p-3 rounded-lg bg-white border border-slate-200 text-blue-900 hover:border-blue-400 flex items-center justify-between">
                 <span>Privacy Policy</span>
                 <ArrowRight className="w-3.5 h-3.5 text-blue-600" />
               </Link>

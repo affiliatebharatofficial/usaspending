@@ -61,6 +61,7 @@ export default function Footer() {
           </h4>
           <ul className="space-y-2 font-medium">
             <li><Link href="/about" className="hover:text-blue-700 transition-colors font-bold text-slate-800">About Us</Link></li>
+            <li><Link href="/about/firoz-khan" className="hover:text-blue-700 transition-colors font-bold text-slate-800">Maintainer Profile</Link></li>
             <li><Link href="/contact" className="hover:text-blue-700 transition-colors font-bold text-slate-800">Contact Us</Link></li>
             <li><Link href="/privacy-policy" className="hover:text-blue-700 transition-colors font-bold text-slate-800">Privacy Policy</Link></li>
             <li><Link href="/terms" className="hover:text-blue-700 transition-colors font-bold text-slate-800">Terms of Service</Link></li>
@@ -88,7 +89,7 @@ export default function Footer() {
           USA Spending (usaspending.us) is an independent public data visualization website rendering public U.S. Federal Government datasets. Not affiliated with, authorized by, or endorsed by the U.S. Government or USAspending.gov.
         </p>
         <p className="text-[11px] text-slate-500">
-          Built and maintained by <a href="https://www.linkedin.com/in/firoz-khan-1153358a/" target="_blank" rel="noopener noreferrer" className="font-bold text-slate-700 hover:text-blue-700 underline">Firoz Khan</a>. Connect on <a href="https://www.linkedin.com/in/firoz-khan-1153358a/" target="_blank" rel="noopener noreferrer" className="font-bold text-slate-700 hover:text-blue-700 underline">LinkedIn</a> or check out projects on <a href="https://github.com/fkdigitalmedia" target="_blank" rel="noopener noreferrer" className="font-bold text-slate-700 hover:text-blue-700 underline">GitHub</a>.
+          Built and maintained by <Link href="/about/firoz-khan" className="font-bold text-slate-700 hover:text-blue-700 underline">Firoz Khan</Link> (Independent Web & Data Developer). Connect on <a href="https://www.linkedin.com/in/firoz-khan-1153358a/" target="_blank" rel="noopener noreferrer" className="font-bold text-slate-700 hover:text-blue-700 underline">LinkedIn</a> or check out projects on <a href="https://github.com/fkdigitalmedia" target="_blank" rel="noopener noreferrer" className="font-bold text-slate-700 hover:text-blue-700 underline">GitHub</a>.
         </p>
         <p className="text-[11px] text-slate-400">
           © {new Date().getFullYear()} USA Spending. All rights reserved.

@@ -1,7 +1,7 @@
 import React from 'react';
 
 interface JsonLdProps {
-  type: 'WebSite' | 'BreadcrumbList' | 'Dataset' | 'CollectionPage' | 'AboutPage' | 'TechArticle' | 'FAQPage';
+  type: 'WebSite' | 'BreadcrumbList' | 'Dataset' | 'CollectionPage' | 'AboutPage' | 'TechArticle' | 'FAQPage' | 'Person';
   data: any;
 }
 
@@ -57,6 +57,29 @@ export default function JsonLd({ type, data }: JsonLdProps) {
           text: faq.answer,
         },
       })),
+    };
+  } else if (type === 'Person') {
+    schema = {
+      '@context': 'https://schema.org',
+      '@type': 'Person',
+      name: data.name || 'Firoz Khan',
+      jobTitle: data.jobTitle || 'Independent Web Developer & Data Visualization Developer',
+      url: data.url ? (data.url.startsWith('http') ? data.url : `https://www.usaspending.us${data.url}`) : 'https://www.usaspending.us/about/firoz-khan',
+      sameAs: data.sameAs || [
+        'https://github.com/fkdigitalmedia',
+        'https://www.linkedin.com/in/firoz-khan-1153358a/',
+      ],
+      worksFor: {
+        '@type': 'Organization',
+        name: 'USA Spending',
+        url: 'https://www.usaspending.us',
+      },
+      knowsAbout: [
+        'Web Development',
+        'Data Visualization',
+        'REST API Integration',
+        'Public Data Transparency',
+      ],
     };
   } else if (type === 'CollectionPage' || type === 'AboutPage' || type === 'TechArticle') {
     schema = {
