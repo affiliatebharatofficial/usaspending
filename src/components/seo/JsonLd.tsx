@@ -64,6 +64,7 @@ export default function JsonLd({ type, data }: JsonLdProps) {
       '@type': 'Person',
       name: data.name || 'Firoz Khan',
       jobTitle: data.jobTitle || 'Independent Web Developer & Data Visualization Developer',
+      image: data.image || 'https://www.usaspending.us/images/firoz-khan.webp',
       url: data.url ? (data.url.startsWith('http') ? data.url : `https://www.usaspending.us${data.url}`) : 'https://www.usaspending.us/about/firoz-khan',
       sameAs: data.sameAs || [
         'https://github.com/fkdigitalmedia',

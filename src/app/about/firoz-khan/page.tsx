@@ -1,5 +1,6 @@
 import React from 'react';
 import Link from 'next/link';
+import Image from 'next/image';
 import InfoPageLayout from '@/components/layout/InfoPageLayout';
 import JsonLd from '@/components/seo/JsonLd';
 import { SITE_CONFIG } from '@/lib/config/site';
@@ -51,6 +52,7 @@ export default function FirozKhanProfilePage() {
         data={{
           name: 'Firoz Khan',
           jobTitle: 'Independent Web Developer & Data Visualization Developer',
+          image: 'https://www.usaspending.us/images/firoz-khan.webp',
           url: '/about/firoz-khan',
           sameAs: [
             'https://github.com/fkdigitalmedia',
@@ -60,14 +62,47 @@ export default function FirozKhanProfilePage() {
       />
 
       {/* 1. About the Maintainer */}
-      <section id="about-maintainer" className="data-card p-6 sm:p-8 rounded-xl border border-slate-200 bg-white space-y-4">
-        <div className="flex items-center gap-3 border-b border-slate-100 pb-3">
-          <div className="w-10 h-10 rounded-full bg-blue-100 text-blue-800 flex items-center justify-center font-bold text-lg">
-            FK
+      <section id="about-maintainer" className="data-card p-6 sm:p-8 rounded-xl border border-slate-200 bg-white space-y-6">
+        <div className="flex flex-col sm:flex-row items-center sm:items-start gap-6 border-b border-slate-100 pb-6">
+          <div className="relative w-28 h-28 sm:w-32 sm:h-32 rounded-2xl overflow-hidden shadow-md border-2 border-blue-600/30 flex-shrink-0 bg-slate-900">
+            <Image
+              src="/images/firoz-khan.webp"
+              alt="Firoz Khan - Independent Web Developer & Data Visualization Developer"
+              fill
+              className="object-cover"
+              priority
+            />
           </div>
-          <div>
-            <h2 className="text-2xl font-black text-slate-900">1. About the Maintainer</h2>
-            <p className="text-xs text-slate-500 font-medium">Independent Developer & Site Maintainer</p>
+          <div className="space-y-2 text-center sm:text-left flex-1">
+            <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-semibold bg-blue-50 text-blue-800 border border-blue-200">
+              <UserCheck className="w-3.5 h-3.5 text-blue-700" />
+              <span>Independent Developer & Site Maintainer</span>
+            </div>
+            <h2 className="text-2xl sm:text-3xl font-black text-slate-900">Firoz Khan</h2>
+            <p className="text-xs sm:text-sm text-slate-600 font-medium">
+              Web Developer & Data Visualization Developer • Founder & Maintainer of USAspending.us
+            </p>
+            <div className="flex flex-wrap items-center justify-center sm:justify-start gap-3 pt-1 text-xs">
+              <a
+                href="https://github.com/fkdigitalmedia"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-1.5 text-slate-700 hover:text-blue-700 font-semibold transition-colors"
+              >
+                <Code2 className="w-3.5 h-3.5 text-blue-600" />
+                <span>github.com/fkdigitalmedia</span>
+              </a>
+              <span className="text-slate-300">•</span>
+              <a
+                href="https://www.linkedin.com/in/firoz-khan-1153358a/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-1.5 text-slate-700 hover:text-blue-700 font-semibold transition-colors"
+              >
+                <ExternalLink className="w-3.5 h-3.5 text-blue-600" />
+                <span>LinkedIn Profile</span>
+              </a>
+            </div>
           </div>
         </div>
 

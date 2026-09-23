@@ -1,5 +1,6 @@
 import React from 'react';
 import Link from 'next/link';
+import Image from 'next/image';
 import InfoPageLayout from '@/components/layout/InfoPageLayout';
 import JsonLd from '@/components/seo/JsonLd';
 import { SITE_CONFIG } from '@/lib/config/site';
@@ -132,16 +133,32 @@ export default function AboutPage() {
         </ul>
       </section>
 
-      <section id="creator-notice" className="data-card p-6 sm:p-8 rounded-xl border border-slate-200 bg-white space-y-4">
-        <h2 className="text-2xl font-black text-slate-900 flex items-center gap-2">
-          <UserCheck className="w-6 h-6 text-blue-700" />
-          6. Developer & Project Maintainer
-        </h2>
+      <section id="creator-notice" className="data-card p-6 sm:p-8 rounded-xl border border-slate-200 bg-white space-y-6">
+        <div className="flex flex-col sm:flex-row items-center sm:items-start gap-5 border-b border-slate-100 pb-5">
+          <div className="relative w-20 h-20 sm:w-24 sm:h-24 rounded-2xl overflow-hidden shadow-md border-2 border-blue-600/30 flex-shrink-0 bg-slate-900">
+            <Image
+              src="/images/firoz-khan.webp"
+              alt="Firoz Khan - Independent Web Developer & Data Visualization Developer"
+              fill
+              className="object-cover"
+            />
+          </div>
+          <div className="space-y-1 text-center sm:text-left flex-1">
+            <h2 className="text-xl sm:text-2xl font-black text-slate-900 flex items-center justify-center sm:justify-start gap-2">
+              <UserCheck className="w-5 h-5 text-blue-700" />
+              6. Developer & Project Maintainer
+            </h2>
+            <p className="text-xs text-slate-500 font-semibold">
+              Firoz Khan • Independent Web Developer & Data Visualization Developer
+            </p>
+          </div>
+        </div>
+
         <p className="text-slate-700 text-sm leading-relaxed font-medium">
           This project is built and maintained by <Link href="/about/firoz-khan" className="text-blue-700 font-bold underline hover:text-blue-900">Firoz Khan</Link>, an independent web developer and data visualization developer. Read the complete <Link href="/about/firoz-khan" className="text-blue-700 font-bold underline hover:text-blue-900">Maintainer Profile (/about/firoz-khan)</Link> for details regarding project scope, technical responsibilities, and data philosophy. Connect on <a href="https://www.linkedin.com/in/firoz-khan-1153358a/" target="_blank" rel="noopener noreferrer" className="text-blue-700 font-bold underline hover:text-blue-900">LinkedIn</a> or check out projects on <a href="https://github.com/fkdigitalmedia" target="_blank" rel="noopener noreferrer" className="text-blue-700 font-bold underline hover:text-blue-900">GitHub</a>.
         </p>
 
-        <div className="flex flex-wrap gap-3 pt-2 not-prose">
+        <div className="flex flex-wrap gap-3 pt-1 not-prose">
           <Link
             href="/about/firoz-khan"
             className="inline-flex items-center gap-2 px-4 py-2.5 rounded-lg bg-blue-700 hover:bg-blue-600 text-white font-bold text-xs transition-colors shadow-sm"
