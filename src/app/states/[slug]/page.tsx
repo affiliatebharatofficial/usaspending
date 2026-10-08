@@ -11,7 +11,8 @@ import FAQSection, { FAQItem } from '@/components/common/FAQSection';
 import DataInterpretationCallout from '@/components/common/DataInterpretationCallout';
 import ReportDataIssueButton from '@/components/common/ReportDataIssueButton';
 import JsonLd from '@/components/seo/JsonLd';
-import { STATES_DATA, HISTORICAL_SPENDING } from '@/lib/data/spendingData';
+import { STATES_DATA, HISTORICAL_SPENDING, TOTAL_FEDERAL_SPENDING_FY2026 } from '@/lib/data/spendingData';
+import { getStateEditorialContent } from '@/lib/states/editorial';
 import { formatCurrency, formatNumber, calculateSpendingRates } from '@/lib/utils/formatters';
 import { ArrowLeft, ShieldCheck, TrendingUp, Building2, Award, GitCompare, Info, BookOpen } from 'lucide-react';
 import type { Metadata } from 'next';
@@ -24,6 +25,7 @@ interface Props {
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const state = STATES_DATA.find((s) => s.slug === params.slug || s.code.toLowerCase() === params.slug);
+  const editorial = state ? getStateEditorialContent(state.slug) : undefined;
 
   if (!state) {
     return {
@@ -33,7 +35,9 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 
   return {
     title: `Federal Spending in ${state.name} — FY2026 | USA Spending`,
-    description: `Explore federal spending associated with ${state.name} in FY2026. View agency outlays, prime contract awards, and historical spending trends.`,
+    description: editorial?.tagline
+      ? `${editorial.tagline} Explore federal spending associated with ${state.name} in FY2026.`
+      : `Explore federal spending associated with ${state.name} in FY2026. View agency outlays, prime contract awards, and historical spending trends.`,
     alternates: {
       canonical: `https://www.usaspending.us/states/${state.slug}`,
     },
@@ -48,6 +52,7 @@ export default function StateDetailPage({ params }: Props) {
   }
 
   const rates = calculateSpendingRates(state.totalSpending);
+  const editorial = getStateEditorialContent(state.slug);
 
   const awardTypeDonut = [
     { name: 'Prime Contracts', amount: state.contractsAmount, percentage: 55.0, color: '#1e3a8a' },
@@ -57,13 +62,18 @@ export default function StateDetailPage({ params }: Props) {
 
   const trendData = HISTORICAL_SPENDING.map((h) => ({
     year: h.year,
-    amount: Math.round(state.totalSpending * (h.spending / 6_750_000_000_000)),
+    amount: Math.round(state.totalSpending * (h.spending / TOTAL_FEDERAL_SPENDING_FY2026)),
   }));
 
   const comparedStates = STATES_DATA.filter((s) => s.id !== state.id).slice(0, 4);
 
-  // 7 Custom State FAQs
+  // State FAQs: editorial FAQs when available, else template FAQs
+  const editorialFAQs: FAQItem[] = (editorial?.faqs || []).map((f) => ({
+    question: f.question,
+    answer: f.answer,
+  }));
   const stateFAQs: FAQItem[] = [
+    ...editorialFAQs,
     {
       question: `What is the total federal spending associated with ${state.name} in FY2026?`,
       answer: `In FY2026, federal spending associated with ${state.name} totals approximately ${formatCurrency(state.totalSpending, true)}, representing roughly ${state.percentage}% of overall federal outlays.`,
@@ -244,20 +254,79 @@ export default function StateDetailPage({ params }: Props) {
         </div>
 
         <div className="space-y-4 text-xs text-slate-700 leading-relaxed max-w-4xl">
-          <p>
-            Federal spending allocated to <strong>{state.name}</strong> represents a significant driver of local economic velocity, industrial manufacturing, healthcare support, and infrastructure development. In Fiscal Year 2026, total reported federal spending associated with {state.name} stands at <strong>{formatCurrency(state.totalSpending, true)}</strong>, which represents <strong>{state.percentage}%</strong> of total United States federal outlays.
-          </p>
-          <p>
-            When analyzed relative to population, federal outlays in {state.name} equal approximately <strong>${formatNumber(state.perCapita)} per resident</strong> based on an estimated baseline population of <strong>{formatNumber(state.population)}</strong>. On a daily flow rate, federal funding in {state.name} averages <strong>{formatCurrency(rates.perDay, true)} per day</strong>, or roughly <strong>{formatCurrency(rates.perHour, true)} every hour</strong>.
-          </p>
-          <p>
-            The distribution of federal dollars in {state.name} spans three primary financial mechanisms: <strong>Prime Contracts</strong> ({formatCurrency(state.contractsAmount, true)}), <strong>Grants & Assistance</strong> ({formatCurrency(state.grantsAmount, true)}), and <strong>Other Financial Awards</strong> ({formatCurrency(state.otherAwardsAmount, true)}). Prime contract outlays support local defense facilities, technology research, and civil infrastructure projects, while grants support healthcare assistance under Medicaid, higher education research, and public transportation grants.
-          </p>
-          <p>
-            Major executive departments maintaining active spending programs in {state.name} include {state.majorAgencies.map((a) => a.name).join(', ')}. Furthermore, major prime contract recipients performing work within {state.name} include leading contractors such as {state.majorRecipients.map((r) => r.name).join(', ')}. State-level attributions are modeled estimates for comparison purposes — see the methodology note below.
-          </p>
+          {editorial ? (
+            <>
+              <p className="text-sm font-semibold text-blue-900">{editorial.tagline}</p>
+              {editorial.overview.map((para, i) => (
+                <p key={i}>{para}</p>
+              ))}
+              <p>
+                In Fiscal Year 2026, modeled federal spending associated with {state.name} stands at approximately <strong>{formatCurrency(state.totalSpending, true)}</strong> — about <strong>{state.percentage}%</strong> of total U.S. federal outlays and roughly <strong>${formatNumber(state.perCapita)} per resident</strong>.
+              </p>
+            </>
+          ) : (
+            <>
+              <p>
+                Federal spending allocated to <strong>{state.name}</strong> represents a significant driver of local economic velocity, industrial manufacturing, healthcare support, and infrastructure development. In Fiscal Year 2026, total reported federal spending associated with {state.name} stands at <strong>{formatCurrency(state.totalSpending, true)}</strong>, which represents <strong>{state.percentage}%</strong> of total United States federal outlays.
+              </p>
+              <p>
+                When analyzed relative to population, federal outlays in {state.name} equal approximately <strong>${formatNumber(state.perCapita)} per resident</strong> based on an estimated baseline population of <strong>{formatNumber(state.population)}</strong>. On a daily flow rate, federal funding in {state.name} averages <strong>{formatCurrency(rates.perDay, true)} per day</strong>, or roughly <strong>{formatCurrency(rates.perHour, true)} every hour</strong>.
+              </p>
+              <p>
+                The distribution of federal dollars in {state.name} spans three primary financial mechanisms: <strong>Prime Contracts</strong> ({formatCurrency(state.contractsAmount, true)}), <strong>Grants & Assistance</strong> ({formatCurrency(state.grantsAmount, true)}), and <strong>Other Financial Awards</strong> ({formatCurrency(state.otherAwardsAmount, true)}). Prime contract outlays support local defense facilities, technology research, and civil infrastructure projects, while grants support healthcare assistance under Medicaid, higher education research, and public transportation grants.
+              </p>
+              <p>
+                Major executive departments maintaining active spending programs in {state.name} include {state.majorAgencies.map((a) => a.name).join(', ')}. Furthermore, major prime contract recipients performing work within {state.name} include leading contractors such as {state.majorRecipients.map((r) => r.name).join(', ')}. State-level attributions are modeled estimates for comparison purposes — see the methodology note below.
+              </p>
+            </>
+          )}
         </div>
       </div>
+
+      {editorial && (
+        <>
+          {/* Key federal installations */}
+          <div className="data-card p-6 sm:p-8 rounded-xl border border-slate-200 bg-white space-y-4">
+            <div className="border-b border-slate-100 pb-4 flex items-center space-x-2">
+              <Building2 className="w-5 h-5 text-blue-700" />
+              <h2 className="text-xl font-bold text-slate-900">
+                Key Federal Installations & Programs in {state.name}
+              </h2>
+            </div>
+            <ul className="space-y-3 max-w-4xl">
+              {editorial.keyInstallations.map((inst, i) => (
+                <li key={i} className="text-xs text-slate-700 leading-relaxed">
+                  <strong className="text-slate-900">{inst.name}:</strong> {inst.detail}
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          {/* Economic context */}
+          <div className="data-card p-6 sm:p-8 rounded-xl border border-slate-200 bg-white space-y-4">
+            <div className="border-b border-slate-100 pb-4 flex items-center space-x-2">
+              <TrendingUp className="w-5 h-5 text-blue-700" />
+              <h2 className="text-xl font-bold text-slate-900">
+                Economic Context: {state.name} & Federal Dollars
+              </h2>
+            </div>
+            <p className="text-xs text-slate-700 leading-relaxed max-w-4xl">{editorial.economicContext}</p>
+          </div>
+
+          {/* Did you know */}
+          <div className="data-card p-6 sm:p-8 rounded-xl border border-blue-200 bg-blue-50/50 space-y-4">
+            <h2 className="text-xl font-bold text-slate-900">Did You Know? {state.name} Federal Spending Facts</h2>
+            <ul className="space-y-2 max-w-4xl">
+              {editorial.didYouKnow.map((fact, i) => (
+                <li key={i} className="text-xs text-slate-700 leading-relaxed flex gap-2">
+                  <span className="text-blue-700 font-bold">•</span>
+                  <span>{fact}</span>
+                </li>
+              ))}
+            </ul>
+          </div>
+        </>
+      )}
 
       {/* State Comparisons Links */}
       <div className="data-card rounded-xl p-6 sm:p-8 border border-slate-200 bg-white space-y-4">
