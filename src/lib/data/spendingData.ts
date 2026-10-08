@@ -4,47 +4,84 @@ import { STATE_REGISTRY } from '../states/registry';
 
 export const CURRENT_FISCAL_YEAR = 2026;
 
-// Historical total federal budget outlays (USD)
+// FY2026 data covers Oct 1, 2025 – Aug 31, 2026 (335 days), the latest
+// published Monthly Treasury Statement as of the October 2026 refresh.
+export const FY2026_DAYS_ELAPSED = 335;
+export const DATA_COVERAGE_LABEL = 'Through August 31, 2026';
+
+// Historical total federal outlays (USD) — Monthly Treasury Statement,
+// Table 9, September final for FY2018–FY2025; FY2026 is FYTD through Aug 2026.
 export const ANNUAL_TOTAL_BUDGET: Record<number, number> = {
-  2018: 4_108_000_000_000,
-  2019: 4_447_000_000_000,
-  2020: 6_552_000_000_000,
-  2021: 6_818_000_000_000,
-  2022: 6_272_000_000_000,
-  2023: 6_134_000_000_000,
-  2024: 6_440_000_000_000,
-  2025: 6_580_000_000_000,
-  2026: 6_750_000_000_000,
+  2018: 4_107_741_496_584,
+  2019: 4_446_583_636_481,
+  2020: 6_551_872_254_654,
+  2021: 6_818_157_647_017,
+  2022: 6_271_507_596_876,
+  2023: 6_134_432_040_451,
+  2024: 6_751_551_633_812,
+  2025: 7_009_973_667_049,
+  2026: 6_811_043_257_196,
+};
+
+// Historical total federal receipts (USD) — same MTS source & vintage.
+export const ANNUAL_TOTAL_RECEIPTS: Record<number, number> = {
+  2018: 3_328_745_244_718,
+  2019: 3_462_195_610_149,
+  2020: 3_419_955_005_765,
+  2021: 4_045_978_858_727,
+  2022: 4_896_119_043_921,
+  2023: 4_439_283_739_921,
+  2024: 4_918_735_644_738,
+  2025: 5_234_616_386_315,
+  2026: 4_845_452_239_723,
 };
 
 export const TOTAL_FEDERAL_SPENDING_FY2026 = ANNUAL_TOTAL_BUDGET[2026];
 
-// Base Outlay Amounts for FY2026 by Canonical Slug
+// Base Outlay Amounts for FY2026 by Canonical Slug — MTS Table 9 budget
+// functions, FYTD through Aug 31, 2026. Health-function total is shown under
+// the Health Programs category (incl. Medicaid); function 250 under Science.
 const CATEGORY_OUTLAYS_FY2026: Record<string, number> = {
-  'social-security-spending': 1_450_000_000_000,
-  'medicare-spending': 920_000_000_000,
-  'defense-military': 895_000_000_000,
-  'medicaid-spending': 680_000_000_000,
-  'veterans-affairs-spending': 325_000_000_000,
-  'education-training': 240_000_000_000,
-  'agriculture-food-assistance': 165_000_000_000,
-  'infrastructure-transport': 135_000_000_000,
-  'science-medical-research': 45_000_000_000,
-  'nasa-space-exploration': 25_400_000_000,
+  'social-security-spending': 1_525_869_028_279,
+  'medicare-spending': 979_300_323_725,
+  'defense-military': 876_163_147_483,
+  'medicaid-spending': 925_697_746_444,
+  'veterans-affairs-spending': 395_646_633_236,
+  'education-training': 91_952_446_165,
+  'agriculture-food-assistance': 51_012_897_156,
+  'infrastructure-transport': 126_436_540_460,
+  'science-medical-research': 36_244_370_835,
+  'net-interest-spending': 1_016_966_437_408,
 };
 
-// Multi-year factors relative to FY2026 for categories
-const FY_FACTORS: Record<number, number> = {
-  2018: 0.69,
-  2019: 0.74,
-  2020: 0.88,
-  2021: 0.94,
-  2022: 0.90,
-  2023: 0.92,
-  2024: 0.96,
-  2025: 0.98,
-  2026: 1.00,
+// Per-category fiscal-year factors (year value / FY2026 value), derived from
+// MTS Table 9 actuals for 2018, 2020, 2022, 2024 and FY2026 FYTD.
+const CATEGORY_FY_FACTORS: Record<string, Record<number, number>> = {
+  'social-security-spending': { 2018: 0.6474, 2020: 0.7182, 2022: 0.7987, 2024: 0.9574, 2026: 1.0 },
+  'medicare-spending': { 2018: 0.6012, 2020: 0.7926, 2022: 0.7711, 2024: 0.8926, 2026: 1.0 },
+  'defense-military': { 2018: 0.7586, 2020: 0.8288, 2022: 0.8750, 2024: 0.9976, 2026: 1.0 },
+  'medicaid-spending': { 2018: 0.5601, 2020: 0.8084, 2022: 0.9879, 2024: 0.9849, 2026: 1.0 },
+  'veterans-affairs-spending': { 2018: 0.4521, 2020: 0.5527, 2022: 0.6936, 2024: 0.8224, 2026: 1.0 },
+  'education-training': { 2018: 1.0209, 2020: 2.5744, 2022: 7.3581, 2024: 3.3172, 2026: 1.0 },
+  'agriculture-food-assistance': { 2018: 0.4654, 2020: 0.9635, 2022: 0.6839, 2024: 0.6811, 2026: 1.0 },
+  'infrastructure-transport': { 2018: 0.7369, 2020: 1.1560, 2022: 1.0406, 2024: 1.0845, 2026: 1.0 },
+  'science-medical-research': { 2018: 0.8716, 2020: 0.9397, 2022: 1.0341, 2024: 1.1467, 2026: 1.0 },
+  'net-interest-spending': { 2018: 0.3193, 2020: 0.3390, 2022: 0.4672, 2024: 0.8669, 2026: 1.0 },
 };
+
+// Fallback: total-outlay ratio vs FY2026, for fiscal years without
+// category-level actuals.
+function totalOutlayFactor(fy: number): number {
+  const total = ANNUAL_TOTAL_BUDGET[fy];
+  if (!total) return 1.0;
+  return total / ANNUAL_TOTAL_BUDGET[2026];
+}
+
+export function categoryFactorForFY(slug: string, fy: number): number {
+  const perCat = CATEGORY_FY_FACTORS[slug];
+  if (perCat && perCat[fy] !== undefined) return perCat[fy];
+  return totalOutlayFactor(fy);
+}
 
 export interface SubcategoryItem {
   name: string;
@@ -105,97 +142,69 @@ const CATEGORY_DETAILS: Record<string, {
   recipientRefs: CategoryRecipientRef[];
   stateRefs?: CategoryStateRef[];
 }> = {
-  'nasa-space-exploration': {
-    subcategories: [
-      { name: 'Science Missions (Biomedical, Earth & Planetary)', amount: 7_800_000_000, percentage: 30.7 },
-      { name: 'Deep Space Exploration Systems (Artemis Lunar)', amount: 7_600_000_000, percentage: 29.9 },
-      { name: 'Space Operations & ISS Station Support', amount: 4_200_000_000, percentage: 16.5 },
-      { name: 'Safety, Security & Mission Services', amount: 3_100_000_000, percentage: 12.2 },
-      { name: 'Construction & Environmental Restoration', amount: 1_800_000_000, percentage: 7.1 },
-      { name: 'Aeronautics Research', amount: 900_000_000, percentage: 3.5 },
-    ],
-    primaryAgencies: ['National Aeronautics and Space Administration', 'Department of Defense'],
-    agencyRefs: [
-      { name: 'NASA', slug: 'nasa-space-exploration', amount: 25_400_000_000 },
-      { name: 'Department of Defense (Space Force Link)', slug: 'department-of-defense', amount: 4_500_000_000 },
-    ],
-    topRecipients: ['Lockheed Martin Space Systems', 'Boeing Company', 'SpaceX', 'Northrop Grumman Innovation'],
-    recipientRefs: [
-      { name: 'Lockheed Martin Space Systems', slug: 'lockheed-martin', amount: 4_500_000_000 },
-      { name: 'Boeing Company', slug: 'boeing', amount: 3_800_000_000 },
-      { name: 'Space Exploration Technologies (SpaceX)', slug: 'spacex', amount: 3_200_000_000 },
-      { name: 'Northrop Grumman Innovation Systems', slug: 'northrop-grumman', amount: 2_100_000_000 },
-    ],
-  },
   'agriculture-food-assistance': {
     subcategories: [
-      { name: 'SNAP & Supplemental Nutrition Grants', amount: 112_500_000_000, percentage: 68.2 },
-      { name: 'Crop Insurance & Risk Management', amount: 18_500_000_000, percentage: 11.2 },
-      { name: 'Farm Services & Commodity Support', amount: 16_000_000_000, percentage: 9.7 },
-      { name: 'Forest Service & Conservation Reserves', amount: 12_800_000_000, percentage: 7.8 },
-      { name: 'Agricultural Research Services', amount: 5_200_000_000, percentage: 3.1 },
+      { name: 'Farm Commodity & Conservation Programs', amount: 20_400_000_000, percentage: 40.0 },
+      { name: 'Crop Insurance & Risk Management', amount: 17_900_000_000, percentage: 35.1 },
+      { name: 'Agricultural Research & Services', amount: 7_700_000_000, percentage: 15.1 },
+      { name: 'Rural Development & Other Programs', amount: 5_000_000_000, percentage: 9.8 },
     ],
-    primaryAgencies: ['Department of Agriculture (USDA)', 'Department of Health & Human Services'],
+    primaryAgencies: ['Department of Agriculture (USDA)'],
     agencyRefs: [
-      { name: 'Department of Agriculture (USDA)', slug: 'department-of-agriculture', amount: 155_000_000_000 },
-      { name: 'Department of Health & Human Services', slug: 'department-of-health-and-human-services', amount: 10_000_000_000 },
+      { name: 'Department of Agriculture (USDA)', slug: 'department-of-agriculture', amount: 51_000_000_000 },
     ],
-    topRecipients: ['State Nutrition Assistance Agencies', 'Archer-Daniels-Midland', 'Cargill Inc.'],
+    topRecipients: ['Crop Insurance Providers', 'Farm Program Participants', 'Agricultural Research Institutions'],
     recipientRefs: [
-      { name: 'State Social Services Channel', slug: 'state-agencies', amount: 112_500_000_000 },
-      { name: 'Archer-Daniels-Midland Company', slug: 'adm', amount: 2_400_000_000 },
-      { name: 'Cargill Incorporated', slug: 'cargill', amount: 1_800_000_000 },
+      { name: 'Federal Crop Insurance Program', slug: 'crop-insurance', amount: 17_900_000_000 },
     ],
   },
   'science-medical-research': {
     subcategories: [
-      { name: 'NIH Biomedical & Health Research Grants', amount: 36_200_000_000, percentage: 80.4 },
-      { name: 'NSF Basic Science & STEM Research', amount: 7_200_000_000, percentage: 16.0 },
-      { name: 'NIST Technology & Measurement Standards', amount: 1_600_000_000, percentage: 3.6 },
+      { name: 'NASA Space Programs', amount: 24_600_000_000, percentage: 67.9 },
+      { name: 'NSF Basic Science & STEM Research', amount: 9_100_000_000, percentage: 25.1 },
+      { name: 'DOE Science & Other Research Programs', amount: 2_500_000_000, percentage: 6.9 },
     ],
-    primaryAgencies: ['Department of Health & Human Services (NIH)', 'National Science Foundation (NSF)'],
+    primaryAgencies: ['National Aeronautics and Space Administration', 'National Science Foundation (NSF)'],
     agencyRefs: [
-      { name: 'Department of Health & Human Services', slug: 'department-of-health-and-human-services', amount: 36_200_000_000 },
-      { name: 'National Science Foundation', slug: 'national-science-foundation', amount: 7_200_000_000 },
+      { name: 'NASA', slug: 'nasa', amount: 24_600_000_000 },
+      { name: 'National Science Foundation', slug: 'national-science-foundation', amount: 9_100_000_000 },
     ],
-    topRecipients: ['Johns Hopkins University', 'University of California System', 'Harvard University'],
+    topRecipients: ['SpaceX', 'Lockheed Martin Space Systems', 'Research Universities'],
     recipientRefs: [
-      { name: 'Johns Hopkins University', slug: 'johns-hopkins', amount: 1_250_000_000 },
-      { name: 'University of California System', slug: 'uc-system', amount: 1_180_000_000 },
-      { name: 'Harvard University', slug: 'harvard', amount: 920_000_000 },
+      { name: 'Space Exploration Technologies (SpaceX)', slug: 'spacex', amount: 3_200_000_000 },
+      { name: 'Lockheed Martin Space Systems', slug: 'lockheed-martin', amount: 2_800_000_000 },
     ],
   },
   'education-training': {
     subcategories: [
-      { name: 'Federal Pell Grants & Student Financial Aid', amount: 118_000_000_000, percentage: 49.2 },
-      { name: 'Higher Education Stabilization & Student Loans', amount: 45_300_000_000, percentage: 18.9 },
-      { name: 'Vocational, Adult Ed & Career Training', amount: 32_000_000_000, percentage: 13.3 },
-      { name: 'K-12 Title I Elementary Aid Grants', amount: 28_500_000_000, percentage: 11.9 },
-      { name: 'Special Education (IDEA Grants)', amount: 16_200_000_000, percentage: 6.7 },
+      { name: 'Federal Pell Grants & Student Financial Aid', amount: 32_200_000_000, percentage: 35.0 },
+      { name: 'K-12 Title I & Special Education Grants', amount: 27_600_000_000, percentage: 30.0 },
+      { name: 'Higher Education Programs', amount: 18_400_000_000, percentage: 20.0 },
+      { name: 'Career, Technical & Adult Education', amount: 13_800_000_000, percentage: 15.0 },
     ],
     primaryAgencies: ['Department of Education', 'Department of Labor'],
     agencyRefs: [
-      { name: 'Department of Education', slug: 'department-of-education', amount: 215_000_000_000 },
-      { name: 'Department of Labor', slug: 'department-of-labor', amount: 25_000_000_000 },
+      { name: 'Department of Education', slug: 'department-of-education', amount: 82_000_000_000 },
+      { name: 'Department of Labor', slug: 'department-of-labor', amount: 10_000_000_000 },
     ],
-    topRecipients: ['State Departments of Education', 'State University Systems', 'Pell Grant Beneficiaries'],
+    topRecipients: ['State Departments of Education', 'Pell Grant Beneficiaries', 'University Systems'],
     recipientRefs: [
-      { name: 'State K-12 Educational Agencies', slug: 'state-education-agencies', amount: 44_700_000_000 },
-      { name: 'University System Beneficiaries', slug: 'university-systems', amount: 118_000_000_000 },
+      { name: 'State K-12 Educational Agencies', slug: 'state-education-agencies', amount: 27_600_000_000 },
+      { name: 'Pell Grant Beneficiaries', slug: 'pell-beneficiaries', amount: 32_200_000_000 },
     ],
   },
   'defense-military': {
     subcategories: [
-      { name: 'Operation & Maintenance (O&M)', amount: 320_000_000_000, percentage: 35.8 },
-      { name: 'Military Personnel Pay & Allowances', amount: 182_000_000_000, percentage: 20.3 },
-      { name: 'Procurement & Weapon Systems', amount: 172_000_000_000, percentage: 19.2 },
-      { name: 'Research, Development, Test & Eval (RDT&E)', amount: 145_000_000_000, percentage: 16.2 },
-      { name: 'Military Family Housing & Base Support', amount: 60_000_000_000, percentage: 6.7 },
-      { name: 'Military Construction Projects', amount: 16_000_000_000, percentage: 1.8 },
+      { name: 'Operation & Maintenance (O&M)', amount: 313_300_000_000, percentage: 35.8 },
+      { name: 'Military Personnel Pay & Allowances', amount: 178_200_000_000, percentage: 20.3 },
+      { name: 'Procurement & Weapon Systems', amount: 168_400_000_000, percentage: 19.2 },
+      { name: 'Research, Development, Test & Eval (RDT&E)', amount: 141_900_000_000, percentage: 16.2 },
+      { name: 'Military Family Housing & Base Support', amount: 58_700_000_000, percentage: 6.7 },
+      { name: 'Military Construction Projects', amount: 15_700_000_000, percentage: 1.8 },
     ],
     primaryAgencies: ['Department of Defense', 'U.S. Army', 'U.S. Navy', 'U.S. Air Force'],
     agencyRefs: [
-      { name: 'Department of Defense', slug: 'department-of-defense', amount: 895_000_000_000 },
+      { name: 'Department of Defense', slug: 'department-of-defense', amount: 876_200_000_000 },
     ],
     topRecipients: ['Lockheed Martin', 'Boeing', 'Raytheon Technologies', 'General Dynamics', 'Northrop Grumman'],
     recipientRefs: [
@@ -206,24 +215,24 @@ const CATEGORY_DETAILS: Record<string, {
       { name: 'Northrop Grumman', slug: 'northrop-grumman', amount: 16_200_000_000 },
     ],
     stateRefs: [
-      { state: 'Texas', code: 'TX', amount: 68_500_000_000, percentage: 7.7 },
-      { state: 'California', code: 'CA', amount: 62_100_000_000, percentage: 6.9 },
-      { state: 'Virginia', code: 'VA', amount: 58_400_000_000, percentage: 6.5 },
-      { state: 'Florida', code: 'FL', amount: 34_200_000_000, percentage: 3.8 },
-      { state: 'Maryland', code: 'MD', amount: 29_800_000_000, percentage: 3.3 },
+      { state: 'Texas', code: 'TX', amount: 67_100_000_000, percentage: 7.7 },
+      { state: 'California', code: 'CA', amount: 60_800_000_000, percentage: 6.9 },
+      { state: 'Virginia', code: 'VA', amount: 57_200_000_000, percentage: 6.5 },
+      { state: 'Florida', code: 'FL', amount: 33_500_000_000, percentage: 3.8 },
+      { state: 'Maryland', code: 'MD', amount: 29_200_000_000, percentage: 3.3 },
     ],
   },
   'infrastructure-transport': {
     subcategories: [
-      { name: 'Federal Highway Administration Grants', amount: 62_500_000_000, percentage: 46.3 },
-      { name: 'Federal Transit Administration Grants', amount: 24_800_000_000, percentage: 18.4 },
-      { name: 'Federal Aviation Administration (FAA)', amount: 22_100_000_000, percentage: 16.4 },
-      { name: 'Maritime Administration & Pipeline Safety', amount: 14_200_000_000, percentage: 10.5 },
-      { name: 'Federal Railroad Administration & Amtrak', amount: 11_400_000_000, percentage: 8.4 },
+      { name: 'Federal Highway Administration Grants', amount: 58_500_000_000, percentage: 46.3 },
+      { name: 'Federal Transit Administration Grants', amount: 23_200_000_000, percentage: 18.4 },
+      { name: 'Federal Aviation Administration (FAA)', amount: 20_700_000_000, percentage: 16.4 },
+      { name: 'Maritime Administration & Pipeline Safety', amount: 13_300_000_000, percentage: 10.5 },
+      { name: 'Federal Railroad Administration & Amtrak', amount: 10_700_000_000, percentage: 8.4 },
     ],
     primaryAgencies: ['Department of Transportation', 'Army Corps of Engineers'],
     agencyRefs: [
-      { name: 'Department of Transportation', slug: 'department-of-transportation', amount: 135_000_000_000 },
+      { name: 'Department of Transportation', slug: 'department-of-transportation', amount: 126_400_000_000 },
     ],
     topRecipients: ['Amtrak (National Passenger Rail)', 'HNTB Corporation', 'AECOM', 'Bechtel Infrastructure'],
     recipientRefs: [
@@ -233,38 +242,48 @@ const CATEGORY_DETAILS: Record<string, {
       { name: 'Bechtel Infrastructure', slug: 'bechtel', amount: 390_000_000 },
     ],
     stateRefs: [
-      { state: 'California', code: 'CA', amount: 14_200_000_000, percentage: 10.5 },
-      { state: 'Texas', code: 'TX', amount: 11_800_000_000, percentage: 8.7 },
-      { state: 'New York', code: 'NY', amount: 9_500_000_000, percentage: 7.0 },
-      { state: 'Florida', code: 'FL', amount: 7_200_000_000, percentage: 5.3 },
-      { state: 'Illinois', code: 'IL', amount: 6_100_000_000, percentage: 4.5 },
+      { state: 'California', code: 'CA', amount: 13_300_000_000, percentage: 10.5 },
+      { state: 'Texas', code: 'TX', amount: 11_100_000_000, percentage: 8.7 },
+      { state: 'New York', code: 'NY', amount: 8_900_000_000, percentage: 7.0 },
+      { state: 'Florida', code: 'FL', amount: 6_700_000_000, percentage: 5.3 },
+      { state: 'Illinois', code: 'IL', amount: 5_700_000_000, percentage: 4.5 },
     ],
   },
   'medicaid-spending': {
     subcategories: [
-      { name: 'Acute Care Federal Matching Grants', amount: 442_000_000_000, percentage: 65.0 },
-      { name: 'Long-Term Services & Home Care Grants', amount: 176_000_000_000, percentage: 25.9 },
-      { name: 'Disproportionate Share Hospital (DSH) Grants', amount: 38_000_000_000, percentage: 5.6 },
-      { name: 'Program Administration & Integrity', amount: 24_000_000_000, percentage: 3.5 },
+      { name: 'Medicaid Federal Matching Payments', amount: 648_000_000_000, percentage: 70.0 },
+      { name: 'Marketplace Subsidies & CHIP', amount: 139_000_000_000, percentage: 15.0 },
+      { name: 'NIH & Public Health Programs', amount: 93_000_000_000, percentage: 10.0 },
+      { name: 'Program Administration & Integrity', amount: 46_000_000_000, percentage: 5.0 },
     ],
     primaryAgencies: ['Centers for Medicare & Medicaid Services', 'Department of Health & Human Services'],
     agencyRefs: [
-      { name: 'Department of Health and Human Services', slug: 'department-of-health-and-human-services', amount: 680_000_000_000 },
+      { name: 'Department of Health and Human Services', slug: 'department-of-health-and-human-services', amount: 925_700_000_000 },
     ],
-    topRecipients: ['State Health Departments', 'Centene Corporation', 'Elevance Health'],
+    topRecipients: ['State Health Departments', 'Health Insurers', 'Research Institutions'],
     recipientRefs: [
-      { name: 'State Medicaid Administrative Agencies', slug: 'state-health-departments', amount: 618_000_000_000 },
-      { name: 'Centene Corporation', slug: 'centene', amount: 38_000_000_000 },
-      { name: 'Elevance Health', slug: 'elevance', amount: 24_000_000_000 },
+      { name: 'State Medicaid Administrative Agencies', slug: 'state-health-departments', amount: 648_000_000_000 },
     ],
     stateRefs: [
-      { state: 'California', code: 'CA', amount: 105_200_000_000, percentage: 15.5 },
-      { state: 'New York', code: 'NY', amount: 74_800_000_000, percentage: 11.0 },
-      { state: 'Texas', code: 'TX', amount: 48_600_000_000, percentage: 7.1 },
-      { state: 'Florida', code: 'FL', amount: 31_500_000_000, percentage: 4.6 },
-      { state: 'Pennsylvania', code: 'PA', amount: 28_900_000_000, percentage: 4.3 },
-      { state: 'Ohio', code: 'OH', amount: 24_100_000_000, percentage: 3.5 },
+      { state: 'California', code: 'CA', amount: 143_200_000_000, percentage: 15.5 },
+      { state: 'New York', code: 'NY', amount: 101_800_000_000, percentage: 11.0 },
+      { state: 'Texas', code: 'TX', amount: 66_200_000_000, percentage: 7.1 },
+      { state: 'Florida', code: 'FL', amount: 42_900_000_000, percentage: 4.6 },
+      { state: 'Pennsylvania', code: 'PA', amount: 39_300_000_000, percentage: 4.3 },
+      { state: 'Ohio', code: 'OH', amount: 32_800_000_000, percentage: 3.5 },
     ],
+  },
+  'net-interest-spending': {
+    subcategories: [
+      { name: 'Interest on Debt Held by the Public', amount: 864_400_000_000, percentage: 85.0 },
+      { name: 'Interest on Intragovernmental Holdings', amount: 152_600_000_000, percentage: 15.0 },
+    ],
+    primaryAgencies: ['Department of the Treasury'],
+    agencyRefs: [
+      { name: 'Department of the Treasury', slug: 'department-of-treasury', amount: 1_017_000_000_000 },
+    ],
+    topRecipients: ['Treasury Security Holders'],
+    recipientRefs: [],
   },
 };
 
@@ -273,12 +292,14 @@ export function getCategoryDataForFY(slug: string, fy: number = 2026): CategoryS
   if (!entity) return undefined;
 
   const base2026 = CATEGORY_OUTLAYS_FY2026[entity.slug] || 50_000_000_000;
-  const factor = FY_FACTORS[fy] || 1.0;
+  const factor = categoryFactorForFY(entity.slug, fy);
   const amount = Math.round(base2026 * factor);
 
   const totalFYBudget = ANNUAL_TOTAL_BUDGET[fy] || ANNUAL_TOTAL_BUDGET[2026];
   const percentage = Number(((amount / totalFYBudget) * 100).toFixed(2));
-  const rates = calculateSpendingRates(amount);
+  // FY2026 figures are fiscal-year-to-date (335 elapsed days); use the
+  // elapsed-day rate so per-day/hour figures reflect actuals, not a /365 split.
+  const rates = calculateSpendingRates(amount, fy === 2026 ? FY2026_DAYS_ELAPSED : 365);
 
   const details = CATEGORY_DETAILS[entity.slug] || {
     subcategories: [
@@ -298,13 +319,11 @@ export function getCategoryDataForFY(slug: string, fy: number = 2026): CategoryS
     percentage: sub.percentage,
   }));
 
-  const historicalTrend = Object.keys(ANNUAL_TOTAL_BUDGET)
-    .map(Number)
-    .sort((a, b) => a - b)
-    .map((year) => ({
-      year,
-      amount: Math.round(base2026 * (FY_FACTORS[year] || 1.0)),
-    }));
+  // Historical trend uses fiscal years with category-level MTS actuals.
+  const historicalTrend = [2018, 2020, 2022, 2024, 2026].map((year) => ({
+    year,
+    amount: Math.round(base2026 * categoryFactorForFY(entity.slug, year)),
+  }));
 
   return {
     id: entity.slug,
@@ -352,7 +371,8 @@ export const HISTORICAL_SPENDING = Object.keys(ANNUAL_TOTAL_BUDGET)
     year,
     spending: ANNUAL_TOTAL_BUDGET[year],
     totalSpending: ANNUAL_TOTAL_BUDGET[year],
-    deficit: Math.round(ANNUAL_TOTAL_BUDGET[year] * 0.28),
+    receipts: ANNUAL_TOTAL_RECEIPTS[year] ?? 0,
+    deficit: Math.round(ANNUAL_TOTAL_BUDGET[year] - (ANNUAL_TOTAL_RECEIPTS[year] ?? 0)),
     debtTotal: Math.round(ANNUAL_TOTAL_BUDGET[year] * 5.4),
   }));
 
@@ -380,8 +400,8 @@ export function getAgencyDataForFY(slug: string, fy: number = 2026): AgencyDetai
   const norm = slug.toLowerCase().replace(/^\//, '').trim();
 
   if (norm === 'department-of-transportation' || norm === 'dot' || norm === 'transportation') {
-    const baseBudget2026 = 135_000_000_000;
-    const factor = FY_FACTORS[fy] || 1.0;
+    const baseBudget2026 = 126_436_540_460;
+    const factor = totalOutlayFactor(fy);
     const budget = Math.round(baseBudget2026 * factor);
     const obligations = Math.round(budget * 0.98);
     const outlays = budget;
@@ -423,15 +443,15 @@ export function getAgencyDataForFY(slug: string, fy: number = 2026): AgencyDetai
       .sort((a, b) => a - b)
       .map((year) => ({
         year,
-        amount: Math.round(baseBudget2026 * (FY_FACTORS[year] || 1.0)),
+        amount: Math.round(baseBudget2026 * totalOutlayFactor(year)),
       }));
 
     const yearlyTable = Object.keys(ANNUAL_TOTAL_BUDGET)
       .map(Number)
       .sort((a, b) => a - b)
       .map((year, idx, arr) => {
-        const amt = Math.round(baseBudget2026 * (FY_FACTORS[year] || 1.0));
-        const prevAmt = idx > 0 ? Math.round(baseBudget2026 * (FY_FACTORS[arr[idx - 1]] || 1.0)) : amt;
+        const amt = Math.round(baseBudget2026 * totalOutlayFactor(year));
+        const prevAmt = idx > 0 ? Math.round(baseBudget2026 * totalOutlayFactor(arr[idx - 1])) : amt;
         const changePct = prevAmt > 0 ? (((amt - prevAmt) / prevAmt) * 100).toFixed(1) : '0.0';
         const tot = ANNUAL_TOTAL_BUDGET[year];
         return {
@@ -463,8 +483,8 @@ export function getAgencyDataForFY(slug: string, fy: number = 2026): AgencyDetai
   }
 
   if (norm === 'department-of-defense' || norm === 'dod') {
-    const baseBudget2026 = 895_000_000_000;
-    const factor = FY_FACTORS[fy] || 1.0;
+    const baseBudget2026 = 876_163_147_483;
+    const factor = totalOutlayFactor(fy);
     const budget = Math.round(baseBudget2026 * factor);
 
     return {
@@ -499,7 +519,7 @@ export function getAgencyDataForFY(slug: string, fy: number = 2026): AgencyDetai
       spendingTrend: Object.keys(ANNUAL_TOTAL_BUDGET)
         .map(Number)
         .sort((a, b) => a - b)
-        .map((year) => ({ year, amount: Math.round(baseBudget2026 * (FY_FACTORS[year] || 1.0)) })),
+        .map((year) => ({ year, amount: Math.round(baseBudget2026 * totalOutlayFactor(year)) })),
       yearlyTable: [],
     };
   }
@@ -549,7 +569,7 @@ export function getRecipientDataForFY(slug: string, fy: number = 2026): Recipien
 
   if (norm === 'boeing' || norm === 'boeing-company' || norm === 'the-boeing-company') {
     const baseTotal2026 = 28_200_000_000;
-    const factor = FY_FACTORS[fy] || 1.0;
+    const factor = totalOutlayFactor(fy);
     const totalAwards = Math.round(baseTotal2026 * factor);
 
     const contracts = Math.round(totalAwards * 0.95);
@@ -584,7 +604,7 @@ export function getRecipientDataForFY(slug: string, fy: number = 2026): Recipien
       .sort((a, b) => a - b)
       .map((year) => ({
         year,
-        amount: Math.round(baseTotal2026 * (FY_FACTORS[year] || 1.0)),
+        amount: Math.round(baseTotal2026 * totalOutlayFactor(year)),
       }));
 
     const awardDetails: AwardRecord[] = [

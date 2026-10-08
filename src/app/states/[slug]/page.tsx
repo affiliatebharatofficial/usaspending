@@ -90,7 +90,7 @@ export default function StateDetailPage({ params }: Props) {
     },
     {
       question: `Where does the state spending data for ${state.name} come from?`,
-      answer: `Data is ingested directly from public USAspending.gov REST API endpoints, tracking place of performance and prime recipient locations registered in federal reporting databases.`,
+      answer: `State-level figures on this page are modeled estimates derived from U.S. Census Bureau population baselines and the national outlay totals published in the U.S. Treasury Monthly Treasury Statement. They are useful for comparison, not audited award records. See our methodology page for details.`,
     },
   ];
 
@@ -140,7 +140,7 @@ export default function StateDetailPage({ params }: Props) {
               </h1>
             </div>
           </div>
-          <DataFreshness />
+          <DataFreshness sourceName="Modeled estimates" lastUpdated="October 2026" />
         </div>
 
         <p className="text-xs text-slate-600 leading-relaxed max-w-3xl">
@@ -254,7 +254,7 @@ export default function StateDetailPage({ params }: Props) {
             The distribution of federal dollars in {state.name} spans three primary financial mechanisms: <strong>Prime Contracts</strong> ({formatCurrency(state.contractsAmount, true)}), <strong>Grants & Assistance</strong> ({formatCurrency(state.grantsAmount, true)}), and <strong>Other Financial Awards</strong> ({formatCurrency(state.otherAwardsAmount, true)}). Prime contract outlays support local defense facilities, technology research, and civil infrastructure projects, while grants support healthcare assistance under Medicaid, higher education research, and public transportation grants.
           </p>
           <p>
-            Major executive departments maintaining active spending programs in {state.name} include {state.majorAgencies.map((a) => a.name).join(', ')}. Furthermore, major prime contract recipients performing work within {state.name} include leading contractors such as {state.majorRecipients.map((r) => r.name).join(', ')}. All geographic data is compiled directly from public USAspending.gov records based on registered primary place of performance or recipient locations.
+            Major executive departments maintaining active spending programs in {state.name} include {state.majorAgencies.map((a) => a.name).join(', ')}. Furthermore, major prime contract recipients performing work within {state.name} include leading contractors such as {state.majorRecipients.map((r) => r.name).join(', ')}. State-level attributions are modeled estimates for comparison purposes — see the methodology note below.
           </p>
         </div>
       </div>
@@ -290,12 +290,12 @@ export default function StateDetailPage({ params }: Props) {
           `It does NOT represent state government tax revenue or general municipal operating funds.`,
           `It does NOT represent the amount of federal income, payroll, or business taxes paid by residents of ${state.name}.`,
           `The per-resident figure ($${formatNumber(state.perCapita)}) is a mathematical ratio and does NOT mean each resident received this amount, benefited equally, or incurred this tax burden.`,
-          `Figures represent federal prime awards attributed by registered place of performance or recipient legal address in USAspending.gov databases.`,
+          `State figures on this page are modeled estimates (population-based), not audited USAspending.gov award records.`,
         ]}
         pageUrl={`/states/${state.slug}`}
         dataPoint={`Federal spending associated with ${state.name}: ${formatCurrency(state.totalSpending, true)}`}
         sources={[
-          { name: 'USAspending.gov', role: 'Prime awards & agency outlays', url: 'https://www.usaspending.gov' },
+          { name: 'U.S. Treasury MTS', role: 'National outlay totals', url: 'https://fiscaldata.treasury.gov' },
           { name: 'U.S. Census Bureau', role: 'Population denominator', url: 'https://www.census.gov' },
         ]}
       />
@@ -310,11 +310,11 @@ export default function StateDetailPage({ params }: Props) {
       {/* Data Source Footer */}
       <div className="p-4 rounded-xl bg-slate-50 border border-slate-200 text-xs text-slate-600 space-y-1">
         <div className="flex items-center justify-between font-bold text-slate-800">
-          <span>Source: USAspending.gov API</span>
+          <span>Source: Modeled estimates (see methodology)</span>
           <span>Fiscal Year: FY2026</span>
         </div>
         <p className="text-[11px] leading-relaxed">
-          Data type: Federal Prime Outlays & Assistance Awards • Last verified: August 2026.
+          Data type: Modeled state estimates from Census population & Treasury MTS national totals • Last verified: October 2026.
         </p>
       </div>
     </div>

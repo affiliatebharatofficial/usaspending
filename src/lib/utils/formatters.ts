@@ -35,8 +35,8 @@ export function formatNumber(amount: number): string {
 /**
  * Calculates per-timeframe rates based on an annual amount
  */
-export function calculateSpendingRates(annualAmount: number) {
-  const perDay = annualAmount / 365;
+export function calculateSpendingRates(annualAmount: number, daysInPeriod: number = 365) {
+  const perDay = annualAmount / daysInPeriod;
   const perHour = perDay / 24;
   const perMinute = perHour / 60;
   const perSecond = perMinute / 60;

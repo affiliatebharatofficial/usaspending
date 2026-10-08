@@ -104,12 +104,12 @@ export default function DataSourcesPage() {
             <tbody className="divide-y divide-slate-100 text-slate-800">
               <tr>
                 <td className="py-3 font-sans font-bold text-slate-900">Federal Outlays & Categories</td>
-                <td className="py-3 font-bold text-blue-900">USAspending.gov API</td>
-                <td className="py-3 font-sans text-slate-600">Category spending & Donut Chart breakdowns</td>
+                <td className="py-3 font-bold text-blue-900">U.S. Treasury Monthly Treasury Statement, Table 9</td>
+                <td className="py-3 font-sans text-slate-600">Category spending & Donut Chart breakdowns (FYTD through Aug 31, 2026)</td>
               </tr>
               <tr>
                 <td className="py-3 font-sans font-bold text-slate-900">Federal Agency Outlays</td>
-                <td className="py-3 font-bold text-blue-900">USAspending.gov API</td>
+                <td className="py-3 font-bold text-blue-900">U.S. Treasury MTS / Agency Financial Reports</td>
                 <td className="py-3 font-sans text-slate-600">Department & Agency Explorer profiles</td>
               </tr>
               <tr>

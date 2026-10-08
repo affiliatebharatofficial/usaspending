@@ -41,37 +41,29 @@ export default function CategoryDetailView({ entity }: Props) {
 
   const getRelatedLinks = (slug: string) => {
     switch (slug) {
-      case 'nasa-space-exploration':
-        return [
-          { name: 'Science & Medical Research', url: '/categories/science-medical-research' },
-          { name: 'Defense & Military', url: '/categories/defense-military' },
-          { name: 'Federal Awards to Boeing', url: '/recipients/boeing' },
-          { name: 'Executive Agencies Index', url: '/agencies' },
-          { name: 'Spending by Year', url: '/spending-by-year' },
-        ];
       case 'agriculture-food-assistance':
         return [
           { name: 'Education & Training', url: '/categories/education-training' },
-          { name: 'Medicaid Spending', url: '/categories/medicaid-spending' },
+          { name: 'Health Programs', url: '/categories/medicaid-spending' },
           { name: 'Executive Agencies Index', url: '/agencies' },
           { name: 'Spending Breakdown', url: '/spending-breakdown' },
         ];
       case 'science-medical-research':
         return [
-          { name: 'NASA & Space Exploration', url: '/categories/nasa-space-exploration' },
+          { name: 'Net Interest on the Debt', url: '/categories/net-interest-spending' },
           { name: 'Education & Training', url: '/categories/education-training' },
-          { name: 'Medicaid Spending', url: '/categories/medicaid-spending' },
+          { name: 'Health Programs', url: '/categories/medicaid-spending' },
           { name: 'Methodology Notice', url: '/methodology' },
         ];
       case 'education-training':
         return [
-          { name: 'Science & Medical Research', url: '/categories/science-medical-research' },
-          { name: 'Agriculture & Food Assistance', url: '/categories/agriculture-food-assistance' },
+          { name: 'Science, Space & Technology', url: '/categories/science-medical-research' },
+          { name: 'Agriculture', url: '/categories/agriculture-food-assistance' },
           { name: 'Infrastructure & Transport', url: '/categories/infrastructure-transport' },
         ];
       case 'defense-military':
         return [
-          { name: 'NASA & Space Exploration', url: '/categories/nasa-space-exploration' },
+          { name: 'Science, Space & Technology', url: '/categories/science-medical-research' },
           { name: 'Department of Defense Agency', url: '/agencies/department-of-defense' },
           { name: 'Federal Awards to Boeing', url: '/recipients/boeing' },
           { name: 'Federal Awards to Lockheed Martin', url: '/recipients/lockheed-martin' },
@@ -382,7 +374,7 @@ export default function CategoryDetailView({ entity }: Props) {
           <span>Source: USAspending.gov</span>
           <span>Fiscal Year: FY{selectedFY}</span>
           <span>Data Type: Federal Outlays</span>
-          <span>Last Updated: August 2026</span>
+          <span>Last Updated: October 2026</span>
           <span>Classification Type: {entity.classificationType.toUpperCase()}</span>
         </div>
         <p className="text-[11px] leading-relaxed text-slate-500">

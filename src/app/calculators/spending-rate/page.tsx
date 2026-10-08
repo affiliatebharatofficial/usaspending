@@ -38,7 +38,7 @@ export default function SpendingRateCalculatorPage() {
     },
     {
       question: 'What is the current total federal spending rate in FY2026?',
-      answer: 'At total annual outlays of $6.75 Trillion, the U.S. Federal Government spends approximately $18.49 Billion per day, $770.5 Million per hour, $12.84 Million per minute, and $214,044 per second.',
+      answer: 'At FY2026 outlays of $6.81 Trillion (through August 2026), the U.S. Federal Government spends approximately $20.33 Billion per day, $847.1 Million per hour, $14.12 Million per minute, and $235,318 per second.',
     },
     {
       question: 'Why does leap year status affect the calculation?',

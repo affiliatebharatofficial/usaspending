@@ -290,7 +290,7 @@ export default function AgencyDetailView({ entity }: Props) {
           <span>Source: USAspending.gov</span>
           <span>Fiscal Year: FY{selectedFY}</span>
           <span>Data Type: Federal Budget Outlays</span>
-          <span>Last Updated: August 2026</span>
+          <span>Last Updated: October 2026</span>
           <span>Classification: Toptier Executive Agency</span>
         </div>
         <p className="text-[11px] leading-relaxed text-slate-500">

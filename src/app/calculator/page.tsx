@@ -32,7 +32,7 @@ export default function MainCalculatorPage() {
   const faqs = [
     {
       question: 'How is the percentage of federal spending calculated?',
-      answer: 'The entered dollar amount is divided by total FY2026 federal outlays ($6.75 Trillion) and multiplied by 100.',
+      answer: 'The entered dollar amount is divided by total FY2026 federal outlays ($6.81 Trillion FYTD) and multiplied by 100.',
     },
     {
       question: 'Is this live government spending?',
@@ -152,13 +152,13 @@ export default function MainCalculatorPage() {
       <CalculatorMethodologyBox
         calculatorName="Main Government Spending Calculator"
         metric="Share of Federal Outlays (%) & Spending Velocity Equivalents"
-        formula={`Percentage Share (%) = (Entered Dollar Amount ÷ Total Federal Outlays FY2026 [$6.75T]) × 100\nDaily Rate Equivalent = Entered Dollar Amount ÷ 365 Days`}
+        formula={`Percentage Share (%) = (Entered Dollar Amount ÷ Total Federal Outlays FY2026 [$6.81T FYTD]) × 100\nDaily Rate Equivalent = Entered Dollar Amount ÷ 365 Days`}
         example={`Entering $1,000,000,000 ($1B): (1,000,000,000 ÷ 6,750,000,000,000) × 100 = 0.0148% of total annual federal outlays. Daily equivalent = $2,739,726/day.`}
-        limitations="Total federal outlays baseline is $6.75 Trillion for FY2026 as reported by the U.S. Treasury. Rate calculations represent continuous mathematical averages across 365 calendar days and do not represent live electronic bank wire disbursements."
-        represents="The mathematical proportion of your entered dollar amount relative to total annual U.S. Federal Government outlays ($6.75 Trillion in FY2026), along with linear daily rate conversions."
+        limitations="Total federal outlays baseline is $6.81 Trillion for FY2026 (through August 2026) as reported by the U.S. Treasury Monthly Treasury Statement. Rate calculations represent continuous mathematical averages across 335 elapsed days and do not represent live electronic bank wire disbursements."
+        represents="The mathematical proportion of your entered dollar amount relative to total U.S. Federal Government outlays ($6.81 Trillion FYTD in FY2026), along with linear daily rate conversions."
         doesNotRepresent="An individual taxpayer's personal tax contribution, money received by citizens, or a live bank transfer occurring in real time."
         pageUrl="/calculator"
-        dataPoint="Total Federal Outlays ($6.75T)"
+        dataPoint="Total Federal Outlays ($6.81T FYTD)"
       />
 
       <CalculatorFAQ faqs={faqs} />

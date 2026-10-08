@@ -93,8 +93,11 @@ export default function MethodologyPage() {
             Core Data Independence Statement:
           </div>
           <p>
-            <strong>USAspending.us does not create or originate the underlying federal spending data.</strong> The underlying data is sourced from external government datasets, primarily USAspending.gov. Calculated values shown on this website are derived from those source datasets using the formulas described below.
+            <strong>USAspending.us does not create or originate the underlying federal spending data.</strong> The underlying data is sourced from external government datasets, primarily the U.S. Department of the Treasury&apos;s Monthly Treasury Statement (MTS), Table 9 (outlays by budget function). Calculated values shown on this website are derived from those source datasets using the formulas described below.
           </p>
+          <div className="p-3 rounded-lg bg-amber-50/70 border border-amber-200 text-xs text-amber-950 leading-relaxed">
+            <strong>Data vintage (October 2026 refresh):</strong> FY2026 figures reflect actual outlays from October 1, 2025 through August 31, 2026 — the latest published Monthly Treasury Statement at the time of refresh. Per-day, per-hour and per-second rates are therefore computed over 335 elapsed days, not a 365-day year. Historical FY2018–FY2025 figures are September MTS finals. Category totals are MTS actuals; subcategory splits, state attributions and recipient breakdowns are modeled estimates and are labeled as such where shown.
+          </div>
           <p className="text-slate-600">
             USAspending.us is an independent public-interest web project built and maintained by independent developer{' '}
             <Link href="/about/firoz-khan" className="text-blue-700 font-semibold underline">
@@ -209,7 +212,7 @@ export default function MethodologyPage() {
             </thead>
             <tbody className="divide-y divide-slate-200 text-slate-700">
               <tr>
-                <td className="p-3 font-semibold text-slate-900">Total Federal Outlays ($6.75T FY2026)</td>
+                <td className="p-3 font-semibold text-slate-900">Total Federal Outlays ($6.81T FY2026 FYTD)</td>
                 <td className="p-3"><span className="px-2 py-0.5 rounded bg-emerald-50 text-emerald-800 font-bold text-[10px]">Source Data</span></td>
                 <td className="p-3">U.S. Treasury (MTS / Fiscal Data)</td>
                 <td className="p-3">Published directly in official federal budget and Treasury outlay tables.</td>
@@ -217,7 +220,7 @@ export default function MethodologyPage() {
               <tr>
                 <td className="p-3 font-semibold text-slate-900">Agency & Budget Function Outlays</td>
                 <td className="p-3"><span className="px-2 py-0.5 rounded bg-emerald-50 text-emerald-800 font-bold text-[10px]">Source Data</span></td>
-                <td className="p-3">USAspending.gov API (`/spending/by_category`)</td>
+                <td className="p-3">U.S. Treasury MTS Table 9 (budget functions)</td>
                 <td className="p-3">Reported by federal agencies into official accounting codes.</td>
               </tr>
               <tr>
@@ -374,13 +377,13 @@ export default function MethodologyPage() {
             Converts annual budgetary outlays into conceptual time intervals across the 365 or 366 days of a fiscal year:
           </p>
           <div className="p-4 rounded-xl bg-slate-900 text-emerald-400 font-mono text-xs space-y-1.5 overflow-x-auto">
-            <div>Daily Rate  = Annual Outlays ÷ Days_In_Fiscal_Year (365 or 366)</div>
+            <div>Daily Rate  = Period Outlays ÷ Elapsed Days In Period (335 for FY2026 FYTD)</div>
             <div>Hourly Rate = Daily Rate ÷ 24</div>
             <div>Minute Rate = Hourly Rate ÷ 60</div>
             <div>Second Rate = Minute Rate ÷ 60 = Annual Outlays ÷ (Days × 86,400)</div>
           </div>
           <p className="text-xs text-slate-500 italic">
-            Example: For total FY2026 outlays of $6,750,000,000,000: Daily = $18,493,150,685; Hourly = $770,547,945; Minute = $12,842,466; Second = $214,041.
+            Example: For FY2026 outlays of $6,811,043,257,196 over 335 elapsed days: Daily = $20,331,472,410; Hourly = $847,144,684; Minute = $14,119,078; Second = $235,318.
           </p>
         </div>
 
@@ -394,10 +397,10 @@ export default function MethodologyPage() {
           </p>
           <div className="p-4 rounded-xl bg-slate-900 text-emerald-400 font-mono text-xs overflow-x-auto">
             <div>Percentage Share (%) = (Entered Dollar Amount ÷ Total Federal Outlays FY2026) × 100</div>
-            <div className="text-slate-400 mt-1">// Total Federal Outlays FY2026 baseline = $6,750,000,000,000 ($6.75 Trillion)</div>
+            <div className="text-slate-400 mt-1">// Total Federal Outlays FY2026 baseline = $6,811,043,257,196 ($6.81T, FYTD through Aug 31, 2026)</div>
           </div>
           <p className="text-xs text-slate-500 italic">
-            Example: A program funded at $1,000,000,000 ($1B): (1,000,000,000 ÷ 6,750,000,000,000) × 100 = 0.0148%.
+            Example: A program funded at $1,000,000,000 ($1B): (1,000,000,000 ÷ 6,811,043,257,196) × 100 = 0.0147%.
           </p>
         </div>
 
@@ -579,7 +582,7 @@ export default function MethodologyPage() {
         </p>
 
         <p className="text-xs text-slate-600 leading-relaxed">
-          On USAspending.us, all pie, donut, and percentage breakdown charts enforce strict visual part-to-whole reconciliation. When the top functional categories are displayed, an explicit <strong>&quot;Other / Remaining Federal Functions&quot;</strong> component is included. This ensures that every chart reconciles mathematically to exactly 100.0% of total annual federal outlays ($6.75 Trillion in FY2026).
+          On USAspending.us, all pie, donut, and percentage breakdown charts enforce strict visual part-to-whole reconciliation. When the top functional categories are displayed, an explicit <strong>&quot;Other / Remaining Federal Functions&quot;</strong> component is included. This ensures that every chart reconciles mathematically to exactly 100.0% of total federal outlays ($6.81 Trillion FYTD in FY2026).
         </p>
       </section>
 

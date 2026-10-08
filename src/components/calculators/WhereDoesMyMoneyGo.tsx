@@ -29,7 +29,7 @@ export default function WhereDoesMyMoneyGo() {
     'It does NOT account for itemized deductions, child tax credits, retirement deferrals, state/local taxes, or FICA payroll withholdings.',
     'It does NOT imply that your federal tax payment equals your direct share of federal spending or that your tax dollars are held in a separate personal account.',
     'Federal tax revenues are collected into the general fund of the U.S. Treasury and disbursed according to congressional appropriations, not segregated individual accounts.',
-    'Category shares are illustrative proportional splits based on official FY2026 reported outlays ($6.75 Trillion).'
+    'Category shares are illustrative proportional splits based on official FY2026 reported outlays ($6.81 Trillion FYTD).'
   ];
 
   return (
@@ -96,7 +96,7 @@ export default function WhereDoesMyMoneyGo() {
 
           <div className="text-right text-xs text-slate-400 border-t sm:border-t-0 sm:border-l border-slate-800 pt-3 sm:pt-0 sm:pl-6">
             <div>FY2026 Budget Basis</div>
-            <div className="font-bold text-white font-mono text-sm mt-0.5">$6.75 Trillion Outlays</div>
+            <div className="font-bold text-white font-mono text-sm mt-0.5">$6.81 Trillion Outlays</div>
           </div>
         </div>
 
@@ -161,7 +161,7 @@ export default function WhereDoesMyMoneyGo() {
               What This Calculator Measures:
             </span>
             <p className="text-slate-600 leading-relaxed">
-              An illustrative proportional division of an estimated federal income tax contribution, computed by applying official FY2026 OMB budget function percentages ($6.75 Trillion total federal outlays) to an estimated tax bracket.
+              An illustrative proportional division of an estimated federal income tax contribution, computed by applying official FY2026 Treasury budget function percentages ($6.81 Trillion FYTD total federal outlays) to an estimated tax bracket.
             </p>
           </div>
 

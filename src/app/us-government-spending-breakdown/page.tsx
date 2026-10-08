@@ -36,7 +36,7 @@ export default function SpendingBreakdownPage() {
           U.S. Government Spending Breakdown
         </h1>
         <p className="text-sm text-slate-300">
-          Comprehensive breakdown of America's $6.75 Trillion federal budget outlays for Fiscal Year {CURRENT_FISCAL_YEAR}.
+          Comprehensive breakdown of America's $6.81 Trillion federal budget outlays (FYTD) for Fiscal Year {CURRENT_FISCAL_YEAR}.
         </p>
       </div>
 

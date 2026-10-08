@@ -79,7 +79,7 @@ export default function CustomAmountCalculator() {
           <div className="text-3xl font-extrabold text-white font-mono mt-2">
             {percentOfBudget < 0.01 ? '< 0.01%' : `${percentOfBudget.toFixed(3)}%`}
           </div>
-          <div className="text-[11px] text-slate-500 mt-1">Out of $6.75 Trillion FY2026 total</div>
+          <div className="text-[11px] text-slate-500 mt-1">Out of $6.81 Trillion FY2026 FYTD total</div>
         </div>
 
         <div className="p-5 rounded-2xl bg-slate-900/80 border border-slate-800 text-center">

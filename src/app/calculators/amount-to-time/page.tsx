@@ -37,7 +37,7 @@ export default function AmountToTimeCalculatorPage() {
     },
     {
       question: 'Can I compare an amount against specific categories like Defense or Medicare?',
-      answer: 'Yes. You can select Total Federal Outlays ($6.75T) or specific budget categories like Defense & Military, Medicare, Social Security, or Education to see category-specific time equivalents.',
+      answer: 'Yes. You can select Total Federal Outlays ($6.81T FYTD) or specific budget categories like Defense & Military, Medicare, Social Security, or Education to see category-specific time equivalents.',
     },
     {
       question: 'Does this calculator represent real-time bank wire payments?',
@@ -111,7 +111,7 @@ export default function AmountToTimeCalculatorPage() {
             onChange={(e) => setSelectedProfile(e.target.value)}
             className="w-full bg-slate-50 border border-slate-300 rounded-lg py-2.5 px-4 text-xs font-bold text-slate-900 focus:outline-none"
           >
-            <option value="total">Total Federal Outlays ($6.75 Trillion)</option>
+            <option value="total">Total Federal Outlays ($6.81 Trillion FYTD)</option>
             {SPENDING_CATEGORIES.map((c) => (
               <option key={c.id} value={c.slug}>
                 {c.name} ({formatCurrency(c.amount, true)})
@@ -153,7 +153,7 @@ export default function AmountToTimeCalculatorPage() {
 
         <div className="space-y-4 text-xs text-slate-700 leading-relaxed max-w-4xl">
           <p>
-            The <strong>Amount-to-Time Calculator</strong> provides a intuitive way to comprehend massive financial figures by converting raw dollar amounts into time equivalents based on U.S. federal spending velocity. At an annual federal outlay rate of <strong>$6.75 Trillion</strong> in Fiscal Year 2026, the federal government disburses funds at a rate of <strong>$214,044 per second</strong>.
+            The <strong>Amount-to-Time Calculator</strong> provides a intuitive way to comprehend massive financial figures by converting raw dollar amounts into time equivalents based on U.S. federal spending velocity. At a Fiscal Year 2026 outlay rate of <strong>$6.81 Trillion</strong> (through August 2026), the federal government disburses funds at a rate of <strong>$235,318 per second</strong>.
           </p>
           <p>
             When evaluating federal policy proposals, procurement contracts, or state assistance programs, time conversions put expenditures into perspective. For instance, a <strong>$1 Billion appropriation</strong> represents approximately <strong>1.3 hours</strong> of total federal spending, or about <strong>9.8 hours</strong> of Department of Defense spending.
@@ -171,7 +171,7 @@ export default function AmountToTimeCalculatorPage() {
         sourceUrl="https://fiscaldata.treasury.gov"
         metric="Time Equivalency (Days, Hours, Minutes, Seconds)"
         formula={`Seconds Equivalent = Entered Dollar Amount ÷ Profile Spending Rate Per Second\nProfile Rate Per Second = Annual Outlays ÷ (365 × 86,400)`}
-        example={`Entering $1,000,000,000 against Total Federal Outlays ($214,041/sec in FY2026): 1,000,000,000 ÷ 214,041 = 4,672 seconds = 1.30 hours = 0.054 days.`}
+        example={`Entering $1,000,000,000 against Total Federal Outlays ($235,318/sec in FY2026): 1,000,000,000 ÷ 235,318 = 4,250 seconds = 1.18 hours = 0.049 days.`}
         limitations="Time equivalencies assume linear continuous spending 24 hours a day, 365 days a year across the entire fiscal year. Real disbursements follow agency billing and procurement cycles."
         represents="The theoretical duration required for the federal government or selected department to disburse an amount equal to your input, based on linear annual rate modeling."
         doesNotRepresent="A schedule of real-time payment disbursements or real banking processing times."

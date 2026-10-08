@@ -42,7 +42,7 @@ export default function RecipientDetailView({ entity }: Props) {
     if (slug === 'boeing' || slug === 'boeing-company') {
       return [
         { name: 'Department of Defense Agency', url: '/agencies/department-of-defense' },
-        { name: 'NASA & Space Exploration Category', url: '/categories/nasa-space-exploration' },
+        { name: 'Science, Space & Technology Category', url: '/categories/science-medical-research' },
         { name: 'Defense & Military Category', url: '/categories/defense-military' },
         { name: 'Department of Transportation Agency', url: '/agencies/department-of-transportation' },
         { name: 'Spending by Year Index', url: '/spending-by-year' },
@@ -251,7 +251,7 @@ export default function RecipientDetailView({ entity }: Props) {
           <span>Source: USAspending.gov</span>
           <span>Fiscal Year: FY{selectedFY}</span>
           <span>Data Type: Federal Prime Contracts & Financial Assistance</span>
-          <span>Last Updated: August 2026</span>
+          <span>Last Updated: October 2026</span>
           <span>Recipient UEI: DUNS-009256814</span>
         </div>
         <p className="text-[11px] leading-relaxed text-slate-500">

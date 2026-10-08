@@ -32,7 +32,7 @@ export default function HistoryAnalysisPage() {
     },
     {
       question: 'How has federal spending grown overall from FY2018 to FY2026?',
-      answer: 'Total annual federal outlays grew from $4.11 Trillion in FY2018 to $6.75 Trillion in FY2026, representing an overall 8-year outlay expansion of approximately +64.2%.',
+      answer: 'Total annual federal outlays grew from $4.11 Trillion in FY2018 to $6.81 Trillion FYTD in FY2026, representing an overall 8-year outlay expansion of approximately +64.2%.',
     },
     {
       question: 'Why did federal outlays contract in FY2022?',
@@ -106,7 +106,7 @@ export default function HistoryAnalysisPage() {
         <MetricCard
           label="8-Year Outlay Expansion"
           value="+64.2%"
-          subtext="Growth since FY2018 ($4.1T → $6.75T)"
+          subtext="Growth since FY2018 ($4.11T → $6.81T FYTD)"
         />
       </div>
 
@@ -168,7 +168,7 @@ export default function HistoryAnalysisPage() {
 
         <div className="space-y-4 text-xs text-slate-700 leading-relaxed max-w-4xl">
           <p>
-            Analyzing the historical budget trajectory of the United States Federal Government between Fiscal Years 2018 and 2026 provides essential context for understanding long-term fiscal expansion. Over this eight-year period, total annual federal outlays grew from <strong>$4.11 Trillion in FY2018</strong> to <strong>$6.75 Trillion in FY2026</strong>.
+            Analyzing the historical budget trajectory of the United States Federal Government between Fiscal Years 2018 and 2026 provides essential context for understanding long-term fiscal expansion. Over this eight-year period, total annual federal outlays grew from <strong>$4.11 Trillion in FY2018</strong> to <strong>$6.81 Trillion FYTD in FY2026</strong>.
           </p>
           <p>
             The most significant single-year budgetary event occurred in <strong>FY2020</strong>, when emergency legislative responses to the COVID-19 pandemic drove annual outlays up by <strong>+$2.1 Trillion (+47.3%)</strong> in a single fiscal year. This expansion included emergency funding under the CARES Act, Paycheck Protection Program (PPP), expanded unemployment insurance, and direct economic impact payments.

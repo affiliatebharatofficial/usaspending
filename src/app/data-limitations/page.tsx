@@ -236,7 +236,7 @@ export default function DataLimitationsPage() {
               Net Outlays = Gross Cash Disbursements − Offsetting Receipts
             </div>
             <p className="text-slate-600 font-medium">
-              Where displayed: Macro totals ($6.75T), functional category pages, spending clocks, and rate calculators show net outlays.
+              Where displayed: Macro totals ($6.81T FYTD), functional category pages, spending clocks, and rate calculators show net outlays.
             </p>
           </div>
 

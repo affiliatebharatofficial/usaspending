@@ -60,7 +60,7 @@ export default function SpendingPieChart() {
           U.S. Federal Government Spending Pie Chart
         </h3>
         <p className="text-xs text-slate-400 mt-1">
-          Interactive proportional donut chart of the FY2026 U.S. Federal Budget outlays ($6.75 Trillion total).
+          Interactive proportional donut chart of the FY2026 U.S. Federal Budget outlays ($6.81 Trillion FYTD total).
         </p>
       </div>
 
@@ -108,7 +108,7 @@ export default function SpendingPieChart() {
                 {formatCurrency(activeCategory.value, true)}
               </div>
               <div className="text-xs text-emerald-400 font-semibold">
-                {formatPercent(activeCategory.percentage)} of $6.75T Federal Budget
+                {formatPercent(activeCategory.percentage)} of $6.81T FYTD Federal Budget
               </div>
             </div>
           ) : (

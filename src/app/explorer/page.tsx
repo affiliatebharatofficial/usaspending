@@ -260,7 +260,7 @@ export default function ExplorerPage() {
 
         <div className="space-y-4 text-xs text-slate-700 leading-relaxed max-w-4xl">
           <p>
-            The <strong>Advanced U.S. Spending Explorer</strong> provides an interactive data tree designed for deep research into the United States Federal Budget. In Fiscal Year 2026, total reported federal outlays reach <strong>$6.75 Trillion ($6,750,000,000,000)</strong>, spanning tens of thousands of federal programs, grants, and prime procurement contracts.
+            The <strong>Advanced U.S. Spending Explorer</strong> provides an interactive data tree designed for deep research into the United States Federal Budget. In Fiscal Year 2026, total reported federal outlays reach <strong>$6.81 Trillion ($6,811,043,257,196 FYTD)</strong>, spanning tens of thousands of federal programs, grants, and prime procurement contracts.
           </p>
           <p>
             Using the Explorer, users can apply filter criteria by <strong>Fiscal Year (FY2020 - FY2026)</strong>, <strong>Financial Metric Type (Outlays vs Obligations)</strong>, <strong>Functional Category</strong>, and <strong>Executive Agency</strong>. For instance, filtering by Defense & Military isolates $895.0 Billion in outlays, revealing sub-allocations for military operations, procurement, research, and personnel.

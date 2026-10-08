@@ -27,12 +27,12 @@ export default function Footer() {
           <h4 className="text-sm font-bold text-slate-900 mb-3 uppercase tracking-wider">Top Detail Pages</h4>
           <ul className="space-y-2 font-medium">
             <li><Link href="/categories/defense-military" className="hover:text-blue-700 transition-colors">Defense & Military</Link></li>
-            <li><Link href="/categories/medicaid-spending" className="hover:text-blue-700 transition-colors">Medicaid Spending</Link></li>
+            <li><Link href="/categories/medicaid-spending" className="hover:text-blue-700 transition-colors">Health Programs</Link></li>
             <li><Link href="/categories/education-training" className="hover:text-blue-700 transition-colors">Education & Training</Link></li>
-            <li><Link href="/categories/agriculture-food-assistance" className="hover:text-blue-700 transition-colors">Agriculture & Food Assistance</Link></li>
+            <li><Link href="/categories/agriculture-food-assistance" className="hover:text-blue-700 transition-colors">Agriculture</Link></li>
             <li><Link href="/categories/infrastructure-transport" className="hover:text-blue-700 transition-colors">Infrastructure & Transport</Link></li>
-            <li><Link href="/categories/science-medical-research" className="hover:text-blue-700 transition-colors">Science & Medical Research</Link></li>
-            <li><Link href="/categories/nasa-space-exploration" className="hover:text-blue-700 transition-colors">NASA & Space Exploration</Link></li>
+            <li><Link href="/categories/science-medical-research" className="hover:text-blue-700 transition-colors">Science, Space & Technology</Link></li>
+            <li><Link href="/categories/net-interest-spending" className="hover:text-blue-700 transition-colors">Net Interest</Link></li>
             <li><Link href="/agencies/department-of-transportation" className="hover:text-blue-700 transition-colors">Department of Transportation</Link></li>
             <li><Link href="/recipients/boeing" className="hover:text-blue-700 transition-colors">Federal Awards to Boeing</Link></li>
           </ul>

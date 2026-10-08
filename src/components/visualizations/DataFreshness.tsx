@@ -10,9 +10,9 @@ export interface DataFreshnessProps {
 }
 
 export default function DataFreshness({
-  lastUpdated = 'August 2026',
+  lastUpdated = 'October 2026',
   timestamp,
-  sourceName = 'USAspending.gov API',
+  sourceName = 'U.S. Treasury MTS',
 }: DataFreshnessProps) {
   const displayDate = timestamp || lastUpdated;
 

@@ -36,7 +36,7 @@ export default function JsonLd({ type, data }: JsonLdProps) {
       '@context': 'https://schema.org',
       '@type': 'Dataset',
       name: data.name || 'U.S. Federal Government Spending Data',
-      description: data.description || 'Verified public spending dataset sourced from USAspending.gov API.',
+      description: data.description || 'Federal spending dataset compiled from the U.S. Treasury Monthly Treasury Statement.',
       url: data.url ? (data.url.startsWith('http') ? data.url : `https://www.usaspending.us${data.url}`) : 'https://www.usaspending.us',
       isAccessibleForFree: true,
       creator: {

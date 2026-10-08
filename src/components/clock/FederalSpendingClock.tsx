@@ -122,7 +122,7 @@ export default function FederalSpendingClock({ compact = false }: FederalSpendin
           <div className="text-lg sm:text-xl font-bold font-mono text-white mt-1">
             {formatCurrency(rates.perDay, true)}
           </div>
-          <div className="text-[10px] text-slate-500 mt-0.5">$18.49B / 24 hrs</div>
+          <div className="text-[10px] text-slate-500 mt-0.5">$20.33B / 24 hrs</div>
         </div>
 
         <div className="p-3 sm:p-4 rounded-xl bg-slate-900/60 border border-slate-800/80 text-left hover:border-blue-500/30 transition-colors">
@@ -130,7 +130,7 @@ export default function FederalSpendingClock({ compact = false }: FederalSpendin
           <div className="text-lg sm:text-xl font-bold font-mono text-white mt-1">
             {formatCurrency(rates.perHour, true)}
           </div>
-          <div className="text-[10px] text-slate-500 mt-0.5">$770.5M / hour</div>
+          <div className="text-[10px] text-slate-500 mt-0.5">$847.1M / hour</div>
         </div>
 
         <div className="p-3 sm:p-4 rounded-xl bg-slate-900/60 border border-slate-800/80 text-left hover:border-blue-500/30 transition-colors">
@@ -138,7 +138,7 @@ export default function FederalSpendingClock({ compact = false }: FederalSpendin
           <div className="text-lg sm:text-xl font-bold font-mono text-white mt-1">
             {formatCurrency(rates.perMinute, true)}
           </div>
-          <div className="text-[10px] text-slate-500 mt-0.5">$12.84M / minute</div>
+          <div className="text-[10px] text-slate-500 mt-0.5">$14.12M / minute</div>
         </div>
 
         <div className="p-3 sm:p-4 rounded-xl bg-slate-900/60 border border-slate-800/80 text-left hover:border-emerald-500/30 transition-colors bg-gradient-to-br from-slate-900/60 to-emerald-950/20">
@@ -149,7 +149,7 @@ export default function FederalSpendingClock({ compact = false }: FederalSpendin
           <div className="text-lg sm:text-xl font-bold font-mono text-emerald-400 mt-1">
             {formatCurrency(rates.perSecond)}
           </div>
-          <div className="text-[10px] text-emerald-500/80 mt-0.5">$214,041 every second</div>
+          <div className="text-[10px] text-emerald-500/80 mt-0.5">$235,318 every second</div>
         </div>
       </div>
     </div>

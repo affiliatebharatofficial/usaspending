@@ -25,9 +25,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const formattedAmount = categoryData ? formatCurrency(categoryData.amount, true) : '';
 
   let pageTitle = `U.S. ${entity.name} Spending — FY2026 | USA Spending`;
-  if (entity.slug === 'nasa-space-exploration') {
-    pageTitle = `NASA & Space Exploration Spending — FY2026 | USA Spending`;
-  } else if (entity.slug === 'defense-military') {
+  if (entity.slug === 'defense-military') {
     pageTitle = `U.S. Defense & Military Spending — FY2026 | USA Spending`;
   } else if (entity.slug === 'education-training') {
     pageTitle = `U.S. Education & Training Spending — FY2026 | USA Spending`;
@@ -35,7 +33,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 
   return {
     title: pageTitle,
-    description: `Explore ${entity.name} in FY2026 (${formattedAmount}). View subcategory breakdowns, 8-year historical trends, top agencies, and primary recipients.`,
+    description: `Explore ${entity.name} in FY2026 (${formattedAmount}). View subcategory breakdowns, 9-year historical trends, top agencies, and primary recipients.`,
     alternates: {
       canonical: entity.canonicalUrl,
     },

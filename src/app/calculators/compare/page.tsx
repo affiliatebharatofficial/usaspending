@@ -36,7 +36,7 @@ export default function CompareCalculatorPage() {
   const faqs: FAQItem[] = [
     {
       question: 'How is the relative ratio calculated in this calculator?',
-      answer: 'The ratio is calculated by dividing Option A amount by Option B amount (e.g. $895B / $240B = 3.73x), demonstrating how many times larger Option A is relative to Option B.',
+      answer: 'The ratio is calculated by dividing Option A amount by Option B amount (e.g. $876B / $92B = 9.52x), demonstrating how many times larger Option A is relative to Option B.',
     },
     {
       question: 'Can I compare budgets between different categories?',

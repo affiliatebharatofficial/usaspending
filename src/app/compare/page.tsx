@@ -34,7 +34,7 @@ export default function CompareOverviewPage() {
     },
     {
       question: 'How are category comparisons calculated (e.g. Defense vs. Education)?',
-      answer: 'Category comparisons measure relative percentage shares of the total $6.75 Trillion federal budget, net dollar differences, hourly disbursement rates, and primary administering agencies.',
+      answer: 'Category comparisons measure relative percentage shares of the total $6.81 Trillion FYTD federal budget, net dollar differences, hourly disbursement rates, and primary administering agencies.',
     },
     {
       question: 'How are prime contractor comparisons calculated (e.g. Lockheed Martin vs. Boeing)?',

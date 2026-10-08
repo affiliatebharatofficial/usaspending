@@ -4,6 +4,11 @@ const nextConfig = {
   async redirects() {
     return [
       {
+        source: '/categories/nasa-space-exploration',
+        destination: '/categories/science-medical-research',
+        permanent: true,
+      },
+      {
         source: '/calculator',
         destination: '/calculators',
         permanent: true,
@@ -15,7 +20,7 @@ const nextConfig = {
       },
       {
         source: '/nasa-space-exploration',
-        destination: '/categories/nasa-space-exploration',
+        destination: '/categories/science-medical-research',
         permanent: true,
       },
       {
@@ -60,12 +65,12 @@ const nextConfig = {
       },
       {
         source: '/categories/nasa-spending',
-        destination: '/categories/nasa-space-exploration',
+        destination: '/categories/science-medical-research',
         permanent: true,
       },
       {
         source: '/categories/nasa',
-        destination: '/categories/nasa-space-exploration',
+        destination: '/categories/science-medical-research',
         permanent: true,
       },
       {
