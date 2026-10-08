@@ -1,5 +1,6 @@
 import { MetadataRoute } from 'next';
 import { SPENDING_CATEGORIES, AGENCIES_DATA, STATES_DATA, RECIPIENTS_DATA } from '@/lib/data/spendingData';
+import { BLOG_ARTICLES } from '@/lib/blog/articles';
 
 const BASE_URL = 'https://www.usaspending.us';
 
@@ -34,6 +35,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { url: `${BASE_URL}/privacy`, lastModified: new Date(), changeFrequency: 'monthly', priority: 0.5 },
     { url: `${BASE_URL}/privacy-policy`, lastModified: new Date(), changeFrequency: 'monthly', priority: 0.5 },
     { url: `${BASE_URL}/terms`, lastModified: new Date(), changeFrequency: 'monthly', priority: 0.5 },
+    { url: `${BASE_URL}/blog`, lastModified: new Date(), changeFrequency: 'daily', priority: 0.8 },
   ];
 
   const categoryRoutes: MetadataRoute.Sitemap = SPENDING_CATEGORIES.map((c) => ({
@@ -74,8 +76,16 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { url: `${BASE_URL}/compare/boeing-vs-lockheed-martin`, lastModified: new Date(), changeFrequency: 'monthly', priority: 0.7 },
   ];
 
+  const blogRoutes: MetadataRoute.Sitemap = BLOG_ARTICLES.map((a) => ({
+    url: `${BASE_URL}/blog/${a.slug}`,
+    lastModified: new Date(a.dateModified),
+    changeFrequency: 'monthly',
+    priority: 0.7,
+  }));
+
   return [
     ...staticRoutes,
+    ...blogRoutes,
     ...categoryRoutes,
     ...agencyRoutes,
     ...stateRoutes,

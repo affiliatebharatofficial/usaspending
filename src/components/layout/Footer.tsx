@@ -51,6 +51,7 @@ export default function Footer() {
             <li><Link href="/where-does-my-money-go" className="hover:text-blue-700 transition-colors">Taxpayer Allocation</Link></li>
             <li><Link href="/calculators" className="hover:text-blue-700 transition-colors">Calculators Hub</Link></li>
             <li><Link href="/compare" className="hover:text-blue-700 transition-colors">Comparison Engine</Link></li>
+            <li><Link href="/blog" className="hover:text-blue-700 transition-colors">Spending Analysis Blog</Link></li>
           </ul>
         </div>
 

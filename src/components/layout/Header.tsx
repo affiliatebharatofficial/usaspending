@@ -13,6 +13,7 @@ const NAV_LINKS = [
   { name: 'Agencies', href: '/agencies' },
   { name: 'States', href: '/states' },
   { name: 'Recipients', href: '/recipients' },
+  { name: 'Blog', href: '/blog' },
 ];
 
 export default function Header() {
