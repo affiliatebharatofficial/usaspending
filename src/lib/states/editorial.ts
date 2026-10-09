@@ -90,8 +90,71 @@ const TEXAS: StateEditorialContent = {
   ],
 };
 
+const CALIFORNIA: StateEditorialContent = {
+  slug: 'california',
+  tagline: 'The Pacific Fleet\'s homeport, the Marine Corps\' West Coast training hub, NASA\'s deep-space laboratory, and nearly half the state\'s land held by the federal government.',
+  overview: [
+    `California's federal footprint is unlike any other state's because it runs on several independent engines at once. San Diego is the Navy's principal homeport on the West Coast, with the Pacific Fleet's ships, shore commands, and tens of thousands of sailors and civilians concentrated around the bay. Just up the coast, Camp Pendleton is the Marine Corps' largest expeditionary training facility in the West, spanning more than 125,000 acres. Inland, Edwards Air Force Base hosts the Air Force's flight-test enterprise, and Vandenberg Space Force Base on the Central Coast is one of the country's primary space launch ranges.`,
+    `The civilian science footprint is equally distinctive. NASA's Jet Propulsion Laboratory in Pasadena — managed by Caltech, and NASA's only federally funded research and development center — is the agency's center for robotic space exploration: the Mars rovers, the Voyager probes, and the Deep Space Network that talks to spacecraft across the solar system are run from here. The Department of Energy's Lawrence Livermore National Laboratory anchors nuclear stockpile stewardship research, alongside Lawrence Berkeley National Laboratory and SLAC in the Bay Area, while NASA's Ames Research Center sits in Mountain View. Few states host this density of federal science.`,
+    `Then there is the land itself. Roughly 48 percent of California — nearly 48 million acres — is federally owned, managed by the Forest Service, the Bureau of Land Management, the National Park Service, and the Defense Department. That makes wildfire management, watershed protection, and forest health inherently federal business: the federal government owns about 58 percent of the state's 33 million acres of forestland. Defense contracts complete the picture — Southern California's aerospace corridor, from Northrop Grumman facilities to Lockheed Martin's Skunk Works in Palmdale, remains one of the Pentagon's most important industrial clusters.`,
+  ],
+  keyInstallations: [
+    {
+      name: 'Naval Base San Diego',
+      detail: 'The largest naval installation on the West Coast and principal homeport of the U.S. Pacific Fleet, established in 1922 — supporting more than 60 ships and some 250 shore commands.',
+    },
+    {
+      name: 'Marine Corps Base Camp Pendleton',
+      detail: 'The Marine Corps\' largest West Coast expeditionary training facility, covering more than 125,000 acres of Southern California terrain with 17 miles of coastline and tens of thousands of Marines.',
+    },
+    {
+      name: 'NASA Jet Propulsion Laboratory — Pasadena',
+      detail: 'Managed by Caltech for NASA; the agency\'s only federally funded research and development center and its hub for robotic space exploration, operating the Deep Space Network.',
+    },
+    {
+      name: 'Lawrence Livermore National Laboratory',
+      detail: 'Department of Energy national laboratory central to nuclear weapons stockpile stewardship research, with a large federal science workforce east of the Bay Area.',
+    },
+    {
+      name: 'Edwards Air Force Base & Vandenberg Space Force Base',
+      detail: 'Edwards hosts the Air Force\'s flight-test enterprise in the Mojave Desert; Vandenberg on the Central Coast is one of the nation\'s primary space launch ranges.',
+    },
+  ],
+  economicContext:
+    `California has the largest state economy in the U.S. and the largest state population, so its federal numbers need that context. The state receives enormous absolute federal flows — Pacific Fleet payroll, Marine Corps and Air Force basing, space and science labs, defense contracts across the aerospace corridor, and vast federal land-management operations. But divided across nearly 39 million residents, the per-resident figure looks moderate compared with small states hosting a single giant lab or base. Defense spending also concentrates sharply in metro areas — San Diego's economy is structurally tied to the Navy, while Palmdale, the Antelope Valley, and parts of the Bay Area track aerospace and lab employment.`,
+  didYouKnow: [
+    'Naval Base San Diego has been operating since 1922 and is the Navy\'s principal homeport on the West Coast — the fleet\'s center of gravity for the Indo-Pacific.',
+    'JPL launched Explorer 1, America\'s first satellite, in 1958 — and its spacecraft have since visited every planet in the solar system.',
+    'Camp Pendleton contains the largest undeveloped stretch of coastline in Southern California, including the region\'s only free-flowing river.',
+    'Nearly half of California\'s land is federally owned — the Forest Service alone manages more than 20 million acres here.',
+  ],
+  faqs: [
+    {
+      question: 'Why does California receive so much federal defense spending?',
+      answer:
+        'Several durable reasons stack up: San Diego is the Pacific Fleet\'s principal West Coast homeport, Camp Pendleton is the Marine Corps\' largest western training base, Edwards and Vandenberg anchor flight testing and space launch, and Southern California\'s aerospace corridor (Northrop Grumman, Lockheed Martin\'s Skunk Works, and others) builds a large share of the Pentagon\'s aircraft, satellites, and space systems. These are long-term basing and industrial decisions, not one-off projects.',
+    },
+    {
+      question: 'What is the federal science presence in California?',
+      answer:
+        'Unusually dense. NASA\'s Jet Propulsion Laboratory in Pasadena leads the agency\'s robotic space missions and runs the Deep Space Network; NASA\'s Ames Research Center is in Mountain View. The Department of Energy operates Lawrence Livermore National Laboratory (nuclear stockpile stewardship), Lawrence Berkeley National Laboratory, and SLAC National Accelerator Laboratory. Together they make federal research funding a defining industry in parts of the Bay Area and Los Angeles.',
+    },
+    {
+      question: 'Why is so much of California federally owned land?',
+      answer:
+        'About 48 percent of the state — nearly 48 million acres — belongs to the federal government, managed mostly by the Forest Service, the Bureau of Land Management, the National Park Service, and the Defense Department. Much of it is mountains, desert, and forest that were never homesteaded. A practical consequence: wildfire and forest-health policy in California is substantially federal policy, since Washington owns roughly 58 percent of the state\'s forestland.',
+    },
+    {
+      question: 'How should I interpret the per-resident figure for California?',
+      answer:
+        'California has the largest state population in the country (about 39 million), so any per-resident figure is spread across a huge denominator. Compare California against other large states (Texas, Florida, New York) rather than small states with one dominant federal installation, and remember the state-level numbers on this page are modeled estimates for comparison, not audited award records.',
+    },
+  ],
+};
+
 export const STATE_EDITORIAL_CONTENT: Record<string, StateEditorialContent> = {
   texas: TEXAS,
+  california: CALIFORNIA,
   // Add more states here following the TEXAS example.
 };
 
