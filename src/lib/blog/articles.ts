@@ -7,9 +7,11 @@
 import type { ArticleData } from './types';
 
 import { data as usDebtInterestVsDefenseSpending } from './content/usDebtInterestVsDefenseSpending';
+import { data as whereDoesUsFederalBudgetGo } from './content/whereDoesUsFederalBudgetGo';
 
 export const BLOG_ARTICLES: ArticleData[] = [
   usDebtInterestVsDefenseSpending,
+  whereDoesUsFederalBudgetGo,
 ];
 
 export function getArticleBySlug(slug: string): ArticleData | undefined {
