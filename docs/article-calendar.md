@@ -9,7 +9,7 @@ Format: `- [ ] slug | Title | target keyword | pillar`
 
 - [x] us-debt-interest-vs-defense-spending | US Debt Interest Now Costs More Than Defense | us debt interest vs defense spending | Data Stories
 - [x] where-does-us-federal-budget-go | Where Does the US Federal Budget Go? The 2026 Breakdown | where does the us federal budget go | Explainers
-- [ ] federal-spending-texas | Federal Spending in Texas: Bases, NASA, and the Border | federal spending in texas | State Spotlights
+- [x] federal-spending-texas | Federal Spending in Texas: Bases, NASA, and the Border | federal spending in texas | State Spotlights
 - [ ] how-much-us-spends-per-second | How Much Does the US Government Spend Per Second? | how much does the us spend per second | Explainers
 - [ ] student-loan-accounting-education-spending | The $600 Billion Swing in Federal Education Spending | federal education spending by year | Data Stories
 - [ ] medicare-vs-social-security-spending | Medicare vs. Social Security: Which Costs More? | medicare vs social security spending | Comparisons
@@ -42,3 +42,4 @@ Format: `- [ ] slug | Title | target keyword | pillar`
 
 - 2026-10-08: US Debt Interest Now Costs More Than Defense — https://www.usaspending.us/blog/us-debt-interest-vs-defense-spending
 - 2026-10-09: Where Does the US Federal Budget Go? The 2026 Breakdown — https://www.usaspending.us/blog/where-does-us-federal-budget-go
+- 2026-10-10: Federal Spending in Texas: Bases, NASA, and the Border — https://www.usaspending.us/blog/federal-spending-texas
