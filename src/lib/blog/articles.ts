@@ -10,10 +10,13 @@ import { data as usDebtInterestVsDefenseSpending } from './content/usDebtInteres
 import { data as whereDoesUsFederalBudgetGo } from './content/whereDoesUsFederalBudgetGo';
 import { data as federalSpendingTexas } from './content/federalSpendingTexas';
 
+import { data as howMuchUsSpendsPerSecond } from './content/howMuchUsSpendsPerSecond';
+
 export const BLOG_ARTICLES: ArticleData[] = [
   usDebtInterestVsDefenseSpending,
   whereDoesUsFederalBudgetGo,
   federalSpendingTexas,
+  howMuchUsSpendsPerSecond,
 ];
 
 export function getArticleBySlug(slug: string): ArticleData | undefined {
