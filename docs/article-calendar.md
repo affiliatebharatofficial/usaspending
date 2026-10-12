@@ -11,6 +11,7 @@ Format: `- [ ] slug | Title | target keyword | pillar`
 - [x] where-does-us-federal-budget-go | Where Does the US Federal Budget Go? The 2026 Breakdown | where does the us federal budget go | Explainers
 - [x] federal-spending-texas | Federal Spending in Texas: Bases, NASA, and the Border | federal spending in texas | State Spotlights
 - [x] how-much-us-spends-per-second | How Much Does the US Government Spend Per Second? | how much does the us spend per second | Explainers
+- [ ] fy2026-federal-spending-final-numbers | FY2026 Final Numbers: The Year in 6 Charts | fy2026 federal spending total | Data Stories | GATE (moved to front 2026-10-11): write ONLY after the September 2026 MTS is live in the Treasury API — verify with `node scripts/refresh-mts-data.mjs 2026-09-30` (non-null category values = published; expected ~Oct 12 2026, Columbus Day may delay to Oct 13). If not live at write time, SKIP to the next unchecked topic; do NOT write this with CBO/CRFB estimates presented as final.
 - [ ] student-loan-accounting-education-spending | The $600 Billion Swing in Federal Education Spending | federal education spending by year | Data Stories
 - [ ] medicare-vs-social-security-spending | Medicare vs. Social Security: Which Costs More? | medicare vs social security spending | Comparisons
 - [ ] federal-spending-virginia | Federal Spending in Virginia: The Defense Corridor | federal spending in virginia | State Spotlights
@@ -36,7 +37,7 @@ Format: `- [ ] slug | Title | target keyword | pillar`
 - [ ] social-security-trust-fund-2026 | Social Security's $1.5 Trillion Year | social security spending 2026 | Data Stories
 - [ ] science-space-technology-budget | Science, Space & Tech: The $36 Billion Budget | federal science spending | Data Stories
 - [ ] federal-spending-florida-vs-texas | Florida vs. Texas: Two Models of Federal Spending | florida vs texas federal spending | Comparisons
-- [ ] fy2026-federal-spending-final-numbers | FY2026 Final Numbers: The Year in 6 Charts | fy2026 federal spending total | Data Stories
+
 
 ## Published log
 

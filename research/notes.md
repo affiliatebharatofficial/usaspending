@@ -66,3 +66,30 @@ Sanity checks performed 2026-10-10:
 - /blog/us-debt-interest-vs-defense-spending (day-1 article)
 - /blog/federal-spending-texas (day-3 article)
 - /categories/net-interest-spending
+
+---
+
+## 2026-10-11 — PRE-RESEARCH for `fy2026-federal-spending-final-numbers` (moved to FRONT of queue, gated on September 2026 MTS)
+
+### Why this topic, why now
+- The September 2026 Monthly Treasury Statement is the OFFICIAL close of FY2026 (fiscal year ended Sept 30, 2026). It was sitting 25 topics deep in the calendar (~3.5 weeks out) — it would have missed the entire news cycle. Moved to first unchecked position 2026-10-11 with a GATE note in the calendar.
+- **Status as of 2026-10-11 ~13:55 IST: NOT yet published.** Verified two ways: (1) `node scripts/refresh-mts-data.mjs 2026-09-30` returns nulls for all FY2026 categories (script works — prior-year September finals return fine); (2) economic calendars list **Monday Oct 12, 2026 ~2pm ET** as the expected release, but Oct 12 is Columbus Day (US federal holiday, bond market closed) — it may slip to Oct 13. The year-end MTS often lands mid-to-late October (FY2024's came Oct 18).
+- Gate behavior: the Oct 12 daily run (10:19 IST = ~12:49am ET, before the release) will most likely find it not-live → SKIP to next topic per the calendar gate note. The Oct 13 run should find it live → write the finals article with REAL numbers.
+
+### Numbers already in circulation — ALL ESTIMATES, never present as final
+- **CBO Monthly Budget Review for FY2026 (published Oct 8, 2026):** deficit **$2.0T** — $218B above FY2025's $1.8T deficit, $140B above CBO's latest baseline. Outlays **$7.4T**, revenue **$5.4T**. Spending rose $386B; revenue rose $169B. (Source: AAF summary of CBO MBR, Oct 8 2026.)
+- **CRFB preliminary estimate** (day after fiscal year closed): deficit ~$2.0T; revenue $5.4T (16.7% of GDP); spending $7.4T (22.9% of GDP); gap ~6.2% of GDP — "highest debt-to-GDP since WWII" framing in press.
+- OMB Mid-Session Review: $2.2T deficit. CRS/CBO-June-reestimate-based figure: $2.1T (6.6% of GDP). CEA projected ~$305B lower than CRFB. Spread reflects growth assumptions, not data.
+- **Debt:** $40.17T outstanding at Sept 30 close (+$2.53T in FY2026, +6.7%); debt held by public $32.43T (+$2.15T); first closed above $40T on Aug 18. (Treasury Daily "Debt to the Penny".)
+- **Interest:** CRFB estimate net interest topped **$1.1T** for FY2026 (site's FYTD figure through Aug: $1.017T).
+- Context anchors: FY2025 final = $7.01T outlays / $1.8T deficit. Sept 2025 was a $197.9B SURPLUS month (quarterly receipts) — September seasonality cuts both ways; don't annualize the month.
+
+### Per-second update math (for the article's through-line with the Oct-11 piece)
+- If MTS confirms ~$7.4T: $7.4T / 365 days = **~$234,700/s** full-year rate — squarely consistent with the FYTD $235,318/s. Frame as "the rate held."
+- Deficit per second: $2.0T / 365 ≈ **$63,400/s** borrowed (vs FYTD $67,910/s through Aug).
+
+### Honesty constraints (mandatory)
+- CBO MBR = early estimate; **only the Treasury MTS is official**. If writing before MTS lands (shouldn't happen per gate, but if): label every FY2026 full-year figure "CBO/CRFB estimate, pending Treasury's official September statement."
+- When MTS is live: run `node scripts/refresh-mts-data.mjs 2026-09-30`, use the printed Table 9 category FYTD outlays as the article's source numbers. The SITE-WIDE data refresh (spendingData.ts + dataService.ts + redeploy) is a separate job in the Oct-8 pattern — the article cites the numbers; it does not perform the refresh (skill forbids editing non-blog files).
+- September finals history: the script also prints FY2018–FY2025 September finals; FY2026's final joins that series once published.
+- Target keyword: "fy2026 federal spending total". Internal links: /blog/how-much-us-spends-per-second, /blog/us-debt-interest-vs-defense-spending, /blog/where-does-us-federal-budget-go, /spending-breakdown.

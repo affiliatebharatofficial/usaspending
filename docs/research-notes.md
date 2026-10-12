@@ -5,6 +5,60 @@ Format: dated entries, newest first. Verification labels: OFFICIAL PAGE / MTS DA
 
 ---
 
+## 2026-10-11 (evening) — PRE-RESEARCH for the GATED topic `fy2026-federal-spending-final-numbers` ("FY2026 Final Numbers: The Year in 6 Charts", target keyword "fy2026 federal spending total")
+
+Gate status as of 2026-10-11 ~21:05 IST: **September 2026 MTS is NOT yet live in the Treasury Fiscal Data API** — verified by running `node scripts/refresh-mts-data.mjs 2026-09-30` this evening (all category values null; history table stops at FY2025). The calendar gate stands: do NOT write this topic until the September MTS is live; estimates below are context ONLY and must never be presented as final.
+
+Expected release: economic calendars list **Monday 2026-10-12, 14:00 ET** — but that is Columbus Day (US federal holiday; bond market closed per SIFMA), so expect a slip to **Tuesday 2026-10-13** (FRED 2026 calendar: MTS September 2026 on Tue Oct 13, 1:00 pm US Central). The year-end report usually ships with a joint Treasury + OMB statement, and the FY2024 edition arrived Oct 18, 2024 — so late-October is the outer bound.
+
+### The headline numbers — CBO Monthly Budget Review, September 2026 (THIRD-PARTY, CBO — released 2026-10-08)
+
+- Federal deficit FY2026 = **$2.0 trillion** — **$218B wider than FY2025's $1.8T**, ~$140B above CBO's own baseline projection.
+- **$7.4 trillion of spending (+$386B, +6%)** vs **$5.4 trillion of revenue (+$169B, +3%)**.
+- Deficit = **6.2% of GDP** (up from 5.8% in FY2025). Debt held by the public = **$32.4T (~100% of GDP)**.
+- **Third-largest deficit in history** in nominal dollars — behind only the pandemic years FY2020 ($3.1T) and FY2021 ($2.8T). CRFB's verdict: "ranks among the highest deficits in our history – and the highest ever outside of a war or recession."
+- Interest payments rose **$115B** year over year — the deficit widened even though revenue grew, because spending grew faster.
+- **Third year in a row that net interest outran defense** on the standard budget-function definition (Pentagon + nuclear weapons work). Honesty note (from the same source): on the broader definition the site used for its Day-1 article (DoD + veterans programs, $1,293.3B vs $970.1B interest in FY2025), defense still wins — state the definition being used. This validates and extends the site's Day-1 thesis.
+Sources: CBO Monthly Budget Review Sept 2026 via https://www.cbo.gov (search "Monthly Budget Review September 2026") ; AAF insight https://www.americanactionforum.org/insight/cbo-fy-2026-budget-deficit-totaled-2-trillion/ ; https://selfreliancecentral.com/2026/10/10/washington-took-in-169-billion-more-last-year-and-still-borrowed-2-trillion/ ; https://askwhy.news/us/economy/fy2026-deficit-interest-tops-defense-yields/ ; release timing via https://admiralmarkets.com/analytics/traders-blog/us-monthly-budget-statement-october-2026
+
+### Suggested angle when the MTS lands (MTS DATA = site canonical once published)
+
+- The site's `scripts/refresh-mts-data.mjs` will give official FYTD category totals and the history-table FY2026 final. Lead with official numbers; use CBO's $2.0T/$7.4T/$5.4T only to frame the "estimates vs official" story if they match.
+- Chart ideas: (1) deficit history FY2006–2026 ($ and % of GDP); (2) FY2026 category bars vs FY2025; (3) interest vs defense, three-year trend with both definitions labeled.
+
+---
+
+## 2026-10-11 (morning) — PRE-RESEARCH for 2026-10-12 cron run: `student-loan-accounting-education-spending`
+
+Topic (deterministic per docs/article-calendar.md): the first unchecked `[ ]`
+queue item → slug `student-loan-accounting-education-spending` | "The $600 Billion
+Swing in Federal Education Spending" | target keyword "federal education spending
+by year" | pillar: Data Stories.
+
+### The headline numbers — CBO Monthly Budget Review, September 2023 (THIRD-PARTY, CBO)
+- Department of Education outlays: **FY2022 = $639B → FY2023 = −$41B**, a **−$680B (−106%)** swing.
+- Calendar title says "$600 Billion Swing" — the real swing is $680B; frame the article as "nearly $700 billion" / "the $680 billion swing" and keep the slug.
+Source: https://WWW.CBO.GOV/system/files/2023-10/59544.pdf (Table 3, "Department of Education 639 −41 −680 −680 −106")
+
+### Why it happened — the accounting mechanics (OFFICIAL: ED FY2023 Agency Financial Report)
+- **Aug 24, 2022:** Biden announces one-time student-loan debt relief (up to $10K/$20K per borrower). CBO's Sept 26, 2022 letter estimated **~$430B of debt canceled** (43M borrowers held $1.6T as of June 30, 2022).
+- ED books the estimated cost in FY2022 under the Federal Credit Reform Act: Direct Loan **net modification +$425.8B**, FFEL +$24.6B → subtotal **+$450.5B** (CRS R48152 table).
+- **June 30, 2023:** Supreme Court strikes the plan down 6–3 (Biden v. Nebraska).
+- FY2023: ED records the reversal — Direct Loan net modification **−$202.6B**, distributed offsetting receipts **−$346.7B** (downward re-estimates); agency net outlays **$306.5B vs $668.5B in FY2022 (−$362B, −54.2%)**.
+- Honesty note for the article: no cash ever moved for the forgiveness — it was a subsidy-cost estimate booked as outlays, then reversed. Negative outlays are an accounting artifact of credit-reform re-estimates, not the government "earning" money.
+Sources: ED FY2023 AFR https://www.ed.gov/sites/ed/files/about/reports/annual/2023report/2c-mda-financial-highlights.pdf ; CRS https://www.congress.gov/crs-product/R48152 ; SCOTUS ruling https://www.wuga.org/2023-06-30/supreme-court-rules-against-bidens-student-debt-plan
+
+### The story continues (THIRD-PARTY, ED FY2027 congressional justification)
+- ED's FY2027 budget docs note the FY2026 Direct Loan total is driven by a **net downward re-estimate of −$50.5B** — the student-loan accounting keeps swinging year to year. Good closing angle: this volatility is structural, not a one-off.
+Source: https://www.ed.gov/media/document/fy-2027-congressional-justification-student-loans-overview-113549.pdf
+
+### How to use the site's own data (MTS DATA — site canonical, src/lib/data/spendingData.ts)
+- `education-training` category: FY2026 FYTD **$91,952,446,165**; FY factors (MTS Table 9 actuals): 2018: 1.0209, 2020: 2.5744, **2022: 7.3581**, 2024: 3.3172 → FY2022 ≈ **$676.6B** (functional-category basis; close to CBO's $639B department figure — the scopes differ, say so).
+- **Limitation:** the site carries NO FY2023 category actuals (factors exist only for 2018/2020/2022/2024/2026). For FY2023 use CBO's −$41B with explicit "Treasury/CBO basis" attribution and note FY2023 is outside the site's chart data. Do NOT mix the functional series and the department series in one chart without labeling.
+- Suggested visuals: (1) bar chart — Dept. of Education outlays FY2022 $639B vs FY2023 −$41B (CBO); (2) waterfall/timeline — announcement → booked cost → SCOTUS reversal → negative outlays.
+
+---
+
 ## 2026-10-10 (afternoon) — PRE-RESEARCH for 2026-10-11 cron run: `how-much-us-spends-per-second`
 
 Topic (deterministic per docs/article-calendar.md): the first unchecked `[ ]`
