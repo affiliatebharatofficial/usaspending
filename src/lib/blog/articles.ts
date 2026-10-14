@@ -13,6 +13,7 @@ import { data as federalSpendingTexas } from './content/federalSpendingTexas';
 import { data as howMuchUsSpendsPerSecond } from './content/howMuchUsSpendsPerSecond';
 import { data as studentLoanAccountingEducationSpending } from './content/studentLoanAccountingEducationSpending';
 import { data as medicareVsSocialSecuritySpending } from './content/medicareVsSocialSecuritySpending';
+import { data as federalSpendingVirginia } from './content/federalSpendingVirginia';
 
 export const BLOG_ARTICLES: ArticleData[] = [
   usDebtInterestVsDefenseSpending,
@@ -21,6 +22,7 @@ export const BLOG_ARTICLES: ArticleData[] = [
   howMuchUsSpendsPerSecond,
   studentLoanAccountingEducationSpending,
   medicareVsSocialSecuritySpending,
+  federalSpendingVirginia,
 ];
 
 export function getArticleBySlug(slug: string): ArticleData | undefined {
