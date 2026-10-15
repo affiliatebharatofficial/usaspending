@@ -11,11 +11,11 @@ Format: `- [ ] slug | Title | target keyword | pillar`
 - [x] where-does-us-federal-budget-go | Where Does the US Federal Budget Go? The 2026 Breakdown | where does the us federal budget go | Explainers
 - [x] federal-spending-texas | Federal Spending in Texas: Bases, NASA, and the Border | federal spending in texas | State Spotlights
 - [x] how-much-us-spends-per-second | How Much Does the US Government Spend Per Second? | how much does the us spend per second | Explainers
-- [ ] fy2026-federal-spending-final-numbers | FY2026 Final Numbers: The Year in 6 Charts | fy2026 federal spending total | Data Stories | GATE (moved to front 2026-10-11): write ONLY after the September 2026 MTS is live in the Treasury API — verify with `node scripts/refresh-mts-data.mjs 2026-09-30` (non-null category values = published; expected ~Oct 12 2026, Columbus Day may delay to Oct 13). If not live at write time, SKIP to the next unchecked topic; do NOT write this with CBO/CRFB estimates presented as final.
+- [ ] fy2026-federal-spending-final-numbers | FY2026 Final Numbers: The Year in 6 Charts | fy2026 federal spending total | Data Stories | GATE (moved to front 2026-10-11): write ONLY after the September 2026 MTS is live in the Treasury API — LAST CHECKED 2026-10-15 ~10:30 IST: September 2026 MTS Table 9 still NOT in the Treasury API (all category values null for record_date 2026-09-30 via scripts/refresh-mts-data.mjs); topic stays locked. — verify with `node scripts/refresh-mts-data.mjs 2026-09-30` (non-null category values = published; expected ~Oct 12 2026, Columbus Day may delay to Oct 13). If not live at write time, SKIP to the next unchecked topic; do NOT write this with CBO/CRFB estimates presented as final.
 - [x] student-loan-accounting-education-spending | The $600 Billion Swing in Federal Education Spending | federal education spending by year | Data Stories
 - [x] medicare-vs-social-security-spending | Medicare vs. Social Security: Which Costs More? | medicare vs social security spending | Comparisons
 - [x] federal-spending-virginia | Federal Spending in Virginia: The Defense Corridor | federal spending in virginia | State Spotlights
-- [ ] deficit-vs-debt-vs-interest-explained | Deficit vs. Debt vs. Interest: What's the Difference? | deficit vs debt vs interest | Explainers
+- [x] deficit-vs-debt-vs-interest-explained | Deficit vs. Debt vs. Interest: What's the Difference? | deficit vs debt vs interest | Explainers
 - [ ] federal-deficit-2026-how-big | How Big Is the 2026 Federal Deficit? | 2026 federal deficit | Data Stories
 - [ ] federal-spending-california | Federal Spending in California: Health Dollars and Defense Contracts | federal spending in california | State Spotlights
 - [ ] what-is-mandatory-vs-discretionary-spending | Mandatory vs. Discretionary Spending, Explained | mandatory vs discretionary spending | Explainers
@@ -48,3 +48,4 @@ Format: `- [ ] slug | Title | target keyword | pillar`
 - 2026-10-12: Federal Education Spending by Year: The $600B Swing — https://www.usaspending.us/blog/student-loan-accounting-education-spending
 - 2026-10-13: Medicare vs. Social Security Spending: Which Costs More? — https://www.usaspending.us/blog/medicare-vs-social-security-spending
 - 2026-10-14: Federal Spending in Virginia: The Defense Corridor — https://www.usaspending.us/blog/federal-spending-virginia
+- 2026-10-15: Deficit vs. Debt vs. Interest: What's the Difference? — https://www.usaspending.us/blog/deficit-vs-debt-vs-interest-explained
