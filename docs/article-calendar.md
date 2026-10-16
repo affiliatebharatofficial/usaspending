@@ -16,7 +16,7 @@ Format: `- [ ] slug | Title | target keyword | pillar`
 - [x] medicare-vs-social-security-spending | Medicare vs. Social Security: Which Costs More? | medicare vs social security spending | Comparisons
 - [x] federal-spending-virginia | Federal Spending in Virginia: The Defense Corridor | federal spending in virginia | State Spotlights
 - [x] deficit-vs-debt-vs-interest-explained | Deficit vs. Debt vs. Interest: What's the Difference? | deficit vs debt vs interest | Explainers
-- [ ] federal-deficit-2026-how-big | How Big Is the 2026 Federal Deficit? | 2026 federal deficit | Data Stories
+- [x] federal-deficit-2026-how-big | How Big Is the 2026 Federal Deficit? | 2026 federal deficit | Data Stories
 - [ ] federal-spending-california | Federal Spending in California: Health Dollars and Defense Contracts | federal spending in california | State Spotlights
 - [ ] what-is-mandatory-vs-discretionary-spending | Mandatory vs. Discretionary Spending, Explained | mandatory vs discretionary spending | Explainers
 - [ ] defense-vs-education-spending | Defense vs. Education: Where the Money Goes | defense vs education spending | Comparisons
@@ -49,3 +49,4 @@ Format: `- [ ] slug | Title | target keyword | pillar`
 - 2026-10-13: Medicare vs. Social Security Spending: Which Costs More? — https://www.usaspending.us/blog/medicare-vs-social-security-spending
 - 2026-10-14: Federal Spending in Virginia: The Defense Corridor — https://www.usaspending.us/blog/federal-spending-virginia
 - 2026-10-15: Deficit vs. Debt vs. Interest: What's the Difference? — https://www.usaspending.us/blog/deficit-vs-debt-vs-interest-explained
+- 2026-10-16: How Big Is the 2026 Federal Deficit? ($2 Trillion) — https://www.usaspending.us/blog/federal-deficit-2026-how-big
