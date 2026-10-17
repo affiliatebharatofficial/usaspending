@@ -16,6 +16,7 @@ import { data as medicareVsSocialSecuritySpending } from './content/medicareVsSo
 import { data as federalSpendingVirginia } from './content/federalSpendingVirginia';
 import { data as deficitVsDebtVsInterestExplained } from './content/deficitVsDebtVsInterestExplained';
 import { data as federalDeficit2026HowBig } from './content/federalDeficit2026HowBig';
+import { data as fy2026FederalSpendingFinalNumbers } from './content/fy2026FederalSpendingFinalNumbers';
 
 export const BLOG_ARTICLES: ArticleData[] = [
   usDebtInterestVsDefenseSpending,
@@ -27,6 +28,7 @@ export const BLOG_ARTICLES: ArticleData[] = [
   federalSpendingVirginia,
   deficitVsDebtVsInterestExplained,
   federalDeficit2026HowBig,
+  fy2026FederalSpendingFinalNumbers,
 ];
 
 export function getArticleBySlug(slug: string): ArticleData | undefined {
