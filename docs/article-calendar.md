@@ -17,7 +17,7 @@ Format: `- [ ] slug | Title | target keyword | pillar`
 - [x] federal-spending-virginia | Federal Spending in Virginia: The Defense Corridor | federal spending in virginia | State Spotlights
 - [x] deficit-vs-debt-vs-interest-explained | Deficit vs. Debt vs. Interest: What's the Difference? | deficit vs debt vs interest | Explainers
 - [x] federal-deficit-2026-how-big | How Big Is the 2026 Federal Deficit? | 2026 federal deficit | Data Stories
-- [ ] federal-spending-california | Federal Spending in California: Health Dollars and Defense Contracts | federal spending in california | State Spotlights
+- [x] federal-spending-california | Federal Spending in California: Health Dollars and Defense Contracts | federal spending in california | State Spotlights
 - [ ] what-is-mandatory-vs-discretionary-spending | Mandatory vs. Discretionary Spending, Explained | mandatory vs discretionary spending | Explainers
 - [ ] defense-vs-education-spending | Defense vs. Education: Where the Money Goes | defense vs education spending | Comparisons
 - [ ] veterans-benefits-spending-breakdown | Veterans Benefits: Where $396 Billion Goes | veterans benefits spending | Data Stories
@@ -37,6 +37,36 @@ Format: `- [ ] slug | Title | target keyword | pillar`
 - [ ] social-security-trust-fund-2026 | Social Security's $1.5 Trillion Year | social security spending 2026 | Data Stories
 - [ ] science-space-technology-budget | Science, Space & Tech: The $36 Billion Budget | federal science spending | Data Stories
 - [ ] federal-spending-florida-vs-texas | Florida vs. Texas: Two Models of Federal Spending | florida vs texas federal spending | Comparisons
+- [ ] federal-spending-illinois | Federal Spending in Illinois: Transit, Labs, and Farmland | federal spending in illinois | State Spotlights
+- [ ] federal-spending-ohio | Federal Spending in Ohio: Bases, Factories, and Research | federal spending in ohio | State Spotlights
+- [ ] federal-spending-pennsylvania | Federal Spending in Pennsylvania: Steel Towns and Shipyards | federal spending in pennsylvania | State Spotlights
+- [ ] federal-spending-georgia | Federal Spending in Georgia: The CDC, Military Bases, and Film | federal spending in georgia | State Spotlights
+- [ ] federal-spending-north-carolina | Federal Spending in North Carolina: Research Triangle and Fort Liberty | federal spending in north carolina | State Spotlights
+- [ ] federal-spending-michigan | Federal Spending in Michigan: Autos, Lakes, and Labs | federal spending in michigan | State Spotlights
+- [ ] federal-spending-washington | Federal Spending in Washington: Dams, Naval Bases, and Tech | federal spending in washington | State Spotlights
+- [ ] federal-spending-massachusetts | Federal Spending in Massachusetts: Universities and Biotech | federal spending in massachusetts | State Spotlights
+- [ ] federal-spending-colorado | Federal Spending in Colorado: Space Command and Public Lands | federal spending in colorado | State Spotlights
+- [ ] federal-spending-arizona | Federal Spending in Arizona: Border, Bases, and Water | federal spending in arizona | State Spotlights
+- [ ] what-is-sequestration | Sequestration, Explained: Automatic Budget Cuts | what is sequestration | Explainers
+- [ ] how-does-treasury-borrow-money | How the Treasury Borrows Money: Bills, Notes, and Bonds | how does the us treasury borrow money | Explainers
+- [ ] what-is-baseline-budgeting | Baseline Budgeting: Why "Cuts" Usually Mean Smaller Increases | baseline budgeting explained | Explainers
+- [ ] continuing-resolution-explained | Continuing Resolutions: How the Government Avoids Shutdowns | what is a continuing resolution | Explainers
+- [ ] how-federal-grants-work | Federal Grants, Explained: Who Gets the Money | how do federal grants work | Explainers
+- [ ] what-is-paygo-budget-rule | PAYGO, Explained: The Rule That New Spending Must Be Paid For | what is paygo budget rule | Explainers
+- [ ] interest-payments-vs-medicare | Interest vs. Medicare: Which Costs More? | interest payments vs medicare spending | Comparisons
+- [ ] medicare-vs-medicaid-spending | Medicare vs. Medicaid: Two Health Programs, Two Budgets | medicare vs medicaid spending | Comparisons
+- [ ] veterans-benefits-vs-education-spending | Veterans Benefits vs. Education Spending | veterans benefits vs education spending | Comparisons
+- [ ] infrastructure-vs-defense-spending | Infrastructure vs. Defense: Where the Money Goes | infrastructure vs defense spending | Comparisons
+- [ ] snap-vs-housing-assistance | SNAP vs. Housing Assistance: Two Safety Nets, Compared | snap vs housing assistance spending | Comparisons
+- [ ] federal-spending-urban-vs-rural | Urban vs. Rural America: Where Federal Dollars Land | federal spending urban vs rural | Comparisons
+- [ ] tsa-vs-coast-guard-budget | TSA vs. Coast Guard: Homeland Security Spending Compared | tsa vs coast guard budget | Comparisons
+- [ ] federal-workforce-payroll | The Federal Workforce: Headcount, Pay, and Where They Work | federal workforce size and pay | Data Stories
+- [ ] fema-disaster-spending | FEMA Disaster Spending: Hurricanes, Wildfires, and Floods | fema disaster spending by year | Data Stories
+- [ ] farm-subsidies-spending-explained | Farm Subsidies, Explained: Where Agricultural Dollars Go | us farm subsidies spending | Data Stories
+- [ ] foreign-aid-spending-breakdown | US Foreign Aid: How Much America Spends and Where | us foreign aid spending breakdown | Data Stories
+- [ ] national-parks-budget | The National Parks Budget: Dollars Across 433 Sites | national parks service budget | Data Stories
+- [ ] federal-childcare-spending | Federal Childcare Spending: Programs and Price Tags | federal childcare spending | Data Stories
+- [ ] sba-small-business-spending | The SBA Budget: Loans and Lifelines for Small Business | small business administration budget | Data Stories
 
 
 ## Published log
@@ -51,3 +81,4 @@ Format: `- [ ] slug | Title | target keyword | pillar`
 - 2026-10-15: Deficit vs. Debt vs. Interest: What's the Difference? — https://www.usaspending.us/blog/deficit-vs-debt-vs-interest-explained
 - 2026-10-16: How Big Is the 2026 Federal Deficit? ($2 Trillion) — https://www.usaspending.us/blog/federal-deficit-2026-how-big
 - 2026-10-17: FY2026 Federal Spending: Final Numbers in 6 Charts — https://www.usaspending.us/blog/fy2026-federal-spending-final-numbers
+- 2026-10-18: Federal Spending in California: Health and Defense Dollars — https://www.usaspending.us/blog/federal-spending-california
