@@ -18,7 +18,7 @@ Format: `- [ ] slug | Title | target keyword | pillar`
 - [x] deficit-vs-debt-vs-interest-explained | Deficit vs. Debt vs. Interest: What's the Difference? | deficit vs debt vs interest | Explainers
 - [x] federal-deficit-2026-how-big | How Big Is the 2026 Federal Deficit? | 2026 federal deficit | Data Stories
 - [x] federal-spending-california | Federal Spending in California: Health Dollars and Defense Contracts | federal spending in california | State Spotlights
-- [ ] what-is-mandatory-vs-discretionary-spending | Mandatory vs. Discretionary Spending, Explained | mandatory vs discretionary spending | Explainers
+- [x] what-is-mandatory-vs-discretionary-spending | Mandatory vs. Discretionary Spending, Explained | mandatory vs discretionary spending | Explainers
 - [ ] defense-vs-education-spending | Defense vs. Education: Where the Money Goes | defense vs education spending | Comparisons
 - [ ] veterans-benefits-spending-breakdown | Veterans Benefits: Where $396 Billion Goes | veterans benefits spending | Data Stories
 - [ ] federal-spending-florida | Federal Spending in Florida: Retirees, Bases, and Space Coast | federal spending in florida | State Spotlights
@@ -82,3 +82,4 @@ Format: `- [ ] slug | Title | target keyword | pillar`
 - 2026-10-16: How Big Is the 2026 Federal Deficit? ($2 Trillion) — https://www.usaspending.us/blog/federal-deficit-2026-how-big
 - 2026-10-17: FY2026 Federal Spending: Final Numbers in 6 Charts — https://www.usaspending.us/blog/fy2026-federal-spending-final-numbers
 - 2026-10-18: Federal Spending in California: Health and Defense Dollars — https://www.usaspending.us/blog/federal-spending-california
+- 2026-10-20: Mandatory vs. Discretionary Spending, Explained — https://www.usaspending.us/blog/what-is-mandatory-vs-discretionary-spending (note: 2026-10-19 run stalled with no article published — no catch-up double-publish, per playbook one article per run)
