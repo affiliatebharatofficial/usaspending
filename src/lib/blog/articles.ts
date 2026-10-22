@@ -20,6 +20,7 @@ import { data as fy2026FederalSpendingFinalNumbers } from './content/fy2026Feder
 import { data as federalSpendingCalifornia } from './content/federalSpendingCalifornia';
 import { data as whatIsMandatoryVsDiscretionarySpending } from './content/whatIsMandatoryVsDiscretionarySpending';
 import { data as defenseVsEducationSpending } from './content/defenseVsEducationSpending';
+import { data as veteransBenefitsSpendingBreakdown } from './content/veteransBenefitsSpendingBreakdown';
 
 export const BLOG_ARTICLES: ArticleData[] = [
   usDebtInterestVsDefenseSpending,
@@ -35,6 +36,7 @@ export const BLOG_ARTICLES: ArticleData[] = [
   federalSpendingCalifornia,
   whatIsMandatoryVsDiscretionarySpending,
   defenseVsEducationSpending,
+  veteransBenefitsSpendingBreakdown,
 ];
 
 export function getArticleBySlug(slug: string): ArticleData | undefined {
