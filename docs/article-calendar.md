@@ -21,7 +21,7 @@ Format: `- [ ] slug | Title | target keyword | pillar`
 - [x] what-is-mandatory-vs-discretionary-spending | Mandatory vs. Discretionary Spending, Explained | mandatory vs discretionary spending | Explainers
 - [x] defense-vs-education-spending | Defense vs. Education: Where the Money Goes | defense vs education spending | Comparisons
 - [x] veterans-benefits-spending-breakdown | Veterans Benefits: Where $396 Billion Goes | veterans benefits spending | Data Stories
-- [ ] federal-spending-florida | Federal Spending in Florida: Retirees, Bases, and Space Coast | federal spending in florida | State Spotlights
+- [x] federal-spending-florida | Federal Spending in Florida: Retirees, Bases, and Space Coast | federal spending in florida | State Spotlights | 2026-10-23
 - [ ] how-federal-budget-process-works | How the Federal Budget Process Actually Works | how does the federal budget work | Explainers
 - [ ] social-security-vs-defense-spending | Social Security vs. Defense: The Budget in One Chart | social security vs defense spending | Comparisons
 - [ ] snap-food-assistance-spending-explained | SNAP and Food Assistance: How $51 Billion Is Spent | snap spending explained | Data Stories
@@ -85,3 +85,4 @@ Format: `- [ ] slug | Title | target keyword | pillar`
 - 2026-10-20: Mandatory vs. Discretionary Spending, Explained — https://www.usaspending.us/blog/what-is-mandatory-vs-discretionary-spending (note: 2026-10-19 run stalled with no article published — no catch-up double-publish, per playbook one article per run)
 - 2026-10-21: Defense vs. Education Spending: The 9.5x Gap Explained — https://www.usaspending.us/blog/defense-vs-education-spending
 - 2026-10-22: Veterans Benefits: Where $396 Billion Goes — https://www.usaspending.us/blog/veterans-benefits-spending-breakdown
+- 2026-10-23: Federal Spending in Florida: Retirees, Bases, Space Coast — https://www.usaspending.us/blog/federal-spending-florida
