@@ -22,7 +22,7 @@ Format: `- [ ] slug | Title | target keyword | pillar`
 - [x] defense-vs-education-spending | Defense vs. Education: Where the Money Goes | defense vs education spending | Comparisons
 - [x] veterans-benefits-spending-breakdown | Veterans Benefits: Where $396 Billion Goes | veterans benefits spending | Data Stories
 - [x] federal-spending-florida | Federal Spending in Florida: Retirees, Bases, and Space Coast | federal spending in florida | State Spotlights | 2026-10-23
-- [ ] how-federal-budget-process-works | How the Federal Budget Process Actually Works | how does the federal budget work | Explainers
+- [x] how-federal-budget-process-works | How the Federal Budget Process Actually Works | how does the federal budget work | Explainers | 2026-10-24
 - [ ] social-security-vs-defense-spending | Social Security vs. Defense: The Budget in One Chart | social security vs defense spending | Comparisons
 - [ ] snap-food-assistance-spending-explained | SNAP and Food Assistance: How $51 Billion Is Spent | snap spending explained | Data Stories
 - [ ] federal-spending-new-york | Federal Spending in New York: Finance, Health, and Infrastructure | federal spending in new york | State Spotlights
@@ -86,3 +86,4 @@ Format: `- [ ] slug | Title | target keyword | pillar`
 - 2026-10-21: Defense vs. Education Spending: The 9.5x Gap Explained — https://www.usaspending.us/blog/defense-vs-education-spending
 - 2026-10-22: Veterans Benefits: Where $396 Billion Goes — https://www.usaspending.us/blog/veterans-benefits-spending-breakdown
 - 2026-10-23: Federal Spending in Florida: Retirees, Bases, Space Coast — https://www.usaspending.us/blog/federal-spending-florida
+- 2026-10-24: How the Federal Budget Process Actually Works — https://www.usaspending.us/blog/how-federal-budget-process-works

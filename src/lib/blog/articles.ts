@@ -22,6 +22,7 @@ import { data as whatIsMandatoryVsDiscretionarySpending } from './content/whatIs
 import { data as defenseVsEducationSpending } from './content/defenseVsEducationSpending';
 import { data as veteransBenefitsSpendingBreakdown } from './content/veteransBenefitsSpendingBreakdown';
 import { data as federalSpendingFlorida } from './content/federalSpendingFlorida';
+import { data as howFederalBudgetProcessWorks } from './content/howFederalBudgetProcessWorks';
 
 export const BLOG_ARTICLES: ArticleData[] = [
   usDebtInterestVsDefenseSpending,
@@ -39,6 +40,7 @@ export const BLOG_ARTICLES: ArticleData[] = [
   defenseVsEducationSpending,
   veteransBenefitsSpendingBreakdown,
   federalSpendingFlorida,
+  howFederalBudgetProcessWorks,
 ];
 
 export function getArticleBySlug(slug: string): ArticleData | undefined {
