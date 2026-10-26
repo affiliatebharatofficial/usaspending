@@ -24,6 +24,7 @@ import { data as veteransBenefitsSpendingBreakdown } from './content/veteransBen
 import { data as federalSpendingFlorida } from './content/federalSpendingFlorida';
 import { data as howFederalBudgetProcessWorks } from './content/howFederalBudgetProcessWorks';
 import { data as socialSecurityVsDefenseSpending } from './content/socialSecurityVsDefenseSpending';
+import { data as snapFoodAssistanceSpendingExplained } from './content/snapFoodAssistanceSpendingExplained';
 
 export const BLOG_ARTICLES: ArticleData[] = [
   usDebtInterestVsDefenseSpending,
@@ -43,6 +44,7 @@ export const BLOG_ARTICLES: ArticleData[] = [
   federalSpendingFlorida,
   howFederalBudgetProcessWorks,
   socialSecurityVsDefenseSpending,
+  snapFoodAssistanceSpendingExplained,
 ];
 
 export function getArticleBySlug(slug: string): ArticleData | undefined {

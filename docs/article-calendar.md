@@ -24,7 +24,7 @@ Format: `- [ ] slug | Title | target keyword | pillar`
 - [x] federal-spending-florida | Federal Spending in Florida: Retirees, Bases, and Space Coast | federal spending in florida | State Spotlights | 2026-10-23
 - [x] how-federal-budget-process-works | How the Federal Budget Process Actually Works | how does the federal budget work | Explainers | 2026-10-24
 - [x] social-security-vs-defense-spending | Social Security vs. Defense: The Budget in One Chart | social security vs defense spending | Comparisons | 2026-10-25
-- [ ] snap-food-assistance-spending-explained | SNAP and Food Assistance: How $51 Billion Is Spent | snap spending explained | Data Stories
+- [x] snap-food-assistance-spending-explained | SNAP and Food Assistance: How $51 Billion Is Spent | snap spending explained | Data Stories | 2026-10-26 — published as "SNAP Spending Explained: $102 Billion in Food Aid": research showed the calendar's $51B is the site's Agriculture-function (farm programs) figure, NOT SNAP; article uses real USDA SNAP figures ($101.7B FY2025) and explains the distinction.
 - [ ] federal-spending-new-york | Federal Spending in New York: Finance, Health, and Infrastructure | federal spending in new york | State Spotlights
 - [ ] what-is-debt-ceiling | The Debt Ceiling, Explained in Plain English | what is the debt ceiling | Explainers
 - [ ] interest-payments-vs-agency-budgets | What $1 Trillion in Interest Could Buy Instead | federal interest payments comparison | Comparisons
@@ -88,3 +88,4 @@ Format: `- [ ] slug | Title | target keyword | pillar`
 - 2026-10-23: Federal Spending in Florida: Retirees, Bases, Space Coast — https://www.usaspending.us/blog/federal-spending-florida
 - 2026-10-24: How the Federal Budget Process Actually Works — https://www.usaspending.us/blog/how-federal-budget-process-works
 - 2026-10-25: Social Security vs. Defense Spending: The 1.7x Gap — https://www.usaspending.us/blog/social-security-vs-defense-spending
+- 2026-10-26: SNAP Spending Explained: $102 Billion in Food Aid — https://www.usaspending.us/blog/snap-food-assistance-spending-explained
