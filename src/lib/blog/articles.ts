@@ -27,6 +27,7 @@ import { data as socialSecurityVsDefenseSpending } from './content/socialSecurit
 import { data as snapFoodAssistanceSpendingExplained } from './content/snapFoodAssistanceSpendingExplained';
 import { data as federalSpendingNewYork } from './content/federalSpendingNewYork';
 import { data as whatIsDebtCeiling } from './content/whatIsDebtCeiling';
+import { data as interestPaymentsVsAgencyBudgets } from './content/interestPaymentsVsAgencyBudgets';
 
 export const BLOG_ARTICLES: ArticleData[] = [
   usDebtInterestVsDefenseSpending,
@@ -49,6 +50,7 @@ export const BLOG_ARTICLES: ArticleData[] = [
   snapFoodAssistanceSpendingExplained,
   federalSpendingNewYork,
   whatIsDebtCeiling,
+  interestPaymentsVsAgencyBudgets,
 ];
 
 export function getArticleBySlug(slug: string): ArticleData | undefined {

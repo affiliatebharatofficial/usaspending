@@ -27,7 +27,7 @@ Format: `- [ ] slug | Title | target keyword | pillar`
 - [x] snap-food-assistance-spending-explained | SNAP and Food Assistance: How $51 Billion Is Spent | snap spending explained | Data Stories | 2026-10-26 — published as "SNAP Spending Explained: $102 Billion in Food Aid": research showed the calendar's $51B is the site's Agriculture-function (farm programs) figure, NOT SNAP; article uses real USDA SNAP figures ($101.7B FY2025) and explains the distinction.
 - [x] federal-spending-new-york | Federal Spending in New York: Finance, Health, and Infrastructure | federal spending in new york | State Spotlights | 2026-10-27
 - [x] what-is-debt-ceiling | The Debt Ceiling, Explained in Plain English | what is the debt ceiling | Explainers | 2026-10-28
-- [ ] interest-payments-vs-agency-budgets | What $1 Trillion in Interest Could Buy Instead | federal interest payments comparison | Comparisons
+- [x] interest-payments-vs-agency-budgets | What $1 Trillion in Interest Could Buy Instead | federal interest payments comparison | Comparisons | 2026-10-29
 - [ ] medicare-spending-growth-trend | Medicare's $979 Billion Year: The Growth Story | medicare spending growth | Data Stories
 - [ ] federal-spending-alaska | Federal Spending in Alaska: Highest Per Capita in America | federal spending in alaska | State Spotlights
 - [ ] where-do-federal-taxes-go | Where Do Your Federal Taxes Go? | where do federal taxes go | Explainers
@@ -91,3 +91,4 @@ Format: `- [ ] slug | Title | target keyword | pillar`
 - 2026-10-26: SNAP Spending Explained: $102 Billion in Food Aid — https://www.usaspending.us/blog/snap-food-assistance-spending-explained
 - 2026-10-27: Federal Spending in New York: Health, Transit, Research — https://www.usaspending.us/blog/federal-spending-new-york
 - 2026-10-28: The Debt Ceiling, Explained in Plain English — https://www.usaspending.us/blog/what-is-debt-ceiling
+- 2026-10-29: Federal Interest Payments vs. Agency Budgets: $1T Compared — https://www.usaspending.us/blog/interest-payments-vs-agency-budgets
