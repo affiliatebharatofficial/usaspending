@@ -3,6 +3,7 @@
 import React, { useState } from 'react';
 import Link from 'next/link';
 import AdUnit from '@/components/ads/AdUnit';
+import BauvalAd from '@/components/ads/BauvalAd';
 import Breadcrumbs from '@/components/navigation/Breadcrumbs';
 import SpendingBreakdown from '@/components/visualizations/SpendingBreakdown';
 import DonutChart from '@/components/visualizations/DonutChart';
@@ -87,6 +88,8 @@ export default function SpendingBreakdownPage() {
       <SpendingBreakdown data={breakdownData} />
 
       <AdUnit type="300x250" />
+
+      <BauvalAd />
 
       {/* Category Inspector Card */}
       <div className="data-card p-6 sm:p-8 rounded-xl border border-slate-200 bg-white space-y-6">
