@@ -28,7 +28,7 @@ Format: `- [ ] slug | Title | target keyword | pillar`
 - [x] federal-spending-new-york | Federal Spending in New York: Finance, Health, and Infrastructure | federal spending in new york | State Spotlights | 2026-10-27
 - [x] what-is-debt-ceiling | The Debt Ceiling, Explained in Plain English | what is the debt ceiling | Explainers | 2026-10-28
 - [x] interest-payments-vs-agency-budgets | What $1 Trillion in Interest Could Buy Instead | federal interest payments comparison | Comparisons | 2026-10-29
-- [ ] medicare-spending-growth-trend | Medicare's $979 Billion Year: The Growth Story | medicare spending growth | Data Stories
+- [x] medicare-spending-growth-trend | Medicare's $979 Billion Year: The Growth Story | medicare spending growth | Data Stories | 2026-10-30
 - [ ] federal-spending-alaska | Federal Spending in Alaska: Highest Per Capita in America | federal spending in alaska | State Spotlights
 - [ ] where-do-federal-taxes-go | Where Do Your Federal Taxes Go? | where do federal taxes go | Explainers
 - [ ] highway-infrastructure-spending-explained | Highways and Infrastructure: How $126 Billion Moves | federal infrastructure spending | Data Stories
@@ -92,3 +92,4 @@ Format: `- [ ] slug | Title | target keyword | pillar`
 - 2026-10-27: Federal Spending in New York: Health, Transit, Research — https://www.usaspending.us/blog/federal-spending-new-york
 - 2026-10-28: The Debt Ceiling, Explained in Plain English — https://www.usaspending.us/blog/what-is-debt-ceiling
 - 2026-10-29: Federal Interest Payments vs. Agency Budgets: $1T Compared — https://www.usaspending.us/blog/interest-payments-vs-agency-budgets
+- 2026-10-30: Medicare Spending Growth: The $979 Billion Story — https://www.usaspending.us/blog/medicare-spending-growth-trend
