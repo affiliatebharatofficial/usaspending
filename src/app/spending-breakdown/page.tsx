@@ -2,6 +2,7 @@
 
 import React, { useState } from 'react';
 import Link from 'next/link';
+import AdUnit from '@/components/ads/AdUnit';
 import Breadcrumbs from '@/components/navigation/Breadcrumbs';
 import SpendingBreakdown from '@/components/visualizations/SpendingBreakdown';
 import DonutChart from '@/components/visualizations/DonutChart';
@@ -64,6 +65,8 @@ export default function SpendingBreakdownPage() {
         <FiscalYearSelector selectedYear={selectedFY} onChange={setSelectedFY} />
       </div>
 
+      <AdUnit type="728x90" />
+
       {/* 100% Reconciled Donut Chart */}
       <div className="data-card p-6 sm:p-8 rounded-xl border border-slate-200 bg-white space-y-4">
         <div className="flex items-center justify-between">
@@ -82,6 +85,8 @@ export default function SpendingBreakdownPage() {
 
       {/* Horizontal Bar Breakdown Component */}
       <SpendingBreakdown data={breakdownData} />
+
+      <AdUnit type="300x250" />
 
       {/* Category Inspector Card */}
       <div className="data-card p-6 sm:p-8 rounded-xl border border-slate-200 bg-white space-y-6">

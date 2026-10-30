@@ -1,5 +1,6 @@
 import React from 'react';
 import Link from 'next/link';
+import AdUnit from '@/components/ads/AdUnit';
 import FederalSpendingClock from '@/components/clock/FederalSpendingClock';
 import GovernmentSpendingPieChart from '@/components/visualizations/GovernmentSpendingPieChart';
 import SpendingBreakdown from '@/components/visualizations/SpendingBreakdown';
@@ -78,9 +79,13 @@ export default function SpendingOverviewPage() {
 
       <FederalSpendingClock />
 
+      <AdUnit type="728x90" />
+
       <GovernmentSpendingPieChart />
 
       <SpendingBreakdown data={SPENDING_CATEGORIES} />
+
+      <AdUnit type="300x250" />
 
       <GovernmentSpendingByYear />
     </div>
