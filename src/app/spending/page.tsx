@@ -14,7 +14,7 @@ import type { Metadata } from 'next';
 
 export const metadata: Metadata = {
   title: 'U.S. Federal Government Spending Overview — FY2026 Outlays Profile',
-  description: 'Explore U.S. federal government spending in FY2026 ($6.81 Trillion outlays FYTD). Live spending clock, pie charts, agency outlays, and category breakdowns.',
+  description: 'Explore U.S. federal government spending in FY2026 ($7.40 Trillion outlays, FY2026 final). Live spending clock, pie charts, agency outlays, and category breakdowns.',
   alternates: {
     canonical: 'https://www.usaspending.us/spending',
   },

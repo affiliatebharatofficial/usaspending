@@ -8,10 +8,10 @@ export async function GET(req: NextRequest) {
 
   const rates = {
     annual: CURRENT_TOTAL_BUDGET,
-    daily: calculateSpendingRates(CURRENT_TOTAL_BUDGET, 335).perDay,
-    hourly: calculateSpendingRates(CURRENT_TOTAL_BUDGET, 335).perHour,
-    minute: calculateSpendingRates(CURRENT_TOTAL_BUDGET, 335).perMinute,
-    second: calculateSpendingRates(CURRENT_TOTAL_BUDGET, 335).perSecond,
+    daily: calculateSpendingRates(CURRENT_TOTAL_BUDGET, 365).perDay,
+    hourly: calculateSpendingRates(CURRENT_TOTAL_BUDGET, 365).perHour,
+    minute: calculateSpendingRates(CURRENT_TOTAL_BUDGET, 365).perMinute,
+    second: calculateSpendingRates(CURRENT_TOTAL_BUDGET, 365).perSecond,
   };
 
   return NextResponse.json({

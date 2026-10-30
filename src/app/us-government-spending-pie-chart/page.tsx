@@ -32,7 +32,7 @@ export default function SpendingPieChartPage() {
           U.S. Government Spending Pie Chart
         </h1>
         <p className="text-sm text-slate-300">
-          Visual proportion of America's $6.81 Trillion FYTD federal budget across major national categories.
+          Visual proportion of America's $7.40 Trillion (FY2026 final) federal budget across major national categories.
         </p>
       </div>
 

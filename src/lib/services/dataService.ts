@@ -3,12 +3,12 @@ import { DataMetadata, SpendingCategoryItem, HistoricalSpendingItem, AgencyItem,
 export const DEFAULT_METADATA: DataMetadata = {
   source: 'U.S. Treasury Monthly Treasury Statement',
   fiscalYear: 'FY2026',
-  lastUpdated: 'October 8, 2026',
+  lastUpdated: 'October 30, 2026',
   dataType: 'Outlays',
   methodologyUrl: '/methodology',
 };
 
-export const CURRENT_TOTAL_BUDGET = 6_811_043_257_196; // $6.81T FYTD thru Aug 2026
+export const CURRENT_TOTAL_BUDGET = 7_395_799_983_313; // $7.40T FY2026 final thru Sep 30, 2026
 
 export const NORMALIZED_CATEGORIES: SpendingCategoryItem[] = [
   {
@@ -245,7 +245,7 @@ export const NORMALIZED_HISTORICAL: HistoricalSpendingItem[] = [
   { year: 2023, spending: 6_134_432_040_451, totalSpending: 6_134_432_040_451, totalObligations: 6_010_000_000_000, deficit: 1_695_148_300_530, debtTotal: 33_167_000_000_000, changeAmount: -137_075_556_425, changePercent: -2.2 },
   { year: 2024, spending: 6_751_551_633_812, totalSpending: 6_751_551_633_812, totalObligations: 6_610_000_000_000, deficit: 1_832_815_989_074, debtTotal: 34_720_000_000_000, changeAmount: 617_119_593_361, changePercent: 10.1 },
   { year: 2025, spending: 7_009_973_667_049, totalSpending: 7_009_973_667_049, totalObligations: 6_780_000_000_000, deficit: 1_775_357_280_734, debtTotal: 36_100_000_000_000, changeAmount: 258_422_033_237, changePercent: 3.8 },
-  { year: 2026, spending: 6_811_043_257_196, totalSpending: 6_811_043_257_196, totalObligations: 6_990_000_000_000, deficit: 1_965_591_017_473, debtTotal: 37_400_000_000_000, changeAmount: -198_930_409_853, changePercent: -2.8 },
+  { year: 2026, spending: 7_395_799_983_313, totalSpending: 7_395_799_983_313, totalObligations: 6_990_000_000_000, deficit: 1_992_473_224_352, debtTotal: 37_400_000_000_000, changeAmount: 385_826_316_264, changePercent: 5.5 },
 ];
 
 export async function getSpendingCategories(): Promise<{ data: SpendingCategoryItem[]; metadata: DataMetadata }> {

@@ -81,7 +81,7 @@ export default function CalculatorHubPage() {
     },
     {
       question: 'How does the Main Government Spending Calculator work?',
-      answer: 'By entering any custom dollar amount, the calculator divides the figure by total U.S. federal outlays ($6.81 Trillion FYTD in FY2026) to compute the exact percentage share and equivalent rate velocity.',
+      answer: 'By entering any custom dollar amount, the calculator divides the figure by total U.S. federal outlays ($7.40 Trillion (FY2026 final) in FY2026) to compute the exact percentage share and equivalent rate velocity.',
     },
     {
       question: 'What is the formula used for per-capita spending calculations?',
@@ -174,10 +174,10 @@ export default function CalculatorHubPage() {
 
         <div className="space-y-4 text-xs text-slate-700 leading-relaxed max-w-4xl">
           <p>
-            Understanding federal government spending requires converting multi-trillion dollar outlays into scales that human minds can easily contextualize. In Fiscal Year 2026, total U.S. federal government spending reaches approximately <strong>$6.81 Trillion ($6,811,043,257,196 FYTD)</strong>. Because numbers of this magnitude can be difficult to interpret, our <strong>Interactive Budget Calculator Suite</strong> provides mathematical models that break down annual federal outlays into time, percentage, and per-resident metrics.
+            Understanding federal government spending requires converting multi-trillion dollar outlays into scales that human minds can easily contextualize. In Fiscal Year 2026, total U.S. federal government spending reaches approximately <strong>$7.40 Trillion (FY2026 final: $7,395,799,983,313)</strong>. Because numbers of this magnitude can be difficult to interpret, our <strong>Interactive Budget Calculator Suite</strong> provides mathematical models that break down annual federal outlays into time, percentage, and per-resident metrics.
           </p>
           <p>
-            The suite includes eight specialized tools designed for citizens, policy researchers, journalists, and financial analysts. For instance, the <strong>Spending Rate Calculator</strong> converts annual outlays into exact time rates: at $6.81 Trillion FYTD, the federal government spends roughly <strong>$20.33 Billion per day</strong>, <strong>$847.1 million per hour</strong>, <strong>$14.12 million per minute</strong>, and <strong>$235,318 every single second</strong>.
+            The suite includes eight specialized tools designed for citizens, policy researchers, journalists, and financial analysts. For instance, the <strong>Spending Rate Calculator</strong> converts annual outlays into exact time rates: at $7.40 Trillion (FY2026 final), the federal government spends roughly <strong>$20.26 Billion per day</strong>, <strong>$844.3 million per hour</strong>, <strong>$14.07 million per minute</strong>, and <strong>$234,519 every single second</strong>.
           </p>
           <p>
             Similarly, the <strong>Per Capita Calculator</strong> combines state population baselines from the U.S. Census Bureau with official federal prime contract and assistance awards from USAspending.gov to compute geographic per-resident ratios. The <strong>Amount-to-Time Calculator</strong> enables users to enter any custom dollar figure—such as a $1 Billion infrastructure project—and discover that it represents approximately 1 hour and 17 minutes of total U.S. federal spending velocity.

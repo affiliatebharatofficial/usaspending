@@ -241,7 +241,7 @@ export default function HomePage() {
                 Federal Spending Associated with States
               </h2>
               <p className="text-xs text-slate-500">
-                Federal contract awards, grants, and direct payments allocated across U.S. states.
+                Modeled estimates of federal spending associated with each state (population-based, not audited award records) — see Methodology.
               </p>
             </div>
             <Link
