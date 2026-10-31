@@ -29,7 +29,7 @@ Format: `- [ ] slug | Title | target keyword | pillar`
 - [x] what-is-debt-ceiling | The Debt Ceiling, Explained in Plain English | what is the debt ceiling | Explainers | 2026-10-28
 - [x] interest-payments-vs-agency-budgets | What $1 Trillion in Interest Could Buy Instead | federal interest payments comparison | Comparisons | 2026-10-29
 - [x] medicare-spending-growth-trend | Medicare's $979 Billion Year: The Growth Story | medicare spending growth | Data Stories | 2026-10-30
-- [ ] federal-spending-alaska | Federal Spending in Alaska: Highest Per Capita in America | federal spending in alaska | State Spotlights
+- [x] federal-spending-alaska | Federal Spending in Alaska: Highest Per Capita in America | federal spending in alaska | State Spotlights | 2026-10-31
 - [ ] where-do-federal-taxes-go | Where Do Your Federal Taxes Go? | where do federal taxes go | Explainers
 - [ ] highway-infrastructure-spending-explained | Highways and Infrastructure: How $126 Billion Moves | federal infrastructure spending | Data Stories
 - [ ] how-much-is-one-trillion-dollars | How Much Is $1 Trillion, Really? | how much is a trillion dollars | Explainers
@@ -93,3 +93,4 @@ Format: `- [ ] slug | Title | target keyword | pillar`
 - 2026-10-28: The Debt Ceiling, Explained in Plain English — https://www.usaspending.us/blog/what-is-debt-ceiling
 - 2026-10-29: Federal Interest Payments vs. Agency Budgets: $1T Compared — https://www.usaspending.us/blog/interest-payments-vs-agency-budgets
 - 2026-10-30: Medicare Spending Growth: The $979 Billion Story — https://www.usaspending.us/blog/medicare-spending-growth-trend
+- 2026-10-31: Federal Spending in Alaska: Highest Per Capita in US — https://www.usaspending.us/blog/federal-spending-alaska

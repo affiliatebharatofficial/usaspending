@@ -29,6 +29,7 @@ import { data as federalSpendingNewYork } from './content/federalSpendingNewYork
 import { data as whatIsDebtCeiling } from './content/whatIsDebtCeiling';
 import { data as interestPaymentsVsAgencyBudgets } from './content/interestPaymentsVsAgencyBudgets';
 import { data as medicareSpendingGrowthTrend } from './content/medicareSpendingGrowthTrend';
+import { data as federalSpendingAlaska } from './content/federalSpendingAlaska';
 
 export const BLOG_ARTICLES: ArticleData[] = [
   usDebtInterestVsDefenseSpending,
@@ -53,6 +54,7 @@ export const BLOG_ARTICLES: ArticleData[] = [
   whatIsDebtCeiling,
   interestPaymentsVsAgencyBudgets,
   medicareSpendingGrowthTrend,
+  federalSpendingAlaska,
 ];
 
 export function getArticleBySlug(slug: string): ArticleData | undefined {
