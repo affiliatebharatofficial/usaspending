@@ -30,6 +30,7 @@ import { data as whatIsDebtCeiling } from './content/whatIsDebtCeiling';
 import { data as interestPaymentsVsAgencyBudgets } from './content/interestPaymentsVsAgencyBudgets';
 import { data as medicareSpendingGrowthTrend } from './content/medicareSpendingGrowthTrend';
 import { data as federalSpendingAlaska } from './content/federalSpendingAlaska';
+import { data as whereDoFederalTaxesGo } from './content/whereDoFederalTaxesGo';
 
 export const BLOG_ARTICLES: ArticleData[] = [
   usDebtInterestVsDefenseSpending,
@@ -55,6 +56,7 @@ export const BLOG_ARTICLES: ArticleData[] = [
   interestPaymentsVsAgencyBudgets,
   medicareSpendingGrowthTrend,
   federalSpendingAlaska,
+  whereDoFederalTaxesGo,
 ];
 
 export function getArticleBySlug(slug: string): ArticleData | undefined {
