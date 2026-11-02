@@ -31,6 +31,7 @@ import { data as interestPaymentsVsAgencyBudgets } from './content/interestPayme
 import { data as medicareSpendingGrowthTrend } from './content/medicareSpendingGrowthTrend';
 import { data as federalSpendingAlaska } from './content/federalSpendingAlaska';
 import { data as whereDoFederalTaxesGo } from './content/whereDoFederalTaxesGo';
+import { data as highwayInfrastructureSpendingExplained } from './content/highwayInfrastructureSpendingExplained';
 
 export const BLOG_ARTICLES: ArticleData[] = [
   usDebtInterestVsDefenseSpending,
@@ -57,6 +58,7 @@ export const BLOG_ARTICLES: ArticleData[] = [
   medicareSpendingGrowthTrend,
   federalSpendingAlaska,
   whereDoFederalTaxesGo,
+  highwayInfrastructureSpendingExplained,
 ];
 
 export function getArticleBySlug(slug: string): ArticleData | undefined {

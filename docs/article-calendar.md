@@ -31,7 +31,7 @@ Format: `- [ ] slug | Title | target keyword | pillar`
 - [x] medicare-spending-growth-trend | Medicare's $979 Billion Year: The Growth Story | medicare spending growth | Data Stories | 2026-10-30
 - [x] federal-spending-alaska | Federal Spending in Alaska: Highest Per Capita in America | federal spending in alaska | State Spotlights | 2026-10-31
 - [x] where-do-federal-taxes-go | Where Do Your Federal Taxes Go? | where do federal taxes go | Explainers | 2026-11-01
-- [ ] highway-infrastructure-spending-explained | Highways and Infrastructure: How $126 Billion Moves | federal infrastructure spending | Data Stories
+- [x] highway-infrastructure-spending-explained | Highways and Infrastructure: How $126 Billion Moves | federal infrastructure spending | Data Stories | 2026-11-02 — published as "Federal Infrastructure Spending: How $143 Billion Moves": research showed the calendar's $126B is DOT's share only; full FY2026 transportation function is $142.9B (site MTS data).
 - [ ] how-much-is-one-trillion-dollars | How Much Is $1 Trillion, Really? | how much is a trillion dollars | Explainers
 - [ ] federal-vs-state-government-spending | Federal vs. State Spending: Who Pays for What? | federal vs state spending | Explainers
 - [ ] social-security-trust-fund-2026 | Social Security's $1.5 Trillion Year | social security spending 2026 | Data Stories
@@ -95,3 +95,4 @@ Format: `- [ ] slug | Title | target keyword | pillar`
 - 2026-10-30: Medicare Spending Growth: The $979 Billion Story — https://www.usaspending.us/blog/medicare-spending-growth-trend
 - 2026-10-31: Federal Spending in Alaska: Highest Per Capita in US — https://www.usaspending.us/blog/federal-spending-alaska
 - 2026-11-01: Where Do Federal Taxes Go? The 2026 Breakdown — https://www.usaspending.us/blog/where-do-federal-taxes-go
+- 2026-11-02: Federal Infrastructure Spending: How $143 Billion Moves — https://www.usaspending.us/blog/highway-infrastructure-spending-explained
