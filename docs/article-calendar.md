@@ -33,7 +33,7 @@ Format: `- [ ] slug | Title | target keyword | pillar`
 - [x] where-do-federal-taxes-go | Where Do Your Federal Taxes Go? | where do federal taxes go | Explainers | 2026-11-01
 - [x] highway-infrastructure-spending-explained | Highways and Infrastructure: How $126 Billion Moves | federal infrastructure spending | Data Stories | 2026-11-02 — published as "Federal Infrastructure Spending: How $143 Billion Moves": research showed the calendar's $126B is DOT's share only; full FY2026 transportation function is $142.9B (site MTS data).
 - [x] how-much-is-one-trillion-dollars | How Much Is $1 Trillion, Really? | how much is a trillion dollars | Explainers | 2026-11-03
-- [ ] federal-vs-state-government-spending | Federal vs. State Spending: Who Pays for What? | federal vs state spending | Explainers
+- [x] federal-vs-state-government-spending | Federal vs. State Spending: Who Pays for What? | federal vs state spending | Explainers | 2026-11-04
 - [ ] social-security-trust-fund-2026 | Social Security's $1.5 Trillion Year | social security spending 2026 | Data Stories
 - [ ] science-space-technology-budget | Science, Space & Tech: The $36 Billion Budget | federal science spending | Data Stories
 - [ ] federal-spending-florida-vs-texas | Florida vs. Texas: Two Models of Federal Spending | florida vs texas federal spending | Comparisons
@@ -97,3 +97,4 @@ Format: `- [ ] slug | Title | target keyword | pillar`
 - 2026-11-01: Where Do Federal Taxes Go? The 2026 Breakdown — https://www.usaspending.us/blog/where-do-federal-taxes-go
 - 2026-11-02: Federal Infrastructure Spending: How $143 Billion Moves — https://www.usaspending.us/blog/highway-infrastructure-spending-explained
 - 2026-11-03: How Much Is a Trillion Dollars, Really? — https://www.usaspending.us/blog/how-much-is-one-trillion-dollars
+- 2026-11-04: Federal vs. State Spending: Who Pays for What? — https://www.usaspending.us/blog/federal-vs-state-government-spending
