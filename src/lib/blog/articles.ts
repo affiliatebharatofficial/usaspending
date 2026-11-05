@@ -34,6 +34,7 @@ import { data as whereDoFederalTaxesGo } from './content/whereDoFederalTaxesGo';
 import { data as highwayInfrastructureSpendingExplained } from './content/highwayInfrastructureSpendingExplained';
 import { data as howMuchIsOneTrillionDollars } from './content/howMuchIsOneTrillionDollars';
 import { data as federalVsStateGovernmentSpending } from './content/federalVsStateGovernmentSpending';
+import { data as socialSecurityTrustFund2026 } from './content/socialSecurityTrustFund2026';
 
 export const BLOG_ARTICLES: ArticleData[] = [
   usDebtInterestVsDefenseSpending,
@@ -63,6 +64,7 @@ export const BLOG_ARTICLES: ArticleData[] = [
   highwayInfrastructureSpendingExplained,
   howMuchIsOneTrillionDollars,
   federalVsStateGovernmentSpending,
+  socialSecurityTrustFund2026,
 ];
 
 export function getArticleBySlug(slug: string): ArticleData | undefined {

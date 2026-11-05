@@ -34,7 +34,7 @@ Format: `- [ ] slug | Title | target keyword | pillar`
 - [x] highway-infrastructure-spending-explained | Highways and Infrastructure: How $126 Billion Moves | federal infrastructure spending | Data Stories | 2026-11-02 — published as "Federal Infrastructure Spending: How $143 Billion Moves": research showed the calendar's $126B is DOT's share only; full FY2026 transportation function is $142.9B (site MTS data).
 - [x] how-much-is-one-trillion-dollars | How Much Is $1 Trillion, Really? | how much is a trillion dollars | Explainers | 2026-11-03
 - [x] federal-vs-state-government-spending | Federal vs. State Spending: Who Pays for What? | federal vs state spending | Explainers | 2026-11-04
-- [ ] social-security-trust-fund-2026 | Social Security's $1.5 Trillion Year | social security spending 2026 | Data Stories
+- [x] social-security-trust-fund-2026 | Social Security's $1.5 Trillion Year | social security spending 2026 | Data Stories | 2026-11-05 — published as "Social Security Spending 2026: The $1.67 Trillion Year": site MTS finals show $1,667.1B, not $1.5T; article leads with the 2026 Trustees Report OASI depletion date (Q4 2032).
 - [ ] science-space-technology-budget | Science, Space & Tech: The $36 Billion Budget | federal science spending | Data Stories
 - [ ] federal-spending-florida-vs-texas | Florida vs. Texas: Two Models of Federal Spending | florida vs texas federal spending | Comparisons
 - [ ] federal-spending-illinois | Federal Spending in Illinois: Transit, Labs, and Farmland | federal spending in illinois | State Spotlights
@@ -98,3 +98,4 @@ Format: `- [ ] slug | Title | target keyword | pillar`
 - 2026-11-02: Federal Infrastructure Spending: How $143 Billion Moves — https://www.usaspending.us/blog/highway-infrastructure-spending-explained
 - 2026-11-03: How Much Is a Trillion Dollars, Really? — https://www.usaspending.us/blog/how-much-is-one-trillion-dollars
 - 2026-11-04: Federal vs. State Spending: Who Pays for What? — https://www.usaspending.us/blog/federal-vs-state-government-spending
+- 2026-11-05: Social Security Spending 2026: The $1.67 Trillion Year — https://www.usaspending.us/blog/social-security-trust-fund-2026
