@@ -36,6 +36,7 @@ import { data as howMuchIsOneTrillionDollars } from './content/howMuchIsOneTrill
 import { data as federalVsStateGovernmentSpending } from './content/federalVsStateGovernmentSpending';
 import { data as socialSecurityTrustFund2026 } from './content/socialSecurityTrustFund2026';
 import { data as scienceSpaceTechnologyBudget } from './content/scienceSpaceTechnologyBudget';
+import { data as federalSpendingFloridaVsTexas } from './content/federalSpendingFloridaVsTexas';
 
 export const BLOG_ARTICLES: ArticleData[] = [
   usDebtInterestVsDefenseSpending,
@@ -67,6 +68,7 @@ export const BLOG_ARTICLES: ArticleData[] = [
   federalVsStateGovernmentSpending,
   socialSecurityTrustFund2026,
   scienceSpaceTechnologyBudget,
+  federalSpendingFloridaVsTexas,
 ];
 
 export function getArticleBySlug(slug: string): ArticleData | undefined {

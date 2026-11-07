@@ -36,7 +36,7 @@ Format: `- [ ] slug | Title | target keyword | pillar`
 - [x] federal-vs-state-government-spending | Federal vs. State Spending: Who Pays for What? | federal vs state spending | Explainers | 2026-11-04
 - [x] social-security-trust-fund-2026 | Social Security's $1.5 Trillion Year | social security spending 2026 | Data Stories | 2026-11-05 — published as "Social Security Spending 2026: The $1.67 Trillion Year": site MTS finals show $1,667.1B, not $1.5T; article leads with the 2026 Trustees Report OASI depletion date (Q4 2032).
 - [x] science-space-technology-budget | Science, Space & Tech: The $36 Billion Budget | federal science spending | Data Stories | 2026-11-06 — published as "Federal Science Spending: The $39.9B Budget": site MTS finals show function 250 outlays of $39.877B, not $36B (that was the sum of the three modeled subcategories); article leads with the $39.9B figure and explains the appropriations-vs-outlays distinction.
-- [ ] federal-spending-florida-vs-texas | Florida vs. Texas: Two Models of Federal Spending | florida vs texas federal spending | Comparisons
+- [x] federal-spending-florida-vs-texas | Florida vs. Texas: Two Models of Federal Spending | florida vs texas federal spending | Comparisons | 2026-11-07
 - [ ] federal-spending-illinois | Federal Spending in Illinois: Transit, Labs, and Farmland | federal spending in illinois | State Spotlights
 - [ ] federal-spending-ohio | Federal Spending in Ohio: Bases, Factories, and Research | federal spending in ohio | State Spotlights
 - [ ] federal-spending-pennsylvania | Federal Spending in Pennsylvania: Steel Towns and Shipyards | federal spending in pennsylvania | State Spotlights
@@ -100,3 +100,4 @@ Format: `- [ ] slug | Title | target keyword | pillar`
 - 2026-11-04: Federal vs. State Spending: Who Pays for What? — https://www.usaspending.us/blog/federal-vs-state-government-spending
 - 2026-11-05: Social Security Spending 2026: The $1.67 Trillion Year — https://www.usaspending.us/blog/social-security-trust-fund-2026
 - 2026-11-06: Federal Science Spending: The $39.9B Budget — https://www.usaspending.us/blog/science-space-technology-budget
+- 2026-11-07: Florida vs. Texas: Two Models of Federal Spending — https://www.usaspending.us/blog/federal-spending-florida-vs-texas
