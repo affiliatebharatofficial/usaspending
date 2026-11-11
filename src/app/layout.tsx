@@ -68,6 +68,16 @@ export default function RootLayout({
   return (
     <html lang="en" className="dark">
       <head>
+        {/* Mediavine Journey — sitewide, loads on every page. Separate from
+            ADS_ENABLED (old AdSense/Bauval ads stay off); this is the site's
+            current ad provider. Added 2026-11-11. */}
+        <script
+          type="text/javascript"
+          async
+          data-noptimize="1"
+          data-cfasync="false"
+          src="https://scripts.scriptwrapper.com/tags/f71bf1a7-cec3-4650-97e1-46745d3ff14f.js"
+        ></script>
         {/* Google AdSense Header Script & Account Verification — disabled while ADS_ENABLED is false */}
         {ADS_ENABLED && (
           <script
