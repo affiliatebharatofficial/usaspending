@@ -1,3 +1,8 @@
+// Master ads switch — temporarily disabled 2026-11-11 at the owner's request.
+// Flip to `true` to restore all ads at once (AdSense header script, AdUnit
+// slots, and the Bauval unit); no code needs to be re-added anywhere.
+export const ADS_ENABLED = false;
+
 export const SITE_CONFIG = {
   name: 'USA Spending',
   domain: 'usaspending.us',

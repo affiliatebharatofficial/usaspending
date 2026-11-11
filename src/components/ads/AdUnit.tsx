@@ -1,6 +1,7 @@
 'use client';
 
 import React, { useEffect, useRef } from 'react';
+import { ADS_ENABLED } from '@/lib/config/site';
 
 interface AdUnitProps {
   type: '728x90' | '300x250';
@@ -47,6 +48,8 @@ export default function AdUnit({ type, className = '' }: AdUnitProps) {
   const is728 = type === '728x90';
   const width = is728 ? 728 : 300;
   const height = is728 ? 90 : 250;
+
+  if (!ADS_ENABLED) return null;
 
   return (
     <div className={`w-full flex flex-col items-center justify-center my-6 ${className}`}>

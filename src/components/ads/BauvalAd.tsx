@@ -1,6 +1,7 @@
 'use client';
 
 import React, { useEffect, useRef } from 'react';
+import { ADS_ENABLED } from '@/lib/config/site';
 
 // Bauval native banner unit supplied by the site owner (placement id
 // f3210bedf8dc9639401782dd2fc56628). The vendor script is injected
@@ -23,6 +24,8 @@ export default function BauvalAd() {
     script.src = SCRIPT_SRC;
     wrapper.appendChild(script);
   }, []);
+
+  if (!ADS_ENABLED) return null;
 
   return (
     <div ref={wrapperRef} className="w-full flex flex-col items-center justify-center my-6">
