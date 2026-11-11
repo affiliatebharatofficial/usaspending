@@ -4,14 +4,6 @@ const nextConfig = {
   async redirects() {
     return [
       {
-        // Mediavine Journey ads.txt — redirect to Mediavine's hosted file so
-        // it stays current automatically (added 2026-11-11).
-        source: '/ads.txt',
-        destination:
-          'https://adstxt.journeymv.com/sites/f71bf1a7-cec3-4650-97e1-46745d3ff14f/ads.txt',
-        permanent: true,
-      },
-      {
         source: '/categories/nasa-space-exploration',
         destination: '/categories/science-medical-research',
         permanent: true,
