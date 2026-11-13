@@ -38,6 +38,7 @@ import { data as socialSecurityTrustFund2026 } from './content/socialSecurityTru
 import { data as scienceSpaceTechnologyBudget } from './content/scienceSpaceTechnologyBudget';
 import { data as federalSpendingFloridaVsTexas } from './content/federalSpendingFloridaVsTexas';
 import { data as federalSpendingIllinois } from './content/federalSpendingIllinois';
+import { data as federalSpendingOhio } from './content/federalSpendingOhio';
 
 export const BLOG_ARTICLES: ArticleData[] = [
   usDebtInterestVsDefenseSpending,
@@ -71,6 +72,7 @@ export const BLOG_ARTICLES: ArticleData[] = [
   scienceSpaceTechnologyBudget,
   federalSpendingFloridaVsTexas,
   federalSpendingIllinois,
+  federalSpendingOhio,
 ];
 
 export function getArticleBySlug(slug: string): ArticleData | undefined {
