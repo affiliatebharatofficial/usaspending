@@ -39,6 +39,7 @@ import { data as scienceSpaceTechnologyBudget } from './content/scienceSpaceTech
 import { data as federalSpendingFloridaVsTexas } from './content/federalSpendingFloridaVsTexas';
 import { data as federalSpendingIllinois } from './content/federalSpendingIllinois';
 import { data as federalSpendingOhio } from './content/federalSpendingOhio';
+import { data as federalSpendingPennsylvania } from './content/federalSpendingPennsylvania';
 
 export const BLOG_ARTICLES: ArticleData[] = [
   usDebtInterestVsDefenseSpending,
@@ -73,6 +74,7 @@ export const BLOG_ARTICLES: ArticleData[] = [
   federalSpendingFloridaVsTexas,
   federalSpendingIllinois,
   federalSpendingOhio,
+  federalSpendingPennsylvania,
 ];
 
 export function getArticleBySlug(slug: string): ArticleData | undefined {
