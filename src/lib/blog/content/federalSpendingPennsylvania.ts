@@ -57,6 +57,7 @@ const sections: ArticleData['sections'] = [
       "Pennsylvania's defense story is not about a single giant base. It is about an industrial base — three depots and a naval foundry that repair, rebuild, and manufacture the equipment the military already owns. In Tobyhanna, in the Pocono Mountains, sits the Tobyhanna Army Depot, the Defense Department's largest full-service electronics maintenance facility: the place where the Army's communications, radar, and electronic-warfare systems go to be repaired and modernized. In Chambersburg, the Letterkenny Army Depot overhauls tactical missiles, ground combat systems, and the air-defense equipment that has been in heavy demand in recent years. In Philadelphia, the Naval Foundry and Propeller Center — a detachment of Norfolk Naval Shipyard — casts the propellers and foundry components that keep the Navy's ships moving. Fort Indiantown Gap, near Harrisburg, is the Pennsylvania National Guard's main training center and one of the busiest Guard installations in the country.",
       "That work is why Pennsylvania's federal footprint is so contract-heavy: $36.36 billion in prime contracts, 55 percent of the modeled total, against $23.14 billion in grants. The depots are federal civilian workforces doing industrial work, and their order books rise and fall with defense maintenance budgets rather than with the big procurement headlines. Nationally, defense totaled $965.2 billion in FY2026 finals — the fourth-largest federal outlay, behind Social Security, Medicare ($1,072.6 billion), and the health function. Pennsylvania's share of that defense total does not crack the site's top five states — Texas ($67.1 billion), California ($60.8 billion), Virginia ($57.2 billion), Florida ($33.5 billion), and Maryland ($29.2 billion) rank ahead — because Pennsylvania's military story is about repair and sustainment, not the largest checkbook. Full category data: /categories/defense-military.",
       "The depot towns feel every budget decision in Washington directly. A maintenance contract delayed is a shift not worked; a modernization program funded is a hiring fair in Chambersburg or Tobyhanna. And the depots are unusually exposed to the same fiscal pressure that opened this article: when the deficit runs at $404 billion in a single month and Congress is staring at a government funding deadline in early December, the maintenance and overhaul lines that keep these facilities busy are among the first to be squeezed — and the last to be restored.",
+      "The shipyard and steel story has moved since this article's figures were compiled. On October 30, TOTE Services selected Hanwha Defense USA to build a Medium Landing Ship for the U.S. Navy and Marine Corps at Hanwha Philly Shipyard in Philadelphia — a $269 million order for one ship, with options for three more, and Hanwha's first U.S. Navy newbuild since it acquired the yard in 2024. It is not a direct Navy contract: the Navy hired TOTE as vessel construction manager under a $2.2 billion contract in July, and TOTE picks the builders. Construction is scheduled to start in the fourth quarter of 2027, with the first ship delivered around 2030. And in Braddock, U.S. Steel's board has approved nearly $3 billion for a new hot strip mill at the Edgar Thomson Plant — part of Nippon Steel's $11 billion U.S. investment plan — with production expected in late 2029. The Allegheny County Health Department held a public hearing on the mill's air permit on November 10, and written public comments close at 11:59 p.m. on Tuesday, November 17, 2026. The department's own analysis says the mill's emissions \"will not significantly impact air quality\" regionally, while local modelling cited in coverage projects sharp local increases — the permit, not the investment, is what is contested.",
     ],
     chart: {
       title: 'How Federal Money Reaches Pennsylvania, FY2026 ($B)',
@@ -124,7 +125,7 @@ export const data: ArticleData = {
   keyword: 'federal spending in pennsylvania',
   category: 'State Spotlights',
   datePublished: '2026-11-16',
-  dateModified: '2026-11-16',
+  dateModified: '2026-11-17',
   readingTime: estimateReadingTime(sections),
   quickTakeaways: [
     { label: '$66.1B', text: 'Modeled federal spending flowing into Pennsylvania in FY2026 — about $5,100 per resident across 12.96 million Pennsylvanians, with prime contracts (55%) dominating the mix.' },
@@ -193,6 +194,18 @@ export const data: ArticleData = {
     {
       name: 'Reuters — US Starts 2027 Fiscal Year With Record October Budget Deficit of $404 Billion (Nov 12, 2026)',
       url: 'https://mix929.com/2026/11/12/us-starts-2027-fiscal-year-with-record-october-budget-deficit-of-404-billion/',
+    },
+    {
+      name: 'Defence Blog — Korean-owned Philly Shipyard lands $269 million U.S. Navy landing ship (Oct 30, 2026)',
+      url: 'https://defence-blog.com/korean-owned-philly-shipyard-lands-269-million-u-s-navy-landing-ship/',
+    },
+    {
+      name: 'Allegheny County Health Department — Public notice: U.S. Steel Edgar Thomson hot strip mill permit, comments due 11:59 p.m. Nov 17, 2026',
+      url: 'https://www.alleghenycounty.us/files/assets/county/v/2/government/health/documents/air-quality/public-comment-current/0-notice-280-2026-10-03.pdf',
+    },
+    {
+      name: 'The Allegheny Front — Public sounds off on U.S. Steel’s proposed hot strip mill in Braddock (Nov 11, 2026)',
+      url: 'https://www.alleghenyfront.org/u-s-steel-proposed-hot-strip-mill-braddock-air-pollution/',
     },
   ],
   relatedSlugs: ['where-does-us-federal-budget-go', 'federal-deficit-2026-how-big', 'federal-spending-ohio'],
