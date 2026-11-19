@@ -236,7 +236,7 @@ export default function DataLimitationsPage() {
               Net Outlays = Gross Cash Disbursements − Offsetting Receipts
             </div>
             <p className="text-slate-600 font-medium">
-              Where displayed: Macro totals ($7.40T (FY2026 final)), functional category pages, spending clocks, and rate calculators show net outlays.
+              Where displayed: Macro totals ($773.00B (FY2027 FYTD)), functional category pages, spending clocks, and rate calculators show net outlays.
             </p>
           </div>
 
@@ -375,7 +375,7 @@ export default function DataLimitationsPage() {
           <div className="p-4 rounded-xl border border-slate-200 bg-slate-50 space-y-1.5">
             <span className="font-bold text-slate-900 block text-sm">What the Calculator Measures:</span>
             <p className="text-slate-600 leading-relaxed">
-              An illustrative proportional division of an estimated federal income tax contribution based on official FY2026 OMB budget function weights.
+              An illustrative proportional division of an estimated federal income tax contribution based on official FY2027 OMB budget function weights.
             </p>
           </div>
 

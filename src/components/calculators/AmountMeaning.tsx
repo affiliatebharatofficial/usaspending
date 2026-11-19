@@ -2,7 +2,7 @@ import React from 'react';
 import DonutChart from '@/components/visualizations/DonutChart';
 import MetricCard from '@/components/visualizations/MetricCard';
 import { formatCurrency, calculateSpendingRates } from '@/lib/utils/formatters';
-import { TOTAL_FEDERAL_SPENDING_FY2026, SPENDING_CATEGORIES } from '@/lib/data/spendingData';
+import { TOTAL_FEDERAL_SPENDING_FY2027, SPENDING_CATEGORIES, FY2027_DAYS_ELAPSED } from '@/lib/data/spendingData';
 import { Clock, Percent, Shield, HeartPulse, GraduationCap, Building2 } from 'lucide-react';
 
 interface AmountMeaningProps {
@@ -16,8 +16,8 @@ export default function AmountMeaning({
 }: AmountMeaningProps) {
   if (amount <= 0) return null;
 
-  const rates = calculateSpendingRates(TOTAL_FEDERAL_SPENDING_FY2026);
-  const percentageOfBudget = Number(((amount / TOTAL_FEDERAL_SPENDING_FY2026) * 100).toFixed(4));
+  const rates = calculateSpendingRates(TOTAL_FEDERAL_SPENDING_FY2027, FY2027_DAYS_ELAPSED);
+  const percentageOfBudget = Number(((amount / TOTAL_FEDERAL_SPENDING_FY2027) * 100).toFixed(4));
   const timeInSeconds = amount / rates.perSecond;
   const timeInMinutes = timeInSeconds / 60;
   const timeInHours = timeInMinutes / 60;
@@ -32,7 +32,7 @@ export default function AmountMeaning({
 
   const donutVisualData = [
     { name: 'Entered Amount', amount: amount, percentage: Math.max(percentageOfBudget, 0.01), color: '#2563eb' },
-    { name: 'Remaining FY Outlays', amount: TOTAL_FEDERAL_SPENDING_FY2026 - amount, percentage: Number((100 - percentageOfBudget).toFixed(2)), color: '#e2e8f0' },
+    { name: 'Remaining FY Outlays', amount: TOTAL_FEDERAL_SPENDING_FY2027 - amount, percentage: Number((100 - percentageOfBudget).toFixed(2)), color: '#e2e8f0' },
   ];
 
   return (

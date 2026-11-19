@@ -9,21 +9,21 @@ import GovernmentSpendingByYear from '@/components/visualizations/GovernmentSpen
 import SpendingAtAGlance from '@/components/visualizations/SpendingAtAGlance';
 import MetricCard from '@/components/visualizations/MetricCard';
 import JsonLd from '@/components/seo/JsonLd';
-import { SPENDING_CATEGORIES, TOTAL_FEDERAL_SPENDING_FY2026, CURRENT_FISCAL_YEAR } from '@/lib/data/spendingData';
+import { SPENDING_CATEGORIES, TOTAL_FEDERAL_SPENDING_FY2027, CURRENT_FISCAL_YEAR, FY2027_DAYS_ELAPSED } from '@/lib/data/spendingData';
 import { formatCurrency, calculateSpendingRates } from '@/lib/utils/formatters';
 import { ArrowLeft, PieChart, TrendingUp, BarChart3 } from 'lucide-react';
 import type { Metadata } from 'next';
 
 export const metadata: Metadata = {
-  title: 'U.S. Federal Government Spending Overview — FY2026 Outlays Profile',
-  description: 'Explore U.S. federal government spending in FY2026 ($7.40 Trillion outlays, FY2026 final). Live spending clock, pie charts, agency outlays, and category breakdowns.',
+  title: 'U.S. Federal Government Spending Overview — FY2027 Outlays Profile (FYTD)',
+  description: 'Explore U.S. federal government spending in FY2027 ($773.00 Billion outlays FYTD, through October 31, 2026). Live spending clock, pie charts, agency outlays, and category breakdowns.',
   alternates: {
     canonical: 'https://www.usaspending.us/spending',
   },
 };
 
 export default function SpendingOverviewPage() {
-  const rates = calculateSpendingRates(TOTAL_FEDERAL_SPENDING_FY2026);
+  const rates = calculateSpendingRates(TOTAL_FEDERAL_SPENDING_FY2027, FY2027_DAYS_ELAPSED);
 
   return (
     <div className="space-y-12 py-8 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
@@ -48,7 +48,7 @@ export default function SpendingOverviewPage() {
 
       <SpendingAtAGlance
         title="U.S. Federal Outlays & Budget Overview"
-        totalAmount={TOTAL_FEDERAL_SPENDING_FY2026}
+        totalAmount={TOTAL_FEDERAL_SPENDING_FY2027}
         sharePercentage={100}
         yoyChange="+4.2%"
         dailyRate={rates.perDay}

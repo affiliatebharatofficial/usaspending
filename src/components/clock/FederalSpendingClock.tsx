@@ -1,7 +1,7 @@
 'use client';
 
 import React, { useState, useEffect } from 'react';
-import { TOTAL_FEDERAL_SPENDING_FY2026, CURRENT_FISCAL_YEAR } from '@/lib/data/spendingData';
+import { TOTAL_FEDERAL_SPENDING_FY2027, CURRENT_FISCAL_YEAR, FY2027_DAYS_ELAPSED } from '@/lib/data/spendingData';
 import { formatCurrency, calculateSpendingRates } from '@/lib/utils/formatters';
 import { Info, Play, Pause, RefreshCw, Sparkles, TrendingUp } from 'lucide-react';
 
@@ -10,7 +10,7 @@ interface FederalSpendingClockProps {
 }
 
 export default function FederalSpendingClock({ compact = false }: FederalSpendingClockProps) {
-  const rates = calculateSpendingRates(TOTAL_FEDERAL_SPENDING_FY2026);
+  const rates = calculateSpendingRates(TOTAL_FEDERAL_SPENDING_FY2027, FY2027_DAYS_ELAPSED);
 
   const [counter, setCounter] = useState<number>(0);
   const [isLive, setIsLive] = useState<boolean>(true);
@@ -122,7 +122,7 @@ export default function FederalSpendingClock({ compact = false }: FederalSpendin
           <div className="text-lg sm:text-xl font-bold font-mono text-white mt-1">
             {formatCurrency(rates.perDay, true)}
           </div>
-          <div className="text-[10px] text-slate-500 mt-0.5">$20.26B / 24 hrs</div>
+          <div className="text-[10px] text-slate-500 mt-0.5">$24.94B / 24 hrs</div>
         </div>
 
         <div className="p-3 sm:p-4 rounded-xl bg-slate-900/60 border border-slate-800/80 text-left hover:border-blue-500/30 transition-colors">
@@ -149,7 +149,7 @@ export default function FederalSpendingClock({ compact = false }: FederalSpendin
           <div className="text-lg sm:text-xl font-bold font-mono text-emerald-400 mt-1">
             {formatCurrency(rates.perSecond)}
           </div>
-          <div className="text-[10px] text-emerald-500/80 mt-0.5">$234,519 every second</div>
+          <div className="text-[10px] text-emerald-500/80 mt-0.5">$288,607 every second</div>
         </div>
       </div>
     </div>

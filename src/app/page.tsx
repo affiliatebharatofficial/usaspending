@@ -16,8 +16,9 @@ import {
   AGENCIES_DATA,
   STATES_DATA,
   RECIPIENTS_DATA,
-  TOTAL_FEDERAL_SPENDING_FY2026,
+  TOTAL_FEDERAL_SPENDING_FY2027,
   CURRENT_FISCAL_YEAR,
+  FY2027_DAYS_ELAPSED,
 } from '@/lib/data/spendingData';
 import { formatCurrency, calculateSpendingRates } from '@/lib/utils/formatters';
 import {
@@ -35,7 +36,7 @@ import {
 } from 'lucide-react';
 
 export default function HomePage() {
-  const rates = calculateSpendingRates(TOTAL_FEDERAL_SPENDING_FY2026);
+  const rates = calculateSpendingRates(TOTAL_FEDERAL_SPENDING_FY2027, FY2027_DAYS_ELAPSED);
 
   return (
     <div className="space-y-16 pb-16">
@@ -100,7 +101,7 @@ export default function HomePage() {
         {/* 2. Top At-A-Glance Banner */}
         <SpendingAtAGlance
           title="U.S. Federal Outlays at a Glance"
-          totalAmount={TOTAL_FEDERAL_SPENDING_FY2026}
+          totalAmount={TOTAL_FEDERAL_SPENDING_FY2027}
           sharePercentage={100}
           yoyChange="+4.2%"
           dailyRate={rates.perDay}

@@ -13,7 +13,7 @@ import StateDistributionSection from '@/components/visualizations/StateDistribut
 import FAQSection, { FAQItem } from '@/components/common/FAQSection';
 import JsonLd from '@/components/seo/JsonLd';
 import AdUnit from '@/components/ads/AdUnit';
-import { getCategoryDataForFY, ANNUAL_TOTAL_BUDGET } from '@/lib/data/spendingData';
+import { getCategoryDataForFY, ANNUAL_TOTAL_BUDGET, CURRENT_FISCAL_YEAR, FY2027_DAYS_ELAPSED } from '@/lib/data/spendingData';
 import { formatCurrency, calculateSpendingRates } from '@/lib/utils/formatters';
 import { EntityConfig } from '@/lib/config/entities';
 import { ArrowLeft, ShieldCheck, TrendingUp, Building2, Award, Info, ExternalLink, ArrowRight, BookOpen } from 'lucide-react';
@@ -23,15 +23,15 @@ interface Props {
 }
 
 export default function CategoryDetailView({ entity }: Props) {
-  const [selectedFY, setSelectedFY] = useState<number>(2026);
+  const [selectedFY, setSelectedFY] = useState<number>(CURRENT_FISCAL_YEAR);
   const categoryData = getCategoryDataForFY(entity.slug, selectedFY);
 
   if (!categoryData) {
     return null;
   }
 
-  const rates = calculateSpendingRates(categoryData.amount);
-  const totalFYBudget = ANNUAL_TOTAL_BUDGET[selectedFY] || ANNUAL_TOTAL_BUDGET[2026];
+  const rates = calculateSpendingRates(categoryData.amount, selectedFY === CURRENT_FISCAL_YEAR ? FY2027_DAYS_ELAPSED : 365);
+  const totalFYBudget = ANNUAL_TOTAL_BUDGET[selectedFY] || ANNUAL_TOTAL_BUDGET[CURRENT_FISCAL_YEAR];
 
   const subcategoryDonut = (categoryData.subcategories || []).map((sub) => ({
     name: sub.name,
@@ -374,7 +374,7 @@ export default function CategoryDetailView({ entity }: Props) {
           <span>Source: USAspending.gov</span>
           <span>Fiscal Year: FY{selectedFY}</span>
           <span>Data Type: Federal Outlays</span>
-          <span>Last Updated: October 2026</span>
+          <span>Last Updated: November 2026</span>
           <span>Classification Type: {entity.classificationType.toUpperCase()}</span>
         </div>
         <p className="text-[11px] leading-relaxed text-slate-500">

@@ -30,11 +30,11 @@ export default function CompareOverviewPage() {
     },
     {
       question: 'How are state comparisons calculated (e.g. California vs. Texas)?',
-      answer: 'State comparisons evaluate total federal outlays, per-capita spending, Census population baselines, prime contract awards vs. grant assistance, and historical spending trajectories from 2018 through 2026.',
+      answer: 'State comparisons evaluate total federal outlays, per-capita spending, Census population baselines, prime contract awards vs. grant assistance, and historical spending trajectories from 2018 through 2027.',
     },
     {
       question: 'How are category comparisons calculated (e.g. Defense vs. Education)?',
-      answer: 'Category comparisons measure relative percentage shares of the total $7.40 Trillion (FY2026 final) federal budget, net dollar differences, hourly disbursement rates, and primary administering agencies.',
+      answer: 'Category comparisons measure relative percentage shares of the total $773.00 Billion (FY2027 FYTD) federal budget, net dollar differences, hourly disbursement rates, and primary administering agencies.',
     },
     {
       question: 'How are prime contractor comparisons calculated (e.g. Lockheed Martin vs. Boeing)?',
@@ -45,8 +45,8 @@ export default function CompareOverviewPage() {
       answer: 'All underlying financial data is ingested from official public REST API feeds provided by USAspending.gov and the U.S. Department of the Treasury.',
     },
     {
-      question: 'Are comparisons updated for Fiscal Year 2026?',
-      answer: 'Yes. All comparison tools incorporate official FY2026 budget outlays and multi-year historical data spanning FY2018 to FY2026.',
+      question: 'Are comparisons updated for Fiscal Year 2027?',
+      answer: 'Yes. All comparison tools incorporate official FY2027 (FYTD) budget outlays and multi-year historical data spanning FY2018 to FY2027.',
     },
     {
       question: 'Can I request a custom comparison between any two entities?',
@@ -115,7 +115,7 @@ export default function CompareOverviewPage() {
             The <strong>U.S. Spending Comparison Engine</strong> provides comparative analytical models designed to contrast federal government spending across states, budget functions, executive departments, and defense industrial contractors.
           </p>
           <p>
-            Evaluating spending side-by-side reveals critical fiscal insights. For instance, comparing <strong>California ($520.0 Billion) versus Texas ($410.0 Billion)</strong> highlights distinct population baselines and prime contract distributions, while comparing <strong>Defense & Military ($895.0 Billion) versus Education & Training ($240.0 Billion)</strong> demonstrates how federal resources are split between national security and domestic human capital.
+            Evaluating spending side-by-side reveals critical fiscal insights. For instance, comparing <strong>California ($14.3 Billion) versus Texas ($12.4 Billion)</strong> highlights distinct population baselines and prime contract distributions, while comparing <strong>Defense & Military ($128.9 Billion) versus Education & Training ($13.7 Billion)</strong> demonstrates how federal resources are split between national security and domestic human capital.
           </p>
           <p>
             Similarly, comparing major defense contractors such as <strong>Lockheed Martin ($48.5 Billion) versus Boeing ($32.1 Billion)</strong> illuminates prime contractor market share, contract vehicle types, and state-level place-of-performance allocations. All comparison models rely strictly on official, non-partisan datasets sourced from USAspending.gov.

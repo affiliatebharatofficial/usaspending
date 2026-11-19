@@ -1,15 +1,15 @@
 'use client';
 
 import React, { useState } from 'react';
-import { TOTAL_FEDERAL_SPENDING_FY2026, SPENDING_CATEGORIES } from '@/lib/data/spendingData';
+import { TOTAL_FEDERAL_SPENDING_FY2027, SPENDING_CATEGORIES, FY2027_DAYS_ELAPSED } from '@/lib/data/spendingData';
 import { formatCurrency, calculateSpendingRates } from '@/lib/utils/formatters';
 import { Calculator, Clock, Sparkles, TrendingUp, Info } from 'lucide-react';
 
 export default function CustomAmountCalculator() {
   const [amount, setAmount] = useState<number>(1_000_000_000); // Default $1 Billion
 
-  const rates = calculateSpendingRates(TOTAL_FEDERAL_SPENDING_FY2026);
-  const percentOfBudget = (amount / TOTAL_FEDERAL_SPENDING_FY2026) * 100;
+  const rates = calculateSpendingRates(TOTAL_FEDERAL_SPENDING_FY2027, FY2027_DAYS_ELAPSED);
+  const percentOfBudget = (amount / TOTAL_FEDERAL_SPENDING_FY2027) * 100;
 
   // Time equivalent calculations
   const secondsEquivalent = amount / rates.perSecond;
@@ -79,7 +79,7 @@ export default function CustomAmountCalculator() {
           <div className="text-3xl font-extrabold text-white font-mono mt-2">
             {percentOfBudget < 0.01 ? '< 0.01%' : `${percentOfBudget.toFixed(3)}%`}
           </div>
-          <div className="text-[11px] text-slate-500 mt-1">Out of $7.40 Trillion FY2026 final total</div>
+          <div className="text-[11px] text-slate-500 mt-1">Out of $773.00 Billion FY2027 FYTD total</div>
         </div>
 
         <div className="p-5 rounded-2xl bg-slate-900/80 border border-slate-800 text-center">

@@ -7,18 +7,18 @@ import DonutChart from '@/components/visualizations/DonutChart';
 import MetricCard from '@/components/visualizations/MetricCard';
 import FiscalYearSelector from '@/components/visualizations/FiscalYearSelector';
 import DataFreshness from '@/components/visualizations/DataFreshness';
-import { HISTORICAL_SPENDING, SPENDING_CATEGORIES } from '@/lib/data/spendingData';
+import { HISTORICAL_SPENDING, SPENDING_CATEGORIES, CURRENT_FISCAL_YEAR, FY2027_DAYS_ELAPSED } from '@/lib/data/spendingData';
 import { formatCurrency, calculateSpendingRates } from '@/lib/utils/formatters';
 import { ArrowLeft, Calendar, TrendingUp, GitCompare, Clock, CheckCircle2 } from 'lucide-react';
 
 export default function SpendingByYearPage() {
-  const [selectedYear, setSelectedYear] = useState<number>(2026);
+  const [selectedYear, setSelectedYear] = useState<number>(CURRENT_FISCAL_YEAR);
   const [compareYear, setCompareYear] = useState<number>(2025);
 
   const selectedData = HISTORICAL_SPENDING.find((h) => h.year === selectedYear) || HISTORICAL_SPENDING[HISTORICAL_SPENDING.length - 1];
   const compareData = HISTORICAL_SPENDING.find((h) => h.year === compareYear) || HISTORICAL_SPENDING[HISTORICAL_SPENDING.length - 2];
 
-  const rates = calculateSpendingRates(selectedData.spending || selectedData.totalSpending);
+  const rates = calculateSpendingRates(selectedData.spending || selectedData.totalSpending, selectedData.isPartial ? FY2027_DAYS_ELAPSED : 365);
 
   // Math for year comparison
   const diffAmount = selectedData.spending - compareData.spending;
@@ -58,7 +58,7 @@ export default function SpendingByYearPage() {
           U.S. Government Spending by Year
         </h1>
         <p className="text-sm text-slate-600">
-          Analyze United States Federal Outlays, rate metrics, and year-over-year budget comparisons from 2018 to 2026.
+          Analyze United States Federal Outlays, rate metrics, and year-over-year budget comparisons from 2018 to 2027.
         </p>
       </div>
 
@@ -68,7 +68,7 @@ export default function SpendingByYearPage() {
           <div>
             <h2 className="text-xl font-bold text-slate-900 flex items-center gap-2">
               <TrendingUp className="w-5 h-5 text-blue-700" />
-              Federal Outlays Trajectory (2018 – 2026)
+              Federal Outlays Trajectory (2018 – 2027)
             </h2>
             <p className="text-xs text-slate-500">
               Notice emergency COVID-19 relief spending spikes in FY2020 and FY2021.
@@ -86,7 +86,7 @@ export default function SpendingByYearPage() {
           <div>
             <div className="text-xs text-blue-300 uppercase font-semibold">Interactive Selection</div>
             <h2 className="text-2xl font-extrabold">
-              Fiscal Year {selectedYear} Deep Dive
+              Fiscal Year {selectedYear} Deep Dive{selectedData.isPartial ? ' (FYTD)' : ''}
             </h2>
           </div>
           <FiscalYearSelector
@@ -100,7 +100,7 @@ export default function SpendingByYearPage() {
           <MetricCard
             label="Total Annual Outlays"
             value={formatCurrency(selectedData.spending, true)}
-            subtext={`FY ${selectedYear}`}
+            subtext={`FY ${selectedYear}${selectedData.isPartial ? ' (FYTD)' : ''}`}
             highlight
           />
           <MetricCard
@@ -143,6 +143,11 @@ export default function SpendingByYearPage() {
             <h2 className="text-xl font-extrabold text-slate-900">
               FY {selectedYear} vs. FY {compareYear} Analysis
             </h2>
+            {selectedData.isPartial && (
+              <p className="text-[11px] text-amber-700 font-semibold">
+                FY {selectedYear} is a partial year (FYTD through October 31, 2026) — comparisons against a full fiscal year are not like-for-like.
+              </p>
+            )}
           </div>
 
           <div className="flex items-center space-x-3 text-xs font-semibold">
@@ -152,7 +157,7 @@ export default function SpendingByYearPage() {
               onChange={(e) => setCompareYear(Number(e.target.value))}
               className="bg-white border border-slate-300 rounded px-3 py-1 font-mono font-bold text-slate-900"
             >
-              {[2020, 2021, 2022, 2023, 2024, 2025, 2026]
+              {[2020, 2021, 2022, 2023, 2024, 2025, 2026, 2027]
                 .filter((y) => y !== selectedYear)
                 .map((y) => (
                   <option key={y} value={y}>
@@ -209,7 +214,7 @@ export default function SpendingByYearPage() {
       {/* Historical Data Table */}
       <div className="data-card rounded-xl p-6 sm:p-8 border border-slate-200 bg-white space-y-4">
         <h2 className="text-xl font-bold text-slate-900">
-          Complete Fiscal Year Data Table (2018 – 2026)
+          Fiscal Year Data Table (2018 – 2027)
         </h2>
 
         <div className="overflow-x-auto">
@@ -234,6 +239,7 @@ export default function SpendingByYearPage() {
                   <td className="py-3.5 font-sans font-bold text-slate-900 flex items-center gap-2">
                     {row.year === selectedYear && <CheckCircle2 className="w-4 h-4 text-blue-700" />}
                     FY {row.year}
+                    {row.isPartial && <span className="text-[10px] text-amber-700 font-normal">FYTD</span>}
                   </td>
                   <td className="py-3.5 text-right font-extrabold text-blue-900 numeral-tabular">
                     {formatCurrency(row.spending || row.totalSpending || 0, true)}

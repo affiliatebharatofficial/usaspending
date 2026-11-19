@@ -96,7 +96,7 @@ export default function MethodologyPage() {
             <strong>USAspending.us does not create or originate the underlying federal spending data.</strong> The underlying data is sourced from external government datasets, primarily the U.S. Department of the Treasury&apos;s Monthly Treasury Statement (MTS), Table 9 (outlays by budget function). Calculated values shown on this website are derived from those source datasets using the formulas described below.
           </p>
           <div className="p-3 rounded-lg bg-amber-50/70 border border-amber-200 text-xs text-amber-950 leading-relaxed">
-            <strong>Data vintage (October 2026 refresh):</strong> FY2026 figures are the final September 2026 Monthly Treasury Statement (published October 16, 2026), covering the full fiscal year October 1, 2025 through September 30, 2026. Per-day, per-hour and per-second rates are therefore computed over 365 days. Historical FY2018–FY2026 figures are September MTS finals. Category totals are MTS actuals; subcategory splits, state attributions and recipient breakdowns are modeled estimates and are labeled as such where shown.
+            <strong>Data vintage (November 2026 refresh):</strong> FY2027 figures are the October 2026 Monthly Treasury Statement (published November 12, 2026), covering the fiscal year to date October 1 through October 31, 2026. Per-day, per-hour and per-second rates are therefore computed over 31 elapsed days. Historical FY2018–FY2026 figures are September MTS finals. Category totals are MTS actuals; subcategory splits, state attributions and recipient breakdowns are modeled estimates and are labeled as such where shown.
           </div>
           <p className="text-slate-600">
             USAspending.us is an independent public-interest web project built and maintained by independent developer{' '}
@@ -212,7 +212,7 @@ export default function MethodologyPage() {
             </thead>
             <tbody className="divide-y divide-slate-200 text-slate-700">
               <tr>
-                <td className="p-3 font-semibold text-slate-900">Total Federal Outlays ($7.40T FY2026 final)</td>
+                <td className="p-3 font-semibold text-slate-900">Total Federal Outlays ($773.00B FY2027 FYTD)</td>
                 <td className="p-3"><span className="px-2 py-0.5 rounded bg-emerald-50 text-emerald-800 font-bold text-[10px]">Source Data</span></td>
                 <td className="p-3">U.S. Treasury (MTS / Fiscal Data)</td>
                 <td className="p-3">Published directly in official federal budget and Treasury outlay tables.</td>
@@ -239,7 +239,7 @@ export default function MethodologyPage() {
                 <td className="p-3 font-semibold text-slate-900">Daily / Hourly / Second Spending Rates</td>
                 <td className="p-3"><span className="px-2 py-0.5 rounded bg-blue-50 text-blue-800 font-bold text-[10px]">Calculated by Site</span></td>
                 <td className="p-3">Derived from Treasury Outlays</td>
-                <td className="p-3">Computed via linear division across 365 (or 366 leap) fiscal days.</td>
+                <td className="p-3">Computed via linear division across the elapsed days of the current fiscal year (31 days for FY2027 FYTD; 365, or 366 leap, for a complete fiscal year).</td>
               </tr>
               <tr>
                 <td className="p-3 font-semibold text-slate-900">Budget Percentage Share (%)</td>
@@ -299,7 +299,7 @@ export default function MethodologyPage() {
         </div>
 
         <p className="text-xs text-slate-600 leading-relaxed">
-          <strong>Impact on Spending Velocity:</strong> All daily, hourly, minute, and second calculations automatically calibrate their time divisors depending on leap-year status. In FY2024, calculations use 366 days (31,622,400 seconds); in FY2025 and FY2026, calculations use 365 days (31,536,000 seconds).
+          <strong>Impact on Spending Velocity:</strong> All daily, hourly, minute, and second calculations automatically calibrate their time divisors depending on leap-year status. In FY2024, calculations use 366 days (31,622,400 seconds); in FY2025 and FY2026, calculations use 365 days (31,536,000 seconds); in FY2027 (FYTD), calculations use 31 elapsed days (2,678,400 seconds).
         </p>
       </section>
 
@@ -374,16 +374,16 @@ export default function MethodologyPage() {
             6.1 Federal Spending Rate Velocity (Time Divisors)
           </h3>
           <p className="text-xs text-slate-600">
-            Converts annual budgetary outlays into conceptual time intervals across the 365 or 366 days of a fiscal year:
+            Converts annual budgetary outlays into conceptual time intervals across the elapsed days of the fiscal year (31 days for FY2027 FYTD; 365 or 366 days for a complete fiscal year):
           </p>
           <div className="p-4 rounded-xl bg-slate-900 text-emerald-400 font-mono text-xs space-y-1.5 overflow-x-auto">
-            <div>Daily Rate  = Period Outlays ÷ Elapsed Days In Period (365 for FY2026 final)</div>
+            <div>Daily Rate  = Period Outlays ÷ Elapsed Days In Period (31 for FY2027 FYTD)</div>
             <div>Hourly Rate = Daily Rate ÷ 24</div>
             <div>Minute Rate = Hourly Rate ÷ 60</div>
             <div>Second Rate = Minute Rate ÷ 60 = Annual Outlays ÷ (Days × 86,400)</div>
           </div>
           <p className="text-xs text-slate-500 italic">
-            Example: For FY2026 outlays of $7,395,799,983,313 over 365 days: Daily = $20,262,465,708; Hourly = $844,269,404; Minute = $14,071,157; Second = $234,519.
+            Example: For FY2027 FYTD outlays of $773,003,666,480 over 31 days: Daily = $24,935,602,145; Hourly = $1,038,983,423; Minute = $17,316,390; Second = $288,607.
           </p>
         </div>
 
@@ -396,11 +396,11 @@ export default function MethodologyPage() {
             Measures the relative proportion of any dollar amount or category against the total federal budget:
           </p>
           <div className="p-4 rounded-xl bg-slate-900 text-emerald-400 font-mono text-xs overflow-x-auto">
-            <div>Percentage Share (%) = (Entered Dollar Amount ÷ Total Federal Outlays FY2026) × 100</div>
-            <div className="text-slate-400 mt-1">// Total Federal Outlays FY2026 baseline = $7,395,799,983,313 ($7.40T, final through September 30, 2026)</div>
+            <div>Percentage Share (%) = (Entered Dollar Amount ÷ Total Federal Outlays FY2027) × 100</div>
+            <div className="text-slate-400 mt-1">// Total Federal Outlays FY2027 baseline = $773,003,666,480 ($773.00B, FYTD through October 31, 2026)</div>
           </div>
           <p className="text-xs text-slate-500 italic">
-            Example: A program funded at $1,000,000,000 ($1B): (1,000,000,000 ÷ 7,395,799,983,313) × 100 = 0.0147%.
+            Example: A program funded at $1,000,000,000 ($1B): (1,000,000,000 ÷ 773,003,666,480) × 100 = 0.1294%.
           </p>
         </div>
 
@@ -582,7 +582,7 @@ export default function MethodologyPage() {
         </p>
 
         <p className="text-xs text-slate-600 leading-relaxed">
-          On USAspending.us, all pie, donut, and percentage breakdown charts enforce strict visual part-to-whole reconciliation. When the top functional categories are displayed, an explicit <strong>&quot;Other / Remaining Federal Functions&quot;</strong> component is included. This ensures that every chart reconciles mathematically to exactly 100.0% of total federal outlays ($7.40 Trillion (FY2026 final) in FY2026).
+          On USAspending.us, all pie, donut, and percentage breakdown charts enforce strict visual part-to-whole reconciliation. When the top functional categories are displayed, an explicit <strong>&quot;Other / Remaining Federal Functions&quot;</strong> component is included. This ensures that every chart reconciles mathematically to exactly 100.0% of total federal outlays ($773.00 Billion (FY2027 FYTD) in FY2027).
         </p>
       </section>
 
@@ -596,7 +596,7 @@ export default function MethodologyPage() {
         </div>
 
         <p className="text-slate-700 text-sm leading-relaxed">
-          Historical spending tables and multi-year comparisons (such as FY2020 through FY2026) report <strong>nominal outlays</strong> as recorded by the U.S. Treasury in each respective fiscal year:
+          Historical spending tables and multi-year comparisons (such as FY2020 through FY2027) report <strong>nominal outlays</strong> as recorded by the U.S. Treasury in each respective fiscal year:
         </p>
 
         <ul className="list-disc pl-5 space-y-2 text-xs text-slate-600 leading-relaxed">
@@ -689,11 +689,11 @@ export default function MethodologyPage() {
               </tr>
               <tr>
                 <td className="p-3 font-semibold text-slate-900">Effective Date</td>
-                <td className="p-3">September 2026</td>
+                <td className="p-3">November 2026</td>
               </tr>
               <tr>
                 <td className="p-3 font-semibold text-slate-900">Next Scheduled Audit</td>
-                <td className="p-3">October 2026 (Annual Fiscal Year Close Review)</td>
+                <td className="p-3">December 2026 (November MTS Review)</td>
               </tr>
               <tr>
                 <td className="p-3 font-semibold text-slate-900">Reporting Discrepancies</td>

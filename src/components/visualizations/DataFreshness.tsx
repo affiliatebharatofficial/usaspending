@@ -10,7 +10,7 @@ export interface DataFreshnessProps {
 }
 
 export default function DataFreshness({
-  lastUpdated = 'October 2026',
+  lastUpdated = 'November 2026',
   timestamp,
   sourceName = 'U.S. Treasury MTS',
 }: DataFreshnessProps) {

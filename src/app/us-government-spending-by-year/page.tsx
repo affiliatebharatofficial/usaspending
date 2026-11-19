@@ -7,8 +7,8 @@ import { Calendar, ArrowLeft, TrendingUp } from 'lucide-react';
 import type { Metadata } from 'next';
 
 export const metadata: Metadata = {
-  title: 'U.S. Government Spending by Year (2018 – 2026 Historical Budget)',
-  description: 'Historical breakdown of U.S. Federal Government spending by year from 2018 to 2026. Compare annual outlays, deficits, and total national debt trajectory.',
+  title: 'U.S. Government Spending by Year (2018 – 2027 Historical Budget)',
+  description: 'Historical breakdown of U.S. Federal Government spending by year from 2018 to 2027. Compare annual outlays, deficits, and total national debt trajectory.',
 };
 
 export default function SpendingByYearPage() {
@@ -32,7 +32,7 @@ export default function SpendingByYearPage() {
       <div className="text-center max-w-3xl mx-auto space-y-3">
         <div className="inline-flex items-center gap-1.5 text-xs font-semibold uppercase tracking-widest text-blue-700 px-3 py-1 rounded bg-blue-50 border border-blue-200">
           <Calendar className="w-3.5 h-3.5" />
-          Historical Timeline (2018 – 2026)
+          Historical Timeline (2018 – 2027)
         </div>
         <h1 className="text-3xl sm:text-5xl font-black text-slate-900">
           U.S. Government Spending by Year
@@ -45,7 +45,7 @@ export default function SpendingByYearPage() {
       <div className="data-card rounded-xl p-6 sm:p-8 border border-slate-200 bg-white">
         <h2 className="text-xl font-bold text-slate-900 mb-2 flex items-center gap-2">
           <TrendingUp className="w-4 h-4 text-blue-700" />
-          Federal Outlays Trajectory (2018 – 2026)
+          Federal Outlays Trajectory (2018 – 2027)
         </h2>
         <p className="text-xs text-slate-500 mb-6">
           Notice the sharp increase during FY2020-FY2021 due to emergency COVID-19 relief legislation.
@@ -78,7 +78,8 @@ export default function SpendingByYearPage() {
                   }`}
                 >
                   <td className="py-3.5 font-sans font-bold text-slate-900">
-                    FY {row.year} {row.year === CURRENT_FISCAL_YEAR && <span className="text-[10px] text-blue-700 font-normal">(Current)</span>}
+                    FY {row.year} {row.year === CURRENT_FISCAL_YEAR && <span className="text-[10px] text-blue-700 font-normal">(Current)</span>}{' '}
+                    {row.isPartial && <span className="text-[10px] text-amber-700 font-normal">FYTD (through Oct 31, 2026)</span>}
                   </td>
                   <td className="py-3.5 text-right font-extrabold text-blue-900 numeral-tabular">
                     {formatCurrency(row.spending || row.totalSpending || 0, true)}

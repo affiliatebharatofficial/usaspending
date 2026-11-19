@@ -1,17 +1,18 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { getSpendingCategories, DEFAULT_METADATA, CURRENT_TOTAL_BUDGET } from '@/lib/services/dataService';
-import { calculateSpendingRates } from '@/lib/calculations';
+import { FY2027_DAYS_ELAPSED } from '@/lib/data/spendingData';
+import { calculateSpendingRates } from '@/lib/utils/formatters';
 
 export async function GET(req: NextRequest) {
   const { searchParams } = new URL(req.url);
-  const fy = Number(searchParams.get('fy') || 2026);
+  const fy = Number(searchParams.get('fy') || 2027);
 
   const rates = {
     annual: CURRENT_TOTAL_BUDGET,
-    daily: calculateSpendingRates(CURRENT_TOTAL_BUDGET, 365).perDay,
-    hourly: calculateSpendingRates(CURRENT_TOTAL_BUDGET, 365).perHour,
-    minute: calculateSpendingRates(CURRENT_TOTAL_BUDGET, 365).perMinute,
-    second: calculateSpendingRates(CURRENT_TOTAL_BUDGET, 365).perSecond,
+    daily: calculateSpendingRates(CURRENT_TOTAL_BUDGET, FY2027_DAYS_ELAPSED).perDay,
+    hourly: calculateSpendingRates(CURRENT_TOTAL_BUDGET, FY2027_DAYS_ELAPSED).perHour,
+    minute: calculateSpendingRates(CURRENT_TOTAL_BUDGET, FY2027_DAYS_ELAPSED).perMinute,
+    second: calculateSpendingRates(CURRENT_TOTAL_BUDGET, FY2027_DAYS_ELAPSED).perSecond,
   };
 
   return NextResponse.json({

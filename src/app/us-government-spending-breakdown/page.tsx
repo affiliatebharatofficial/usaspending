@@ -2,18 +2,18 @@ import React from 'react';
 import Link from 'next/link';
 import SpendingPieChart from '@/components/charts/SpendingPieChart';
 import CategoryGrid from '@/components/categories/CategoryGrid';
-import { SPENDING_CATEGORIES, TOTAL_FEDERAL_SPENDING_FY2026, CURRENT_FISCAL_YEAR } from '@/lib/data/spendingData';
+import { SPENDING_CATEGORIES, TOTAL_FEDERAL_SPENDING_FY2027, CURRENT_FISCAL_YEAR, FY2027_DAYS_ELAPSED } from '@/lib/data/spendingData';
 import { formatCurrency, calculateSpendingRates } from '@/lib/utils/formatters';
 import { Layers, ArrowLeft, CheckCircle2, AlertTriangle } from 'lucide-react';
 import type { Metadata } from 'next';
 
 export const metadata: Metadata = {
-  title: 'U.S. Government Spending Breakdown — Complete FY2026 Budget Outlays',
+  title: 'U.S. Government Spending Breakdown — FY2027 Budget Outlays (FYTD)',
   description: 'Complete breakdown of U.S. Federal Government spending. Mandatory spending, discretionary defense outlays, net interest on debt, healthcare, and social security numbers.',
 };
 
 export default function SpendingBreakdownPage() {
-  const rates = calculateSpendingRates(TOTAL_FEDERAL_SPENDING_FY2026);
+  const rates = calculateSpendingRates(TOTAL_FEDERAL_SPENDING_FY2027, FY2027_DAYS_ELAPSED);
 
   return (
     <div className="space-y-12 py-8 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
@@ -36,7 +36,7 @@ export default function SpendingBreakdownPage() {
           U.S. Government Spending Breakdown
         </h1>
         <p className="text-sm text-slate-300">
-          Comprehensive breakdown of America's $7.40 Trillion federal budget outlays (FY2026 final) for Fiscal Year {CURRENT_FISCAL_YEAR}.
+          Comprehensive breakdown of America's $773.00 Billion federal budget outlays (FY2027 FYTD) for Fiscal Year {CURRENT_FISCAL_YEAR}.
         </p>
       </div>
 
@@ -45,7 +45,7 @@ export default function SpendingBreakdownPage() {
         <div className="glass-card p-6 rounded-2xl border border-slate-800 bg-slate-950/80 space-y-2">
           <div className="text-xs text-slate-400 uppercase font-semibold">Mandatory Spending (~60%)</div>
           <div className="text-2xl font-extrabold text-blue-400 font-mono">
-            {formatCurrency(TOTAL_FEDERAL_SPENDING_FY2026 * 0.60, true)}
+            {formatCurrency(TOTAL_FEDERAL_SPENDING_FY2027 * 0.60, true)}
           </div>
           <p className="text-xs text-slate-400 leading-relaxed">
             Social Security, Medicare, Medicaid, and federal pensions required by existing entitlement law without annual congressional appropriation.
@@ -55,17 +55,17 @@ export default function SpendingBreakdownPage() {
         <div className="glass-card p-6 rounded-2xl border border-slate-800 bg-slate-950/80 space-y-2">
           <div className="text-xs text-slate-400 uppercase font-semibold">Discretionary Spending (~27%)</div>
           <div className="text-2xl font-extrabold text-amber-400 font-mono">
-            {formatCurrency(TOTAL_FEDERAL_SPENDING_FY2026 * 0.27, true)}
+            {formatCurrency(TOTAL_FEDERAL_SPENDING_FY2027 * 0.27, true)}
           </div>
           <p className="text-xs text-slate-400 leading-relaxed">
-            Defense & military outlays ($895B), Education, NASA, Transportation, and Cabinet agency operational budgets enacted by Congress annually.
+            Defense & military outlays ($129B), Education, NASA, Transportation, and Cabinet agency operational budgets enacted by Congress annually.
           </p>
         </div>
 
         <div className="glass-card p-6 rounded-2xl border border-slate-800 bg-slate-950/80 space-y-2">
           <div className="text-xs text-slate-400 uppercase font-semibold">Net Interest on Debt (~13%)</div>
           <div className="text-2xl font-extrabold text-emerald-400 font-mono">
-            {formatCurrency(TOTAL_FEDERAL_SPENDING_FY2026 * 0.13, true)}
+            {formatCurrency(TOTAL_FEDERAL_SPENDING_FY2027 * 0.13, true)}
           </div>
           <p className="text-xs text-slate-400 leading-relaxed">
             Interest payments disbursed to holders of Treasury securities to service the U.S. National Debt ($36+ Trillion total).

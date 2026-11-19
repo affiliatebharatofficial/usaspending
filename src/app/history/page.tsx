@@ -14,13 +14,15 @@ import { TrendingUp, ArrowLeft, Calendar, ArrowUpRight, ArrowDownRight, BookOpen
 export default function HistoryAnalysisPage() {
   const [selectedCategory, setSelectedCategory] = useState<string>('all');
 
-  const trendData = HISTORICAL_SPENDING.map((h) => ({
+  const completeYears = HISTORICAL_SPENDING.filter((h) => !h.isPartial);
+
+  const trendData = completeYears.map((h) => ({
     year: h.year,
     amount: h.spending,
   }));
 
-  const latestFY = HISTORICAL_SPENDING[HISTORICAL_SPENDING.length - 1];
-  const previousFY = HISTORICAL_SPENDING[HISTORICAL_SPENDING.length - 2];
+  const latestFY = completeYears[completeYears.length - 1];
+  const previousFY = completeYears[completeYears.length - 2];
 
   const yoyDiff = latestFY.spending - previousFY.spending;
   const yoyPct = Number(((yoyDiff / previousFY.spending) * 100).toFixed(2));
@@ -86,20 +88,20 @@ export default function HistoryAnalysisPage() {
       {/* Overview Cards */}
       <div className="grid grid-cols-2 sm:grid-cols-4 gap-4">
         <MetricCard
-          label="FY2026 Outlays"
+          label={`FY${latestFY.year} Outlays`}
           value={formatCurrency(latestFY.spending, true)}
-          subtext="Current Fiscal Year"
+          subtext="Latest Complete Fiscal Year"
           highlight
         />
         <MetricCard
-          label="FY2025 Outlays"
+          label={`FY${previousFY.year} Outlays`}
           value={formatCurrency(previousFY.spending, true)}
           subtext="Prior Fiscal Year"
         />
         <MetricCard
           label="YoY Dollar Change"
           value={`+$${(yoyDiff / 1e9).toFixed(1)}B`}
-          subtext={`From FY2025 to FY2026`}
+          subtext={`From FY${previousFY.year} to FY${latestFY.year}`}
           change={`+${yoyPct}%`}
           changeType="positive"
         />

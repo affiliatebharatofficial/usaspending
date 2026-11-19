@@ -7,7 +7,7 @@ import MetricCard from '@/components/visualizations/MetricCard';
 import ShareResultButton from '@/components/calculators/ShareResultButton';
 import FAQSection, { FAQItem } from '@/components/common/FAQSection';
 import CalculatorMethodologyBox from '@/components/calculators/CalculatorMethodologyBox';
-import { TOTAL_FEDERAL_SPENDING_FY2026, SPENDING_CATEGORIES } from '@/lib/data/spendingData';
+import { TOTAL_FEDERAL_SPENDING_FY2027, SPENDING_CATEGORIES, FY2027_DAYS_ELAPSED } from '@/lib/data/spendingData';
 import { formatCurrency, calculateSpendingRates } from '@/lib/utils/formatters';
 import { Clock, ArrowLeft, BookOpen } from 'lucide-react';
 
@@ -16,10 +16,10 @@ export default function AmountToTimeCalculatorPage() {
   const [selectedProfile, setSelectedProfile] = useState<string>('total');
 
   const profileObj = selectedProfile === 'total'
-    ? { name: 'Total Federal Outlays', amount: TOTAL_FEDERAL_SPENDING_FY2026 }
+    ? { name: 'Total Federal Outlays', amount: TOTAL_FEDERAL_SPENDING_FY2027 }
     : SPENDING_CATEGORIES.find((c) => c.slug === selectedProfile) || { name: 'Category', amount: 895_000_000_000 };
 
-  const rates = calculateSpendingRates(profileObj.amount);
+  const rates = calculateSpendingRates(profileObj.amount, FY2027_DAYS_ELAPSED);
 
   const secondsEquiv = amount / rates.perSecond;
   const minutesEquiv = secondsEquiv / 60;
@@ -29,7 +29,7 @@ export default function AmountToTimeCalculatorPage() {
   const faqs: FAQItem[] = [
     {
       question: 'How is time equivalency calculated in this calculator?',
-      answer: 'The entered dollar amount is divided by the calculated per-second outlay rate of the selected baseline profile (derived from total FY2026 outlays over 365 fiscal days).',
+      answer: 'The entered dollar amount is divided by the calculated per-second outlay rate of the selected baseline profile (derived from total FY2027 FYTD outlays over 31 elapsed days).',
     },
     {
       question: 'What does "Time Equivalency" mean in federal budgeting?',
@@ -37,7 +37,7 @@ export default function AmountToTimeCalculatorPage() {
     },
     {
       question: 'Can I compare an amount against specific categories like Defense or Medicare?',
-      answer: 'Yes. You can select Total Federal Outlays ($7.40T (FY2026 final)) or specific budget categories like Defense & Military, Medicare, Social Security, or Education to see category-specific time equivalents.',
+      answer: 'Yes. You can select Total Federal Outlays ($773.00B (FY2027 FYTD)) or specific budget categories like Defense & Military, Medicare, Social Security, or Education to see category-specific time equivalents.',
     },
     {
       question: 'Does this calculator represent real-time bank wire payments?',
@@ -111,7 +111,7 @@ export default function AmountToTimeCalculatorPage() {
             onChange={(e) => setSelectedProfile(e.target.value)}
             className="w-full bg-slate-50 border border-slate-300 rounded-lg py-2.5 px-4 text-xs font-bold text-slate-900 focus:outline-none"
           >
-            <option value="total">Total Federal Outlays ($7.40 Trillion (FY2026 final))</option>
+            <option value="total">Total Federal Outlays ($773.00 Billion (FY2027 FYTD))</option>
             {SPENDING_CATEGORIES.map((c) => (
               <option key={c.id} value={c.slug}>
                 {c.name} ({formatCurrency(c.amount, true)})
@@ -153,10 +153,10 @@ export default function AmountToTimeCalculatorPage() {
 
         <div className="space-y-4 text-xs text-slate-700 leading-relaxed max-w-4xl">
           <p>
-            The <strong>Amount-to-Time Calculator</strong> provides a intuitive way to comprehend massive financial figures by converting raw dollar amounts into time equivalents based on U.S. federal spending velocity. At a Fiscal Year 2026 outlay rate of <strong>$7.40 Trillion</strong> (final, through September 30, 2026), the federal government disburses funds at a rate of <strong>$234,519 per second</strong>.
+            The <strong>Amount-to-Time Calculator</strong> provides a intuitive way to comprehend massive financial figures by converting raw dollar amounts into time equivalents based on U.S. federal spending velocity. At a Fiscal Year 2027 outlay rate of <strong>$773.00 Billion</strong> (FYTD, through October 31, 2026), the federal government disburses funds at a rate of <strong>$288,607 per second</strong>.
           </p>
           <p>
-            When evaluating federal policy proposals, procurement contracts, or state assistance programs, time conversions put expenditures into perspective. For instance, a <strong>$1 Billion appropriation</strong> represents approximately <strong>1.3 hours</strong> of total federal spending, or about <strong>9.8 hours</strong> of Department of Defense spending.
+            When evaluating federal policy proposals, procurement contracts, or state assistance programs, time conversions put expenditures into perspective. For instance, a <strong>$1 Billion appropriation</strong> represents approximately <strong>0.96 hours</strong> of total federal spending, or about <strong>5.8 hours</strong> of Department of Defense spending.
           </p>
           <p>
             By choosing different baseline profiles—such as Defense & Military, Medicare, Social Security, or Education & Training—you can analyze how long specific agency budgets take to spend a given sum. All rate conversions use mathematical averages across 365 fiscal days and are grounded in verified public data from USAspending.gov.
@@ -171,7 +171,7 @@ export default function AmountToTimeCalculatorPage() {
         sourceUrl="https://fiscaldata.treasury.gov"
         metric="Time Equivalency (Days, Hours, Minutes, Seconds)"
         formula={`Seconds Equivalent = Entered Dollar Amount ÷ Profile Spending Rate Per Second\nProfile Rate Per Second = Annual Outlays ÷ (365 × 86,400)`}
-        example={`Entering $1,000,000,000 against Total Federal Outlays ($234,519/sec in FY2026): 1,000,000,000 ÷ 234,519 = 4,264 seconds = 1.18 hours = 0.049 days.`}
+        example={`Entering $1,000,000,000 against Total Federal Outlays ($288,607/sec in FY2027): 1,000,000,000 ÷ 288,607 = 3,465 seconds = 0.96 hours = 0.040 days.`}
         limitations="Time equivalencies assume linear continuous spending 24 hours a day, 365 days a year across the entire fiscal year. Real disbursements follow agency billing and procurement cycles."
         represents="The theoretical duration required for the federal government or selected department to disburse an amount equal to your input, based on linear annual rate modeling."
         doesNotRepresent="A schedule of real-time payment disbursements or real banking processing times."

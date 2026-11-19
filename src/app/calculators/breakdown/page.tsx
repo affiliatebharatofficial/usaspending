@@ -9,7 +9,7 @@ import ShareResultButton from '@/components/calculators/ShareResultButton';
 import ExportCsvButton from '@/components/calculators/ExportCsvButton';
 import FAQSection, { FAQItem } from '@/components/common/FAQSection';
 import CalculatorMethodologyBox from '@/components/calculators/CalculatorMethodologyBox';
-import { SPENDING_CATEGORIES, TOTAL_FEDERAL_SPENDING_FY2026 } from '@/lib/data/spendingData';
+import { SPENDING_CATEGORIES, TOTAL_FEDERAL_SPENDING_FY2027 } from '@/lib/data/spendingData';
 import { formatCurrency } from '@/lib/utils/formatters';
 import { PieChart, ArrowLeft, Info, BookOpen } from 'lucide-react';
 
@@ -43,7 +43,7 @@ export default function SpendingBreakdownCalculatorPage() {
   const faqs: FAQItem[] = [
     {
       question: 'Does the federal government actually allocate my entered amount this way?',
-      answer: 'No. This is an illustrative mathematical allocation demonstrating how any dollar amount would be divided if split proportionally according to official FY2026 category outlay percentages.',
+      answer: 'No. This is an illustrative mathematical allocation demonstrating how any dollar amount would be divided if split proportionally according to official FY2027 (FYTD) category outlay percentages.',
     },
     {
       question: 'What are the category proportions based on?',
@@ -124,7 +124,7 @@ export default function SpendingBreakdownCalculatorPage() {
       <div className="p-4 rounded-xl bg-blue-50 border border-blue-200 text-blue-900 text-xs flex items-start space-x-3 max-w-3xl mx-auto">
         <Info className="w-5 h-5 text-blue-700 flex-shrink-0 mt-0.5" />
         <p className="leading-relaxed">
-          <strong>Illustrative allocation based on historical federal spending proportions.</strong> This calculation demonstrates how {formatCurrency(amount, true)} would be split if distributed proportionally across official FY2026 category outlays.
+          <strong>Illustrative allocation based on historical federal spending proportions.</strong> This calculation demonstrates how {formatCurrency(amount, true)} would be split if distributed proportionally across official FY2027 (FYTD) category outlays.
         </p>
       </div>
 
@@ -178,7 +178,7 @@ export default function SpendingBreakdownCalculatorPage() {
             The <strong>Spending Breakdown Calculator</strong> allows users to input any sum—such as individual tax payments, a state grant, or a proposed legislative bill—and observe how that capital would be divided across the major functional areas of the federal budget if split in exact proportion to official outlays.
           </p>
           <p>
-            For instance, if a user enters <strong>$10,000</strong>, the calculator applies official FY2026 percentage baselines: approximately <strong>$2,150</strong> is allocated to Social Security, <strong>$1,330</strong> to Medicare, <strong>$1,330</strong> to Defense & Military, <strong>$1,010</strong> to Medicaid & Health Services, and remaining balances distributed across education, infrastructure, agriculture, veterans affairs, and scientific research.
+            For instance, if a user enters <strong>$10,000</strong>, the calculator applies official FY2027 (FYTD) percentage baselines: approximately <strong>$1,846</strong> is allocated to Social Security, <strong>$2,200</strong> to Medicare, <strong>$1,667</strong> to Defense & Military, <strong>$1,210</strong> to Medicaid & Health Services, and remaining balances distributed across education, infrastructure, agriculture, veterans affairs, and scientific research.
           </p>
           <p>
             This tool provides essential context for civic understanding. By viewing how single dollars or large funding blocks map onto federal budget functions, users gain clear insight into how competing legislative priorities shape the overall allocation of public resources.
@@ -193,7 +193,7 @@ export default function SpendingBreakdownCalculatorPage() {
         sourceUrl="https://www.usaspending.gov"
         metric="Illustrative Proportional Category Share ($)"
         formula={`Category Allocation = (Category FY Outlays ÷ Total Federal Outlays) × Entered Dollar Amount`}
-        example={`Entering $10,000 against FY2026 outlays: Social Security (21.48%) = $2,148; Defense (13.26%) = $1,326; Medicare (13.63%) = $1,363.`}
+        example={`Entering $10,000 against FY2027 FYTD outlays: Social Security (18.46%) = $1,846; Defense (16.67%) = $1,667; Medicare (22.00%) = $2,200.`}
         limitations="This calculation provides an illustrative mathematical partition. The federal government does not dedicate individual tax receipts to specific categories in this direct mechanical manner."
         represents="An illustrative mathematical division showing how any input amount would partition if split in direct ratio to official federal budget function outlays."
         doesNotRepresent="Actual dedicated escrow accounts, citizen tax returns, or ring-fenced municipal tax allocations."

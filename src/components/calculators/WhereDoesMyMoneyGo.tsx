@@ -2,7 +2,7 @@
 
 import React, { useState } from 'react';
 import Link from 'next/link';
-import { SPENDING_CATEGORIES, TOTAL_FEDERAL_SPENDING_FY2026 } from '@/lib/data/spendingData';
+import { SPENDING_CATEGORIES, TOTAL_FEDERAL_SPENDING_FY2027, FY2027_DAYS_ELAPSED } from '@/lib/data/spendingData';
 import { formatCurrency, formatPercent } from '@/lib/utils/formatters';
 import DataInterpretationCallout from '@/components/common/DataInterpretationCallout';
 import ReportDataIssueButton from '@/components/common/ReportDataIssueButton';
@@ -29,7 +29,7 @@ export default function WhereDoesMyMoneyGo() {
     'It does NOT account for itemized deductions, child tax credits, retirement deferrals, state/local taxes, or FICA payroll withholdings.',
     'It does NOT imply that your federal tax payment equals your direct share of federal spending or that your tax dollars are held in a separate personal account.',
     'Federal tax revenues are collected into the general fund of the U.S. Treasury and disbursed according to congressional appropriations, not segregated individual accounts.',
-    'Category shares are illustrative proportional splits based on official FY2026 reported outlays ($7.40 Trillion (FY2026 final)).'
+    'Category shares are illustrative proportional splits based on official FY2027 reported outlays ($773.00 Billion (FY2027 FYTD)).'
   ];
 
   return (
@@ -95,8 +95,8 @@ export default function WhereDoesMyMoneyGo() {
           </div>
 
           <div className="text-right text-xs text-slate-400 border-t sm:border-t-0 sm:border-l border-slate-800 pt-3 sm:pt-0 sm:pl-6">
-            <div>FY2026 Budget Basis</div>
-            <div className="font-bold text-white font-mono text-sm mt-0.5">$7.40 Trillion Outlays</div>
+            <div>FY2027 Budget Basis (FYTD)</div>
+            <div className="font-bold text-white font-mono text-sm mt-0.5">$773.00 Billion Outlays</div>
           </div>
         </div>
 
@@ -127,7 +127,7 @@ export default function WhereDoesMyMoneyGo() {
                       {formatCurrency(catShare)}
                     </div>
                     <div className="text-[10px] text-slate-500 font-mono">
-                      {formatCurrency(catShare / 365, false)} / day
+                      {formatCurrency(catShare / FY2027_DAYS_ELAPSED, false)} / day
                     </div>
                   </div>
                 </div>
@@ -161,7 +161,7 @@ export default function WhereDoesMyMoneyGo() {
               What This Calculator Measures:
             </span>
             <p className="text-slate-600 leading-relaxed">
-              An illustrative proportional division of an estimated federal income tax contribution, computed by applying official FY2026 Treasury budget function percentages ($7.40 Trillion (FY2026 final) total federal outlays) to an estimated tax bracket.
+              An illustrative proportional division of an estimated federal income tax contribution, computed by applying official FY2027 Treasury budget function percentages ($773.00 Billion (FY2027 FYTD) total federal outlays) to an estimated tax bracket.
             </p>
           </div>
 
@@ -177,7 +177,7 @@ export default function WhereDoesMyMoneyGo() {
 
         <div className="pt-3 border-t border-slate-100 flex flex-col sm:flex-row sm:items-center justify-between gap-3">
           <p className="text-slate-500 text-[11px]">
-            Data Sources: USAspending.gov (FY2026 Outlays) & U.S. Treasury Monthly Treasury Statements.
+            Data Sources: USAspending.gov (FY2027 FYTD Outlays) & U.S. Treasury Monthly Treasury Statements.
           </p>
           <Link
             href="/data-limitations#tax-calculators"
@@ -197,7 +197,7 @@ export default function WhereDoesMyMoneyGo() {
         dataPoint="Estimated Federal Tax Allocation"
         sources={[
           { name: 'USAspending.gov', role: 'Category outlays', url: 'https://www.usaspending.gov' },
-          { name: 'U.S. Treasury', role: 'FY2026 outlays baseline', url: 'https://fiscaldata.treasury.gov' }
+          { name: 'U.S. Treasury', role: 'FY2027 FYTD outlays baseline', url: 'https://fiscaldata.treasury.gov' }
         ]}
       />
     </div>

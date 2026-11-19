@@ -7,12 +7,12 @@ import FiscalYearSelector from '@/components/visualizations/FiscalYearSelector';
 import DonutChart from '@/components/visualizations/DonutChart';
 import DataFreshness from '@/components/visualizations/DataFreshness';
 import { CANONICAL_CATEGORIES } from '@/lib/config/entities';
-import { getCategoryDataForFY, ANNUAL_TOTAL_BUDGET } from '@/lib/data/spendingData';
+import { getCategoryDataForFY, ANNUAL_TOTAL_BUDGET, CURRENT_FISCAL_YEAR } from '@/lib/data/spendingData';
 import { formatCurrency } from '@/lib/utils/formatters';
 import { Layers, ArrowUpDown, ArrowRight, ShieldCheck } from 'lucide-react';
 
 export default function CategoriesExplorerPage() {
-  const [selectedFY, setSelectedFY] = useState<number>(2026);
+  const [selectedFY, setSelectedFY] = useState<number>(CURRENT_FISCAL_YEAR);
   const [sortBy, setSortBy] = useState<'highest' | 'lowest' | 'alphabetical'>('highest');
 
   const categories = CANONICAL_CATEGORIES.map((c) => getCategoryDataForFY(c.slug, selectedFY)!);
@@ -23,7 +23,7 @@ export default function CategoriesExplorerPage() {
     return a.name.localeCompare(b.name);
   });
 
-  const totalFYBudget = ANNUAL_TOTAL_BUDGET[selectedFY] || ANNUAL_TOTAL_BUDGET[2026];
+  const totalFYBudget = ANNUAL_TOTAL_BUDGET[selectedFY] || ANNUAL_TOTAL_BUDGET[CURRENT_FISCAL_YEAR];
 
   const donutItems = sortedCategories.map((c) => ({
     name: c.name,

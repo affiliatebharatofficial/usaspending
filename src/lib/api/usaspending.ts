@@ -3,7 +3,8 @@ import {
   AGENCIES_DATA,
   STATES_DATA,
   RECIPIENTS_DATA,
-  TOTAL_FEDERAL_SPENDING_FY2026,
+  TOTAL_FEDERAL_SPENDING_FY2027,
+  FY2027_DAYS_ELAPSED,
   getCategoryDataForFY,
   getAgencyDataForFY,
   getRecipientDataForFY,
@@ -27,7 +28,7 @@ export async function fetchLiveSpendingTotals() {
     if (res.ok) {
       return {
         status: 'CONNECTED',
-        rates: calculateSpendingRates(TOTAL_FEDERAL_SPENDING_FY2026),
+        rates: calculateSpendingRates(TOTAL_FEDERAL_SPENDING_FY2027, FY2027_DAYS_ELAPSED),
         source: 'USAspending.gov API (Live)',
       };
     }
@@ -37,18 +38,18 @@ export async function fetchLiveSpendingTotals() {
 
   return {
     status: 'CACHED_OK',
-    rates: calculateSpendingRates(TOTAL_FEDERAL_SPENDING_FY2026),
-    source: 'USAspending.gov Normalized Cache (FY2026)',
+    rates: calculateSpendingRates(TOTAL_FEDERAL_SPENDING_FY2027, FY2027_DAYS_ELAPSED),
+    source: 'USAspending.gov Normalized Cache (FY2027)',
   };
 }
 
-export function getCategoryBySlug(slug: string, fy: number = 2026) {
+export function getCategoryBySlug(slug: string, fy: number = 2027) {
   const entity = resolveCategoryEntity(slug);
   if (!entity) return undefined;
   return getCategoryDataForFY(entity.slug, fy);
 }
 
-export function getAgencyBySlug(slug: string, fy: number = 2026) {
+export function getAgencyBySlug(slug: string, fy: number = 2027) {
   const entity = resolveAgencyEntity(slug);
   if (!entity) return undefined;
   return getAgencyDataForFY(entity.slug, fy);
@@ -58,7 +59,7 @@ export function getStateBySlug(slug: string) {
   return STATES_DATA.find((s) => s.slug === slug || s.code.toLowerCase() === slug.toLowerCase());
 }
 
-export function getRecipientBySlug(slug: string, fy: number = 2026) {
+export function getRecipientBySlug(slug: string, fy: number = 2027) {
   const entity = resolveRecipientEntity(slug);
   if (!entity) return undefined;
   return getRecipientDataForFY(entity.slug, fy);

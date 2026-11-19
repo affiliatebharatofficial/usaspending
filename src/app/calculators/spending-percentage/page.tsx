@@ -8,7 +8,7 @@ import MetricCard from '@/components/visualizations/MetricCard';
 import ShareResultButton from '@/components/calculators/ShareResultButton';
 import FAQSection, { FAQItem } from '@/components/common/FAQSection';
 import CalculatorMethodologyBox from '@/components/calculators/CalculatorMethodologyBox';
-import { SPENDING_CATEGORIES, TOTAL_FEDERAL_SPENDING_FY2026 } from '@/lib/data/spendingData';
+import { SPENDING_CATEGORIES, TOTAL_FEDERAL_SPENDING_FY2027 } from '@/lib/data/spendingData';
 import { formatCurrency } from '@/lib/utils/formatters';
 import { Percent, ArrowLeft, BookOpen } from 'lucide-react';
 
@@ -17,7 +17,7 @@ export default function SpendingPercentageCalculatorPage() {
   const [compareTarget, setCompareTarget] = useState<string>('total');
 
   const targetObj = compareTarget === 'total'
-    ? { name: 'Total Federal Outlays', amount: TOTAL_FEDERAL_SPENDING_FY2026 }
+    ? { name: 'Total Federal Outlays', amount: TOTAL_FEDERAL_SPENDING_FY2027 }
     : SPENDING_CATEGORIES.find((c) => c.slug === compareTarget) || { name: 'Category', amount: 895_000_000_000 };
 
   const percentage = Number(((amount / targetObj.amount) * 100).toFixed(4));
@@ -34,7 +34,7 @@ export default function SpendingPercentageCalculatorPage() {
     },
     {
       question: 'Can I compare an amount against specific category budgets?',
-      answer: 'Yes. You can select Total Federal Outlays ($7.40T (FY2026 final)), Defense & Military ($965B), Medicare ($1,073B), Social Security ($1.67T), or Education ($108B).',
+      answer: 'Yes. You can select Total Federal Outlays ($773.00B (FY2027 FYTD)), Defense & Military ($129B), Medicare ($170B), Social Security ($143B), or Education ($14B).',
     },
     {
       question: 'What does a small percentage (e.g., 0.0148%) signify?',
@@ -50,7 +50,7 @@ export default function SpendingPercentageCalculatorPage() {
     },
     {
       question: 'How does $100 Million compare against total federal spending?',
-      answer: '$100 Million represents approximately 0.00135% of total federal outlays ($7.40 Trillion (FY2026 final)).',
+      answer: '$100 Million represents approximately 0.01294% of total federal outlays ($773.00 Billion (FY2027 FYTD)).',
     },
     {
       question: 'Can I share or export my calculated percentage result?',
@@ -113,7 +113,7 @@ export default function SpendingPercentageCalculatorPage() {
               onChange={(e) => setCompareTarget(e.target.value)}
               className="w-full bg-slate-50 border border-slate-300 rounded-lg py-2.5 px-4 text-xs font-bold text-slate-900 focus:outline-none"
             >
-              <option value="total">Total Federal Outlays ($7.40 Trillion (FY2026 final))</option>
+              <option value="total">Total Federal Outlays ($773.00 Billion (FY2027 FYTD))</option>
               {SPENDING_CATEGORIES.map((c) => (
                 <option key={c.id} value={c.slug}>
                   {c.name} ({formatCurrency(c.amount, true)})
@@ -159,7 +159,7 @@ export default function SpendingPercentageCalculatorPage() {
             The <strong>Spending Percentage Calculator</strong> provides a relative mathematical evaluation of any custom dollar figure against the overall U.S. Federal Budget or specific functional spending categories. Evaluating spending as a percentage share offers clear insights into relative fiscal priority.
           </p>
           <p>
-            Because federal outlays exceed <strong>$7.40 Trillion</strong> (FY2026 final), even very large appropriations like <strong>$500 Million</strong> represent a small percentage share—approximately <strong>0.0068%</strong> of the total federal outlay budget. However, when compared against smaller individual categories like Science, Space & Technology ($39.9 Billion), that same $500 Million represents <strong>1.25%</strong> of that budget function.
+            Because federal outlays exceed <strong>$773.00 Billion</strong> (FY2027 FYTD), even very large appropriations like <strong>$500 Million</strong> represent a small percentage share—approximately <strong>0.0647%</strong> of the total federal outlay budget. However, when compared against smaller individual categories like Science, Space & Technology ($3.31 Billion), that same $500 Million represents <strong>15.09%</strong> of that budget function.
           </p>
           <p>
             Using relative percentage modeling allows analysts and citizens to evaluate federal appropriations with precision, comparing local grants or national spending bills against major mandatory entitlement programs and executive department outlays.
@@ -172,9 +172,9 @@ export default function SpendingPercentageCalculatorPage() {
         calculatorName="Spending Percentage Calculator"
         metric="Percentage Share of Federal or Category Outlays (%)"
         formula={`Percentage Share (%) = (Entered Dollar Amount ÷ Target Budget Outlays) × 100`}
-        example={`Entering $1,000,000,000 against Total Federal Outlays ($6,750,000,000,000): (1,000,000,000 ÷ 6,750,000,000,000) × 100 = 0.0148%. Against Defense ($895B): (1B ÷ 895B) × 100 = 0.1117%.`}
-        limitations="Comparison baselines are established from official FY2026 reported outlays on USAspending.gov. Spending execution across agencies varies monthly based on congressional appropriations and statutory obligations."
-        represents="The proportional mathematical ratio of an entered dollar sum compared against total federal outlays ($7.40T (FY2026 final)) or specific agency budget functions."
+        example={`Entering $1,000,000,000 against Total Federal Outlays ($773,003,666,480): (1,000,000,000 ÷ 773,003,666,480) × 100 = 0.1294%. Against Defense ($129B): (1B ÷ 129B) × 100 = 0.7759%.`}
+        limitations="Comparison baselines are established from official FY2027 (FYTD) reported outlays on USAspending.gov. Spending execution across agencies varies monthly based on congressional appropriations and statutory obligations."
+        represents="The proportional mathematical ratio of an entered dollar sum compared against total federal outlays ($773.00B (FY2027 FYTD)) or specific agency budget functions."
         doesNotRepresent="An assertion that funds are interchangeable or fungible between different statutory programs, or an individual taxpayer's contribution."
         pageUrl="/calculators/spending-percentage"
         dataPoint="Percentage Share of Budget"

@@ -1,7 +1,7 @@
 import React from 'react';
 import FederalSpendingClock from '@/components/clock/FederalSpendingClock';
 import SpendingTrendChart from '@/components/charts/SpendingTrendChart';
-import { HISTORICAL_SPENDING, TOTAL_FEDERAL_SPENDING_FY2026, CURRENT_FISCAL_YEAR } from '@/lib/data/spendingData';
+import { HISTORICAL_SPENDING, TOTAL_FEDERAL_SPENDING_FY2027, CURRENT_FISCAL_YEAR, FY2027_DAYS_ELAPSED, FY2027_MONTHS_ELAPSED } from '@/lib/data/spendingData';
 import { formatCurrency, calculateSpendingRates } from '@/lib/utils/formatters';
 import { Clock, ShieldAlert, TrendingUp } from 'lucide-react';
 import type { Metadata } from 'next';
@@ -12,7 +12,7 @@ export const metadata: Metadata = {
 };
 
 export default function FederalSpendingClockPage() {
-  const rates = calculateSpendingRates(TOTAL_FEDERAL_SPENDING_FY2026);
+  const rates = calculateSpendingRates(TOTAL_FEDERAL_SPENDING_FY2027, FY2027_DAYS_ELAPSED);
 
   const chartData = HISTORICAL_SPENDING.map((h) => ({
     year: h.year,
@@ -57,29 +57,29 @@ export default function FederalSpendingClockPage() {
                 <td className="py-3 text-right font-sans text-slate-500">100%</td>
               </tr>
               <tr>
-                <td className="py-3 font-sans font-semibold text-slate-900">Per Month (Avg)</td>
-                <td className="py-3 text-right text-slate-700 numeral-tabular">{formatCurrency(rates.annual / 12)}</td>
-                <td className="py-3 text-right font-sans text-slate-500">8.33%</td>
+                <td className="py-3 font-sans font-semibold text-slate-900">Per Month (Avg, FYTD)</td>
+                <td className="py-3 text-right text-slate-700 numeral-tabular">{formatCurrency(rates.annual / FY2027_MONTHS_ELAPSED)}</td>
+                <td className="py-3 text-right font-sans text-slate-500">100.0%</td>
               </tr>
               <tr>
                 <td className="py-3 font-sans font-semibold text-slate-900">Per Day</td>
                 <td className="py-3 text-right text-blue-700 font-bold numeral-tabular">{formatCurrency(rates.perDay)}</td>
-                <td className="py-3 text-right font-sans text-slate-500">0.274%</td>
+                <td className="py-3 text-right font-sans text-slate-500">3.23%</td>
               </tr>
               <tr>
                 <td className="py-3 font-sans font-semibold text-slate-900">Per Hour</td>
                 <td className="py-3 text-right text-slate-700 numeral-tabular">{formatCurrency(rates.perHour)}</td>
-                <td className="py-3 text-right font-sans text-slate-500">0.011%</td>
+                <td className="py-3 text-right font-sans text-slate-500">0.13%</td>
               </tr>
               <tr>
                 <td className="py-3 font-sans font-semibold text-slate-900">Per Minute</td>
                 <td className="py-3 text-right text-slate-700 numeral-tabular">{formatCurrency(rates.perMinute)}</td>
-                <td className="py-3 text-right font-sans text-slate-500">0.00018%</td>
+                <td className="py-3 text-right font-sans text-slate-500">0.0022%</td>
               </tr>
               <tr className="bg-blue-50/50">
                 <td className="py-3.5 font-sans font-bold text-blue-900">Per Second</td>
                 <td className="py-3.5 text-right font-extrabold text-blue-900 text-base numeral-tabular">{formatCurrency(rates.perSecond)}</td>
-                <td className="py-3.5 text-right font-sans text-blue-900 font-bold">0.000003%</td>
+                <td className="py-3.5 text-right font-sans text-blue-900 font-bold">0.000037%</td>
               </tr>
             </tbody>
           </table>
@@ -89,7 +89,7 @@ export default function FederalSpendingClockPage() {
       <div className="data-card rounded-xl p-6 sm:p-8 border border-slate-200 bg-white">
         <h2 className="text-xl font-bold text-slate-900 mb-2 flex items-center gap-2">
           <TrendingUp className="w-4 h-4 text-blue-700" />
-          U.S. Federal Spending History (2018 – 2026)
+          U.S. Federal Spending History (2018 – 2027)
         </h2>
         <p className="text-xs text-slate-500 mb-6">
           Historical growth of U.S. Federal Outlays including COVID relief spikes in 2020-2021.

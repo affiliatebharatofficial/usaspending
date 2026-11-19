@@ -12,7 +12,7 @@ import DataFreshness from '@/components/visualizations/DataFreshness';
 import StateDistributionSection from '@/components/visualizations/StateDistributionSection';
 import AwardTypeBreakdown from '@/components/visualizations/AwardTypeBreakdown';
 import JsonLd from '@/components/seo/JsonLd';
-import { getAgencyDataForFY, ANNUAL_TOTAL_BUDGET } from '@/lib/data/spendingData';
+import { getAgencyDataForFY, ANNUAL_TOTAL_BUDGET, CURRENT_FISCAL_YEAR, FY2027_DAYS_ELAPSED } from '@/lib/data/spendingData';
 import { formatCurrency, calculateSpendingRates } from '@/lib/utils/formatters';
 import { EntityConfig } from '@/lib/config/entities';
 import { ArrowLeft, Building2, TrendingUp, Award, ShieldCheck, ArrowRight } from 'lucide-react';
@@ -22,15 +22,15 @@ interface Props {
 }
 
 export default function AgencyDetailView({ entity }: Props) {
-  const [selectedFY, setSelectedFY] = useState<number>(2026);
+  const [selectedFY, setSelectedFY] = useState<number>(CURRENT_FISCAL_YEAR);
   const agencyData = getAgencyDataForFY(entity.slug, selectedFY);
 
   if (!agencyData) {
     return null;
   }
 
-  const rates = calculateSpendingRates(agencyData.budget);
-  const totalFYBudget = ANNUAL_TOTAL_BUDGET[selectedFY] || ANNUAL_TOTAL_BUDGET[2026];
+  const rates = calculateSpendingRates(agencyData.budget, selectedFY === CURRENT_FISCAL_YEAR ? FY2027_DAYS_ELAPSED : 365);
+  const totalFYBudget = ANNUAL_TOTAL_BUDGET[selectedFY] || ANNUAL_TOTAL_BUDGET[CURRENT_FISCAL_YEAR];
 
   const programDonut = agencyData.majorPrograms.map((prog) => ({
     name: prog.name,
@@ -290,7 +290,7 @@ export default function AgencyDetailView({ entity }: Props) {
           <span>Source: USAspending.gov</span>
           <span>Fiscal Year: FY{selectedFY}</span>
           <span>Data Type: Federal Budget Outlays</span>
-          <span>Last Updated: October 2026</span>
+          <span>Last Updated: November 2026</span>
           <span>Classification: Toptier Executive Agency</span>
         </div>
         <p className="text-[11px] leading-relaxed text-slate-500">

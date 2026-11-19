@@ -2,7 +2,7 @@ import React from 'react';
 import { notFound, redirect } from 'next/navigation';
 import { resolveRecipientEntity } from '@/lib/config/entities';
 import RecipientDetailView from '@/components/recipients/RecipientDetailView';
-import { getRecipientDataForFY } from '@/lib/data/spendingData';
+import { getRecipientDataForFY, CURRENT_FISCAL_YEAR } from '@/lib/data/spendingData';
 import { formatCurrency } from '@/lib/utils/formatters';
 import type { Metadata } from 'next';
 
@@ -21,17 +21,17 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     };
   }
 
-  const recipientData = getRecipientDataForFY(entity.slug, 2026);
+  const recipientData = getRecipientDataForFY(entity.slug, CURRENT_FISCAL_YEAR);
   const formattedAwards = recipientData ? formatCurrency(recipientData.totalAwards, true) : '';
 
-  let pageTitle = `${entity.h1Title} — FY2026 | USA Spending`;
+  let pageTitle = `${entity.h1Title} — FY2027 | USA Spending`;
   if (entity.slug === 'boeing') {
-    pageTitle = `Federal Awards to Boeing — FY2026 | USA Spending`;
+    pageTitle = `Federal Awards to Boeing — FY2027 | USA Spending`;
   }
 
   return {
     title: pageTitle,
-    description: `Explore federal prime awards to ${entity.name} in FY2026 (${formattedAwards}). View awarding executive agencies, contract breakdowns, and performance states.`,
+    description: `Explore federal prime awards to ${entity.name} in FY2027 (${formattedAwards}). View awarding executive agencies, contract breakdowns, and performance states.`,
     alternates: {
       canonical: entity.canonicalUrl,
     },

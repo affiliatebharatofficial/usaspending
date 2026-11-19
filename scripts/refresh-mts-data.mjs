@@ -52,12 +52,33 @@ function toMap(rows) {
   const m = {};
   for (const r of rows) {
     if (r.sequence_level_nbr !== '2') continue;
-    m[r.classification_desc.replace(/\s+/g, ' ').trim()] = {
+    // The two "Total" rows (outlays vs receipts) share classification_desc,
+    // so key them by parent_id to avoid one overwriting the other.
+    const key = r.classification_desc.replace(/\s+/g, ' ').trim() === 'Total'
+      ? `Total:${r.parent_id}`
+      : r.classification_desc.replace(/\s+/g, ' ').trim();
+    m[key] = {
       amount: r.current_fytd_rcpt_outly_amt === 'null' ? null : Number(r.current_fytd_rcpt_outly_amt),
       parent: r.parent_id,
     };
   }
   return m;
+}
+
+// Parent ids of the two "Total" rows, discovered from the API response:
+// the outlays total and the receipts total carry different parents, and the
+// ids change with each record_date, so resolve them from the rows instead
+// of hardcoding.
+function findTotals(rows) {
+  const totals = rows.filter(
+    (r) => r.sequence_level_nbr === '2' && (r.classification_desc || '').trim() === 'Total'
+  );
+  // The outlays total is the larger of the two in every MTS vintage checked.
+  totals.sort((a, b) => Number(b.current_fytd_rcpt_outly_amt) - Number(a.current_fytd_rcpt_outly_amt));
+  return {
+    outlays: totals[0] ? { amount: Number(totals[0].current_fytd_rcpt_outly_amt), parent: totals[0].parent_id } : null,
+    receipts: totals[1] ? { amount: Number(totals[1].current_fytd_rcpt_outly_amt), parent: totals[1].parent_id } : null,
+  };
 }
 
 const fmtUSD = (n) => (n === null ? 'n/a' : '$' + Number(n).toLocaleString('en-US'));
@@ -75,14 +96,14 @@ async function main() {
   console.log(`# MTS Table 9 refresh — record_date=${target}\n`);
 
   const rows = toMap(await fetchTable(target));
-  const outlays = Object.entries(rows).filter(([, v]) => v.parent && v.amount !== null);
+  const rawRows = await fetchTable(target);
+  const totals = findTotals(rawRows);
 
   // National totals: outlay total vs receipts total distinguished by parent id.
-  // (The two "Total" rows have different parent_ids; print both with parents.)
   console.log('## National totals');
-  for (const [desc, v] of outlays) {
-    if (desc === 'Total') console.log(`- Total (parent ${v.parent}): ${fmtUSD(v.amount)}`);
-  }
+  if (totals.outlays) console.log(`- Total Outlays (parent ${totals.outlays.parent}): ${fmtUSD(totals.outlays.amount)}`);
+  if (totals.receipts) console.log(`- Total Receipts (parent ${totals.receipts.parent}): ${fmtUSD(totals.receipts.amount)}`);
+  if (totals.outlays && totals.receipts) console.log(`- Deficit: ${fmtUSD(totals.outlays.amount - totals.receipts.amount)}`);
 
   console.log('\n## Category mapping (FYTD outlays)');
   for (const [slug, funcName] of Object.entries(CATEGORY_MAP)) {
@@ -94,10 +115,9 @@ async function main() {
   const years = [2018, 2019, 2020, 2021, 2022, 2023, 2024, 2025];
   for (const y of years) {
     try {
-      const r = toMap(await fetchTable(`${y}-09-30`));
-      const totals = Object.entries(r).filter(([d]) => d === 'Total');
-      const line = totals.map(([, v]) => `${fmtCode(v.amount)} (parent ${v.parent})`).join(' / ');
-      console.log(`- FY${y} (record ${y}-09-30): ${line}`);
+      const yrRows = await fetchTable(`${y}-09-30`);
+      const t = findTotals(yrRows);
+      console.log(`- FY${y} (record ${y}-09-30): outlays ${fmtCode(t.outlays?.amount ?? null)} (parent ${t.outlays?.parent}) / receipts ${fmtCode(t.receipts?.amount ?? null)} (parent ${t.receipts?.parent})`);
     } catch (e) {
       console.log(`- FY${y}: FAILED (${e.message})`);
     }

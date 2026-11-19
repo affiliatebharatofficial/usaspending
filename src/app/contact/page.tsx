@@ -171,7 +171,7 @@ function ContactFormInner() {
                     type="text"
                     value={formData.dataPoint}
                     onChange={(e) => setFormData({ ...formData, dataPoint: e.target.value })}
-                    placeholder="e.g. FY2026 Defense Outlays ($895B)"
+                    placeholder="e.g. FY2027 Defense Outlays ($129B FYTD)"
                     className="w-full bg-white border border-slate-300 rounded-lg p-2 text-xs text-slate-900 focus:outline-none focus:border-blue-600"
                   />
                 </div>

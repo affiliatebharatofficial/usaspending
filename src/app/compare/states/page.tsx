@@ -28,7 +28,7 @@ export default function CompareStatesPage() {
   const stateCompareFAQs: FAQItem[] = [
     {
       question: `How does federal spending in ${stateA.name} compare to ${stateB.name}?`,
-      answer: `In FY2026, total reported federal spending associated with ${stateA.name} is ${formatCurrency(stateA.totalSpending, true)}, compared to ${formatCurrency(stateB.totalSpending, true)} in ${stateB.name}, representing a net difference of ${diff >= 0 ? '+' : ''}${formatCurrency(diff, true)}.`,
+      answer: `In FY2027 (FYTD), total reported federal spending associated with ${stateA.name} is ${formatCurrency(stateA.totalSpending, true)}, compared to ${formatCurrency(stateB.totalSpending, true)} in ${stateB.name}, representing a net difference of ${diff >= 0 ? '+' : ''}${formatCurrency(diff, true)}.`,
     },
     {
       question: `What is the per-capita spending difference between ${stateA.name} and ${stateB.name}?`,
@@ -193,7 +193,7 @@ export default function CompareStatesPage() {
             Comparing federal government spending between <strong>{stateA.name}</strong> and <strong>{stateB.name}</strong> provides essential insights into regional federal investment, prime defense contracting, public healthcare grants, and population-driven assistance programs.
           </p>
           <p>
-            In Fiscal Year 2026, total reported federal spending associated with {stateA.name} stands at <strong>{formatCurrency(stateA.totalSpending, true)}</strong> (or <strong>${formatNumber(stateA.perCapita)} per resident</strong>), whereas {stateB.name} records <strong>{formatCurrency(stateB.totalSpending, true)}</strong> (or <strong>${formatNumber(stateB.perCapita)} per resident</strong>). This results in an overall net spending difference of <strong>{diff >= 0 ? '+' : ''}{formatCurrency(diff, true)}</strong>.
+            In Fiscal Year 2027 (FYTD), total reported federal spending associated with {stateA.name} stands at <strong>{formatCurrency(stateA.totalSpending, true)}</strong> (or <strong>${formatNumber(stateA.perCapita)} per resident</strong>), whereas {stateB.name} records <strong>{formatCurrency(stateB.totalSpending, true)}</strong> (or <strong>${formatNumber(stateB.perCapita)} per resident</strong>). This results in an overall net spending difference of <strong>{diff >= 0 ? '+' : ''}{formatCurrency(diff, true)}</strong>.
           </p>
           <p>
             Differences in federal outlays between states stem from varying industrial manufacturing footprints, major military bases, NASA research centers, university research grants, and state population sizes. All state comparison metrics are updated dynamically from official USAspending.gov API records.

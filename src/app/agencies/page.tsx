@@ -2,7 +2,7 @@
 
 import React, { useState } from 'react';
 import Link from 'next/link';
-import { AGENCIES_DATA, CURRENT_FISCAL_YEAR, TOTAL_FEDERAL_SPENDING_FY2026 } from '@/lib/data/spendingData';
+import { AGENCIES_DATA, CURRENT_FISCAL_YEAR, TOTAL_FEDERAL_SPENDING_FY2027 } from '@/lib/data/spendingData';
 import { formatCurrency } from '@/lib/utils/formatters';
 import { Building2, ArrowLeft, ArrowUpDown } from 'lucide-react';
 
@@ -76,7 +76,7 @@ export default function AgencyExplorerPage() {
       {/* Grid */}
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
         {sortedAgencies.map((agency) => {
-          const pct = Number(((agency.budget / TOTAL_FEDERAL_SPENDING_FY2026) * 100).toFixed(1));
+          const pct = Number(((agency.budget / TOTAL_FEDERAL_SPENDING_FY2027) * 100).toFixed(1));
           return (
             <Link
               key={agency.id}

@@ -6,7 +6,7 @@ import MetricCard from '@/components/visualizations/MetricCard';
 import SpendingTrendChart from '@/components/charts/SpendingTrendChart';
 import DonutChart from '@/components/visualizations/DonutChart';
 import FAQSection, { FAQItem } from '@/components/common/FAQSection';
-import { STATES_DATA, SPENDING_CATEGORIES, RECIPIENTS_DATA, AGENCIES_DATA, HISTORICAL_SPENDING } from '@/lib/data/spendingData';
+import { STATES_DATA, SPENDING_CATEGORIES, RECIPIENTS_DATA, AGENCIES_DATA, HISTORICAL_SPENDING, FY2027_DAYS_ELAPSED } from '@/lib/data/spendingData';
 import { formatCurrency, calculateSpendingRates } from '@/lib/utils/formatters';
 import { GitCompare, ArrowLeft, TrendingUp, BookOpen } from 'lucide-react';
 import type { Metadata } from 'next';
@@ -82,8 +82,8 @@ export default function DynamicComparisonPage({ params }: Props) {
     subtext: stateB ? `Population: ${stateB.population.toLocaleString()}` : 'Federal Entity',
   };
 
-  const ratesA = calculateSpendingRates(entityA.amount);
-  const ratesB = calculateSpendingRates(entityB.amount);
+  const ratesA = calculateSpendingRates(entityA.amount, FY2027_DAYS_ELAPSED);
+  const ratesB = calculateSpendingRates(entityB.amount, FY2027_DAYS_ELAPSED);
 
   const diffAmount = entityA.amount - entityB.amount;
   const diffPercent = Number(((diffAmount / entityB.amount) * 100).toFixed(1));
@@ -96,7 +96,7 @@ export default function DynamicComparisonPage({ params }: Props) {
   const dynamicFAQs: FAQItem[] = [
     {
       question: `What is the net spending difference between ${entityA.name} and ${entityB.name}?`,
-      answer: `In FY2026, total reported federal spending for ${entityA.name} is ${formatCurrency(entityA.amount, true)}, compared to ${formatCurrency(entityB.amount, true)} for ${entityB.name}, reflecting a net difference of ${diffAmount >= 0 ? '+' : ''}${formatCurrency(diffAmount, true)} (${diffPercent}% difference).`,
+      answer: `In FY2027 (FYTD), total reported federal spending for ${entityA.name} is ${formatCurrency(entityA.amount, true)}, compared to ${formatCurrency(entityB.amount, true)} for ${entityB.name}, reflecting a net difference of ${diffAmount >= 0 ? '+' : ''}${formatCurrency(diffAmount, true)} (${diffPercent}% difference).`,
     },
     {
       question: `What is the daily rate velocity of ${entityA.name} vs ${entityB.name}?`,
@@ -116,7 +116,7 @@ export default function DynamicComparisonPage({ params }: Props) {
     },
     {
       question: `Are these figures updated for Fiscal Year 2026?`,
-      answer: `Yes. All comparison metrics reflect official FY2026 budget outlays and recent Treasury execution statements.`,
+      answer: `Yes. All comparison metrics reflect official FY2027 (FYTD) budget outlays and recent Treasury execution statements.`,
     },
     {
       question: `Is this comparison objective and non-partisan?`,

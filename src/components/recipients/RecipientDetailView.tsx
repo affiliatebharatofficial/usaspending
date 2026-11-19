@@ -13,7 +13,7 @@ import StateDistributionSection from '@/components/visualizations/StateDistribut
 import AwardTypeBreakdown from '@/components/visualizations/AwardTypeBreakdown';
 import PaginatedAwardTable from '@/components/visualizations/PaginatedAwardTable';
 import JsonLd from '@/components/seo/JsonLd';
-import { getRecipientDataForFY } from '@/lib/data/spendingData';
+import { getRecipientDataForFY, CURRENT_FISCAL_YEAR, FY2027_DAYS_ELAPSED } from '@/lib/data/spendingData';
 import { formatCurrency, calculateSpendingRates } from '@/lib/utils/formatters';
 import { EntityConfig } from '@/lib/config/entities';
 import { ArrowLeft, Award, Building2, TrendingUp, ShieldCheck, ArrowRight, MapPin } from 'lucide-react';
@@ -23,14 +23,14 @@ interface Props {
 }
 
 export default function RecipientDetailView({ entity }: Props) {
-  const [selectedFY, setSelectedFY] = useState<number>(2026);
+  const [selectedFY, setSelectedFY] = useState<number>(CURRENT_FISCAL_YEAR);
   const recipientData = getRecipientDataForFY(entity.slug, selectedFY);
 
   if (!recipientData) {
     return null;
   }
 
-  const rates = calculateSpendingRates(recipientData.totalAwards);
+  const rates = calculateSpendingRates(recipientData.totalAwards, selectedFY === CURRENT_FISCAL_YEAR ? FY2027_DAYS_ELAPSED : 365);
 
   const agencyDonut = recipientData.awardingAgencies.map((agency) => ({
     name: agency.name,
@@ -251,7 +251,7 @@ export default function RecipientDetailView({ entity }: Props) {
           <span>Source: USAspending.gov</span>
           <span>Fiscal Year: FY{selectedFY}</span>
           <span>Data Type: Federal Prime Contracts & Financial Assistance</span>
-          <span>Last Updated: October 2026</span>
+          <span>Last Updated: November 2026</span>
           <span>Recipient UEI: DUNS-009256814</span>
         </div>
         <p className="text-[11px] leading-relaxed text-slate-500">

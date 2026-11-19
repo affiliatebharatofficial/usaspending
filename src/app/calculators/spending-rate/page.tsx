@@ -11,11 +11,12 @@ import FAQSection, { FAQItem } from '@/components/common/FAQSection';
 import CalculatorMethodologyBox from '@/components/calculators/CalculatorMethodologyBox';
 import FiscalYearSelector from '@/components/visualizations/FiscalYearSelector';
 import { calculateSpendingRates, formatCurrency } from '@/lib/utils/formatters';
+import { CURRENT_FISCAL_YEAR } from '@/lib/data/spendingData';
 import { Clock, ArrowLeft, RefreshCw, BookOpen } from 'lucide-react';
 
 export default function SpendingRateCalculatorPage() {
   const [amount, setAmount] = useState<number>(1_000_000_000);
-  const [fiscalYear, setFiscalYear] = useState<number>(2026);
+  const [fiscalYear, setFiscalYear] = useState<number>(CURRENT_FISCAL_YEAR);
 
   const rates = calculateSpendingRates(amount);
 
@@ -30,15 +31,15 @@ export default function SpendingRateCalculatorPage() {
   const faqs: FAQItem[] = [
     {
       question: 'How is the spending rate per second calculated?',
-      answer: 'The entered annual dollar amount is divided by the exact number of days in the selected fiscal year (365 days for standard years, 366 days for leap years like FY2024), then divided by 24 hours, 60 minutes, and 60 seconds.',
+      answer: 'The entered annual dollar amount is divided by the exact number of days in the selected fiscal year (31 elapsed days for FY2027 to date; 365 days for a complete standard year, 366 days for leap years like FY2024), then divided by 24 hours, 60 minutes, and 60 seconds.',
     },
     {
       question: 'Does this calculator display live bank wire transfers?',
-      answer: 'No. The spending rates represent an estimated mathematical velocity derived from reported government outlays on USAspending.gov across 365 fiscal days.',
+      answer: 'No. The spending rates represent an estimated mathematical velocity derived from reported government outlays on USAspending.gov across the fiscal year to date (31 days for FY2027).',
     },
     {
-      question: 'What is the current total federal spending rate in FY2026?',
-      answer: 'At FY2026 outlays of $7.40 Trillion (final, through September 30, 2026), the U.S. Federal Government spends approximately $20.26 Billion per day, $844.3 Million per hour, $14.07 Million per minute, and $234,519 per second.',
+      question: 'What is the current total federal spending rate in FY2027?',
+      answer: 'At FY2027 outlays of $773.00 Billion (FYTD, through October 31, 2026), the U.S. Federal Government spends approximately $24.94 Billion per day, $1.04 Billion per hour, $17.32 Million per minute, and $288,607 per second.',
     },
     {
       question: 'Why does leap year status affect the calculation?',
@@ -46,7 +47,7 @@ export default function SpendingRateCalculatorPage() {
     },
     {
       question: 'How does spending rate velocity compare across major departments?',
-      answer: 'Major departments like the Department of Defense disburse funds at a rate of roughly $2.45 Billion per day ($28,379/sec), whereas smaller agencies operate at lower rate velocities.',
+      answer: 'Major departments like the Department of Defense disburse funds at a rate of roughly $4.16 Billion per day ($48,118/sec), whereas smaller agencies operate at lower rate velocities.',
     },
     {
       question: 'Can I calculate rates for custom budget figures?',

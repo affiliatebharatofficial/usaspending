@@ -10,12 +10,12 @@ import FiscalYearSelector from '@/components/visualizations/FiscalYearSelector';
 import MetricTypeSelector, { MetricType } from '@/components/visualizations/MetricTypeSelector';
 import Breadcrumbs from '@/components/navigation/Breadcrumbs';
 import FAQSection, { FAQItem } from '@/components/common/FAQSection';
-import { SPENDING_CATEGORIES, AGENCIES_DATA, STATES_DATA, RECIPIENTS_DATA, TOTAL_FEDERAL_SPENDING_FY2026, HISTORICAL_SPENDING } from '@/lib/data/spendingData';
+import { SPENDING_CATEGORIES, AGENCIES_DATA, STATES_DATA, RECIPIENTS_DATA, TOTAL_FEDERAL_SPENDING_FY2027, HISTORICAL_SPENDING, CURRENT_FISCAL_YEAR, FY2027_DAYS_ELAPSED } from '@/lib/data/spendingData';
 import { formatCurrency, calculateSpendingRates } from '@/lib/utils/formatters';
 import { Filter, ArrowLeft, Layers, Building2, MapPin, Award, CheckCircle2, BookOpen } from 'lucide-react';
 
 export default function ExplorerPage() {
-  const [selectedFY, setSelectedFY] = useState<number>(2026);
+  const [selectedFY, setSelectedFY] = useState<number>(CURRENT_FISCAL_YEAR);
   const [selectedMetric, setSelectedMetric] = useState<MetricType>('Outlays');
   const [selectedCategory, setSelectedCategory] = useState<string>('all');
   const [selectedAgency, setSelectedAgency] = useState<string>('all');
@@ -25,8 +25,8 @@ export default function ExplorerPage() {
   );
 
   const totalVisualized = filteredCategories.reduce((sum, c) => sum + c.amount, 0);
-  const percentageOfBudget = Number(((totalVisualized / TOTAL_FEDERAL_SPENDING_FY2026) * 100).toFixed(1));
-  const rates = calculateSpendingRates(totalVisualized);
+  const percentageOfBudget = Number(((totalVisualized / TOTAL_FEDERAL_SPENDING_FY2027) * 100).toFixed(1));
+  const rates = calculateSpendingRates(totalVisualized, selectedFY === CURRENT_FISCAL_YEAR ? FY2027_DAYS_ELAPSED : 365);
 
   const donutItems = filteredCategories.map((c) => ({
     name: c.name,
@@ -35,7 +35,7 @@ export default function ExplorerPage() {
     slug: c.slug,
   }));
 
-  const trendData = HISTORICAL_SPENDING.map((h) => ({
+  const trendData = HISTORICAL_SPENDING.filter((h) => !h.isPartial).map((h) => ({
     year: h.year,
     amount: h.spending,
   }));
@@ -51,11 +51,11 @@ export default function ExplorerPage() {
     },
     {
       question: 'Can I filter spending by specific Fiscal Years?',
-      answer: 'Yes. You can select any fiscal year between 2020 and 2026 to view historical spending trends, category compositions, and rate conversions.',
+      answer: 'Yes. You can select any fiscal year between 2020 and 2027 to view historical spending trends, category compositions, and rate conversions.',
     },
     {
       question: 'How are daily, hourly, and per-second rates computed in the Explorer?',
-      answer: 'Time-based rates are calculated by dividing the selected category outlays by exact fiscal year durations (365 days for standard years, 366 days for leap years).',
+      answer: 'Time-based rates are calculated by dividing the selected category outlays by exact fiscal year durations (31 elapsed days for FY2027 to date; 365 days for standard complete years, 366 days for leap years).',
     },
     {
       question: 'Where does the data in the Explorer come from?',
@@ -143,7 +143,7 @@ export default function ExplorerPage() {
               onClick={() => {
                 setSelectedCategory('all');
                 setSelectedAgency('all');
-                setSelectedFY(2026);
+                setSelectedFY(CURRENT_FISCAL_YEAR);
                 setSelectedMetric('Outlays');
               }}
               className="px-4 py-1.5 rounded bg-slate-100 hover:bg-slate-200 text-slate-700 text-xs font-bold transition-colors w-full"
@@ -260,10 +260,10 @@ export default function ExplorerPage() {
 
         <div className="space-y-4 text-xs text-slate-700 leading-relaxed max-w-4xl">
           <p>
-            The <strong>Advanced U.S. Spending Explorer</strong> provides an interactive data tree designed for deep research into the United States Federal Budget. In Fiscal Year 2026, total reported federal outlays reach <strong>$7.40 Trillion (FY2026 final: $7,395,799,983,313)</strong>, spanning tens of thousands of federal programs, grants, and prime procurement contracts.
+            The <strong>Advanced U.S. Spending Explorer</strong> provides an interactive data tree designed for deep research into the United States Federal Budget. In Fiscal Year 2027, total reported federal outlays reach <strong>$773.00 Billion (FY2027 FYTD: $773,003,666,480)</strong>, spanning tens of thousands of federal programs, grants, and prime procurement contracts.
           </p>
           <p>
-            Using the Explorer, users can apply filter criteria by <strong>Fiscal Year (FY2020 - FY2026)</strong>, <strong>Financial Metric Type (Outlays vs Obligations)</strong>, <strong>Functional Category</strong>, and <strong>Executive Agency</strong>. For instance, filtering by Defense & Military isolates $895.0 Billion in outlays, revealing sub-allocations for military operations, procurement, research, and personnel.
+            Using the Explorer, users can apply filter criteria by <strong>Fiscal Year (FY2020 - FY2027)</strong>, <strong>Financial Metric Type (Outlays vs Obligations)</strong>, <strong>Functional Category</strong>, and <strong>Executive Agency</strong>. For instance, filtering by Defense & Military isolates $128.9 Billion in outlays, revealing sub-allocations for military operations, procurement, research, and personnel.
           </p>
           <p>
             All data presented in the Explorer is synchronized with official REST API feeds from USAspending.gov and verified Treasury monthly statements. This tool enables citizens, researchers, and journalists to track public funds with complete transparency.

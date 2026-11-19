@@ -6,12 +6,12 @@ import Breadcrumbs from '@/components/navigation/Breadcrumbs';
 import USStateMap from '@/components/maps/USStateMap';
 import FiscalYearSelector from '@/components/visualizations/FiscalYearSelector';
 import DataFreshness from '@/components/visualizations/DataFreshness';
-import { STATES_DATA } from '@/lib/data/spendingData';
+import { STATES_DATA, CURRENT_FISCAL_YEAR, FY2027_DAYS_ELAPSED } from '@/lib/data/spendingData';
 import { formatCurrency, formatNumber, calculateSpendingRates } from '@/lib/utils/formatters';
 import { MapPin, Search, ArrowUpDown, ArrowRight, ShieldCheck, Info } from 'lucide-react';
 
 export default function StatesExplorerPage() {
-  const [selectedFY, setSelectedFY] = useState<number>(2026);
+  const [selectedFY, setSelectedFY] = useState<number>(CURRENT_FISCAL_YEAR);
   const [searchQuery, setSearchQuery] = useState<string>('');
   const [sortBy, setSortBy] = useState<'highest' | 'lowest' | 'alphabetical' | 'perCapita' | 'yoy'>('highest');
 
@@ -145,7 +145,7 @@ export default function StatesExplorerPage() {
       {/* State Cards Grid */}
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
         {sortedStates.map((state) => {
-          const rates = calculateSpendingRates(state.totalSpending);
+          const rates = calculateSpendingRates(state.totalSpending, selectedFY === CURRENT_FISCAL_YEAR ? FY2027_DAYS_ELAPSED : 365);
           return (
             <Link
               key={state.id}

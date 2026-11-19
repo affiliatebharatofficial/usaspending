@@ -10,16 +10,16 @@ import CalculatorFAQ from '@/components/calculators/CalculatorFAQ';
 import CalculatorMethodologyBox from '@/components/calculators/CalculatorMethodologyBox';
 import MetricCard from '@/components/visualizations/MetricCard';
 import FiscalYearSelector from '@/components/visualizations/FiscalYearSelector';
-import { TOTAL_FEDERAL_SPENDING_FY2026, SPENDING_CATEGORIES } from '@/lib/data/spendingData';
+import { TOTAL_FEDERAL_SPENDING_FY2027, SPENDING_CATEGORIES, CURRENT_FISCAL_YEAR } from '@/lib/data/spendingData';
 import { formatCurrency, calculateSpendingRates } from '@/lib/utils/formatters';
 import { Calculator, ArrowLeft, RefreshCw, Layers } from 'lucide-react';
 
 export default function MainCalculatorPage() {
   const [amount, setAmount] = useState<number>(1_000_000_000);
-  const [fiscalYear, setFiscalYear] = useState<number>(2026);
+  const [fiscalYear, setFiscalYear] = useState<number>(CURRENT_FISCAL_YEAR);
 
   const rates = calculateSpendingRates(amount);
-  const totalBudget = TOTAL_FEDERAL_SPENDING_FY2026;
+  const totalBudget = TOTAL_FEDERAL_SPENDING_FY2027;
   const percentageOfBudget = Number(((amount / totalBudget) * 100).toFixed(4));
 
   const csvData = [
@@ -32,7 +32,7 @@ export default function MainCalculatorPage() {
   const faqs = [
     {
       question: 'How is the percentage of federal spending calculated?',
-      answer: 'The entered dollar amount is divided by total FY2026 federal outlays ($7.40 Trillion (FY2026 final)) and multiplied by 100.',
+      answer: 'The entered dollar amount is divided by total FY2027 federal outlays ($773.00 Billion (FY2027 FYTD)) and multiplied by 100.',
     },
     {
       question: 'Is this live government spending?',
@@ -152,13 +152,13 @@ export default function MainCalculatorPage() {
       <CalculatorMethodologyBox
         calculatorName="Main Government Spending Calculator"
         metric="Share of Federal Outlays (%) & Spending Velocity Equivalents"
-        formula={`Percentage Share (%) = (Entered Dollar Amount ÷ Total Federal Outlays FY2026 [$7.40T (FY2026 final)]) × 100\nDaily Rate Equivalent = Entered Dollar Amount ÷ 365 Days`}
-        example={`Entering $1,000,000,000 ($1B): (1,000,000,000 ÷ 6,750,000,000,000) × 100 = 0.0148% of total annual federal outlays. Daily equivalent = $2,739,726/day.`}
-        limitations="Total federal outlays baseline is $7.40 Trillion for FY2026 (final, through September 30, 2026) as reported by the U.S. Treasury Monthly Treasury Statement. Rate calculations represent continuous mathematical averages across 365 days and do not represent live electronic bank wire disbursements."
-        represents="The mathematical proportion of your entered dollar amount relative to total U.S. Federal Government outlays ($7.40 Trillion (FY2026 final) in FY2026), along with linear daily rate conversions."
+        formula={`Percentage Share (%) = (Entered Dollar Amount ÷ Total Federal Outlays FY2027 [$773.00B (FY2027 FYTD)]) × 100\nDaily Rate Equivalent = Entered Dollar Amount ÷ 365 Days`}
+        example={`Entering $1,000,000,000 ($1B): (1,000,000,000 ÷ 773,003,666,480) × 100 = 0.1294% of total federal outlays to date. Daily equivalent = $2,739,726/day.`}
+        limitations="Total federal outlays baseline is $773.00 Billion for FY2027 (FYTD, through October 31, 2026) as reported by the U.S. Treasury Monthly Treasury Statement. Rate calculations represent continuous mathematical averages across 31 elapsed days and do not represent live electronic bank wire disbursements."
+        represents="The mathematical proportion of your entered dollar amount relative to total U.S. Federal Government outlays ($773.00 Billion (FY2027 FYTD) in FY2027), along with linear daily rate conversions."
         doesNotRepresent="An individual taxpayer's personal tax contribution, money received by citizens, or a live bank transfer occurring in real time."
         pageUrl="/calculator"
-        dataPoint="Total Federal Outlays ($7.40T (FY2026 final))"
+        dataPoint="Total Federal Outlays ($773.00B (FY2027 FYTD))"
       />
 
       <CalculatorFAQ faqs={faqs} />

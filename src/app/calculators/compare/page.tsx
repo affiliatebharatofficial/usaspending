@@ -48,11 +48,11 @@ export default function CompareCalculatorPage() {
     },
     {
       question: 'Are baseline figures sourced from official Treasury reports?',
-      answer: 'Yes. All baseline category spending figures are ingested directly from official public USAspending.gov records for Fiscal Year 2026.',
+      answer: 'Yes. All baseline category spending figures are ingested directly from official public USAspending.gov records for Fiscal Year 2027 (FYTD).',
     },
     {
       question: 'How does Defense spending compare to Education spending?',
-      answer: 'In FY2026, Defense & Military outlays ($895.0 Billion) are approximately 3.73 times larger than Education & Training outlays ($240.0 Billion).',
+      answer: 'In FY2027 (FYTD through October 31, 2026), Defense & Military outlays ($128.9 Billion) are approximately 9.39 times larger than Education & Training outlays ($13.7 Billion).',
     },
     {
       question: 'Can I export the side-by-side comparison data?',

@@ -38,11 +38,12 @@ export default function GovernmentSpendingByYear({
 }: GovernmentSpendingByYearProps) {
   const [selectedRange, setSelectedRange] = useState<'all' | 'recent'>('all');
 
-  // Fallback to HISTORICAL_SPENDING when no data prop is provided
+  // Fallback to HISTORICAL_SPENDING when no data prop is provided.
+  // Complete years only: a partial FYTD year would read as a collapse on a trend line.
   const effectiveData: YearChartDataItem[] =
     data && data.length > 0
       ? data
-      : HISTORICAL_SPENDING.map((h) => ({
+      : HISTORICAL_SPENDING.filter((h) => !h.isPartial).map((h) => ({
           year: h.year,
           spending: h.spending || h.totalSpending || 0,
           deficit: h.deficit,

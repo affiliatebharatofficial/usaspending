@@ -11,7 +11,7 @@ interface FiscalYearSelectorProps {
 
 export default function FiscalYearSelector({
   selectedYear,
-  availableYears = [2020, 2021, 2022, 2023, 2024, 2025, 2026],
+  availableYears = [2020, 2021, 2022, 2023, 2024, 2025, 2026, 2027],
   onChange,
 }: FiscalYearSelectorProps) {
   return (
@@ -25,7 +25,7 @@ export default function FiscalYearSelector({
       >
         {availableYears.map((fy) => (
           <option key={fy} value={fy}>
-            FY {fy} {fy === 2026 ? '(Current)' : ''}
+            FY {fy} {fy === 2027 ? '(Current)' : ''}
           </option>
         ))}
       </select>

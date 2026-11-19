@@ -11,7 +11,7 @@ import FAQSection, { FAQItem } from '@/components/common/FAQSection';
 import DataInterpretationCallout from '@/components/common/DataInterpretationCallout';
 import ReportDataIssueButton from '@/components/common/ReportDataIssueButton';
 import JsonLd from '@/components/seo/JsonLd';
-import { STATES_DATA, HISTORICAL_SPENDING, TOTAL_FEDERAL_SPENDING_FY2026 } from '@/lib/data/spendingData';
+import { STATES_DATA, HISTORICAL_SPENDING, TOTAL_FEDERAL_SPENDING_FY2027, CURRENT_FISCAL_YEAR, FY2027_DAYS_ELAPSED } from '@/lib/data/spendingData';
 import { getStateEditorialContent } from '@/lib/states/editorial';
 import { formatCurrency, formatNumber, calculateSpendingRates } from '@/lib/utils/formatters';
 import { ArrowLeft, ShieldCheck, TrendingUp, Building2, Award, GitCompare, Info, BookOpen } from 'lucide-react';
@@ -34,10 +34,10 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   }
 
   return {
-    title: `Federal Spending in ${state.name} — FY2026 | USA Spending`,
+    title: `Federal Spending in ${state.name} — FY2027 | USA Spending`,
     description: editorial?.tagline
-      ? `${editorial.tagline} Explore federal spending associated with ${state.name} in FY2026.`
-      : `Explore federal spending associated with ${state.name} in FY2026. View agency outlays, prime contract awards, and historical spending trends.`,
+      ? `${editorial.tagline} Explore federal spending associated with ${state.name} in FY2027 (FYTD).`
+      : `Explore federal spending associated with ${state.name} in FY2027 (FYTD). View agency outlays, prime contract awards, and historical spending trends.`,
     alternates: {
       canonical: `https://www.usaspending.us/states/${state.slug}`,
     },
@@ -51,7 +51,7 @@ export default function StateDetailPage({ params }: Props) {
     notFound();
   }
 
-  const rates = calculateSpendingRates(state.totalSpending);
+  const rates = calculateSpendingRates(state.totalSpending, FY2027_DAYS_ELAPSED);
   const editorial = getStateEditorialContent(state.slug);
 
   const awardTypeDonut = [
@@ -60,9 +60,9 @@ export default function StateDetailPage({ params }: Props) {
     { name: 'Other Federal Awards', amount: state.otherAwardsAmount, percentage: 10.0, color: '#0284c7' },
   ];
 
-  const trendData = HISTORICAL_SPENDING.map((h) => ({
+  const trendData = HISTORICAL_SPENDING.filter((h) => !h.isPartial).map((h) => ({
     year: h.year,
-    amount: Math.round(state.totalSpending * (h.spending / TOTAL_FEDERAL_SPENDING_FY2026)),
+    amount: Math.round(state.totalSpending * (h.spending / TOTAL_FEDERAL_SPENDING_FY2027)),
   }));
 
   const comparedStates = STATES_DATA.filter((s) => s.id !== state.id).slice(0, 4);
@@ -75,8 +75,8 @@ export default function StateDetailPage({ params }: Props) {
   const stateFAQs: FAQItem[] = [
     ...editorialFAQs,
     {
-      question: `What is the total federal spending associated with ${state.name} in FY2026?`,
-      answer: `In FY2026, federal spending associated with ${state.name} totals approximately ${formatCurrency(state.totalSpending, true)}, representing roughly ${state.percentage}% of overall federal outlays.`,
+      question: `What is the total federal spending associated with ${state.name} in FY2027 (FYTD)?`,
+      answer: `In FY2027 (FYTD), federal spending associated with ${state.name} totals approximately ${formatCurrency(state.totalSpending, true)}, representing roughly ${state.percentage}% of overall federal outlays.`,
     },
     {
       question: `Does this figure represent state government tax revenue in ${state.name}?`,
@@ -119,7 +119,7 @@ export default function StateDetailPage({ params }: Props) {
           name: `Federal Spending Associated With ${state.name}`,
           description: `Public federal spending outlays and awards associated with ${state.name}.`,
           url: `/states/${state.slug}`,
-          fiscalYear: 2026,
+          fiscalYear: CURRENT_FISCAL_YEAR,
           amount: state.totalSpending,
         }}
       />
@@ -150,7 +150,7 @@ export default function StateDetailPage({ params }: Props) {
               </h1>
             </div>
           </div>
-          <DataFreshness sourceName="Modeled estimates" lastUpdated="October 2026" />
+          <DataFreshness sourceName="Modeled estimates" lastUpdated="November 2026" />
         </div>
 
         <p className="text-xs text-slate-600 leading-relaxed max-w-3xl">
@@ -165,7 +165,7 @@ export default function StateDetailPage({ params }: Props) {
         share={state.percentage}
         dailyRate={rates.perDay}
         yoyChange={state.yoyChange}
-        fiscalYear={2026}
+        fiscalYear={CURRENT_FISCAL_YEAR}
       />
 
       <div className="grid grid-cols-2 sm:grid-cols-4 gap-4">
@@ -261,13 +261,13 @@ export default function StateDetailPage({ params }: Props) {
                 <p key={i}>{para}</p>
               ))}
               <p>
-                In Fiscal Year 2026, modeled federal spending associated with {state.name} stands at approximately <strong>{formatCurrency(state.totalSpending, true)}</strong> — about <strong>{state.percentage}%</strong> of total U.S. federal outlays and roughly <strong>${formatNumber(state.perCapita)} per resident</strong>.
+                In Fiscal Year 2027 (FYTD), modeled federal spending associated with {state.name} stands at approximately <strong>{formatCurrency(state.totalSpending, true)}</strong> — about <strong>{state.percentage}%</strong> of total U.S. federal outlays and roughly <strong>${formatNumber(state.perCapita)} per resident</strong>.
               </p>
             </>
           ) : (
             <>
               <p>
-                Federal spending allocated to <strong>{state.name}</strong> represents a significant driver of local economic velocity, industrial manufacturing, healthcare support, and infrastructure development. In Fiscal Year 2026, total reported federal spending associated with {state.name} stands at <strong>{formatCurrency(state.totalSpending, true)}</strong>, which represents <strong>{state.percentage}%</strong> of total United States federal outlays.
+                Federal spending allocated to <strong>{state.name}</strong> represents a significant driver of local economic velocity, industrial manufacturing, healthcare support, and infrastructure development. In Fiscal Year 2027 (FYTD), total reported federal spending associated with {state.name} stands at <strong>{formatCurrency(state.totalSpending, true)}</strong>, which represents <strong>{state.percentage}%</strong> of total United States federal outlays.
               </p>
               <p>
                 When analyzed relative to population, federal outlays in {state.name} equal approximately <strong>${formatNumber(state.perCapita)} per resident</strong> based on an estimated baseline population of <strong>{formatNumber(state.population)}</strong>. On a daily flow rate, federal funding in {state.name} averages <strong>{formatCurrency(rates.perDay, true)} per day</strong>, or roughly <strong>{formatCurrency(rates.perHour, true)} every hour</strong>.
@@ -380,10 +380,10 @@ export default function StateDetailPage({ params }: Props) {
       <div className="p-4 rounded-xl bg-slate-50 border border-slate-200 text-xs text-slate-600 space-y-1">
         <div className="flex items-center justify-between font-bold text-slate-800">
           <span>Source: Modeled estimates (see methodology)</span>
-          <span>Fiscal Year: FY2026</span>
+          <span>Fiscal Year: FY2027 (FYTD)</span>
         </div>
         <p className="text-[11px] leading-relaxed">
-          Data type: Modeled state estimates from Census population & Treasury MTS national totals • Last verified: October 2026.
+          Data type: Modeled state estimates from Census population & Treasury MTS national totals • Last verified: November 2026.
         </p>
       </div>
     </div>

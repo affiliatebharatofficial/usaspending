@@ -6,7 +6,7 @@ import Link from 'next/link';
 import type { Metadata } from 'next';
 
 export const metadata: Metadata = {
-  title: 'U.S. Government Spending Pie Chart — FY2026 Budget Breakdown',
+  title: 'U.S. Government Spending Pie Chart — FY2027 Budget Breakdown (FYTD)',
   description: 'Interactive U.S. Federal Government spending pie chart visualization. View exact percentages and dollar outlays for Defense, Medicare, Social Security, Education, and NASA.',
 };
 
@@ -32,7 +32,7 @@ export default function SpendingPieChartPage() {
           U.S. Government Spending Pie Chart
         </h1>
         <p className="text-sm text-slate-300">
-          Visual proportion of America's $7.40 Trillion (FY2026 final) federal budget across major national categories.
+          Visual proportion of America's $773.00 Billion (FY2027 FYTD) federal budget across major national categories.
         </p>
       </div>
 

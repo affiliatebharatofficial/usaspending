@@ -10,16 +10,16 @@ import DonutChart from '@/components/visualizations/DonutChart';
 import MetricCard from '@/components/visualizations/MetricCard';
 import FiscalYearSelector from '@/components/visualizations/FiscalYearSelector';
 import DataFreshness from '@/components/visualizations/DataFreshness';
-import { SPENDING_CATEGORIES, RECONCILED_PIE_DATA, TOTAL_FEDERAL_SPENDING_FY2026 } from '@/lib/data/spendingData';
+import { SPENDING_CATEGORIES, RECONCILED_PIE_DATA, TOTAL_FEDERAL_SPENDING_FY2027, CURRENT_FISCAL_YEAR, FY2027_DAYS_ELAPSED } from '@/lib/data/spendingData';
 import { formatCurrency, calculateSpendingRates } from '@/lib/utils/formatters';
 import { PieChart, ArrowLeft, Filter, Layers, Building2, Award } from 'lucide-react';
 
 export default function SpendingBreakdownPage() {
-  const [selectedFY, setSelectedFY] = useState<number>(2026);
+  const [selectedFY, setSelectedFY] = useState<number>(CURRENT_FISCAL_YEAR);
   const [selectedCategorySlug, setSelectedCategorySlug] = useState<string>(SPENDING_CATEGORIES[0].slug);
 
   const selectedCategory = SPENDING_CATEGORIES.find((c) => c.slug === selectedCategorySlug) || SPENDING_CATEGORIES[0];
-  const rates = calculateSpendingRates(selectedCategory.amount);
+  const rates = calculateSpendingRates(selectedCategory.amount, selectedFY === CURRENT_FISCAL_YEAR ? FY2027_DAYS_ELAPSED : 365);
 
   const donutItems = RECONCILED_PIE_DATA.map((d) => ({
     name: d.category,
@@ -79,7 +79,7 @@ export default function SpendingBreakdownPage() {
         <DonutChart
           data={donutItems}
           centerLabel={`FY${selectedFY} Budget`}
-          centerValue={formatCurrency(TOTAL_FEDERAL_SPENDING_FY2026, true)}
+          centerValue={formatCurrency(TOTAL_FEDERAL_SPENDING_FY2027, true)}
           height={320}
         />
       </div>

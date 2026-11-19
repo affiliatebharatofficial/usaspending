@@ -2,7 +2,7 @@ import React from 'react';
 import { notFound, redirect } from 'next/navigation';
 import { resolveCategoryEntity } from '@/lib/config/entities';
 import CategoryDetailView from '@/components/categories/CategoryDetailView';
-import { getCategoryDataForFY } from '@/lib/data/spendingData';
+import { getCategoryDataForFY, CURRENT_FISCAL_YEAR } from '@/lib/data/spendingData';
 import { formatCurrency } from '@/lib/utils/formatters';
 import type { Metadata } from 'next';
 
@@ -21,19 +21,19 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     };
   }
 
-  const categoryData = getCategoryDataForFY(entity.slug, 2026);
+  const categoryData = getCategoryDataForFY(entity.slug, CURRENT_FISCAL_YEAR);
   const formattedAmount = categoryData ? formatCurrency(categoryData.amount, true) : '';
 
-  let pageTitle = `U.S. ${entity.name} Spending — FY2026 | USA Spending`;
+  let pageTitle = `U.S. ${entity.name} Spending — FY2027 | USA Spending`;
   if (entity.slug === 'defense-military') {
-    pageTitle = `U.S. Defense & Military Spending — FY2026 | USA Spending`;
+    pageTitle = `U.S. Defense & Military Spending — FY2027 | USA Spending`;
   } else if (entity.slug === 'education-training') {
-    pageTitle = `U.S. Education & Training Spending — FY2026 | USA Spending`;
+    pageTitle = `U.S. Education & Training Spending — FY2027 | USA Spending`;
   }
 
   return {
     title: pageTitle,
-    description: `Explore ${entity.name} in FY2026 (${formattedAmount}). View subcategory breakdowns, 9-year historical trends, top agencies, and primary recipients.`,
+    description: `Explore ${entity.name} in FY2027 (${formattedAmount}). View subcategory breakdowns, 10-year historical trends, top agencies, and primary recipients.`,
     alternates: {
       canonical: entity.canonicalUrl,
     },
