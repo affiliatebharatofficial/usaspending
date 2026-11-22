@@ -41,6 +41,7 @@ import { data as federalSpendingIllinois } from './content/federalSpendingIllino
 import { data as federalSpendingOhio } from './content/federalSpendingOhio';
 import { data as federalSpendingPennsylvania } from './content/federalSpendingPennsylvania';
 import { data as federalSpendingGeorgia } from './content/federalSpendingGeorgia';
+import { data as federalSpendingNorthCarolina } from './content/federalSpendingNorthCarolina';
 
 export const BLOG_ARTICLES: ArticleData[] = [
   usDebtInterestVsDefenseSpending,
@@ -77,6 +78,7 @@ export const BLOG_ARTICLES: ArticleData[] = [
   federalSpendingOhio,
   federalSpendingPennsylvania,
   federalSpendingGeorgia,
+  federalSpendingNorthCarolina,
 ];
 
 export function getArticleBySlug(slug: string): ArticleData | undefined {
