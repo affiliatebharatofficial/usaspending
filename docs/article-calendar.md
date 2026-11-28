@@ -43,7 +43,7 @@ Format: `- [ ] slug | Title | target keyword | pillar`
 - [x] federal-spending-georgia | Federal Spending in Georgia: The CDC, Military Bases, and Film | federal spending in georgia | State Spotlights — 2026-11-19
 - [x] federal-spending-north-carolina | Federal Spending in North Carolina: Research Triangle and Fort Liberty | federal spending in north carolina | State Spotlights — 2026-11-22
 - [x] federal-spending-michigan | Federal Spending in Michigan: Autos, Lakes, and Labs | federal spending in michigan | State Spotlights — 2026-11-25
-- [ ] federal-spending-washington | Federal Spending in Washington: Dams, Naval Bases, and Tech | federal spending in washington | State Spotlights
+- [x] federal-spending-washington | Federal Spending in Washington: Dams, Naval Bases, and Tech | federal spending in washington | State Spotlights — 2026-11-28
 - [ ] federal-spending-massachusetts | Federal Spending in Massachusetts: Universities and Biotech | federal spending in massachusetts | State Spotlights
 - [ ] federal-spending-colorado | Federal Spending in Colorado: Space Command and Public Lands | federal spending in colorado | State Spotlights
 - [ ] federal-spending-arizona | Federal Spending in Arizona: Border, Bases, and Water | federal spending in arizona | State Spotlights
@@ -107,3 +107,4 @@ Format: `- [ ] slug | Title | target keyword | pillar`
 - 2026-11-19: Federal Spending in Georgia: CDC, Bases, and Rural Health — https://www.usaspending.us/blog/federal-spending-georgia
 - 2026-11-22: Federal Spending in North Carolina: Bases, Labs, and Helene — https://www.usaspending.us/blog/federal-spending-north-carolina
 - 2026-11-25: Federal Spending in Michigan: Autos, Lakes, and Labs — https://www.usaspending.us/blog/federal-spending-michigan
+- 2026-11-28: Federal Spending in Washington: Tankers, Submarines, and Dams — https://www.usaspending.us/blog/federal-spending-washington
